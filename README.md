@@ -1,6 +1,6 @@
 # r-system
 # Note
-* path của children router thì không cần "/". Ví dụ blogs là router con của admin thì không cần "/blogs" mà chỉ cần "blogs" thôi. 
+* path của children router thì không cần "/". Ví dụ pots là router con của admin thì không cần "/pots" mà chỉ cần "pots" thôi. 
 ```js
 {
   path: "/admin",
@@ -14,15 +14,15 @@
         import("./views/admin/dashboard/example")
     },
     {
-      path: "blogs",      
+      path: "pots",      
       component: () =>
-        import("./views/admin/blogs/index"),
+        import("./views/admin/pots/index"),
       children: [
         {
           path: "",
-          name: 'admin_blogs',
+          name: 'admin_pots',
           component: () =>
-            import("./views/admin/blogs/example")
+            import("./views/admin/pots/example")
         }
       ]
     }

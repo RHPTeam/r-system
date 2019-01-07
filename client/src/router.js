@@ -123,18 +123,96 @@ export default new Router({
             import("./views/admin/dashboard/example")
         },
         {
-          path: "blogs",      
+          path: "pots",      
           component: () =>
-            import("./views/admin/blogs/index"),
+            import("./views/admin/pots/index"),
           children: [
             {
               path: "",
-              name: 'admin_blogs',
+              name: 'admin_pots',
               component: () =>
-                import("./views/admin/blogs/example")
+                import("./views/admin/pots/example")
             }
           ]
-        }
+        },
+        {
+          path: "categorys",      
+          component: () =>
+            import("./views/admin/categorys/index"),
+          children: [
+            {
+              path: "",
+              name: 'admin_categorys',
+              component: () =>
+                import("./views/admin/categorys/example")
+            }
+          ]
+        },
+        {
+          path: "library",      
+          component: () =>
+            import("./views/admin/library/index"),
+          children: [
+            {
+              path: "",
+              name: 'admin_library',
+              component: () =>
+                import("./views/admin/library/example")
+            }
+          ]
+        },
+        {
+          path: "pages",      
+          component: () =>
+            import("./views/admin/pages/index"),
+          children: [
+            {
+              path: "",
+              name: 'admin_pages',
+              component: () =>
+                import("./views/admin/pages/example")
+            }
+          ]
+        },
+        {
+          path: "permission",      
+          component: () =>
+            import("./views/admin/permission/index"),
+          children: [
+            {
+              path: "",
+              name: 'admin_permission',
+              component: () =>
+                import("./views/admin/permission/example")
+            }
+          ]
+        },
+        {
+          path: "rhelp",      
+          component: () =>
+            import("./views/admin/rhelp/index"),
+          children: [
+            {
+              path: "",
+              name: 'admin_rhelp',
+              component: () =>
+                import("./views/admin/rhelp/example")
+            }
+          ]
+        },
+        {
+          path: "users",      
+          component: () =>
+            import("./views/admin/users/index"),
+          children: [
+            {
+              path: "",
+              name: 'admin_users',
+              component: () =>
+                import("./views/admin/users/example")
+            }
+          ]
+        },
       ]
     }
   ]
