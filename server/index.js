@@ -7,9 +7,9 @@ const mongoose = require('mongoose');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
 
-const config = require('./config/config');
+const config = require('./src/configs/config');
 //get all api 
-const api = require('./routes/index');
+const api = require('./src/routes/index');
 
 //set up the express app 
 const app = express();

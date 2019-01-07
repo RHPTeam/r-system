@@ -3,13 +3,13 @@
  */
 const express = require('express');
 
-const user = require('../controllers/user'); 
+const user = require('../../controllers/user.controller'); 
 
 const router = express.Router();
 /* GET users listing. */
-router.route('/')
-  .post(user.createUser)
-  .get(user.getAllUsers);
+// router.route('/')
+//   .post(user.createUser)
+//   .get(user.getAllUsers);
 
 // router.route('/:userId')
 //   .get(user.getOneUser)
