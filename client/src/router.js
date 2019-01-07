@@ -32,6 +32,110 @@ export default new Router({
             import("./views/dashboard/example")
         }
       ]
+    },
+    {
+      path: "/job",
+      component: () =>
+        import("./views/job/index"),
+      children: [
+        {
+          path: "",
+          name: 'job',
+          component: () =>
+            import("./views/job/example")
+        }
+      ]
+    },
+    {
+      path: "/members",
+      component: () =>
+        import("./views/members/index"),
+      children: [
+        {
+          path: "",
+          name: 'members',
+          component: () =>
+            import("./views/members/example")
+        }
+      ]
+    },
+    {
+      path: "/signin",
+      component: () =>
+        import("./views/signin/index"),
+      children: [
+        {
+          path: "",
+          name: 'signin',
+          component: () =>
+            import("./views/signin/example")
+        }
+      ]
+    },
+    {
+      path: "/signup",
+      component: () =>
+        import("./views/signup/index"),
+      children: [
+        {
+          path: "",
+          name: 'signup',
+          component: () =>
+            import("./views/signup/example")
+        }
+      ]
+    },
+    {
+      path: "/question",
+      component: () =>
+        import("./views/question/index"),
+      children: [
+        {
+          path: "",
+          name: 'question',
+          component: () =>
+            import("./views/question/example")
+        }
+      ]
+    },
+    {
+      path: "/user",
+      component: () =>
+        import("./views/user/index"),
+      children: [
+        {
+          path: "",
+          name: 'user',
+          component: () =>
+            import("./views/user/example")
+        }
+      ]
+    },
+    {
+      path: "/admin",
+      component: () =>
+        import("./views/admin/dashboard/index"),
+      children: [
+        {
+          path: "",
+          name: 'admin',
+          component: () =>
+            import("./views/admin/dashboard/example")
+        },
+        {
+          path: "blogs",      
+          component: () =>
+            import("./views/admin/blogs/index"),
+          children: [
+            {
+              path: "",
+              name: 'admin_blogs',
+              component: () =>
+                import("./views/admin/blogs/example")
+            }
+          ]
+        }
+      ]
     }
   ]
 });
