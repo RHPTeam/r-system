@@ -1,5 +1,5 @@
 <template>
-    <h1>Get value form admin blogs example</h1>
+    <h1>Get value form admin post example</h1>
 </template>
 
 <script>

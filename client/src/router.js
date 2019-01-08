@@ -123,15 +123,15 @@ export default new Router({
             import("./views/admin/dashboard/example")
         },
         {
-          path: "pots",      
+          path: "post",      
           component: () =>
-            import("./views/admin/pots/index"),
+            import("./views/admin/post/index"),
           children: [
             {
               path: "",
-              name: 'admin_pots',
+              name: 'admin_post',
               component: () =>
-                import("./views/admin/pots/example")
+                import("./views/admin/post/example")
             }
           ]
         },
