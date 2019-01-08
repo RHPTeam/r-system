@@ -2,6 +2,7 @@ const validator = require('validator');
 const passport = require('passport');
 
 const User = require('../models/user.model');
+const JsonResponse = require('../helpers/json-response')
 
 // validate form data 
 validateMemberForm = async payload => {
@@ -65,31 +66,19 @@ module.exports = {
       const list_user = req.body;
       const validationResult = await validateMemberForm(list_user);
       if (!validationResult.success) {
-        return res.json({
-          success: false,
-          message: validationResult.message,
-          errors: validationResult.errors
-        });
+        return res.json(JsonResponse("", 403, validationResult.errors, false))
       }
       //check email or nameDisplay exist
       if (findUserEmailOrName(list_user).length > 0) {
-        return res.json({
-          status: 404
-        })
+        return res.json(JsonResponse("", 404, "Email or nameDisplay is exist", false))
       }
 
       const user = await new User(list_user);
       user.save((err, data)=> {
         if(err) {
-          return res.json({
-            success: false,
-            message: "Email hoạc là username đã được đăng ký."
-          });
+          return res.json(JsonResponse("", 200, "Email or nameDisplay is exist.", false));
         }
-        return res.json({
-          success: true,
-          message: "create user success"
-        });
+        return res.json(JsonResponse("", 200, "create user success", false))
       })
     } catch (error) {
       console.log(error)
@@ -108,13 +97,9 @@ module.exports = {
                         .select('_id userid name nameDisplay email avatar title about ')
                         .exec((errors, data) => {
                           if (errors) {
-                            res.json({
-                              error: errors
-                            })
+                            res.json(JsonResponse("", 401, errors, false))
                           }
-                          res.json({
-                            data: data
-                          })
+                          res.json(JsonResponse(data, 200, "", false))
                         });
     } catch (error) {
       console.log(error);
@@ -145,20 +130,13 @@ module.exports = {
     try {
       const { user, body } = req;
       if (findUserEmailOrName(body).length > 0) {
-        return res.json({
-          status: 404
-        })
+        return res.json(JsonResponse("", 404, "Email or nameDisplay is exist", false))
       }
       return await User.findByIdAndUpdate({_id: user._id}, body, (errors, data) => {
-        console.log(data);
         if (errors) {
-          res.json({
-            error: errors
-          })
+          return res.json(JsonResponse("", 404, errors, false))
         }
-        res.json({
-          data: data
-        })
+        res.json(JsonResponse(data, 200, "", false))
       })
     } catch (error) {
       console.log(error);
@@ -176,13 +154,9 @@ module.exports = {
       const { user } = req;
       return await User.findByIdAndDelete({_id: user._id}, (errors, data) => {
         if (errors) {
-          res.json({
-            error: errors
-          })
+          res.json(JsonResponse("", 404, errors, false))
         }
-        res.send({
-          success: 'success'
-        })
+        res.send(JsonResponse("", 200, "Delete user success", false))
       })
     } catch (error) {
       console.log(error);
@@ -198,12 +172,11 @@ module.exports = {
    */
   getByIdUser: async (req, res, next, id) => {
     try {
-      const user = await User.findById({_id: id});
+      const user = await User.findById({_id: id})
+                              .select('_id userid name nameDisplay email avatar title about ')
+                              .exec();
       if (!user) {
-        return res.json({
-          success: false,
-          message: "User doesn't exit"
-        });
+        return res.json(JsonResponse("", 404, "User doesn't exist", false));
       }
       req.user = user;
       next();
@@ -221,12 +194,9 @@ module.exports = {
   loginUser: (req, res, next) => {
     return passport.authenticate('local-login', (err, token, data) => {
       if (err) {
-          return res.status(403).json(err);
+        return res.json(JsonResponse("", 403, err, false))
       }
-      return res.json({
-          token,
-          data
-      });
+      return res.json(JsonResponse({ token, data }, 200, "", false))
     })(req, res, next);
   },
 
