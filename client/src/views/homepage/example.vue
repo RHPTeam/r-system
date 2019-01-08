@@ -3,8 +3,11 @@
 </template>
 
 <script>
+import AppSidebar from '@/components/sidebar/index'
 export default {
-    
+    components: {
+        AppSidebar
+    }
 }
 </script>
 

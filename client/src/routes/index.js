@@ -17,6 +17,12 @@ export default new Router({
           name: 'homepage',
           component: () =>
             import("./views/homepage/example")
+        },
+        {
+          path: "lol",
+          name: 'homepage',
+          component: () =>
+            import("./views/homepage/example2")
         }
       ]
     },
