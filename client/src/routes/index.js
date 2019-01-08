@@ -1,6 +1,10 @@
 import Vue from "vue";
 import Router from "vue-router";
 
+import legaRouter from "./modules/lega";
+import userRouter from "./modules/user";
+import blogRouter from "./modules/blog";
+
 Vue.use(Router);
 
 export default new Router({
@@ -15,11 +19,6 @@ export default new Router({
           path: "",
           name: "homepage",
           component: () => import("@/views/homepage/example")
-        },
-        {
-          path: "lol",
-          name: "homepage",
-          component: () => import("@/views/homepage/example2")
         }
       ]
     },
@@ -86,17 +85,6 @@ export default new Router({
           path: "",
           name: "question",
           component: () => import("@/views/question/example")
-        }
-      ]
-    },
-    {
-      path: "/user",
-      component: () => import("@/views/user/index"),
-      children: [
-        {
-          path: "",
-          name: "user",
-          component: () => import("@/views/user/example")
         }
       ]
     },
@@ -187,6 +175,9 @@ export default new Router({
           ]
         }
       ]
-    }
+    },
+    legaRouter,
+    userRouter,
+    blogRouter
   ]
 });

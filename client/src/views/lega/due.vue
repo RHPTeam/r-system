@@ -1,5 +1,5 @@
 <template>
-    <h1>Get value form user example</h1>
+    <h1>Data from due overview page</h1>  
 </template>
 
 <script>
