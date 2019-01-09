@@ -5,8 +5,8 @@
             <ul class="sub">
                 <li class="sub_item" v-for="(child,c_key) in nav.children">
                     <router-link tag="a" :to="{name: child.router_name}"> <i class="material-icons">
-subdirectory_arrow_right
-</i> {{child.content}} </router-link>
+                            subdirectory_arrow_right
+                        </i> {{child.content}} </router-link>
                 </li>
             </ul>
         </li>
@@ -15,7 +15,7 @@ subdirectory_arrow_right
 
 <script>
     export default {
-        props:['arNav']
+        props: ['arNav']
     }
 
 </script>
@@ -24,19 +24,22 @@ subdirectory_arrow_right
     .site_nav {
         list-style: none;
         padding: 0px;
+
         ul {
             list-style: none;
-           
+
         }
+
         border-radius: 8px;
         background-color: #f5f5f5;
         padding:16px 0px;
         border:1px solid #CCCCCC;
 
         .item {
-            ul{
-                padding:1%;
+            ul {
+                padding: 1%;
             }
+
             >.router-link-active {
                 color: #776AB0;
                 border-left: 4px #776AB0 solid;
