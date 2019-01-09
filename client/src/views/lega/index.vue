@@ -1,130 +1,138 @@
 <template>
-    <div class="ct_fl" style="margin-top:20px">
-        <div class="r wrapper" >
-            <div class="c_md_9">
-                 <router-view /> 
+    <div class="ct_fl" >
+        <app-top-bar/>
+        <div class="r wrapper">
+            <div class="c_lg_3 c_md_4 c_xs_12 c_sm_12">
+                <app-site-menu :arNav="arNav"/>
             </div>
-            <div class="c_md_3" >
-               <ul class="site_nav">
-                   <li class="item"  v-for="(nav,key) in arNav">
-                      <router-link tag="a" :to="{name: nav.router_name}"> {{nav.content}} </router-link>
-                      <ul class="sub">
-                          <li class="sub_item" v-for="(child,c_key) in nav.children">
-                                <router-link tag="a" :to="{name: child.router_name}"> {{child.content}} </router-link>
-                          </li>
-                      </ul>
-                   </li>
-               </ul>
+            <div class="c_lg_9 c_md_8 c_xs_12 c_sm_12">
+                <router-view />
             </div>
+           
         </div>
     </div>
 </template>
 
 <script>
-export default {
-    data(){
-        return {
-            arNav:[{
-                    router_name:"lega-public",
-                    content:"Public Network Terms of Service",
-                    children:[]
-                },
-                {
-                    router_name:"lega-private",
-                    content:"Private Network Terms of Service",
-                    children:[]
-                },
-                // {
-                //     router_name:"",
-                //     content:"API Terms of Use",
-                //     children:[]
-                // },
-                {
-                    router_name:"lega-privacy",
-                    content:"Privacy Policy",
-                    children:[]
-                },
-                // {
-                //     router_name:"",
-                //     content:"Data Security and Due Process",
-                //     children:[]
-                // },
-                {
-                    router_name:"due-data-security",
-                    content:"Data Security Overview",
-                    children:[
-                        {
-                            router_name:"due-data-subjects",
-                            content:"Data Subjects (You)",
-                            children:[]
-                        },
-                        {
-                            router_name:"due-data-controllers",
-                            content:"Data Controllers (Customers)",
-                            children:[]
-                        },
-                        {
-                            router_name:"due-data-processors",
-                            content:"Data Processors (Vendors)",
-                            children:[]
-                        }
-                    ]
-                },
-                {
-                    router_name:"lega-cookie",
-                    content:"Cookie Policy",
-                    children:[]
-                },
-                // {
-                //     router_name:"",
-                //     content:"Acceptable Use Policy",
-                //     children:[]
-                // },
-                // {
-                //     router_name:"",
-                //     content:"Trademark Guidance",
-                //     children:[]
-                // },
-                {
-                    router_name:"lega-contact",
-                    content:"Contact",
-                    children:[]
-                }
+    import AppSiteMenu from "@/components/sidebar/site_menu"
+    import AppTopBar from "@/components/sidebar/top_bar"
+    export default {
+        components:{
+            AppSiteMenu,
+            AppTopBar
+        },
+        data() {
+            return {
+                arNav: [{
+                        router_name: "lega-public",
+                        content: "Public Network Terms of Service",
+                        children: []
+                    },
+                    {
+                        router_name: "lega-private",
+                        content: "Private Network Terms of Service",
+                        children: []
+                    },
+                    {
+                        router_name: "lega-privacy",
+                        content: "Privacy Policy",
+                        children: []
+                    },
+                    {
+                        router_name: "due-start",
+                        content: "Data Security and Due Process",
+                        children: [{
+                                router_name: "due-data-security",
+                                content: "Data Security Overview",
+                                children: []
+                            },
+                            {
+                                router_name: "due-data-subjects",
+                                content: "Data Subjects (You)",
+                                children: []
+                            },
+                            {
+                                router_name: "due-data-controllers",
+                                content: "Data Controllers (Customers)",
+                                children: []
+                            },
+                            {
+                                router_name: "due-data-processors",
+                                content: "Data Processors (Vendors)",
+                                children: []
+                            }
+                        ]
+                    },
 
-            ]
-        }
-    }
-}
-</script>
+                    {
+                        router_name: "lega-cookie",
+                        content: "Cookie Policy",
+                        children: []
+                    },
+                    {
+                        router_name: "lega-contact",
+                        content: "Contact",
+                        children: []
+                    }
 
-<style scope lang="scss">
-    .wrapper{
-        padding:10px 5%; 
-        ul{
-        list-style: none;
-        
-        }
-        .site_nav{
-            border-radius: 8px;
-            background-color: #f5f5f5;
-            padding-bottom:26px;
-            
-            .item{
-                .router-link-active{
-                    font-weight: bold;
-                }
-                a:hover{
-                    text-decoration: none;
-                }
-                a{
-                    color:#555;
-                    display:block;
-                    font-size:22px;
-                    padding-top:26px;
-                    
-                }
+                ]
             }
         }
     }
-    
+
+</script>
+
+<style  lang="scss">
+    .wrapper {
+        font-size: 1.15384615rem !important;
+        padding: 10px 5%;
+        
+        .gs32>.grid,
+        .gs32>.grid--cell {
+            margin: 16px;
+        }
+
+        .fw-bold {
+            font-weight: 700 !important;
+        }
+
+        .lh-sm {
+            line-height: 1.15384615 !important;
+        }
+
+        .mb32 {
+            margin-bottom: 32px !important;
+        }
+
+        a {
+            color: #07C;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: darkblue;
+        }
+
+        .my4 {
+            margin-top: 4px !important;
+            margin-bottom: 4px !important;
+        }
+
+        .lh-lg {
+            color: #3b4045 !important;
+            line-height: 1.61538462 !important;
+        }
+
+        .fs-body2 {
+            font-size: 1.15384615rem !important;
+        }
+
+        >ul {
+            margin-left: 30px;
+            margin-bottom: 1em;
+        }
+
+        
+    }
+
 </style>
