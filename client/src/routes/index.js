@@ -4,6 +4,7 @@ import Router from "vue-router";
 import legaRouter from "./modules/lega";
 import userRouter from "./modules/user";
 import blogRouter from "./modules/blog";
+import questionRouter from "./modules/question";
 
 Vue.use(Router);
 
@@ -74,17 +75,6 @@ export default new Router({
           path: "",
           name: "signup",
           component: () => import("@/views/signup/example")
-        }
-      ]
-    },
-    {
-      path: "/question",
-      component: () => import("@/views/question/index"),
-      children: [
-        {
-          path: "",
-          name: "question",
-          component: () => import("@/views/question/example")
         }
       ]
     },
@@ -176,8 +166,25 @@ export default new Router({
         }
       ]
     },
+    {
+      path: "/discord",
+      component: () => import("@/views/discord"),
+      children: [
+        {
+          path: "",
+          name: "discord-tutorial",
+          component: () => import("@/views/discord/discord")
+        },
+        {
+          path: "contact-discord",
+          name: "contact-discord",
+          component: () => import("@/views/discord/discord2")
+        }
+      ]
+    },
     legaRouter,
     userRouter,
-    blogRouter
+    blogRouter,
+    questionRouter
   ]
 });

@@ -7,18 +7,18 @@ const user = require('../../controllers/user.controller');
 
 const router = express.Router();
 /* GET users listing. */
-// router.route('/')
-//   .post(user.createUser)
-//   .get(user.getAllUsers);
+router.route('/')
+  .post(user.createUser)
+  .get(user.getAllUsers);
 
-// router.route('/:userId')
-//   .get(user.getOneUser)
-//   .put(user.updateUser)
-//   .delete(user.deleteUser);
+router.route('/:userId')
+  .get(user.getOneUser)
+  .put(user.updateUser)
+  .delete(user.deleteUser);
 
-// router.param('userId', user.getByIdUser);
+router.param('userId', user.getByIdUser);
 
-// router.post('/login', user.loginUser);
+router.post('/login-local', user.loginUser);
 
 
 module.exports = router;

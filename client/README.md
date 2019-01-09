@@ -31,7 +31,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 
 ### Note for using CSS Rbox
-Tham khảo các class tương tương tự bootstrap 4, nhưng thay từ gạch ngang (-) thành gạch dưới (_)
+Tham khảo các class tương tự bootstrap 4, nhưng thay từ gạch ngang (-) thành gạch dưới (_)
 Ví dụ: .d-flex chuyển thành .d_flex
 Áp dụng cho các module sau: 
 **Layout**
