@@ -1,5 +1,6 @@
 <template>
-    <div class="background">
+    <div class="post--wrapper">
+      <app-menu/>
       <div class="post ct">
         <app-post-detail/>
         <app-comment/>
@@ -12,6 +13,7 @@
 </template>
 
 <script>
+import AppMenu from "@/components/sidebar/top_bar"
 import AppPostDetail from "./post-component/postdetail";
 import AppComment from "./post-component/comment";
 import AppAddComment from "./post-component/addcomment";
@@ -19,6 +21,7 @@ import AppPostOther from "./post-component/postother";
 
 export default {
   components: {
+    AppMenu,
     AppPostDetail,
     AppComment,
     AppAddComment,
@@ -28,7 +31,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.background {
+.post--wrapper {
   background-color: #e9e9e9;
 }
 .post {
