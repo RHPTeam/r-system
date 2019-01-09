@@ -1,70 +1,67 @@
 <template>
-    <ul class="site_nav">
-        <li class="item" v-for="(nav,key) in arNav">
-            <router-link tag="a" :to="{name: nav.router_name}"> {{nav.content}} </router-link>
-            <ul class="sub">
-                <li class="sub_item" v-for="(child,c_key) in nav.children">
-                    <router-link tag="a" :to="{name: child.router_name}"> <i class="material-icons">
-                            subdirectory_arrow_right
-                        </i> {{child.content}} </router-link>
-                </li>
-            </ul>
+  <ul class="site_nav">
+    <li class="item" v-for="(nav,key) in arNav" v-bind:key="key">
+      <router-link tag="a" :to="{name: nav.router_name}">{{nav.content}}</router-link>
+      <ul class="sub">
+        <li class="sub_item" v-for="(child,key) in nav.children" v-bind:key="key">
+          <router-link tag="a" :to="{name: child.router_name}">
+            <i class="material-icons">subdirectory_arrow_right</i>
+            {{child.content}}
+          </router-link>
         </li>
-    </ul>
+      </ul>
+    </li>
+  </ul>
 </template>
 
 <script>
-    export default {
-        props: ['arNav']
-    }
-
+export default {
+  props: ["arNav"]
+};
 </script>
 
 <style scoped lang="scss">
-    .site_nav {
-        list-style: none;
-        padding: 0px;
+.site_nav {
+  list-style: none;
+  padding: 0px;
 
-        ul {
-            list-style: none;
+  ul {
+    list-style: none;
+  }
 
-        }
+  border-radius: 8px;
+  background-color: #f5f5f5;
+  padding: 16px 0px;
+  border: 1px solid #cccccc;
 
-        border-radius: 8px;
-        background-color: #f5f5f5;
-        padding:16px 0px;
-        border:1px solid #CCCCCC;
-
-        .item {
-            ul {
-                padding: 1%;
-            }
-
-            >.router-link-active {
-                color: #776AB0;
-                border-left: 4px #776AB0 solid;
-                margin-left: -1px;
-            }
-
-            .sub {
-                .router-link-active {
-                    color: #776AB0;
-                }
-            }
-
-            a:hover {
-                text-decoration: none;
-            }
-
-            a {
-                color: #555;
-                display: block;
-                font-size: 1em;
-                padding-left: 5%;
-                line-height: 2em;
-
-            }
-        }
+  .item {
+    ul {
+      padding: 1%;
     }
 
+    > .router-link-active {
+      color: #776ab0;
+      border-left: 4px #776ab0 solid;
+      margin-left: -1px;
+    }
+
+    .sub {
+      .router-link-active {
+        color: #776ab0;
+      }
+    }
+
+    a:hover {
+      text-decoration: none;
+    }
+
+    a {
+      color: #555;
+      display: block;
+      font-size: 1em;
+      padding-left: 5%;
+      line-height: 2em;
+    }
+  }
+}
 </style>

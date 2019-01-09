@@ -7,6 +7,11 @@ const userRouter = {
       path: "",
       name: "user-show-all",
       component: () => import("@/views/user/user-list")
+    },
+    {
+      path: ":id",
+      name: "user-info",
+      component: () => import("@/views/user/user-info")
     }
   ]
 };
