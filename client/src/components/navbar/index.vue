@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import AppNavBar from "@/components/navbar";
+import AppNavBar from "./navbar";
 export default {
   components: {
     AppNavBar
@@ -13,5 +13,5 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 </style>
