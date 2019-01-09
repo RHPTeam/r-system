@@ -1,5 +1,5 @@
 <template>
-    <h1>Get value form homepage example</h1>
+  <h1>welcome back with RHP Team</h1>
 </template>
 
 <script>

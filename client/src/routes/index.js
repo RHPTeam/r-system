@@ -95,8 +95,8 @@ export default new Router({
       children: [
         {
           path: "",
-          name: "user",
-          component: () => import("@/views/user/example")
+          name: "",
+          component: () => import("@/views/user/homepage")
         }
       ]
     },
