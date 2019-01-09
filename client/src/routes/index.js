@@ -1,6 +1,11 @@
 import Vue from "vue";
 import Router from "vue-router";
 
+import legaRouter from "./modules/lega";
+import userRouter from "./modules/user";
+import blogRouter from "./modules/blog";
+import questionRouter from "./modules/question";
+
 Vue.use(Router);
 
 export default new Router({
@@ -15,11 +20,6 @@ export default new Router({
           path: "",
           name: "homepage",
           component: () => import("@/views/homepage/example")
-        },
-        {
-          path: "lol",
-          name: "homepage",
-          component: () => import("@/views/homepage/example2")
         }
       ]
     },
@@ -79,6 +79,7 @@ export default new Router({
       ]
     },
     {
+<<<<<<< HEAD
       path: "/question",
       component: () => import("@/views/question/index"),
       children: [
@@ -101,6 +102,8 @@ export default new Router({
       ]
     },
     {
+=======
+>>>>>>> dev-chinhht-vue
       path: "/admin",
       component: () => import("@/views/admin/dashboard/index"),
       children: [
@@ -187,6 +190,26 @@ export default new Router({
           ]
         }
       ]
-    }
+    },
+    {
+      path: "/discord",
+      component: () => import("@/views/discord"),
+      children: [
+        {
+          path: "",
+          name: "discord-tutorial",
+          component: () => import("@/views/discord/discord")
+        },
+        {
+          path: "contact-discord",
+          name: "contact-discord",
+          component: () => import("@/views/discord/discord2")
+        }
+      ]
+    },
+    legaRouter,
+    userRouter,
+    blogRouter,
+    questionRouter
   ]
 });
