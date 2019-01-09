@@ -2,6 +2,9 @@
 const legaRouter = {
   path: "/lega",
   component: () => import("@/views/lega/index"),
+  redirect:{
+    name:"lega-public-start"
+  },
   children: [
     {
       path: "",
