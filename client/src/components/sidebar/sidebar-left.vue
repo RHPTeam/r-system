@@ -1,8 +1,11 @@
 <template>
     <nav id="sidebar" v-bind:class="{'collapse-sidebar':Collapse}">
         <div class="sidebar-header">
-            <img v-if="Collapse" src="https://i.pinimg.com/originals/94/dd/57/94dd573e4b4de604ea7f33548da99fd6.jpg" alt="">
-            <img v-else src="../../assets/Logo-text.svg" alt="">
+            <!-- <img v-if="Collapse" src="https://i.pinimg.com/originals/94/dd/57/94dd573e4b4de604ea7f33548da99fd6.jpg" alt=""> -->
+            <!-- <img v-else src="../../assets/Logo-text.svg" alt=""> -->
+            <div class="logo">
+              <icon-base icon-name="logo" width="297" height="36" viewBox="0 0 50 50"><icon-logo /></icon-base>
+            </div>
         </div>
             <ul class="list-unstyled">
                 <li class="active">
@@ -68,6 +71,7 @@
 </template>
 <script>
 import IconBase from "../icons/IconBase";
+import IconLogo from "../icons/IconLogo";
 import IconQuestion from "../icons/IconQuestion";
 import IconJobs from "../icons/IconJobs";
 import IconDocs from "../icons/IconDocs";
@@ -86,6 +90,7 @@ export default {
   },
   components: {
     IconBase,
+    IconLogo,
     IconQuestion,
     IconJobs,
     IconDocs,
@@ -114,15 +119,17 @@ body {
   top: 0;
   left: 0;
   .sidebar-header {
-    padding: 15px 5px;
+    // padding: 15px 5px;
     text-align: center;
     height: 60px;
-    margin-bottom: 5rem;
-
-    img {
-      // width: 45px;
-      height: auto;
-      transition: all 0.3s;
+    margin-bottom: 126px;
+    > .logo {
+      width: 100%;
+      height: 100%;
+      > svg {
+        margin-top: 35px;
+        margin-left: -38%;
+      }
     }
   }
 
@@ -177,7 +184,7 @@ body {
             text-transform: uppercase;
             position: absolute;
             bottom: 63%;
-            right: 8%;
+            right: 5%;
             padding: 0px 3px;
           }
         }

@@ -22,7 +22,7 @@
               <img class="position_absolute" src="http://www.igeacps.it/app/uploads/2018/05/profile_uni_user.png">
             </div>
             <icon-base icon-name="arrow-down" viewBox="0 0 130 130"><icon-arrow-down /></icon-base>
-            <ul class="user--dropdown position_absolute" :class="{ show: showdropdown }">
+            <ul class="user--dropdown position_absolute user--options" :class="{ show: showdropdown }">
                 <li>Logout</li>
                 <li>Logout</li>
             </ul>
@@ -183,6 +183,30 @@ export default {
       &:last-child {
         border-bottom: 0;
       }
+      &.position_absolute {
+        top: 66px;
+        right: 0;
+        width: 150px;
+        background: #fafafa;
+      }
+      // li {
+      //   border-bottom: 1px solid #a8a8a8;
+      //   padding: 7.5px 0;
+      //   transition: all 0.4s ease;
+      //   cursor: pointer;
+      //   &:hover {
+      //     color: #776ab0;
+      //   }
+      //   &:last-child {
+      //     border-bottom: 0;
+      //   }
+      // }
+    }
+    .user--options {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      width: 100px;
     }
   }
 }
