@@ -40,52 +40,49 @@
     </div>
 </template>
 <script>
-export default {
-  
-};
+export default {};
 </script>
 <style scoped>
 .content--grid .content--question {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    padding-left: 64px;
-    padding-right: 58px;
-    padding-top: 22px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 64px;
+  padding-right: 58px;
+  padding-top: 22px;
 }
 .question--title {
-    font-size: 24px;
-    width: 100%;
+  font-size: 24px;
+  width: 100%;
 }
 .question--title::after {
-    content: "";
-    display: block;
-    width: 100%;
-    height: 1px;
-    background-color: #e4e4e4;
-    margin-top: 17px;;
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: #e4e4e4;
+  margin-top: 17px;
 }
 .question--content {
-    margin-top: 30px;
-    margin-bottom: 30px;
-    font-size: 13px;
-    line-height: 1.75rem;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  font-size: 13px;
+  line-height: 1.75rem;
 }
 
 .s14 {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 .btn--custom {
-    background-color: #776ab0;
-    border: 0px;
-    width: 130px;
+  background-color: #776ab0;
+  border: 0px;
+  width: 130px;
 }
 
 .btn--custom:hover,
 .btn--custom:focus,
 .btn_primary:not(:disabled):not(.disabled):active {
-    background-color: #685d9b;
+  background-color: #685d9b;
 }
-
 </style>

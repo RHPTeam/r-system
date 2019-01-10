@@ -34,14 +34,14 @@ export default {
     AppNavBar,
     AppInfo,
     AppAside,
-    QuestionRemindContent,
+    QuestionRemindContent
   }
 };
 </script>
 
 <style scoped>
 .wrapper {
-    font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
 }
 
 .main {
@@ -51,14 +51,14 @@ export default {
 }
 
 .main--content {
-    width: 1623px;
-    display: flex;
+  width: 1623px;
+  display: flex;
 }
 
 .content--wrapper {
-    width: 1113px;
-    height: 973px;
-    border-right: 1px solid #e4e4e4;
+  width: 1113px;
+  height: 973px;
+  border-right: 1px solid #e4e4e4;
 }
 
 .content--head {
@@ -68,30 +68,30 @@ export default {
   border-bottom: 1px solid #e4e4e4;
 }
 
- .content--head h3 {
-    color: #999999;
-    font-size: 26px;
-    line-height: 190px;
-    padding-left: 75px;
+.content--head h3 {
+  color: #999999;
+  font-size: 26px;
+  line-height: 190px;
+  padding-left: 75px;
 }
 
 .content--head .head--under {
-    position: absolute;
-    top: 0;
-    left: 75px;
-    z-index: -15;
-    width: 182px;
-    height: 159px;
+  position: absolute;
+  top: 0;
+  left: 75px;
+  z-index: -15;
+  width: 182px;
+  height: 159px;
 }
 
 .content--head .head--under label {
-      font-size: 120px;
-      font-weight: 600;
-      font-style: normal;
-      font-stretch: normal;
-      line-height: 1.33;
-      letter-spacing: -2.2px;
-      text-align: left;
-      color: #f5f5f5;
+  font-size: 120px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.33;
+  letter-spacing: -2.2px;
+  text-align: left;
+  color: #f5f5f5;
 }
 </style>
