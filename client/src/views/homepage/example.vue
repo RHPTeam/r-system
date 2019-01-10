@@ -1,13 +1,11 @@
 <template>
-    <h1>Get value form homepage example</h1>
+    <h1 class="text_center d_flex">Get value form homepage example</h1>
+    
 </template>
 
 <script>
-export default {
-    
-}
+export default {};
 </script>
 
 <style>
-
 </style>
