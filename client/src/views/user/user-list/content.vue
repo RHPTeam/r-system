@@ -1,7 +1,7 @@
 <template>
-    <div class="content-grid">
+    <div class="content--grid">
         <!-- router-view -->
-        <div class="content-user">
+        <div class="content--user">
             <item-content/>
             <item-content/>
             <item-content/>
@@ -26,8 +26,8 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.content-grid {
-  .content-user {
+.content--grid {
+  .content--user {
     width: 100%;
     display: flex;
     flex-wrap: wrap;

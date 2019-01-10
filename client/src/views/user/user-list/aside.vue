@@ -1,25 +1,18 @@
 <template>
-     <!-- right -->
-    <div class="main-aside">
-        <!-- Aside title -->
-        <div class="aside-title">
-            <span class="info-title">Looking for out...</span>
+    <div class="main--aside">
+        <div class="aside--title">
+            <span class="info--title">Looking for out...</span>
             <div class="jobs">jobs</div>
         </div>
-        <!-- End Aside title -->
-        
-        <!-- Aside show -->
-        <div class="aside-wrapper">
-            <div class="aside-grid">
+        <div class="aside--wrapper">
+            <div class="aside--grid">
                 <item-aside/>
                 <item-aside/>
                 <item-aside/>
             </div>
         </div>
-        <!-- End Aside show -->
-        <button type="submit" class="btn-aside">view all jobs</button>
+        <button type="submit" class="btn--aside">view all jobs</button>
     </div>
-    <!-- end right -->
 </template>
 <script>
 import ItemAside from './item-aside'
@@ -30,11 +23,11 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.main-aside {
+.main--aside {
   width: 510px;
   height: 973px;
   background: #fafafa;
-  .aside-title {
+  .aside--title {
     position: relative;
     width: 100%;
     height: 159px;
@@ -56,7 +49,7 @@ export default {
       text-align: left;
       color: #f0f0f0;
     }
-    span.info-title {
+    span.info--title {
       font-family: SegoeUI;
       font-size: 26px;
       font-weight: 600;
@@ -69,10 +62,10 @@ export default {
       padding-left: 55px;
     }
   }
-  .aside-wrapper {
+  .aside--wrapper {
     padding-left: 119px;
     padding-right: 75px;
-    .aside-grid {
+    .aside--grid {
       width: 316px;
       position: relative;
       &::before {

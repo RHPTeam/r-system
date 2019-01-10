@@ -1,20 +1,20 @@
 <template>
-    <div class="content-tabs">
-        <ul class="nav nav-pills">
-            <li class="nav-item">
-                <a class="nav-link active" href="#">Hight Rank</a>
+    <div class="content--tabs">
+        <ul class="nav nav--pills">
+            <li class="nav--item">
+                <a class="nav--link active" href="#">Hight Rank</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link active" href="#">New User</a>
+            <li class="nav--item">
+                <a class="nav--link active" href="#">New User</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Votes</a>
+            <li class="nav--item">
+                <a class="nav--link" href="#">Votes</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Questioners</a>
+            <li class="nav--item">
+                <a class="nav--link" href="#">Questioners</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Answers</a>
+            <li class="nav--item">
+                <a class="nav--link" href="#">Answers</a>
             </li>
         </ul>
     </div>
@@ -23,7 +23,7 @@
 export default {};
 </script>
 <style lang="scss" scoped>
-.content-tabs {
+.content--tabs {
   position: absolute;
   left: 75px;
   bottom: 14px;
@@ -39,16 +39,16 @@ export default {};
     list-style: none;
     width: 100%;
   }
-  .nav-item {
+  .nav--item {
     text-align: center;
     margin-right: 9px;
     cursor: pointer;
   }
-  .nav-link.active {
+  .nav--link.active {
     background: #776ab0;
     color: #fff;
   }
-  .nav-link {
+  .nav--link {
     padding: 10px 31px;
     display: block;
     border-radius: 36px;

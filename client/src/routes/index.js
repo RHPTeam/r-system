@@ -79,31 +79,6 @@ export default new Router({
       ]
     },
     {
-<<<<<<< HEAD
-      path: "/question",
-      component: () => import("@/views/question/index"),
-      children: [
-        {
-          path: "",
-          name: "question",
-          component: () => import("@/views/question/example")
-        }
-      ]
-    },
-    {
-      path: "/user",
-      component: () => import("@/views/user/index"),
-      children: [
-        {
-          path: "",
-          name: "",
-          component: () => import("@/views/user/homepage")
-        }
-      ]
-    },
-    {
-=======
->>>>>>> dev-chinhht-vue
       path: "/admin",
       component: () => import("@/views/admin/dashboard/index"),
       children: [

@@ -1,8 +1,8 @@
 <template>
-    <div class="content-head">
+    <div class="content--head">
         <h3>Welcome back with RHP Team</h3>
         <app-tabs/>
-        <div class="head-under">
+        <div class="head--under">
             <label>top</label>
         </div> 
     </div>
@@ -16,7 +16,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.content-head {
+.content--head {
   width: 100%;
   height: 235px;
   position: relative;
@@ -28,7 +28,7 @@ export default {
     line-height: 220px;
     padding-left: 75px;
   }
-  .head-under {
+  .head--under {
     position: absolute;
     top: 0;
     left: 75px;

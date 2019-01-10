@@ -1,8 +1,8 @@
 <template>
     <div class="main">
         <app-head/>
-        <div class="main-content">
-            <div class="content-wrapper">
+        <div class="main--content">
+            <div class="content--wrapper">
                 <div class="container_fluid">
                     <app-info/>
                     <app-content/>
@@ -36,13 +36,13 @@ export default {
   width: 1623px;
   height: 1079px;
   margin-left: 297px;
-  .main-content {
+  .main--content {
     width: 1623px;
     display: flex;
-    .content-wrapper {
+    .content--wrapper {
       width: 1113px;
       height: 973px;
-      border-right: 1px solid #a8a8a8;
+      border-right: 1px solid #e4e4e4;
     }
   }
 }
