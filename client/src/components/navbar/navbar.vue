@@ -138,50 +138,50 @@ export default {
       width: 100%;
       height: auto;
     }
-    .user--dropdown {
-      right: 0;
-      z-index: 10;
-      top: calc(100% + 10px);
-      min-width: 160px;
-      width: auto;
-      border: 2px solid #776ab0;
-      pointer-events: auto;
+  }
+  .user--dropdown {
+    right: 0;
+    z-index: 10;
+    top: calc(100% + 10px);
+    min-width: 160px;
+    width: auto;
+    border: 2px solid #776ab0;
+    pointer-events: auto;
+    transition: all 0.4s ease;
+    transition-delay: 0.2s;
+    transform: translate(15px, 15px);
+    text-align: left;
+    visibility: hidden;
+    opacity: 0;
+    padding: 5px 15px 7.5px 15px;
+    border-radius: 5px;
+    list-style-type: none;
+    margin-bottom: 0;
+    background-color: #fff;
+    &.show {
+      visibility: visible;
+      opacity: 1;
+      transform: translate(0px, 0px);
+    }
+    &:after {
+      content: "";
+      position: absolute;
+      top: -13px;
+      border: 6px solid transparent;
+      height: 0;
+      left: 106px;
+      border-bottom-color: #776ab0;
+    }
+    li {
+      border-bottom: 1px solid #a8a8a8;
+      padding: 7.5px 0;
       transition: all 0.4s ease;
-      transition-delay: 0.2s;
-      transform: translate(15px, 15px);
-      text-align: left;
-      visibility: hidden;
-      opacity: 0;
-      padding: 5px 15px 7.5px 15px;
-      border-radius: 5px;
-      list-style-type: none;
-      margin-bottom: 0;
-      background-color: #fff;
-      &.show {
-        visibility: visible;
-        opacity: 1;
-        transform: translate(0px, 0px);
+      cursor: pointer;
+      &:hover {
+        color: #776ab0;
       }
-      &:after {
-        content: "";
-        position: absolute;
-        top: -13px;
-        border: 6px solid transparent;
-        height: 0;
-        left: 106px;
-        border-bottom-color: #776ab0;
-      }
-      li {
-        border-bottom: 1px solid #a8a8a8;
-        padding: 7.5px 0;
-        transition: all 0.4s ease;
-        cursor: pointer;
-        &:hover {
-          color: #776ab0;
-        }
-        &:last-child {
-          border-bottom: 0;
-        }
+      &:last-child {
+        border-bottom: 0;
       }
     }
   }

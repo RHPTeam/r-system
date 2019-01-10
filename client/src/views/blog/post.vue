@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import AppMenu from "@/components/sidebar/top_bar"
+import AppMenu from "@/components/sidebar/top_bar";
 import AppPostDetail from "./post-component/postdetail";
 import AppComment from "./post-component/comment";
 import AppAddComment from "./post-component/addcomment";
@@ -37,6 +37,7 @@ export default {
 .post {
   font-family: Roboto;
   padding-bottom: 50px;
+  margin-top: 20px;
 }
 .author {
   margin-top: 20px;

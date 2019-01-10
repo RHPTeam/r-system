@@ -19,7 +19,7 @@
             <div class="action--clap d_flex justify_content_start align_items_center" @click="clap">
               <span>100</span>
               <icon-base v-if="!isClap" icon-name="clap" width="42" height="42" viewBox="0 0 25 25"><icon-clap /></icon-base>
-              <icon-base v-else icon-name="clap-active" width="42" height="42" viewBox="0 0 26 26"><icon-clap-active /></icon-base>
+              <icon-base v-else class="svg--active" icon-name="clap-active" width="42" height="42" viewBox="0 0 26 26"><icon-clap-active /></icon-base>
             </div>
             <div class="action--list position_relative" @click="showDropdown">
               <span><icon-base icon-name="more" width="42" height="42" viewBox="0 0 20 10"><icon-more /></icon-base></span>
@@ -119,6 +119,10 @@ export default {
     span {
       margin-right: 10px;
       padding-top: 7.5px;
+      user-select: none;
+    }
+    .svg--active {
+      color: #776ab0;
     }
   }
   .action--list {
