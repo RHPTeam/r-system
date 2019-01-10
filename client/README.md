@@ -71,3 +71,9 @@ Các tên class đã được thay đổi:
 - Show (Tương tự Visibility: .visible => .show, .invisible => .hide)
 
 **Khi sử dụng một class thuộc một trong các module trên đây mà không thấy xuất hiện CSS của nó, bạn hãy kiểm tra lại tên class có đúng không, nếu đúng rồi nhưng vẫn không có thì bạn hãy dùng css để thay cho class đó nha. Trong lúc làm Rbox chúng tôi đã loại bỏ một số class ít khi sử dụng tới.**
+
+
+### Chú ý thư mục (chinhht)
+- Thư mục views/blog/post-component chứa các component cho trang chi tiết blog. Các component này được import vào file post.vue
+- Thư mục views/user/user-edit-profile chứa các component cho trang chỉnh sửa profile. Các component này được import vào file user-edit-profile.vue
+- Thư mục components/user để chứa các component dùng chung cho module user

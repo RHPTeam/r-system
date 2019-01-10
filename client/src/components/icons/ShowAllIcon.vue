@@ -38,6 +38,13 @@
                 </div>
             </div>
             <div class="item--icon">
+                <h3 class="text_center">IconChevron</h3>
+                <div class="d_flex justify_content_start align_items_center">
+                    <icon-base icon-name="chevron" viewBox="0 0 500 500"><icon-chevron /></icon-base>
+                    <code>&lt;icon-base icon-name="chevron" viewBox="0 0 500 500"&gt;&lt;icon-chevron /&gt;&lt;/icon-base&gt;</code>
+                </div>
+            </div>
+            <div class="item--icon">
                 <h3 class="text_center">IconClap</h3>
                 <div class="d_flex justify_content_start align_items_center">
                     <icon-base icon-name="clap" width="42" height="42" viewBox="0 0 25 25"><icon-clap /></icon-base>
@@ -73,6 +80,13 @@
                 </div>
             </div>
             <div class="item--icon">
+                <h3 class="text_center">IconGithub</h3>
+                <div class="d_flex justify_content_start align_items_center">
+                    <icon-base icon-name="github" viewBox="0 0 470 470"><icon-github /></icon-base>
+                    <code>&lt;icon-base icon-name="github" viewBox="0 0 470 470"&gt;&lt;icon-github /&gt;&lt;/icon-base&gt;</code>
+                </div>
+            </div>
+            <div class="item--icon">
                 <h3 class="text_center">IconHelp</h3>
                 <div class="d_flex justify_content_start align_items_center">
                     <icon-base icon-name="help" viewBox="0 0 60 60"><icon-help /></icon-base>
@@ -80,10 +94,24 @@
                 </div>
             </div>
             <div class="item--icon">
+                <h3 class="text_center">IconIdea</h3>
+                <div class="d_flex justify_content_start align_items_center">
+                    <icon-base icon-name="idea" width="75" height="75" viewBox="0 0 525 525"><icon-idea /></icon-base>
+                    <code>&lt;icon-base icon-name="idea" width="75" height="75" viewBox="0 0 525 525"&gt;&lt;icon-idea /&gt;&lt;/icon-base&gt;</code>
+                </div>
+            </div>
+            <div class="item--icon">
                 <h3 class="text_center">IconInbox</h3>
                 <div class="d_flex justify_content_start align_items_center">
                     <icon-base icon-name="inbox" viewBox="0 0 525 525"><icon-inbox /></icon-base>
                     <code>&lt;icon-base icon-name="inbox" viewBox="0 0 525 525"&gt;&lt;icon-inbox /&gt;&lt;/icon-base&gt;</code>
+                </div>
+            </div>
+            <div class="item--icon">
+                <h3 class="text_center">IconLink</h3>
+                <div class="d_flex justify_content_start align_items_center">
+                    <icon-base icon-name="link" viewBox="0 0 58 58"><icon-link /></icon-base>
+                    <code>&lt;icon-base icon-name="link" viewBox="0 0 58 58"&gt;&lt;icon-link /&gt;&lt;/icon-base&gt;</code>
                 </div>
             </div>
             <div class="item--icon">
@@ -171,6 +199,13 @@
                 </div>
             </div>
             <div class="item--icon">
+                <h3 class="text_center">IconTwitter</h3>
+                <div class="d_flex justify_content_start align_items_center">
+                    <icon-base icon-name="twitter" viewBox="0 0 600 600"><icon-twitter /></icon-base>
+                    <code>&lt;icon-base icon-name="twitter" viewBox="0 0 600 600"&gt;&lt;icon-twitter /&gt;&lt;/icon-base&gt;</code>
+                </div>
+            </div>
+            <div class="item--icon">
                 <h3 class="text_center">IconUser</h3>
                 <div class="d_flex justify_content_start align_items_center">
                     <icon-base icon-name="user" viewBox="0 0 60 60"><icon-user /></icon-base>
@@ -216,6 +251,11 @@ import IconQuestionSolid from "../icons/IconQuestionSolid";
 import IconSkyline from "../icons/IconSkyline";
 import IconUser from "../icons/IconUser";
 import IconWorldWide from "../icons/IconWorldWide";
+import IconIdea from "../icons/IconIdea";
+import IconChevron from "../icons/IconChevron";
+import IconLink from "../icons/IconLink";
+import IconTwitter from "../icons/IconTwitter";
+import IconGithub from "../icons/IconGithub";
 export default {
   components: {
     IconBase,
@@ -244,7 +284,12 @@ export default {
     IconQuestionSolid,
     IconSkyline,
     IconUser,
-    IconWorldWide
+    IconWorldWide,
+    IconIdea,
+    IconChevron,
+    IconLink,
+    IconTwitter,
+    IconGithub
   }
 };
 </script>

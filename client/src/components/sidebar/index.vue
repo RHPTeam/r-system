@@ -76,7 +76,6 @@ import IconRank from "../icons/IconRank";
 import IconUser from "../icons/IconUser";
 import IconAsk from "../icons/IconAsk";
 import IconInbox from "../icons/IconInbox";
-import IconHelp from "../icons/IconHelp";
 export default {
   props: ["Collapse"],
   data() {
@@ -89,7 +88,6 @@ export default {
     IconQuestion,
     IconJobs,
     IconDocs,
-    IconHelp,
     IconTags,
     IconRank,
     IconUser,

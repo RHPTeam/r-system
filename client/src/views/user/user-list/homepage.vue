@@ -33,11 +33,17 @@ export default {
 
 <style lang="scss" scoped>
 .main {
-  width: 1623px;
-  height: 1079px;
-  margin-left: 297px;
+  width: 100%;
+  min-height: 100vh;
+}
+.main {
+  width: 100%;
+  min-height: 100vh;
+  // width: 1623px;
+  // height: 1079px;
+  // margin-left: 297px;
   .main--content {
-    width: 1623px;
+    // width: 1623px;
     display: flex;
     .content--wrapper {
       width: 1113px;

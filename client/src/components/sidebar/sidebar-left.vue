@@ -80,7 +80,6 @@ import IconRank from "../icons/IconRank";
 import IconUser from "../icons/IconUser";
 import IconAsk from "../icons/IconAsk";
 import IconInbox from "../icons/IconInbox";
-import IconHelp from "../icons/IconHelp";
 export default {
   props: ["Collapse"],
   data() {
@@ -94,7 +93,6 @@ export default {
     IconQuestion,
     IconJobs,
     IconDocs,
-    IconHelp,
     IconTags,
     IconRank,
     IconUser,
@@ -104,9 +102,6 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-body {
-}
-
 #sidebar {
   min-width: 297px;
   width: 297px;
@@ -115,7 +110,7 @@ body {
   z-index: 100;
   box-shadow: 7.5px 0 20px 0 rgba(0, 0, 0, 0.16);
   transition: all 0.3s;
-  position: fixed;
+  // position: fixed;
   top: 0;
   left: 0;
   .sidebar-header {

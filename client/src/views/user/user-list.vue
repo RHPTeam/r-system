@@ -1,5 +1,5 @@
 <template>
-    <div class="wrapper">
+    <div class="wrapper d_flex align_items_stretch">
         <side-bar/>
         <home-page/>
     </div>
