@@ -1,15 +1,15 @@
 <template>
-    <div class="main--aside">
+    <div class="main--aside ml_auto">
         <div class="aside--title">
-            <span class="info--title">Looking for out...</span>
-            <div class="jobs">jobs</div>
+          <span class="info--title">Looking for out...</span>
+          <div class="jobs">jobs</div>
         </div>
         <div class="aside--wrapper">
-            <div class="aside--grid">
-                <item-aside/>
-                <item-aside/>
-                <item-aside/>
-            </div>
+          <div class="aside--grid">
+            <item-aside/>
+            <item-aside/>
+            <item-aside/>
+          </div>
         </div>
         <button type="submit" class="btn--aside">view all jobs</button>
     </div>
