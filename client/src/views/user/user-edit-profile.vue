@@ -1,6 +1,6 @@
 <template>
     <div class="wrapper d_flex align_items_stretch">
-        <side-bar/>
+        <app-side-bar/>
         <div class="main">
             <app-nav-bar/>
             <app-user-head/>
@@ -23,7 +23,7 @@
 
 <script>
 import AppNavBar from "@/components/navbar/navbar";
-import SideBar from "@/components/sidebar/sidebar-left";
+import AppSideBar from "@/components/sidebar/sidebar-left";
 import AppUserHead from "@/components/user/user-head";
 import AppUserSetting from "./user-edit-profile/user-setting";
 import AppUserHelp from "./user-edit-profile/user-help";
@@ -31,7 +31,7 @@ import AppUserForm from "./user-edit-profile/user-form";
 export default {
   components: {
     AppNavBar,
-    SideBar,
+    AppSideBar,
     AppUserHead,
     AppUserSetting,
     AppUserHelp,
@@ -50,12 +50,12 @@ export default {
   padding: 25px 30px;
 }
 .mb_25px {
-    margin-bottom: 25px !important;
+  margin-bottom: 25px !important;
 }
 .pl_12px {
-    padding-left: 12.5px !important;
+  padding-left: 12.5px !important;
 }
 .pr_12px {
-    padding-right: 12.5px !important;
+  padding-right: 12.5px !important;
 }
 </style>

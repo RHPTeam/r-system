@@ -112,7 +112,7 @@ export default {
   border-bottom: 1px solid #e4e4e4;
   min-height: 48px;
   font-weight: 600;
-  .posts--item-count{
+  .posts--item-count {
     border-radius: 3px;
     background-color: #5fba7d;
     height: 24px;
@@ -123,13 +123,13 @@ export default {
     white-space: nowrap;
     line-height: 24px;
   }
-  .posts--item-title{
+  .posts--item-title {
     font-size: 15px;
     line-height: 1.6;
     letter-spacing: 0.2px;
     color: #0077dd;
   }
-  .posts--item-time{
+  .posts--item-time {
     font-size: 13px;
     line-height: 1.85;
     letter-spacing: 0.1px;
