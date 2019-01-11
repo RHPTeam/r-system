@@ -85,7 +85,7 @@ export default {
 <style  lang="scss">
 .wrapper {
   font-size: 1.15384615rem !important;
-  padding: 10px 5%;
+  padding: 30px 5%;
 
   .gs32 > .grid,
   .gs32 > .grid--cell {

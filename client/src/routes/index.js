@@ -24,6 +24,10 @@ export default new Router({
       ]
     },
     {
+      path: "/show-icon",
+      component: () => import("@/components/icons/ShowAllIcon")
+    },
+    {
       path: "/dashboard",
       component: () => import("@/views/dashboard/index"),
       children: [
