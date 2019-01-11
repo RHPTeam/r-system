@@ -23,6 +23,7 @@
   	height: 100%;
     width: 100%;
     max-height:500px;
+    min-height: 500px;
     padding: 15px;
     resize: none;
     border: none;

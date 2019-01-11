@@ -1,9 +1,9 @@
 <template>
     <div id="app">
         <ckeditor :editor="editor" v-model="editorData"></ckeditor>
-        <button v-on:click="emptyEditor()">Empty the editor</button>
+       
 
-        <h2>Editor data</h2>
+        <h2>Hiển thị</h2>
         <div v-html="editorData"></div>
     </div>
 </template>

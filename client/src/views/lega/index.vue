@@ -1,26 +1,18 @@
 <template>
   <div class="ct_fl">
-    <app-top-bar />
-    <div class="r wrapper">
-      <div class="c_lg_3 c_md_4 c_xs_12 c_sm_12">
-        <app-site-menu :arNav="arNav" />
-      </div>
-      <div class="c_lg_9 c_md_8 c_xs_12 c_sm_12">
-        <router-view />
-      </div>
-
-    </div>
+   <app-editor/>
   </div>
 </template>
 
 <script>
   import AppSiteMenu from "@/components/sidebar/site_menu";
   import AppTopBar from "@/components/sidebar/top_bar";
+  import AppEditor from "@/components/editor";
   export default {
     components: {
       AppSiteMenu,
       AppTopBar,
-
+      AppEditor
     },
     data() {
       return {
