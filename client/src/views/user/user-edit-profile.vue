@@ -5,13 +5,13 @@
             <app-nav-bar/>
             <app-user-head/>
             <div class="content">
-                <div class="ct_f">
+                <div class="ct_f p_0">
                     <div class="r">
-                        <div class="c_md_3">
-                            <app-user-setting/>
+                        <div class="c_md_3 pl_12px pr_12px">
+                            <app-user-setting class="mb_25px"/>
                             <app-user-help/>
                         </div>
-                        <div class="c_md_9">
+                        <div class="c_md_9 pl_12px pr_12px">
                             <app-user-form/>
                         </div>
                     </div>
@@ -47,6 +47,15 @@ export default {
   background-color: #e9ebee;
 }
 .content {
-  padding: 30px 15px;
+  padding: 25px 30px;
+}
+.mb_25px {
+    margin-bottom: 25px !important;
+}
+.pl_12px {
+    padding-left: 12.5px !important;
+}
+.pr_12px {
+    padding-right: 12.5px !important;
 }
 </style>

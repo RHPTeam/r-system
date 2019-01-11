@@ -47,7 +47,7 @@
                 <li>
                     <router-link :to="'/users'">
                         <!-- <i class="fa fa-user-circle" aria-hidden="true"></i> -->
-                        <icon-base icon-name="rank" viewBox="0 0 500 500"><icon-rank /></icon-base>
+                        <icon-base icon-name="star-circle" viewBox="0 0 500 500"><icon-star-circle /></icon-base>
                         <span class='sidebar-menu-text'>RANKS</span>
                     </router-link>
                 </li>
@@ -76,7 +76,7 @@ import IconQuestion from "../icons/IconQuestion";
 import IconJobs from "../icons/IconJobs";
 import IconDocs from "../icons/IconDocs";
 import IconTags from "../icons/IconTags";
-import IconRank from "../icons/IconRank";
+import IconStarCircle from "../icons/IconStarCircle";
 import IconUser from "../icons/IconUser";
 import IconAsk from "../icons/IconAsk";
 import IconInbox from "../icons/IconInbox";
@@ -94,7 +94,7 @@ export default {
     IconJobs,
     IconDocs,
     IconTags,
-    IconRank,
+    IconStarCircle,
     IconUser,
     IconAsk,
     IconInbox
