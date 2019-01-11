@@ -74,9 +74,9 @@ module.exports = {
       }
 
       const user = await new User(list_user);
-      user.save((err, data)=> {
+      user.save(err=> {
         if(err) {
-          return res.json(JsonResponse("", 200, "Email or nameDisplay is exist.", false));
+          return res.json(JsonResponse("", 404, "Email or nameDisplay is exist.", false));
         }
         return res.json(JsonResponse("", 200, "create user success", false))
       })
@@ -97,9 +97,9 @@ module.exports = {
                         .select('_id userid name nameDisplay email avatar title about ')
                         .exec((errors, data) => {
                           if (errors) {
-                            res.json(JsonResponse("", 401, errors, false))
+                            return res.json(JsonResponse("", 401, errors, false))
                           }
-                          res.json(JsonResponse(data, 200, "", false))
+                          return res.json(JsonResponse(data, 200, "", false))
                         });
     } catch (error) {
       console.log(error);
@@ -110,9 +110,8 @@ module.exports = {
    * get one user
    * @param req
    * @param res
-   * @param next
    */
-  getOneUser: async (req, res, next) => {
+  getOneUser: async (req, res) => {
     try {
       return res.json(req.user);
     } catch (error) {
@@ -124,12 +123,11 @@ module.exports = {
    * update user by id
    * @param req
    * @param res
-   * @param next
    */
-  updateUser: async (req, res, next) => {
+  updateUser: async (req, res) => {
     try {
       const { user, body } = req;
-      if (findUserEmailOrName(body).length > 0) {
+      if (findUserEmailOrName(body).length > 1) {
         return res.json(JsonResponse("", 404, "Email or nameDisplay is exist", false))
       }
       return await User.findByIdAndUpdate({_id: user._id}, body, (errors, data) => {
@@ -147,16 +145,15 @@ module.exports = {
    * delete user by id 
    * @param req
    * @param res
-   * @param next
    */
-  deleteUser: async (req, res, next) => {
+  deleteUser: async (req, res) => {
     try {
       const { user } = req;
       return await User.findByIdAndDelete({_id: user._id}, (errors, data) => {
         if (errors) {
           res.json(JsonResponse("", 404, errors, false))
         }
-        res.send(JsonResponse("", 200, "Delete user success", false))
+        res.send(JsonResponse("", 200, `Delete user ${user.name} success`, false))
       })
     } catch (error) {
       console.log(error);
@@ -176,12 +173,12 @@ module.exports = {
                               .select('_id userid name nameDisplay email avatar title about ')
                               .exec();
       if (!user) {
-        return res.json(JsonResponse("", 404, "User doesn't exist", false));
+        return res.json(JsonResponse("", 404, `User ${user.name} doesn't exist`, false));
       }
       req.user = user;
       next();
     } catch (error) {
-      
+      console.log(error)
     }
   },
 
@@ -200,6 +197,11 @@ module.exports = {
     })(req, res, next);
   },
 
+  /**
+   * Login local use email vs password
+   * @param req
+   * @param res
+   */
   logoutUser: (req, res) => {
     req.logout();
   }
