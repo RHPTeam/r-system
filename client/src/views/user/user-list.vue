@@ -2,13 +2,11 @@
   <div class="page--wrapper">
     <div class="page--content d_flex">
       <div class="main">
-        <div class="container_fluid">
-          <app-info/>
-          <app-content/>
-          <app-paginate/>
-        </div>
+        <app-info />
+        <app-content />
+        <app-paginate />
       </div>
-      <app-aside/>
+      <app-aside />
     </div>
   </div>
 </template>
@@ -28,7 +26,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .page--wrapper {
   background-color: #fff;
   display: block;
