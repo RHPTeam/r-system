@@ -1,137 +1,137 @@
 {
-    "swagger": "2.0",
-    "info": {
-      "version": "1.0.0",
-      "title": "R-SYSTEM",
-      "description": "system Rhp"
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "R-SYSTEM",
+    "description": "system Rhp"
+  },
+  "host": "localhost:8888",
+  "basePath": "/api/v1",
+  "tags": [
+    {
+      "name": "Users",
+      "description": "API for users in the system"
     },
-    "host": "localhost:8888",
-    "basePath": "/api/v1",
-    "tags": [
-      {
-        "name": "Users",
-        "description": "API for users in the system"
-      },
-      {
-        "name": "Blogs",
-        "description": "API for users in the system"
-      }
-    ],
-    "schemes": [
-      "http"
-    ],
-    "paths": {
-      "/users": {
-        "post": {
-          "tags": [
-            "Users"
-          ],
-          "description": "Create new user in system",
-          "parameters": [
-            {
-              "name": "user",
-              "in": "body",
-              "description": "User that we want to create",
-              "schema": {
-                "$ref": "#/definitions/User"
-              }
-            }
-          ],
-          "produces": [
-            "application/json"
-          ],
-          "responses": {
-            "200": {
-              "description": "New user is created",
-              "schema": {
-                "$ref": "#/definitions/Blog"
-              }
+    {
+      "name": "Blogs",
+      "description": "API for users in the system"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/users": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Create new user in system",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "User that we want to create",
+            "schema": {
+              "$ref": "#/definitions/User"
             }
           }
-        },
-        "get": {
-          "tags": [
-            "Users"
-          ],
-          "summary": "Get all users in system",
-          "responses": {
-            "200": {
-              "description": "OK",
-              "schema": {
-                "$ref": "#/definitions/Users"
-              }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "New user is created",
+            "schema": {
+              "$ref": "#/definitions/Blog"
             }
-          },
-          "security": [
-            {
-              "JWT": []
-            }
-          ]
+          }
         }
-      }
-
-    },
-    "securityDefinitions": {
-      "JWT": {
-        "type": "apiKey",
-        "name": "Authorization",
-        "in": "header"
-      }
-    },
-    "definitions": {
-      "User": {
-        "properties": {
-          "firstName": {
-            "type": "string",
-            "uniqueItems": true
-          },
-          "lastName": {
-            "type": "string",
-            "uniqueItems": true
-          },
-          "email": {
-            "type": "string",
-            "uniqueItems": true
-          },
-          "password": {
-            "type": "string",
-            "uniqueItems": true
-          },
-          "role": {
-            "type": "string",
-            "uniqueItems": false
-          },
-          "created": {
-            "type": "string"
-          },
-          "updated": {
-            "type": "string"
-          },
-          "facebook": {
-            "type": "object"
-          },
-          "google": {
-            "type": "object"
+      },
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Get all users in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Users"
+            }
           }
         },
-        "required": [
-          "firstName",
-          "lastName",
-          "email",
-          "password"
+        "security": [
+          {
+            "JWT": []
+          }
         ]
-      },
-      "Users": {
-        "type": "array",
-        "items": {
-          "$ref": "#/definitions/User"
-        }
       }
+    }
+
+  },
+  "securityDefinitions": {
+    "JWT": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "User": {
+      "properties": {
+        "firstName": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "lastName": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "email": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "password": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "role": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "created": {
+          "type": "string"
+        },
+        "updated": {
+          "type": "string"
+        },
+        "facebook": {
+          "type": "object"
+        },
+        "google": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "firstName",
+        "lastName",
+        "email",
+        "password"
+      ]
     },
-    "consumes": [
-      "application/json"
-    ],
-    "produces": [
-      "application/json"
-    ]
-  }
+    "Users": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/User"
+      }
+    }
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ]
+}
