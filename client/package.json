@@ -9,10 +9,15 @@
   },
   "dependencies": {
 <<<<<<< HEAD
+<<<<<<< HEAD
     "@ckeditor/ckeditor5-build-classic": "^11.2.0",
     "@ckeditor/ckeditor5-vue": "^1.0.0-beta.1",
     "highlight.js": "^9.13.1",
 =======
+=======
+    "@ckeditor/ckeditor5-build-classic": "^11.2.0",
+    "@ckeditor/ckeditor5-vue": "^1.0.0-beta.1",
+>>>>>>> parent of 319d32b... Revert "prims editor"
     "dom-iterator": "^1.0.0",
     "i": "^0.3.6",
     "npm": "^6.5.0",
