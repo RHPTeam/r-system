@@ -4,6 +4,9 @@ import App from "./App.vue";
 import router from "./routes";
 import store from "./store";
 
+import CKEditor from '@ckeditor/ckeditor5-vue';
+Vue.use( CKEditor );
+
 Vue.config.productionTip = false;
 
 new Vue({
