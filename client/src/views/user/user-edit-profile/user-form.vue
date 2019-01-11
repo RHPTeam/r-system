@@ -20,7 +20,7 @@
                         <label for="about">Giới thiệu</label>
                         <textarea class="form_control" id="about"></textarea>
                     </div>
-                    <div class="live--preview position_relative">
+                    <div class="live--preview position_relative mb_3">
                         <span class="live--preview-tag position_absolute">live preview</span>
                         <div class="live--preview-content"></div>
                     </div>
@@ -87,23 +87,22 @@ export default {
 
 <style scoped lang="scss">
 .form {
+  color: #3b4045;
+  font-family: Quicksand;
+
   .card_title {
-    font-family: Quicksand;
     font-size: 22px;
-    color: #3b4045;
   }
   .form--content {
     border-top: 1px solid #e9ebee;
     border-bottom: 1px solid #e9ebee;
     padding: 10px 0;
-    font-family: Quicksand;
     .form_group {
       label {
         font-size: 13px;
         font-weight: 600;
         line-height: 1.23;
         letter-spacing: 0.1px;
-        color: #3b4045;
       }
       .text--support {
         color: #9199a1;
@@ -113,7 +112,26 @@ export default {
         font-weight: 600;
         line-height: 1.23;
         letter-spacing: 0.1px;
-        color: #3b4045;
+      }
+      ::-webkit-input-placeholder {
+        /* Chrome/Opera/Safari */
+        color: #dddfe2;
+        font-weight: 400;
+      }
+      ::-moz-placeholder {
+        /* Firefox 19+ */
+        color: #dddfe2;
+        font-weight: 400;
+      }
+      :-ms-input-placeholder {
+        /* IE 10+ */
+        color: #dddfe2;
+        font-weight: 400;
+      }
+      :-moz-placeholder {
+        /* Firefox 18- */
+        color: #dddfe2;
+        font-weight: 400;
       }
     }
   }
@@ -123,7 +141,6 @@ export default {
     padding: 10px;
     min-height: 44px;
     padding-right: 100px;
-    margin-bottom: 1rem;
     .live--preview-tag {
       top: 6px;
       right: 6px;

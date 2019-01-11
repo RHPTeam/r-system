@@ -28,6 +28,10 @@ export default new Router({
       component: () => import("@/components/icons/ShowAllIcon")
     },
     {
+      path: "/show-icon-rank",
+      component: () => import("@/components/icons/ShowIconRank")
+    },
+    {
       path: "/dashboard",
       component: () => import("@/views/dashboard/index"),
       children: [
