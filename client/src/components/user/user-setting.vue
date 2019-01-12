@@ -8,7 +8,7 @@
                 <li>Thông tin công việc</li>
                 <li>Thiết lập thẻ tag</li>
             </ul>
-        </div>        
+        </div>
     </div>
 </template>
 
@@ -20,15 +20,12 @@ export default {};
 .setting {
   margin-bottom: 15px;
   .card_title {
-    font-family: Quicksand;
     font-size: 16px;
-    color: #3b4045;
   }
   .setting--content {
     list-style-type: none;
     border-top: 1px solid #e9ebee;
     li {
-      font-family: Quicksand;
       font-size: 14px;
       font-weight: 500;
       line-height: 1.29;

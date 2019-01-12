@@ -13,7 +13,7 @@
             ><icon-base icon-name="question" viewBox="0 0 500 500"
               ><icon-question
             /></icon-base>
-            <span class="sidebar--item-text">QUESTION</span></a
+            <span class="sidebar--item-text pt_2">QUESTION</span></a
           >
         </router-link>
         <router-link
@@ -26,7 +26,7 @@
             ><icon-base icon-name="jobs" viewBox="0 0 500 500"
               ><icon-jobs
             /></icon-base>
-            <span class="sidebar--item-text">JOBS</span></a
+            <span class="sidebar--item-text pt_2">JOBS</span></a
           >
         </router-link>
         <router-link
@@ -39,7 +39,7 @@
             ><icon-base icon-name="docs" viewBox="0 0 500 500"
               ><icon-docs
             /></icon-base>
-            <span class="sidebar--item-text">DOCUMENTATIONS</span>
+            <span class="sidebar--item-text pt_2">DOCUMENTATIONS</span>
             <sup class="new">New</sup></a
           >
         </router-link>
@@ -53,7 +53,7 @@
             ><icon-base icon-name="tags" viewBox="0 0 60 60"
               ><icon-tags
             /></icon-base>
-            <span class="sidebar--item-text">TAGS</span></a
+            <span class="sidebar--item-text pt_2">TAGS</span></a
           >
         </router-link>
         <router-link
@@ -65,7 +65,7 @@
             <icon-base icon-name="user" viewBox="0 0 60 60"
               ><icon-user
             /></icon-base>
-            <span class="sidebar--item-text">USERS</span></a
+            <span class="sidebar--item-text pt_2">USERS</span></a
           >
         </router-link>
         <router-link
@@ -74,10 +74,10 @@
           active-class="active"
           :to="'/users'"
           ><a class="sidebar--link link--effect">
-            <icon-base icon-name="rank" viewBox="0 0 500 500"
-              ><icon-rank
+            <icon-base icon-name="star-circle" viewBox="0 0 500 500"
+              ><icon-star-circle
             /></icon-base>
-            <span class="sidebar--item-text">RANKS</span></a
+            <span class="sidebar--item-text pt_2">RANKS</span></a
           >
         </router-link>
         <router-link
@@ -89,7 +89,7 @@
             <icon-base icon-name="ask" viewBox="0 0 500 500"
               ><icon-ask
             /></icon-base>
-            <span class="sidebar--item-text">ASK QUESTIONS</span></a
+            <span class="sidebar--item-text pt_2">ASK QUESTIONS</span></a
           >
         </router-link>
         <router-link
@@ -101,7 +101,7 @@
             <icon-base icon-name="inbox" viewBox="0 0 500 500"
               ><icon-inbox
             /></icon-base>
-            <span class="sidebar--item-text">INBOX</span>
+            <span class="sidebar--item-text pt_2">INBOX</span>
             <span class="count">21</span></a
           >
         </router-link>
@@ -118,6 +118,7 @@ import IconTags from "../icons/IconTags";
 import IconUser from "../icons/IconUser";
 import IconAsk from "../icons/IconAsk";
 import IconInbox from "../icons/IconInbox";
+import IconStarCircle from "../icons/IconStarCircle";
 export default {
   components: {
     IconBase,
@@ -127,7 +128,8 @@ export default {
     IconTags,
     IconUser,
     IconAsk,
-    IconInbox
+    IconInbox,
+    IconStarCircle
   },
   computed: {
     statusMenu() {
@@ -161,7 +163,7 @@ export default {
       display: flex;
       line-height: 25px;
       opacity: 0.6;
-      padding: 12px 20px;
+      padding: 10px 20px;
       text-decoration: none;
       white-space: nowrap;
       vertical-align: middle;
@@ -250,6 +252,11 @@ export default {
     width: 250px;
     svg {
       width: 18px;
+    }
+    &:hover {
+      .sidebar--nav {
+        border-top: 0;
+      }
     }
     .sidebar--item-text,
     .new,

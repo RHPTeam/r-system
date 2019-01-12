@@ -3,13 +3,12 @@
     <div class="page--content d_flex">
       <div class="main">
         <div class="create">
-          <div class="create--head position_relative">
-            top
-            <span class="create--head-top position_absolute">Questions</span>
+          <div class="ct">
+            <app-breadcrumb/>
           </div>
           <div class="create--content">
-            <div class="create--content-title">Đăng câu hỏi</div>
-            <div class="create--content-wrapper">
+            <div class="create--content-title ct pb_2">Đăng câu hỏi</div>
+            <div class="ct pt_4 pb_4">
               <form @submit.prevent="submit">
                 <div class="form_group">
                   <label for="question-name">Tên câu hỏi</label>
@@ -59,21 +58,28 @@
           </div>
         </div>
       </div>
+      <app-user-job/>
     </div>
   </div>
 </template>
 
-
+<script>
+import AppBreadcrumb from "@/components/breadcrumb/breadcrumb";
+import AppUserJob from "@/components/user/user-jobs";
+export default {
+  components: {
+    AppBreadcrumb,
+    AppUserJob
+  }
+};
+</script>
 <style scoped lang="scss">
 .create {
-  font-family: Quicksand;
-  color: #3b4045;
   .create--head {
     font-size: 120px;
     font-weight: 600;
     line-height: 1.33;
     letter-spacing: -2.2px;
-    margin-left: 74px;
     color: #f5f5f5;
     .create--head-top {
       font-size: 26px;
@@ -91,10 +97,6 @@
       line-height: 1.33;
       letter-spacing: 0.3px;
       border-bottom: 1px solid #e4e4e4;
-      padding: 10px 74px;
-    }
-    .create--content-wrapper {
-      padding: 42px 74px;
     }
   }
   .form_group {

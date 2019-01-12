@@ -13,7 +13,7 @@
                 1,583
                 <icon-base icon-name="star-gold" viewBox="0 0 515 515"><icon-star-gold /></icon-base>
             </div>
-        </div>        
+        </div>
     </div>
 </template>
 
@@ -35,7 +35,6 @@ export default {
 <style scoped lang="scss">
 .level {
   color: #242729;
-  font-family: Quicksand;
   .card_title {
     font-size: 16px;
   }
