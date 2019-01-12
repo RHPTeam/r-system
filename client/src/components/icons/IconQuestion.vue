@@ -1,6 +1,6 @@
 <template>
-<g>
     <g>
+        <g>
 	<g>
 		<g>
 			<circle cx="255.984" cy="492" r="20"/>
@@ -42,11 +42,5 @@
 </g>
 <g>
 </g>
-</g>
+    </g>
 </template>
-<script>
-export default {};
-</script>
-
-<style scoped>
-</style>

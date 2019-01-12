@@ -1,68 +1,80 @@
 <template>
-    <div class="wrapper">
-        <side-bar/>
-        <home-page/>
+  <div class="page--wrapper">
+    <div class="page--content d_flex">
+      <div class="main">
+        <app-info />
+        <app-content />
+        <app-paginate />
+      </div>
+      <app-aside />
     </div>
+  </div>
 </template>
 
 <script>
-import SideBar from "@/components/sidebar/sidebar-left"
-import HomePage from "@/views/user/user-list/homepage"
+import AppInfo from "./user-list/info";
+import AppAside from "./user-list/aside";
+import AppContent from "./user-list/content";
+import AppPaginate from "./user-list/paginate";
 export default {
   components: {
-    SideBar,
-    HomePage
+    AppInfo,
+    AppAside,
+    AppContent,
+    AppPaginate
   }
 };
 </script>
 
 <style lang="scss">
-.wrapper {
-  font-family: "SegoeUI";
-  width: 1920px;
-  height: 1079px;
+.page--wrapper {
+  background-color: #fff;
+  display: block;
+  margin-left: 250px;
+  padding-top: 64px;
   position: relative;
-  overflow-x: hidden;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.428;
-  word-wrap: break-word;
-  color: #444;
+  transition: 0.2s ease-in;
 }
-.text--info {
-  font: {
-    family: "SegoeUI";
-    size: 14px;
-    weight: 600;
-    style: normal;
-    stretch: normal;
+.page--content {
+  background-color: #fafafa;
+  .main {
+    background-color: #fff;
+    width: 100%;
   }
-  line-height: 1.36;
-  letter-spacing: -0.1px;
-  text-align: left;
-  color: #a8a8a8;
 }
-.info--tag {
-  padding-top: 10px;
-  padding-bottom: 5px;
-  text-align: center;
-  .tag--item {
-    padding: 6px 15px;
-    border: 1px solid #a8a8a8;
-    text-align: center;
-    border-radius: 28px;
-    background: #fff;
-    margin-right: 7px;
-    text-decoration: none;
-    line-height: 1.36;
-    letter-spacing: -0.1px;
-    &:hover,
-    &:active,
-    &:focus {
-      color: #776ab0;
-      border-color: #776ab0;
+
+/*RESPONSIVE MENU LEFT-BAR*/
+// Extra small devices (portrait phones, less than 576px)
+// No media query for `xs` since this is the default in Bootstrap
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+}
+
+// Medium devices (tablets, 768px and up)
+
+@media (max-width: 768px) {
+  .page--wrapper {
+    margin-left: 0;
+    .page--content {
+      flex-direction: column;
     }
   }
 }
-</style>
+@media (min-width: 768px) {
+  .page--wrapper {
+    margin-left: 70px;
+  }
+}
 
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .page--wrapper {
+    margin-left: 250px;
+  }
+}
+</style>

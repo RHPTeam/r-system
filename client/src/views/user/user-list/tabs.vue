@@ -5,7 +5,7 @@
                 <a class="nav--link active" href="#">Hight Rank</a>
             </li>
             <li class="nav--item">
-                <a class="nav--link active" href="#">New User</a>
+                <a class="nav--link" href="#">New User</a>
             </li>
             <li class="nav--item">
                 <a class="nav--link" href="#">Votes</a>
@@ -24,10 +24,6 @@ export default {};
 </script>
 <style lang="scss" scoped>
 .content--tabs {
-  position: absolute;
-  left: 75px;
-  bottom: 14px;
-  font-size: 14px;
   .nav {
     display: -webkit-box;
     display: -ms-flexbox;
