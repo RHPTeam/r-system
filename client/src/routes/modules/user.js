@@ -10,8 +10,13 @@ const userRouter = {
     },
     {
       path: ":id",
-      name: "user-info",
-      component: () => import("@/views/user/user-info")
+      name: "user-info-profile",
+      component: () => import("@/views/user/user-info-profile")
+    },
+    {
+      path: ":id/activity",
+      name: "user-info-activity",
+      component: () => import("@/views/user/user-info-activity")
     },
     {
       path: ":id/edit-profile",

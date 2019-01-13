@@ -19,19 +19,19 @@
             </div>
             <div class="posts--content">
               <div class="posts--item d_flex justify_content_start align_items_center">
-                <div class="posts--item-count mr_2">80</div>
+                <div class="posts--item-count mr_2 bg_success">80</div>
                 <div class="posts--item-title mr_2">Count unique values with pandas per groups</div>
                 <div class="posts--item-time ml_auto">20 - 10 - 2019</div>
                 <div class="posts--item-see ml_2"><icon-base class="history--list-icon" icon-name="eye" width="22" height="22" viewBox="0 0 480 520"><icon-eye /></icon-base></div>
               </div>
               <div class="posts--item d_flex justify_content_start align_items_center">
-                <div class="posts--item-count mr_2">80</div>
+                <div class="posts--item-count mr_2 bg_success">80</div>
                 <div class="posts--item-title mr_2">Count unique values with pandas per groups</div>
                 <div class="posts--item-time ml_auto">20 - 10 - 2019</div>
                 <div class="posts--item-see ml_2"><icon-base class="history--list-icon" icon-name="eye" width="22" height="22" viewBox="0 0 480 520"><icon-eye /></icon-base></div>
               </div>
               <div class="posts--item d_flex justify_content_start align_items_center">
-                <div class="posts--item-count mr_2">80</div>
+                <div class="posts--item-count mr_2 bg_success">80</div>
                 <div class="posts--item-title mr_2">Count unique values with pandas per groups</div>
                 <div class="posts--item-time ml_auto">20 - 10 - 2019</div>
                 <div class="posts--item-see ml_2"><icon-base class="history--list-icon" icon-name="eye" width="22" height="22" viewBox="0 0 480 520"><icon-eye /></icon-base></div>
@@ -84,7 +84,9 @@ export default {
       border-left: none;
     }
     li {
-      margin: 0 7.5px;
+      margin: 0 5px;
+      padding-left: 2.5px;
+      padding-right: 2.5px;
       transition: all 0.5s ease;
       cursor: pointer;
       &:after {
@@ -113,7 +115,6 @@ export default {
   font-weight: 600;
   .posts--item-count {
     border-radius: 3px;
-    background-color: #5fba7d;
     height: 24px;
     min-width: 36px;
     text-align: center;

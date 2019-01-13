@@ -4,13 +4,13 @@
       <div class="main">
         <app-user-head/>
         <div class="content">
-          <div class="ct_f p_0">
+          <div class="ct_f p_2">
             <div class="r">
-              <div class="c_md_3 pl_12px pr_12px">
-                <app-user-setting class="mb_25px"/>
+              <div class="c_md_3 pl_2 pr_2">
+                <app-user-setting class="mb_3"/>
                 <app-user-help/>
               </div>
-              <div class="c_md_9 pl_12px pr_12px">
+              <div class="c_md_9 pl_2 pr_2">
                 <app-profile-form/>
               </div>
             </div>
@@ -51,19 +51,11 @@ export default {
     width: 100%;
   }
   .content {
-    padding: 25px 30px;
+    padding: 20px 25px;
     background-color: #e9ebee;
   }
 }
-.mb_25px {
-  margin-bottom: 25px !important;
-}
-.pl_12px {
-  padding-left: 12.5px !important;
-}
-.pr_12px {
-  padding-right: 12.5px !important;
-}
+
 /*RESPONSIVE MENU LEFT-BAR*/
 // Extra small devices (portrait phones, less than 576px)
 // No media query for `xs` since this is the default in Bootstrap

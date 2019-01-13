@@ -4,14 +4,14 @@
       <div class="main">
         <app-user-head/>
         <div class="content">
-          <div class="ct_f p_0">
+          <div class="ct_f p_2">
             <div class="r">
-              <div class="c_sm_12 c_md_4 pl_12px pr_12px">
-                <app-user-level class="mb_25px"/>
+              <div class="c_sm_12 c_md_4 pl_2 pr_2">
+                <app-user-level class="mb_3"/>
                 <app-user-history/>
               </div>
-              <div class="c_sm_12 c_md_8 pl_12px pr_12px">
-                <app-user-tags class="mb_25px"/>
+              <div class="c_sm_12 c_md_8 pl_2 pr_2">
+                <app-user-tags class="mb_3"/>
                 <app-user-posts/>
               </div>
             </div>
@@ -23,10 +23,10 @@
 </template>
 <script>
 import AppUserHead from "@/components/user/user-head";
-import AppUserLevel from "./user-info/user-level";
-import AppUserHistory from "./user-info/user-history";
-import AppUserTags from "./user-info/user-tags";
-import AppUserPosts from "./user-info/user-posts";
+import AppUserLevel from "@/views/user/user-info/user-profile-level";
+import AppUserHistory from "@/views/user/user-info/user-profile-history";
+import AppUserTags from "@/views/user/user-info/user-profile-tags";
+import AppUserPosts from "@/views/user/user-info/user-profile-posts";
 export default {
   components: {
     AppUserHead,
@@ -54,17 +54,9 @@ export default {
     width: 100%;
   }
   .content {
-    padding: 25px 30px;
+    padding: 20px 25px;
+    background-color: #e9ebee;
   }
-}
-.mb_25px {
-  margin-bottom: 25px !important;
-}
-.pl_12px {
-  padding-left: 12.5px !important;
-}
-.pr_12px {
-  padding-right: 12.5px !important;
 }
 /*RESPONSIVE MENU LEFT-BAR*/
 // Extra small devices (portrait phones, less than 576px)
