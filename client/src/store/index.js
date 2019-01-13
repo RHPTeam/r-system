@@ -4,7 +4,22 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {},
-  mutations: {},
-  actions: {}
+  state: {
+    statusMenu: false
+  },
+  getters: {
+    statusMenu: state => {
+      return state.statusMenu;
+    }
+  },
+  mutations: {
+    changeStatusMenu: (state, payload) => {
+      state.statusMenu = payload;
+    }
+  },
+  actions: {
+    changeStatusMenu: ({ commit }, payload) => {
+      commit("changeStatusMenu", payload);
+    }
+  }
 });

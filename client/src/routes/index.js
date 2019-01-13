@@ -24,6 +24,14 @@ export default new Router({
       ]
     },
     {
+      path: "/show-icon",
+      component: () => import("@/components/icons/ShowAllIcon")
+    },
+    {
+      path: "/show-icon-rank",
+      component: () => import("@/components/icons/ShowIconRank")
+    },
+    {
       path: "/dashboard",
       component: () => import("@/views/dashboard/index"),
       children: [
