@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1 class="text_center">Show All Icon SVG</h1>
-        <div class="ct">    
+        <div class="ct">
             <div class="item--icon">
                 <h3 class="text_center">IconArrowDown</h3>
                 <div class="d_flex justify_content_start align_items_center">
@@ -63,7 +63,7 @@
                 <div class="d_flex justify_content_start align_items_center">
                     <icon-base icon-name="clap" width="42" height="42" viewBox="0 0 25 25"><icon-clap /></icon-base>
                     <code>&lt;icon-base icon-name="clap" width="42" height="42" viewBox="0 0 25 25"&gt;&lt;icon-clap /&gt;&lt;/icon-base&gt;</code>
-                </div>                
+                </div>
             </div>
             <div class="item--icon">
                 <h3 class="text_center">IconClapActive</h3>
@@ -77,28 +77,28 @@
                 <div class="d_flex justify_content_start align_items_center">
                     <icon-base icon-name="clock" viewBox="0 0 100 100"><icon-clock /></icon-base>
                     <code>&lt;icon-base icon-name="clock" viewBox="0 0 100 100"&gt;&lt;icon-clock /&gt;&lt;/icon-base&gt;</code>
-                </div>                
+                </div>
             </div>
             <div class="item--icon">
                 <h3 class="text_center">IconClockHistory</h3>
                 <div class="d_flex justify_content_start align_items_center">
                     <icon-base icon-name="clock-history" viewBox="0 0 500 500"><icon-clock-history /></icon-base>
                     <code>&lt;icon-base icon-name="clock-history" viewBox="0 0 500 500"&gt;&lt;icon-clock-history /&gt;&lt;/icon-base&gt;</code>
-                </div>                
+                </div>
             </div>
             <div class="item--icon">
                 <h3 class="text_center">IconClose</h3>
                 <div class="d_flex justify_content_start align_items_center">
                     <icon-base icon-name="close" viewBox="0 0 230 230"><icon-close /></icon-base>
                     <code>&lt;icon-base icon-name="close" viewBox="0 0 230 230"&gt;&lt;icon-close /&gt;&lt;/icon-base&gt;</code>
-                </div>                
+                </div>
             </div>
             <div class="item--icon">
                 <h3 class="text_center">IconComment</h3>
                 <div class="d_flex justify_content_start align_items_center">
                     <icon-base icon-name="comment" width="35" height="35" viewBox="0 0 560 560"><icon-comment /></icon-base>
                     <code>&lt;icon-base icon-name="comment" viewBox="0 0 560 560"&gt;&lt;icon-comment /&gt;&lt;/icon-base&gt;</code>
-                </div>                
+                </div>
             </div>
             <div class="item--icon">
                 <h3 class="text_center">IconDocs</h3>
@@ -197,7 +197,7 @@
                     <icon-base icon-name="monitor" viewBox="0 0 520 520"><icon-monitor /></icon-base>
                     <code>&lt;icon-base icon-name="monitor" viewBox="0 0 520 520"&gt;&lt;icon-monitor /&gt;&lt;/icon-base&gt;</code>
                 </div>
-            </div>            
+            </div>
             <div class="item--icon">
                 <h3 class="text_center">IconMore</h3>
                 <div class="d_flex justify_content_start align_items_end">
@@ -210,6 +210,13 @@
                 <div class="d_flex justify_content_start align_items_end">
                     <icon-base icon-name="tags" viewBox="0 0 60 60"><icon-tags /></icon-base>
                     <code>&lt;icon-base icon-name="tags" viewBox="0 0 60 60"&gt;&lt;icon-tags /&gt;&lt;/icon-base&gt;</code>
+                </div>
+            </div>
+            <div class="item--icon">
+                <h3 class="text_center">IconPencil</h3>
+                <div class="d_flex justify_content_start align_items_center">
+                    <icon-base icon-name="pencil" viewBox="0 0 58 58"><icon-pencil /></icon-base>
+                    <code>&lt;icon-base icon-name="pencil" viewBox="0 0 58 58"&gt;&lt;icon-pencil /&gt;&lt;/icon-base&gt;</code>
                 </div>
             </div>
             <div class="item--icon">
@@ -232,7 +239,7 @@
                     <icon-base icon-name="question-solid" viewBox="0 0 500 500"><icon-question-solid /></icon-base>
                     <code>&lt;icon-base icon-name="question-solid" viewBox="0 0 500 500"&gt;&lt;icon-question-solid /&gt;&lt;/icon-base&gt;</code>
                 </div>
-            </div>            
+            </div>
             <div class="item--icon">
                 <h3 class="text_center">IconSearch</h3>
                 <div class="d_flex justify_content_start align_items_center">
@@ -282,7 +289,7 @@
                     <code>&lt;icon-base icon-name="world" viewBox="0 0 500 500"&gt;&lt;icon-world /&gt;&lt;/icon-base&gt;</code>
                 </div>
             </div>
-        </div>        
+        </div>
     </div>
 </template>
 
@@ -328,6 +335,7 @@ import IconJobs from "../icons/IconJobs";
 import IconAsk from "../icons/IconAsk";
 import IconTags from "../icons/IconTags";
 import IconWorld from "../icons/IconWorld";
+import IconPencil from "../icons/IconPencil";
 export default {
   components: {
     IconBase,
@@ -370,7 +378,8 @@ export default {
     IconInfo,
     IconJobs,
     IconAsk,
-    IconTags
+    IconTags,
+    IconPencil
   }
 };
 </script>

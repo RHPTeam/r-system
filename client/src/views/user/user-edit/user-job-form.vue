@@ -103,8 +103,6 @@
 <script>
 import IconBase from "@/components/icons/IconBase";
 import IconCaretArrowUp from "@/components/icons/IconCaretArrowUp";
-import IconTwitter from "@/components/icons/IconTwitter";
-import IconGithub from "@/components/icons/IconGithub";
 export default {
   components: {
     IconBase,
