@@ -12,6 +12,11 @@ const questionRouter = {
       path: "remind",
       name: "question-remind",
       component: () => import("@/views/question/question-remind")
+    },
+    {
+      path: "create",
+      name: "question-create",
+      component: () => import("@/views/question/question-create")
     }
   ]
 };
