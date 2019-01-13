@@ -69,10 +69,7 @@
   </div>
 </template>
 <script>
-  export default {
-    components: {},
-    data: {}
-  };
+export default {};
 </script>
 
 <style lang="scss" scoped>
@@ -107,7 +104,6 @@
   header {
     box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
     padding: 29px 0;
-
     .logo_left {
       img {
         width: 260px;
