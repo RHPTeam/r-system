@@ -1,6 +1,4 @@
 <template>
-    <div class="c_lg_8 c_md_8 c_xs_12 c_sm_12 p_0 wrap-question">
-        <app-top/>
         <div class="ct">
             <div class="main-question">
                 <div class="impressive--question">
@@ -27,7 +25,6 @@
                 </div>
             </div>
         </div>
-    </div>
 </template>
 <script>
 import AppTop from '@/components/top/question'
@@ -73,5 +70,5 @@ export default {
 
 
 
-                
-            
+
+

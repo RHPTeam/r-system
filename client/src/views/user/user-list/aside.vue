@@ -24,8 +24,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .main--aside {
-  width: 510px;
-  height: 973px;
+  width: 100%;
   background: #fafafa;
   .aside--title {
     position: relative;
@@ -63,10 +62,10 @@ export default {
     }
   }
   .aside--wrapper {
-    padding-left: 119px;
-    padding-right: 75px;
+    // padding-left: 119px;
+    // padding-right: 75px;
     .aside--grid {
-      width: 316px;
+      // width: 316px;
       position: relative;
       &::before {
         content: "";
@@ -75,7 +74,7 @@ export default {
         background-color: #a8a8a8;
         top: 0;
         bottom: 0;
-        left: -50px;
+        left: 10px;
       }
     }
   }
@@ -84,7 +83,7 @@ export default {
     color: #0077dd;
     font-size: 15px;
     font-weight: 500;
-    padding-left: 119px;
+    padding-left: 2.8em;
     position: relative;
     &:after {
       content: "";
@@ -97,6 +96,44 @@ export default {
       border-right: 2px solid #0077dd;
       transform: rotate(45deg);
     }
+  }
+}
+/*RESPONSIVE SIDE-BAR-RIGHT*/
+// Extra small devices (portrait phones, less than 576px)
+// No media query for `xs` since this is the default in Bootstrap
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+}
+
+// Medium devices (tablets, 768px and up)
+
+@media (max-width: 768px) {
+  .main--aside  {
+    width: 85%;
+    margin: auto;
+    .aside--item {
+      padding: 0 5em 0 5.8em;
+    }
+    button {
+      padding-left: 5em;
+    }
+  }
+}
+@media (min-width: 768px) {
+  .page--wrapper {
+    margin-left: 70px;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .page--wrapper {
+    margin-left: 250px;
   }
 }
 </style>

@@ -32,7 +32,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .aside--item {
-  width: 100%;
+  padding: 0 1em 0 2.8em;
   margin-bottom: 34px;
   .text--aside {
     font-weight: normal !important;
@@ -75,7 +75,7 @@ export default {
     border: 1px solid #a8a8a8;
     border-radius: 50%;
     background: #fff;
-    left: -61px;
+    left: 0;
   }
   &:last-child {
     .aside--tag {

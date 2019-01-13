@@ -1,12 +1,16 @@
 <template>
   <div class="page--wrapper">
     <div class="page--content d_flex">
-      <div class="main">
-        <app-info />
-        <app-content />
-        <app-paginate />
+      <div class="r">
+        <div class="c_md_8 c_12 main">
+          <app-info />
+          <app-content />
+          <app-paginate />
+        </div>
+        <div class="c_md_4 c_12">
+          <app-aside />
+        </div>
       </div>
-      <app-aside />
     </div>
   </div>
 </template>
@@ -40,6 +44,21 @@ export default {
   .main {
     background-color: #fff;
     width: 100%;
+  }
+}
+.info--tag {
+  margin: 8px 0;
+  .tag--item {
+    padding: 6px 9px;
+    border: 1px solid #a8a8a8;
+    color: #a8a8a8;
+    border-radius: 28px;
+    margin-right: 5px;
+    text-decoration: none;
+    &:hover,&:focus {
+      border-color: #776ab0;
+      color: #776ab0;
+    }
   }
 }
 
