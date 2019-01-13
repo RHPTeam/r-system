@@ -3,36 +3,91 @@
     <div class="page--content d_flex">
       <div class="r">
         <div class="c_md_8 c_12 main">
-          <app-info/>
-          <app-content/>
-          <app-paginate/>
+          <app-info />
+          <app-content />
+          <!-- <home-page/> -->
+          <!-- <app-paginate /> -->
         </div>
         <div class="c_md_4 c_12">
-          <app-aside/>
+          <app-article/>
         </div>
       </div>
-      <app-user-job/>
     </div>
   </div>
 </template>
-
 <script>
-import AppInfo from "./user-list/info";
-import AppUserJob from "@/components/user/user-jobs";
-import AppContent from "./user-list/content";
-import AppPaginate from "./user-list/paginate";
+import AppContent from "@/views/question/post-question/content";
+import AppInfo from "@/components/top/question";
+import AppArticle from "@/components/article/question";
 
+// import AppContent from "./user-list/content";
 export default {
   components: {
     AppInfo,
-    AppUserJob,
-    AppContent,
-    AppPaginate
+    AppArticle,
+    AppContent
   }
 };
 </script>
-
-<style lang="scss" scoped>
+<style lang="scss">
+.t_default {
+  color: #000;
+}
+.t_name {
+  color: #0077dd;
+}
+.t_link {
+  color: #39739d;
+}
+.t_option {
+  color: #a8a8a8;
+}
+.t_normal {
+  color: #6a737c;
+}
+.t_lg {
+  font-size: 16px;
+}
+.t_md {
+  font-size: 14px;
+}
+.m_0 {
+  margin: 0 !important;
+}
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.bg_similar {
+  background: #fff7e5;
+}
+h3 {
+  font-size: 32px;
+  font-weight: normal;
+  font-stretch: normal;
+  line-height: 1.34;
+  letter-spacing: -0.2px;
+  color: #000000;
+  cursor: pointer;
+}
+a {
+  color: #0077dd;
+  text-decoration: none;
+  cursor: pointer;
+  &:hover,
+  &:active,
+  &:focus {
+    text-decoration: none;
+  }
+}
+.ct--main {
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.36;
+  letter-spacing: -0.1px;
+}
 .page--wrapper {
   background-color: #fff;
   display: block;
@@ -41,32 +96,11 @@ export default {
   position: relative;
   transition: 0.2s ease-in;
 }
-
 .page--content {
   background-color: #fafafa;
-
   .main {
     background-color: #fff;
     width: 100%;
-  }
-}
-
-.info--tag {
-  margin: 8px 0;
-
-  .tag--item {
-    padding: 6px 9px;
-    border: 1px solid #a8a8a8;
-    color: #a8a8a8;
-    border-radius: 28px;
-    margin-right: 5px;
-    text-decoration: none;
-
-    &:hover,
-    &:focus {
-      border-color: #776ab0;
-      color: #776ab0;
-    }
   }
 }
 
@@ -83,13 +117,11 @@ export default {
 @media (max-width: 768px) {
   .page--wrapper {
     margin-left: 0;
-
     .page--content {
       flex-direction: column;
     }
   }
 }
-
 @media (min-width: 768px) {
   .page--wrapper {
     margin-left: 70px;

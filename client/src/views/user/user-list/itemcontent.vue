@@ -12,7 +12,7 @@
         <h3>Gordon Linoff</h3>
         <p class="text--info text--country">Bratislava, Slovakia, Russia</p>
         <p class="text--info text--counts">1,014</p>
-        <div class="info-tag">
+        <div class="info--tag">
           <a href="#" class="text--info tag--item">Javascript</a>
           <a href="#" class="text--info tag--item">Python</a>
         </div>
@@ -57,7 +57,9 @@ export default {};
       letter-spacing: -0.3px;
     }
     .text--country {
+      overflow: hidden;
       white-space: nowrap;
+      text-overflow: ellipsis;
     }
   }
 }
