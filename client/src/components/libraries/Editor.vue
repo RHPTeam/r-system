@@ -23,12 +23,12 @@
 </template>
 
 <script>
-import prism from "@/utils/prism";
+import prism from "../utils/prism";
 import escapeHtml from "escape-html";
-import normalizeHtml from "@/utils/normalizeHtml.js";
-import htmlToPlain from "@/utils/htmlToPlain.js";
-import selectionRange from "@/utils/selection-range.js";
-import { getIndent, getDeindentLevel } from "@/utils/getIndent";
+import normalizeHtml from "../utils/normalizeHtml.js";
+import htmlToPlain from "../utils/htmlToPlain.js";
+import selectionRange from "../utils/selection-range.js";
+import { getIndent, getDeindentLevel } from "../utils/getIndent";
 
 export default {
   model: {
@@ -345,7 +345,7 @@ import "@/assets/css/editorstyle.css";
 </script>
 
 
-<style scoped>
+<style>
 .prism-editor-wrapper code {
   font-family: inherit;
   line-height: inherit;
