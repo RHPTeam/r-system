@@ -5,8 +5,8 @@ const questionRouter = {
   children: [
     {
       path: "",
-      name: "question",
-      component: () => import("@/views/question/example")
+      name: "question-list",
+      component: () => import("@/views/question/question-list")
     },
     {
       path: "remind",
