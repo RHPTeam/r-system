@@ -2,8 +2,8 @@
   <div class="content--tabs">
     <v-tabs show-arrows>
 
-      <v-tab class=".nav--link" v-for="(item,index) in items" :key="index" :href="'#tab-' + item.url">
-        {{ item.name }} <span v-if="item.qty>0" class="badge badge_light">212</span>
+      <v-tab class=".nav--link"  v-for="(item,index) in items" :key="index" :href="'#tab-' + item.url">
+         {{ item.name }} <span v-if="item.qty>0" class="badge badge_light">212</span>
       </v-tab>
 
       <!-- <v-tabs-items>
@@ -38,12 +38,11 @@
       background-color: #f8f9fa;
       border-radius: 32px;
       padding: 0px 15px;
-
       border: 1px solid #a8a8a8;
     }
 
-    a:hover {
-      text-decoration: none;
+    .v-tabs__div >a:hover:not(.v-tabs__item--active) {
+      color:#776ab0 !important;
     }
 
     .v-tabs__item {
@@ -56,7 +55,6 @@
       text-transform: none;
       font-style: normal;
       font-stretch: normal;
-
       letter-spacing: -0.3px;
     }
 
@@ -65,7 +63,6 @@
       color: #fff !important;
       display: block !important;
       text-align: center;
-
       border-radius: 36px !important;
     }
   }
