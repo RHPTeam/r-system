@@ -7,6 +7,7 @@
         <div class="main">
           <app-info />
           <app-content />
+          <app-paginate/>
         </div>
       </div>
     </div>
@@ -18,8 +19,10 @@
   import AppContent from "./components/content";
   import AppSidebar from "@/components/sidebar/sidebar-left";
   import AppTopbar from "@/components/navbar/navbar";
+  import AppPaginate from "./components/paginate";
   export default {
     components: {
+      AppPaginate,
       AppSidebar,
       AppTopbar,
       AppInfo,
