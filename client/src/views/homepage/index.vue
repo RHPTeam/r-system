@@ -1,24 +1,12 @@
 <template>
-  <div class="main--wrapper">
-    <app-topbar/>
-    <app-sidebar/>
-    <router-view />
-  </div>
+  
+  <router-view/>
+  
 </template>
+
 <script>
-import AppSidebar from "@/components/sidebar/sidebar";
-import AppTopbar from "@/components/navbar/navbar";
-export default {
-  components: {
-    AppSidebar,
-    AppTopbar
-  }
-};
+export default {};
 </script>
-<style lang="scss">
-.main--wrapper {
-  font-family: "Quicksand", sans-serif;
-  position: relative;
-  color: #3b4045;
-}
+
+<style>
 </style>
