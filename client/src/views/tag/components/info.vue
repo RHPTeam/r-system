@@ -52,7 +52,7 @@
 <style lang="scss" scoped>
   .content--head {
     padding: 0px 8%;
-
+    padding-top:50px;
     .nav--tags {
       .input--fill {
         padding-top: 10px;
@@ -94,6 +94,7 @@
 
   @media (max-width: 767px) {
     .content--head {
+         padding-top:100px;
       .title-tags {
         font-size: 1.5rem;
       }
