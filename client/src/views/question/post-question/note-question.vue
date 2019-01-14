@@ -1,7 +1,7 @@
 <template>
     <div class="note--question">
         <div class="note--italic">
-            <p class="t_normal">By clicking &quot;Post Your Answer&quot;, you acknowledge that you have read our updated <a href="#">terms of service, privacy policy</a> and <a href="#">cookie policy</a>, and that your continued use of the 
+            <p class="t_normal">By clicking &quot;Post Your Answer&quot;, you acknowledge that you have read our updated <a href="#">terms of service, privacy policy</a> and <a href="#">cookie policy</a>, and that your continued use of the
             website is subject to these policies.</p>
         </div>
         <div class="note--final">

@@ -5,8 +5,6 @@
         <div class="c_md_8 c_12 main">
           <app-info />
           <app-content />
-          <!-- <home-page/> -->
-          <!-- <app-paginate /> -->
         </div>
         <div class="c_md_4 c_12">
           <app-article/>
@@ -19,8 +17,6 @@
 import AppContent from "@/views/question/post-question/content"
 import AppInfo from "@/components/top/question"
 import AppArticle from '@/components/article/question'
-
-// import AppContent from "./user-list/content";
 export default {
   components: {
     AppInfo,

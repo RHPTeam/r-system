@@ -19,7 +19,7 @@ export default new Router({
         {
           path: "",
           name: "homepage",
-          component: () => import("@/views/homepage/question")
+          component: () => import("@/views/homepage/example")
         }
       ]
     },
