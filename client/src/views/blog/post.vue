@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import AppMenu from "@/components/sidebar/top_bar";
+import AppMenu from "@/components/navbar/header";
 import AppPostDetail from "./post-component/postdetail";
 import AppComment from "./post-component/comment";
 import AppAddComment from "./post-component/addcomment";

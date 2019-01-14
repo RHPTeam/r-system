@@ -9,7 +9,7 @@
                     <div class="user--info-name">Sky Albert</div>
                     <div class="user--info-alias">(Trần Quốc Toản)</div>
                 </div>
-            </div>            
+            </div>
         </div>
         <div class="navbar">
           <ul class="navbar--list d_flex justify_content_start align_items_center">
@@ -56,7 +56,7 @@ export default {};
     }
   }
   .wallpaper--info {
-    left: 64px;
+    left: 20px;
     bottom: -25px;
     width: 100%;
   }
@@ -74,7 +74,7 @@ export default {};
 }
 .navbar {
   background-color: #ffffff;
-  padding-left: 250px;
+  padding-left: 200px;
   border-bottom: 1px solid #e4e4e4;
   .navbar--list {
     list-style-type: none;

@@ -1,198 +1,212 @@
-import Vue from "vue";
-import Router from "vue-router";
+import Vue from 'vue'
+import Router from 'vue-router'
 
-import legaRouter from "./modules/lega";
-import userRouter from "./modules/user";
-import blogRouter from "./modules/blog";
-import questionRouter from "./modules/question";
+import legaRouter from './modules/lega'
+import userRouter from './modules/user'
+import blogRouter from './modules/blog'
+import questionRouter from './modules/question'
 
-Vue.use(Router);
+Vue.use(Router)
 
 export default new Router({
-  mode: "history",
+  mode: 'history',
   base: process.env.BASE_URL,
   routes: [
     {
-      path: "/",
-      component: () => import("@/views/homepage/index"),
+      path: '/',
+      component: () => import('@/views/homepage/index'),
       children: [
         {
-          path: "",
-          name: "homepage",
-          component: () => import("@/views/homepage/example")
+          path: '',
+          name: 'homepage',
+          component: () => import('@/views/homepage/homepage')
         }
       ]
     },
     {
-      path: "/show-icon",
-      component: () => import("@/components/icons/ShowAllIcon")
+      path: '/show-icon',
+      component: () => import('@/components/icons/ShowAllIcon')
     },
     {
-      path: "/show-icon-rank",
-      component: () => import("@/components/icons/ShowIconRank")
+      path: '/show-icon-rank',
+      component: () => import('@/components/icons/ShowIconRank')
     },
     {
-      path: "/dashboard",
-      component: () => import("@/views/dashboard/index"),
+      path: '/dashboard',
+      component: () => import('@/views/dashboard/index'),
       children: [
         {
-          path: "",
-          name: "dashboard",
-          component: () => import("@/views/dashboard/example")
+          path: '',
+          name: 'dashboard',
+          component: () => import('@/views/dashboard/example')
         }
       ]
     },
     {
-      path: "/job",
-      component: () => import("@/views/job/index"),
+      path: '/job',
+      component: () => import('@/views/job/index'),
       children: [
         {
-          path: "",
-          name: "job",
-          component: () => import("@/views/job/example")
+          path: '',
+          name: 'job',
+          component: () => import('@/views/job/example')
         }
       ]
     },
     {
-      path: "/members",
-      component: () => import("@/views/members/index"),
+      path: '/members',
+      component: () => import('@/views/members/index'),
       children: [
         {
-          path: "",
-          name: "members",
-          component: () => import("@/views/members/example")
+          path: '',
+          name: 'members',
+          component: () => import('@/views/members/example')
         }
       ]
     },
     {
-      path: "/signin",
-      component: () => import("@/views/signin/index"),
+      path: '/signin',
+      component: () => import('@/views/signin/index'),
       children: [
         {
-          path: "",
-          name: "signin",
-          component: () => import("@/views/signin/example")
+          path: '',
+          name: 'signin',
+          component: () => import('@/views/signin/example')
         }
       ]
     },
     {
-      path: "/signup",
-      component: () => import("@/views/signup/index"),
+      path: '/signup',
+      component: () => import('@/views/signup/index'),
       children: [
         {
-          path: "",
-          name: "signup",
-          component: () => import("@/views/signup/example")
+          path: '',
+          name: 'signup',
+          component: () => import('@/views/signup/example')
         }
       ]
     },
     {
-      path: "/admin",
-      component: () => import("@/views/admin/dashboard/index"),
+      path: '/admin',
+      component: () => import('@/views/admin/dashboard/index'),
       children: [
         {
-          path: "",
-          name: "admin",
-          component: () => import("@/views/admin/dashboard/example")
+          path: '',
+          name: 'admin',
+          component: () => import('@/views/admin/dashboard/example')
         },
         {
-          path: "post",
-          component: () => import("@/views/admin/post/index"),
+          path: 'post',
+          component: () => import('@/views/admin/post/index'),
           children: [
             {
-              path: "",
-              name: "admin_post",
-              component: () => import("@/views/admin/post/example")
+              path: '',
+              name: 'admin_post',
+              component: () => import('@/views/admin/post/example')
             }
           ]
         },
         {
-          path: "categorys",
-          component: () => import("@/views/admin/categorys/index"),
+          path: 'categorys',
+          component: () => import('@/views/admin/categorys/index'),
           children: [
             {
-              path: "",
-              name: "admin_categorys",
-              component: () => import("@/views/admin/categorys/example")
+              path: '',
+              name: 'admin_categorys',
+              component: () => import('@/views/admin/categorys/example')
             }
           ]
         },
         {
-          path: "library",
-          component: () => import("@/views/admin/library/index"),
+          path: 'library',
+          component: () => import('@/views/admin/library/index'),
           children: [
             {
-              path: "",
-              name: "admin_library",
-              component: () => import("@/views/admin/library/example")
+              path: '',
+              name: 'admin_library',
+              component: () => import('@/views/admin/library/example')
             }
           ]
         },
         {
-          path: "pages",
-          component: () => import("@/views/admin/pages/index"),
+          path: 'pages',
+          component: () => import('@/views/admin/pages/index'),
           children: [
             {
-              path: "",
-              name: "admin_pages",
-              component: () => import("@/views/admin/pages/example")
+              path: '',
+              name: 'admin_pages',
+              component: () => import('@/views/admin/pages/example')
             }
           ]
         },
         {
-          path: "permission",
-          component: () => import("@/views/admin/permission/index"),
+          path: 'permission',
+          component: () => import('@/views/admin/permission/index'),
           children: [
             {
-              path: "",
-              name: "admin_permission",
-              component: () => import("@/views/admin/permission/example")
+              path: '',
+              name: 'admin_permission',
+              component: () => import('@/views/admin/permission/example')
             }
           ]
         },
         {
-          path: "rhelp",
-          component: () => import("@/views/admin/rhelp/index"),
+          path: 'rhelp',
+          component: () => import('@/views/admin/rhelp/index'),
           children: [
             {
-              path: "",
-              name: "admin_rhelp",
-              component: () => import("@/views/admin/rhelp/example")
+              path: '',
+              name: 'admin_rhelp',
+              component: () => import('@/views/admin/rhelp/example')
             }
           ]
         },
         {
-          path: "users",
-          component: () => import("@/views/admin/users/index"),
+          path: 'users',
+          component: () => import('@/views/admin/users/index'),
           children: [
             {
-              path: "",
-              name: "admin_users",
-              component: () => import("@/views/admin/users/example")
+              path: '',
+              name: 'admin_users',
+              component: () => import('@/views/admin/users/example')
             }
           ]
         }
       ]
     },
     {
-      path: "/discord",
-      component: () => import("@/views/discord"),
+      path: '/discord',
+      component: () => import('@/views/discord'),
       children: [
         {
-          path: "",
-          name: "discord-tutorial",
-          component: () => import("@/views/discord/discord")
+          path: '',
+          name: 'discord-tutorial',
+          component: () => import('@/views/discord/discord')
         },
         {
-          path: "contact-discord",
-          name: "contact-discord",
-          component: () => import("@/views/discord/discord2")
+          path: 'contact-discord',
+          name: 'contact-discord',
+          component: () => import('@/views/discord/discord2')
         }
       ]
     },
     legaRouter,
     userRouter,
     blogRouter,
-    questionRouter
+    questionRouter,
+    {
+      path: '/404',
+      name: 'notfound',
+      component: () => import('@/views/404')
+    },
+    {
+      path: '/500',
+      name: 'error',
+      component: () => import('@/views/500')
+    },
+    {
+      path: '*',
+      redirect: '/404'
+    }
   ]
-});
+})

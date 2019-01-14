@@ -8,23 +8,19 @@
             <div class="c_lg_9 c_md_8 c_xs_12 c_sm_12">
                 <router-view />
             </div>
+           
         </div>
     </div>
 </template>
 
 <script>
-import AppSiteMenu from "@/components/sidebar/site_menu";
-import AppTopBar from "@/components/sidebar/top_bar";
-
-
+import AppSiteMenu from "@/components/sidebar/menu-lega";
+import AppTopBar from "@/components/navbar/header";
 export default {
-  
   components: {
     AppSiteMenu,
-    AppTopBar,
-
+    AppTopBar
   },
- 
   data() {
     return {
       arNav: [
@@ -80,12 +76,10 @@ export default {
           content: "Contact",
           children: []
         }
-      ],
-     
+      ]
     };
   }
 };
-
 </script>
 
 <style  lang="scss">
@@ -138,5 +132,4 @@ export default {
     margin-bottom: 1em;
   }
 }
-
 </style>

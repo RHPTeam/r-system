@@ -3,16 +3,14 @@
     <div class="d_flex align_items_center justify_content_center justify_content_md_start">
       <app-breadcrumb/>
     </div>
-    <app-tabs />
+    <app-tabs/>
   </div>
 </template>
 <script>
-import AppTabs from "./tabs";
-import AppContent from "./itemcontent";
 import AppBreadcrumb from "@/components/breadcrumb/breadcrumb";
+
 export default {
   components: {
-    AppTabs,
     AppBreadcrumb
   }
 };
