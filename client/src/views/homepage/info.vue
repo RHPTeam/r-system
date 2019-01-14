@@ -8,32 +8,30 @@
 </template>
 <script>
 import AppTabs from "@/components/navbar/tabs";
-import AppContent from "./itemcontent";
 import AppBreadcrumb from "@/components/breadcrumb/breadcrumb";
 export default {
-   data(){
-    return{
-      items:[
+  data() {
+    return {
+      items: [
         {
-          name:"Intersting",
-          url:"intersting"
+          name: "Intersting",
+          url: "intersting"
         },
         {
-          name:"Feature",
-          url:"feature",
-          qty:212
+          name: "Feature",
+          url: "feature",
+          qty: 212
         },
         {
-          name:"Hot",
-          url:"Week"
+          name: "Hot",
+          url: "Week"
         },
         {
-          name:"Month",
-          url:"questioners"
-        },
-       
+          name: "Month",
+          url: "questioners"
+        }
       ]
-    }
+    };
   },
   components: {
     AppTabs,

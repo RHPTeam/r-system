@@ -197,12 +197,12 @@ export default new Router({
     {
       path: "/404",
       name: "notfound",
-      component: () => import("@/views/404")
+      component: () => import("@/views/404/index")
     },
     {
       path: "/500",
       name: "error",
-      component: () => import("@/views/500")
+      component: () => import("@/views/500/index")
     },
     {
       path: "*",

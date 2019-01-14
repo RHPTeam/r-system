@@ -1,31 +1,48 @@
 <template>
     <div class="head">
-        <div class="wallpaper position_relative">
-            <div class="wallpaper--info d_flex justify_content_start align_items_center position_absolute">
-                <div class="wallpaper--avatar position_relative">
-                    <img src="http://www.igeacps.it/app/uploads/2018/05/profile_uni_user.png" class="position_absolute">
-                </div>
-                <div class="user--info">
-                    <div class="user--info-name">Sky Albert</div>
-                    <div class="user--info-alias">(Trần Quốc Toản)</div>
-                </div>
-            </div>
-        </div>
-        <div class="navbar">
-          <ul class="navbar--list d_flex justify_content_start align_items_center">
-            <li class="navbar--list-item">Hoạt động</li>
-            <li class="navbar--list-item">Thông tin</li>
-            <li class="navbar--list-item">Câu chuyện lập trình</li>
-            <li class="navbar--list-item">Bài viết</li>
-            <li class="navbar--list-item">Tuyển dụng</li>
-            <li class="navbar--list-item">Chỉnh sửa thông tin</li>
-          </ul>
-        </div>
-    </div>
+      <div class="navbar d_block d_md_none pl_0">
+        <ul class="navbar--list d_flex justify_content_between align_items_center pl_0">
+          <li class="navbar--list-item"><icon-base icon-name="menu" viewBox="0 0 500 500"><icon-menu/></icon-base></li>
+          <li class="navbar--list-item"><icon-base icon-name="menu" viewBox="0 0 500 500"><icon-menu /></icon-base></li>
+          <li class="navbar--list-item"><icon-base icon-name="menu" viewBox="0 0 500 500"><icon-menu /></icon-base></li>
+          <li class="navbar--list-item"><icon-base icon-name="menu" viewBox="0 0 500 500"><icon-menu /></icon-base></li>
+          <li class="navbar--list-item"><icon-base icon-name="menu" viewBox="0 0 500 500"><icon-menu /></icon-base></li>
+          <li class="navbar--list-item"><icon-base icon-name="menu" viewBox="0 0 500 500"><icon-menu /></icon-base></li>
+        </ul>
+      </div>
+      <div class="wallpaper position_relative d_flex align_items_sm_end">
+          <div class="wallpaper--info d_flex justify_content_center justify_content_sm_start flex_column flex_sm_row align_items_center mb_sm_n4">
+              <div class="wallpaper--avatar position_relative">
+                  <img src="http://www.igeacps.it/app/uploads/2018/05/profile_uni_user.png" class="position_absolute">
+              </div>
+              <div class="user--info ml_0 ml_sm_3 text_center text_sm_left">
+                  <div class="user--info-name">Sky Albert</div>
+                  <div class="user--info-alias">(Trần Quốc Toản)</div>
+              </div>
+          </div>
+      </div>
+      <div class="navbar d_none d_md_block">
+        <ul class="navbar--list d_flex justify_content_start align_items_center">
+          <li class="navbar--list-item">Hoạt động</li>
+          <li class="navbar--list-item">Thông tin</li>
+          <li class="navbar--list-item">Câu chuyện lập trình</li>
+          <li class="navbar--list-item">Bài viết</li>
+          <li class="navbar--list-item">Tuyển dụng</li>
+          <li class="navbar--list-item">Chỉnh sửa thông tin</li>
+        </ul>
+      </div>
+  </div>
 </template>
 
 <script>
-export default {};
+import IconBase from "../icons/IconBase";
+import IconMenu from "../icons/IconMenu";
+export default {
+  components: {
+    IconBase,
+    IconMenu
+  }
+};
 </script>
 
 <style scoped lang="scss">
@@ -56,8 +73,7 @@ export default {};
     }
   }
   .wallpaper--info {
-    left: 20px;
-    bottom: -25px;
+    padding: 0 20px;
     width: 100%;
   }
   .user--info {
@@ -65,7 +81,6 @@ export default {};
     font-weight: 600;
     letter-spacing: 0.3px;
     color: #ffffff;
-    margin-left: 30px;
     .user--info-name {
       font-size: 24px;
       line-height: 1.21;
@@ -91,5 +106,9 @@ export default {};
       }
     }
   }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
 }
 </style>

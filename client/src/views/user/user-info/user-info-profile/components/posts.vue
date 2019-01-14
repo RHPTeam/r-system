@@ -112,6 +112,7 @@ export default {
 .posts--item {
   border-bottom: 1px solid #e4e4e4;
   min-height: 48px;
+  padding: 5px 0;
   font-weight: 600;
   .posts--item-count {
     border-radius: 3px;

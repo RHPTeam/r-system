@@ -1,5 +1,5 @@
 <template>
-    <div class="card setting">
+    <div class="card setting mb_0">
         <div class="card_body">
             <h5 class="card_title font_weight_bold">CÀI ĐẶT NGƯỜI DÙNG</h5>
             <ul class="setting--content mb_0 pl_0">

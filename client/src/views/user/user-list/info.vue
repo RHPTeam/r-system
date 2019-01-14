@@ -9,32 +9,33 @@
 </template>
 <script>
 import AppTabs from "@/components/navbar/tabs";
+import AppBreadcrumb from "@/components/breadcrumb/breadcrumb";
 export default {
-  data(){
-    return{
-      items:[
+  data() {
+    return {
+      items: [
         {
-          name:"High Rank",
-          url:"high_rank"
+          name: "High Rank",
+          url: "high_rank"
         },
         {
-          name:"New User",
-          url:"new_user"
+          name: "New User",
+          url: "new_user"
         },
         {
-          name:"Voters",
-          url:"voters"
+          name: "Voters",
+          url: "voters"
         },
         {
-          name:"Questioners",
-          url:"questioners"
+          name: "Questioners",
+          url: "questioners"
         },
         {
-          name:"Answers",
-          url:"answers"
+          name: "Answers",
+          url: "answers"
         }
       ]
-    }
+    };
   },
   components: {
     AppTabs,

@@ -6,13 +6,13 @@
         <form @submit.prevent="submit">
           <div class="form_group">
             <div class="form_row">
-              <div class="c_md_6">
+              <div class="c_12 c_sm_6 c_md_12 c_xl_6">
                 <div class="form_group">
                   <label for="technology-like">Công nghệ bạn mong muốn làm việc</label>
                   <textarea class="form_control" id="technology-like"></textarea>
                 </div>
               </div>
-              <div class="c_md_6">
+              <div class="c_12 c_sm_6 c_md_12 c_xl_6">
                 <div class="form_group">
                   <label for="technology-hate">Công nghệ bạn không thích làm việc</label>
                   <textarea class="form_control" id="technology-hate"></textarea>
@@ -45,21 +45,21 @@
           </div>
           <div class="form_group mb_0">
             <div class="form_row">
-              <div class="c_md_4">
+              <div class="c_12 c_sm_12 c_md_12 c_xl_4">
                 <div class="form_group">
                   <label for="position">Vị trí</label>
                   <input type="text" class="form_control" id="position" placeholder="">
                 </div>
               </div>
-              <div class="c_md_4">
+              <div class="c_12 c_sm_6 c_md_5 c_xl_4">
                 <div class="form_group">
                   <label for="background">Kinh nghiệm</label>
                   <input type="text" class="form_control" id="background" placeholder="">
                 </div>
               </div>
-              <div class="c_md_4">
+              <div class="c_12 c_sm_6 c_md_7 c_xl_4">
                 <div class="form_group">
-                  <label for="salary">Mức tối thiểu mà bạn mong muốn</label>
+                  <label for="salary">Mức tối thiểu bạn mong muốn</label>
                   <div class="salary--group d_flex align_items_center justify_content_start">
                     <input type="text" class="form_control" id="salary" placeholder="">
                     <div class="select--wrapper position_relative">
@@ -72,7 +72,7 @@
                   </div>
                 </div>
               </div>
-              <div class="c_md_12">
+              <div class="c_12">
                 <div class="form_group form--radio">
                   <label for="work-type" class="d_block">Loại công việc</label>
                   <div class="custom_control custom_radio custom_control_inline">
