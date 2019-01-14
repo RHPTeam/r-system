@@ -1,0 +1,126 @@
+.left--sidebar {
+  background: #fff;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  font-family: "Quicksand", sans-serif;
+  height: 100%;
+  padding-top: 64px;
+  position: fixed;
+  top: 0;
+  transition: 0.2s ease-in;
+  z-index: 10;
+}
+.sidebar--nav {
+  ul {
+    padding: 0;
+    margin: 0;
+    li {
+      list-style: none;
+    }
+    a.sidebar--link {
+      align-items: center;
+      color: #a8a8a8;
+      display: flex;
+      line-height: 25px;
+      opacity: 0.6;
+      padding: 10px 20px;
+      text-decoration: none;
+      white-space: nowrap;
+      vertical-align: middle;
+      &:hover,
+      &:active {
+        opacity: 1;
+        color: #000;
+      }
+    }
+    .link--effect {
+      cursor: pointer;
+      overflow: hidden;
+      position: relative;
+      transition: all 0.1s ease-out;
+      user-select: none;
+      will-change: opacity, tranform;
+    }
+    .sidebar--item-text {
+      margin-left: 10px;
+    }
+    .new {
+      color: red;
+      padding-left: 5px;
+      text-transform: uppercase;
+    }
+    .count {
+      color: red;
+      margin-left: auto;
+    }
+  }
+}
+
+/*RESPONSIVE MENU LEFT-BAR*/
+// Extra small devices (portrait phones, less than 576px)
+// No media query for `xs` since this is the default in Bootstrap
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+}
+
+// Medium devices (tablets, 768px and up)
+@media (max-width: 768px) {
+  .left--sidebar {
+    left: -250px;
+    &.active {
+      left: 0;
+      width: 250px;
+    }
+  }
+}
+@media (min-width: 768px) {
+  .left--sidebar {
+    width: 70px;
+    &:hover {
+      width: 250px;
+      svg {
+        width: 18px;
+      }
+      .sidebar--nav {
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+      }
+      .sidebar--item-text,
+      .new,
+      .count {
+        display: block;
+      }
+    }
+    svg {
+      width: 70px;
+    }
+    .sidebar--item-text,
+    .new,
+    .count {
+      display: none;
+    }
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .left--sidebar {
+    width: 250px;
+    svg {
+      width: 18px;
+    }
+    &:hover {
+      .sidebar--nav {
+        border-top: 0;
+      }
+    }
+    .sidebar--item-text,
+    .new,
+    .count {
+      display: block;
+    }
+  }
+}

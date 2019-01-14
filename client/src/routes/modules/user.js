@@ -5,28 +5,51 @@ const userRouter = {
   children: [
     {
       path: "",
-      name: "user-show-all",
-      component: () => import("@/views/user/user-list")
+      name: "user-list",
+      component: () => import("@/views/user/user-list/index")
     },
     {
       path: ":id",
-      name: "user-info-profile",
-      component: () => import("@/views/user/user-info-profile")
-    },
-    {
-      path: ":id/activity",
-      name: "user-info-activity",
-      component: () => import("@/views/user/user-info-activity")
-    },
-    {
-      path: ":id/edit-profile",
-      name: "user-edit-profile",
-      component: () => import("@/views/user/user-edit-profile")
-    },
-    {
-      path: ":id/edit-job",
-      name: "user-edit-job",
-      component: () => import("@/views/user/user-edit-job")
+      component: () => import("@/views/user/user-info/index"),
+      children: [
+        {
+          path: "",
+          component: () => import("@/views/user/user-info/user-info-profile")
+        },
+        {
+          path: "profile",
+          name: "user-info-profile",
+          component: () => import("@/views/user/user-info/user-info-profile")
+        },
+        {
+          path: "activity",
+          name: "user-info-activity",
+          component: () => import("@/views/user/user-info/user-info-activity")
+        },
+        {
+          path: "settings",
+          component: () => import("@/views/user/user-info/user-info-setting"),
+          children: [
+            {
+              path: "",
+              component: () =>
+                import("@/views/user/user-info/user-info-setting/user-info")
+            },
+            {
+              path: "profile",
+              name: "user-profile-edit",
+              component: () =>
+                import("@/views/user/user-info/user-info-setting/user-info")
+            },
+            {
+              path: "job",
+              name: "user-job-edit",
+              component: () =>
+                import("@/views/user/user-info/user-info-setting/user-job")
+            }
+          ]
+        }
+      ]
     }
   ]
 };

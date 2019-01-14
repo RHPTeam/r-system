@@ -1,22 +1,22 @@
 <template>
-    <div class="aside--item">
-        <h3>front end developer with vue</h3>
-        <p class="text--info text--aside"><label>Framgia Inc</label></p>
-        <p class="text--info text--aside">
+  <div class="aside--item">
+    <h3>front end developer with vue</h3>
+    <p class="text--info text--aside"><label>Framgia Inc</label></p>
+    <p class="text--info text--aside">
             <span class="city">
                 <icon-base icon-name="location" viewBox="0 0 60 60"><icon-location /></icon-base>
                 Ha Noi, Viet Nam
             </span>
-            <span class="remote">
+      <span class="remote">
                 <icon-base icon-name="world" viewBox="0 0 500 500"><icon-world /></icon-base>
                 Remote
             </span>
-        </p>
-        <div class="info--tag aside--tag">
-            <a href="#" class=" text--info tag--item">angular js</a>
-            <a href="#" class=" text--info tag--item">cordova</a>
-        </div>
+    </p>
+    <div class="info--tag aside--tag">
+      <a href="#" class=" text--info tag--item">angular js</a>
+      <a href="#" class=" text--info tag--item">cordova</a>
     </div>
+  </div>
 </template>
 <script>
 import IconBase from "@/components/icons/IconBase";

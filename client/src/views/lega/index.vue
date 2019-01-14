@@ -14,8 +14,8 @@
 </template>
 
 <script>
-import AppSiteMenu from "@/components/sidebar/site_menu";
-import AppTopBar from "@/components/sidebar/top_bar";
+import AppSiteMenu from "@/components/sidebar/menu-lega";
+import AppTopBar from "@/components/navbar/header";
 export default {
   components: {
     AppSiteMenu,

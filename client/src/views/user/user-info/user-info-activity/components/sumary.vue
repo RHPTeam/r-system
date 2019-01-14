@@ -10,26 +10,26 @@
     </div>
     <div class="r">
       <div class="c_12 c_sm_12 c_md_6 c_xl_6 pb_5">
-        <app-user-honor/>
+        <app-user-reputation/>
       </div>
       <div class="c_12 c_sm_12 c_md_6 c_xl_6">
-        <app-user-all-tag/>
+        <app-user-tag/>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import AppUserAnswer from "@/views/user/user-info/user-activity-answer";
-import AppUserQuestion from "@/views/user/user-info/user-activity-question";
-import AppUserHonor from "@/views/user/user-info/user-activity-honor";
-import AppUserAllTag from "@/views/user/user-info/user-activity-all-tag";
+import AppUserAnswer from "./cp-summary/answers";
+import AppUserQuestion from "./cp-summary/questions";
+import AppUserReputation from "./cp-summary/reputations";
+import AppUserTag from "./cp-summary/tags";
 export default {
   components: {
     AppUserAnswer,
     AppUserQuestion,
-    AppUserHonor,
-    AppUserAllTag
+    AppUserReputation,
+    AppUserTag
   }
 };
 </script>

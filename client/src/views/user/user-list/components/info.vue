@@ -1,7 +1,6 @@
 <template>
   <div class="content--head ct m_0">
     <div class="d_flex align_items_center justify_content_center justify_content_md_start">
-      <!-- <h3>Welcome back with RHP Team</h3> -->
       <app-breadcrumb/>
     </div>
     <app-tabs />

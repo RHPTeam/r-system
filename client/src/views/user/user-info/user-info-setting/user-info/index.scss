@@ -1,0 +1,103 @@
+.form {
+  .card_title {
+    font-size: 22px;
+  }
+  .form--content {
+    border-top: 1px solid #e9ebee;
+    .form_group {
+      label {
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 1.23;
+        letter-spacing: 0.1px;
+      }
+      .text--support {
+        color: #9199a1;
+      }
+      input {
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 1.23;
+        letter-spacing: 0.1px;
+      }
+      ::-webkit-input-placeholder {
+        /* Chrome/Opera/Safari */
+        color: #dddfe2;
+        font-weight: 400;
+      }
+      ::-moz-placeholder {
+        /* Firefox 19+ */
+        color: #dddfe2;
+        font-weight: 400;
+      }
+      :-ms-input-placeholder {
+        /* IE 10+ */
+        color: #dddfe2;
+        font-weight: 400;
+      }
+      :-moz-placeholder {
+        /* Firefox 18- */
+        color: #dddfe2;
+        font-weight: 400;
+      }
+    }
+  }
+  .live--preview {
+    border-top: 1px solid #e9ebee;
+    border-bottom: 1px solid #e9ebee;
+    padding: 10px;
+    min-height: 44px;
+    padding-right: 100px;
+    .live--preview-tag {
+      top: 6px;
+      right: 6px;
+      width: 95px;
+      height: 28px;
+      line-height: 28px;
+      text-align: center;
+      border-radius: 5px;
+      background-color: #e1ecf4;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: -0.1px;
+      color: #39739d;
+    }
+  }
+
+  .form--social {
+    .form--social-icon {
+      left: 12px;
+      top: 7.5px;
+    }
+    input {
+      padding-left: 30px;
+    }
+  }
+  .form--btn {
+    border-top: 1px solid #e9ebee;
+    button {
+      width: 98px;
+      height: 32px;
+      font-size: 14px;
+      font-weight: 600;
+      border: 1px solid transparent;
+      transition: all 0.5s ease;
+      &.form--btn-save {
+        background-color: #776ab0;
+        margin-right: 5px;
+        color: #fff;
+        border-color: #776ab0;
+        &:hover {
+          color: #776ab0;
+          background-color: transparent;
+        }
+      }
+      &.form--btn-cancel {
+        color: #0077dd;
+        &:hover {
+          border-color: #0077dd;
+        }
+      }
+    }
+  }
+}
