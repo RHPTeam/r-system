@@ -20,7 +20,8 @@ export default {
         },
         {
           name:"Feature",
-          url:"feature"
+          url:"feature",
+          qty:212
         },
         {
           name:"Hot",
