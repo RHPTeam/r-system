@@ -20,7 +20,7 @@
     <div class="like  d_flex flex_column align_items_center">
         <span class="num">0</span>
         <span>votes</span>
-        <span><icon-base icon-name="thumbs"viewBox="0 0 18.657 11.994"><icon-thumbs-up /></icon-base></span>
+        <span><icon-base icon-name="thumbs" viewBox="0 0 18.657 11.994"><icon-thumbs-up /></icon-base></span>
     </div>
     <div class="comt d_flex flex_column align_items_center">
         <span class="num">0</span>
