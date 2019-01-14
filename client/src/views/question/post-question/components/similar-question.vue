@@ -21,6 +21,7 @@ export default {};
 .similar--question {
   div.bg_similar {
     padding: 12px 17px;
+    margin-bottom: 10px;
     border: 1px solid rgba(83, 90, 96, 0.1);
   }
   ul {

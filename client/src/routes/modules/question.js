@@ -6,7 +6,7 @@ const questionRouter = {
     {
       path: "",
       name: "question",
-      component: () => import("@/views/question/post-question")
+      component: () => import("@/views/question/post-question/question-detail")
     },
     {
       path: "remind",

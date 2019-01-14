@@ -62,10 +62,7 @@ export default {
     }
   }
   .aside--wrapper {
-    // padding-left: 119px;
-    // padding-right: 75px;
     .aside--grid {
-      // width: 316px;
       position: relative;
       &::before {
         content: "";
@@ -114,9 +111,13 @@ export default {
     margin: auto;
     .aside--item {
       padding: 0 5em 0 5.8em;
+      text-align: center;
     }
     button {
-      padding-left: 5em;
+      padding: 1em 0 2em 5em;
+      &::after {
+        top: 21px !important;
+      }
     }
   }
 }

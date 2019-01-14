@@ -1,5 +1,5 @@
 <template>
-  <div class="info--question-user justify_content_end d_flex">
+  <div class="info--question-user justify_content_end d_flex ml_auto">
         <div class="user--level">
             <button type="submit">
                 <icon-base icon-name="up" width="25" height="25" viewBox="0 0 400 400"><icon-up /></icon-base>

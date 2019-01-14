@@ -3,16 +3,16 @@
         <p class="note--normal">Thanks for contributing an answer to RHP Team!</p>
         <p class="sub--notification">
             <!-- <svg></svg> -->
-            Please be sure to answer the question. Provide details and share your research!
+            + Please be sure to answer the question. Provide details and share your research!
         </p>
-    
+
         <p class="note--normal">But avoid ...</p>
         <p class="sub--notification">
             <!-- <svg></svg> -->
-            Asking for help, clarification, or responding to other answers.</p>
+            + Asking for help, clarification, or responding to other answers.</p>
         <p class="sub--notification">
             <!-- <svg></svg> -->
-            Making statements based on opinion; back them up with references or personal experience</p>
+            + Making statements based on opinion; back them up with references or personal experience</p>
         <p class="note--normal">To learn more, see our tips on writing great answers.</p>
         <div class="note--above">
             <icon-base icon-name="close" width="23" height="23" viewBox="0 0 500 500"><icon-close /></icon-base>
