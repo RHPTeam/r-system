@@ -53,20 +53,20 @@
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-        base: process.env.BASE_URL
-      }
-    },
-    methods: {
-      submit () {
-        this.$router.push('/')
-      }
+export default {
+  data() {
+    return {
+      base: process.env.BASE_URL
+    };
+  },
+  methods: {
+    submit() {
+      this.$router.push("/");
     }
   }
+};
 </script>
 
 <style lang="scss" scoped>
-  @import "signin";
+@import "signin";
 </style>

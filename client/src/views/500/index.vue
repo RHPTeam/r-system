@@ -18,36 +18,36 @@
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-        base: process.env.BASE_URL
-      }
-    }
+export default {
+  data() {
+    return {
+      base: process.env.BASE_URL
+    };
   }
+};
 </script>
 
 <style lang="scss" scoped>
-  .main {
-    font-family: "Quicksand", sans-serif;
+.main {
+  font-family: "Quicksand", sans-serif;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  .main--text {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
     height: 100%;
-    left: 0;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    .main--text {
-      position: absolute;
-      left: 50%;
-      transform: translate(-50%);
-      height: 100%;
-      margin-top: 35%;
-      h1 {
-        color: #373737;
-        font-size: 82px;
-      }
-      p {
-        font-size: 24px;
-      }
+    margin-top: 35%;
+    h1 {
+      color: #373737;
+      font-size: 82px;
+    }
+    p {
+      font-size: 24px;
     }
   }
+}
 </style>
