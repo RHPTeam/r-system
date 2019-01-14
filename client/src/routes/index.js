@@ -71,7 +71,7 @@ export default new Router({
         {
           path: '',
           name: 'signin',
-          component: () => import('@/views/signin/example')
+          component: () => import('@/views/signin/signin')
         }
       ]
     },
@@ -82,7 +82,7 @@ export default new Router({
         {
           path: '',
           name: 'signup',
-          component: () => import('@/views/signup/example')
+          component: () => import('@/views/signup/signup')
         }
       ]
     },
