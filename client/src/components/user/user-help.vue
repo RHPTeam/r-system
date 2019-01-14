@@ -5,7 +5,7 @@
             <p class="help--text">Q&A for work</p>
             <span class="help--icon position_absolute"><icon-base icon-name="idea" width="75" height="75" viewBox="0 0 520 525"><icon-idea /></icon-base></span>
             <button class="btn btn_outline_primary help--btn">Tìm hiểu thêm</button>
-        </div>        
+        </div>
     </div>
 </template>
 
@@ -23,9 +23,7 @@ export default {
 <style scoped lang="scss">
 .help {
   .card_title {
-    font-family: Quicksand;
     font-size: 16px;
-    color: #3b4045;
     margin-bottom: 5px;
   }
   .help--text {
@@ -33,7 +31,6 @@ export default {
     font-weight: 500;
     line-height: 1.23;
     letter-spacing: 0.1px;
-    color: #3b4045;
   }
   .help--icon {
     right: 0;

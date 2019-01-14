@@ -2,31 +2,28 @@
   <div class="page--wrapper">
     <div class="page--content d_flex">
       <div class="main">
-        <app-info />
-        <app-content />
-        <app-paginate />
+       <app-info/>
+       <app-content/>
       </div>
-      <app-user-job/>
+       <app-user-job/>
     </div>
   </div>
 </template>
 
 <script>
-import AppInfo from "./user-list/info";
+import AppInfo from "./question-list/info";
+import AppContent from "./question-list/content";
 import AppUserJob from "@/components/user/user-jobs";
-import AppContent from "./user-list/content";
-import AppPaginate from "./user-list/paginate";
 export default {
   components: {
     AppInfo,
-    AppUserJob,
     AppContent,
-    AppPaginate
+    AppUserJob
   }
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss"  scope>
 .page--wrapper {
   background-color: #fff;
   display: block;

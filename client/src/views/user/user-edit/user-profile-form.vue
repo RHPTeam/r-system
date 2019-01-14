@@ -2,7 +2,7 @@
     <div class="card form">
        <div class="card_body">
             <h5 class="card_title font_weight_bold">Chỉnh sửa thông tin người dùng</h5>
-            <div class="form--content">
+            <div class="form--content pt_2">
                 <form @submit.prevent="submit">
                     <div class="form_group">
                         <label for="username">Tên hiển thị</label>
@@ -53,20 +53,20 @@
                             </div>
                             <div class="c_7">
                                 <input type="text" class="form_control" placeholder="Điều muốn nói">
-                            </div>                           
+                            </div>
                         </div>
                     </div>
                     <div class="form_group">
                         <label for="private-name">Tên thật <span class="text--support">(không hiển thị công khai)</span></label>
                         <input type="text" value="Ho Thi Chinh" class="form_control" id="private-name">
                     </div>
-                    <div class="form--btn">
+                    <div class="form--btn pt_3">
                         <button class="btn form--btn-save" type="button">Lưu</button>
                         <button class="btn form--btn-cancel" type="button">Hủy bỏ</button>
                     </div>
                 </form>
             </div>
-        </div> 
+        </div>
     </div>
 </template>
 
@@ -87,16 +87,11 @@ export default {
 
 <style scoped lang="scss">
 .form {
-  color: #3b4045;
-  font-family: Quicksand;
-
   .card_title {
     font-size: 22px;
   }
   .form--content {
     border-top: 1px solid #e9ebee;
-    border-bottom: 1px solid #e9ebee;
-    padding: 10px 0;
     .form_group {
       label {
         font-size: 13px;
@@ -167,6 +162,7 @@ export default {
     }
   }
   .form--btn {
+    border-top: 1px solid #e9ebee;
     button {
       width: 98px;
       height: 32px;

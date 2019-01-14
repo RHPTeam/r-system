@@ -282,6 +282,27 @@
                     <code>&lt;icon-base icon-name="world" viewBox="0 0 500 500"&gt;&lt;icon-world /&gt;&lt;/icon-base&gt;</code>
                 </div>
             </div>
+            <div class="item--icon">
+                <h3 class="text_center">IconPen</h3>
+                <div class="d_flex justify_content_start align_items_center">
+                    <icon-base icon-name="pen" viewBox="0 0 9.374 9.328"><icon-pen /></icon-base>
+                    <code>&lt;icon-base icon-name="pen" viewBox="0 0 9.374 9.328"&gt;&lt;icon-pen /&gt;&lt;/icon-base&gt;</code>
+                </div>
+            </div>
+            <div class="item--icon">
+                <h3 class="text_center">IconThumbsUp</h3>
+                <div class="d_flex justify_content_start align_items_center">
+                    <icon-base icon-name="thumbs-up" viewBox="0 0 15.284 15.937"><icon-thumbs-up /></icon-base>
+                    <code>&lt;icon-base icon-name="thumbs" viewBox="0 0 9.374 9.328"&gt;&lt;icon-thumbs-up /&gt;&lt;/icon-base&gt;</code>
+                </div>
+            </div>
+            <div class="item--icon">
+                <h3 class="text_center">IconAnswer</h3>
+                <div class="d_flex justify_content_start align_items_center">
+                    <icon-base icon-name="answer"  viewBox="0 0 18.249 13.937"><icon-answer /></icon-base>
+                    <code>&lt;icon-base icon-name="answer"  viewBox="0 0 18.249 13.937"&gt;&lt;icon-answer /&gt;&lt;/icon-base&gt;</code>
+                </div>
+            </div>
         </div>        
     </div>
 </template>
@@ -328,6 +349,9 @@ import IconJobs from "../icons/IconJobs";
 import IconAsk from "../icons/IconAsk";
 import IconTags from "../icons/IconTags";
 import IconWorld from "../icons/IconWorld";
+import IconPen from "../icons/IconPen";
+import IconThumbsUp from "../icons/IconThumbsUp";
+import IconAnswer from "../icons/IconAnswer";
 export default {
   components: {
     IconBase,
@@ -370,7 +394,10 @@ export default {
     IconInfo,
     IconJobs,
     IconAsk,
-    IconTags
+    IconTags,
+    IconPen,
+    IconThumbsUp,
+    IconAnswer
   }
 };
 </script>

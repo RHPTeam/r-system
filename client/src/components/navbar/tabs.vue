@@ -3,7 +3,7 @@
     <v-tabs show-arrows>
 
       <v-tab class=".nav--link" v-for="(item,index) in items" :key="index" :href="'#tab-' + item.url">
-         {{ item.name }}
+         {{ item.name }} <span class="badge badge_light">212</span>
       </v-tab>
 
       <!-- <v-tabs-items>
@@ -32,6 +32,14 @@
   
 
   .content--tabs {
+    .badge{
+      position: relative;
+      top: -1px;
+      color: #776ab0;
+        background-color: #f8f9fa;
+        border-radius: 36px;
+        padding: 5px 10px;
+    }
     a:hover{
         text-decoration: none;
     }

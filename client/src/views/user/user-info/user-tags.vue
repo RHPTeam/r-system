@@ -16,7 +16,7 @@
                                     <div class="tag--info"><span class="tag--type">POSTS %</span>98</div>
                                 </div>
                             </div>
-                        </div>                        
+                        </div>
                     </div>
                     <div class="r">
                         <div class="c_sm_6 c_md_6 c_lg_6 c_xl_6 p_0 pr_5px">
@@ -36,7 +36,7 @@
                                     <div class="tag--info"><span class="tag--type">POSTS</span>12,743</div>
                                 </div>
                             </div>
-                        </div>                        
+                        </div>
                     </div>
                     <div class="r">
                         <div class="c_sm_4 c_md_4 c_lg_4 c_xl_4 p_0 pr_5px">
@@ -69,7 +69,7 @@
                     </div>
                 </div>
             </div>
-        </div>        
+        </div>
     </div>
 </template>
 
@@ -80,7 +80,6 @@ export default {};
 <style scoped lang="scss">
 .tags {
   color: #242729;
-  font-family: Quicksand;
   .card_title {
     font-size: 16px;
   }
@@ -112,7 +111,6 @@ export default {};
         margin-right: 5px;
       }
       .tag--info {
-        color: #3b4045;
         margin-left: 15px;
         font-weight: 600;
       }

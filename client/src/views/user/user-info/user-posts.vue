@@ -4,7 +4,7 @@
             <div class="d_flex justify_content_between align_items_center">
                 <h5 class="card_title font_weight_bold">
                     Top Posts <span class="posts--count"> (889)</span>
-                </h5> 
+                </h5>
                 <div class="posts--filter d_flex justify_content_end align_items_center">
                     <ul class="posts--filter-list d_flex justify_content_start align_items_center pl_0 mb_0 pr_2">
                         <li class="position_relative active">Tất cả</li>
@@ -16,7 +16,7 @@
                         <li class="position_relative">Mới nhất</li>
                     </ul>
                 </div>
-            </div>  
+            </div>
             <div class="posts--content">
               <div class="posts--item d_flex justify_content_start align_items_center">
                 <div class="posts--item-count mr_2">80</div>
@@ -36,13 +36,13 @@
                 <div class="posts--item-time ml_auto">20 - 10 - 2019</div>
                 <div class="posts--item-see ml_2"><icon-base class="history--list-icon" icon-name="eye" width="22" height="22" viewBox="0 0 480 520"><icon-eye /></icon-base></div>
               </div>
-            </div>   
+            </div>
             <div class="text_right mt_3">
               <span class="posts--more">
                 Xem tất cả <span class="position_relative">câu hỏi</span> và <span class="position_relative">trả lời</span>
               </span>
-            </div>     
-        </div>        
+            </div>
+        </div>
     </div>
 </template>
 
@@ -60,7 +60,6 @@ export default {
 <style scoped lang="scss">
 .posts {
   color: #242729;
-  font-family: Quicksand;
   .card_title {
     font-size: 16px;
   }

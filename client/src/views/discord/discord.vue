@@ -69,91 +69,87 @@
   </div>
 </template>
 <script>
-  export default {
-    components: {},
-    data: {}
-  };
+export default {};
 </script>
 
 <style lang="scss" scoped>
-  /*global*/
-  .btn {
-    font-size: 14px;
-    line-height: 1.2;
-  }
+/*global*/
+.btn {
+  font-size: 14px;
+  line-height: 1.2;
+}
+.btn--white {
+  background: #fff;
+}
+.btn--blue {
+  background-color: #00aefd;
+}
+/*Topbar*/
+.topbar {
+  height: 42px;
+  background-color: #776ab0;
+  color: white;
   .btn--white {
-    background: #fff;
+    border-radius: 3px;
+    padding: 7px 12px;
+    background-color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.2;
+    color: #776ab0;
+    margin: 0 15px;
   }
-  .btn--blue {
-    background-color: #00aefd;
-  }
-  /*Topbar*/
-  .topbar {
-    height: 42px;
-    background-color: #776ab0;
-    color: white;
-    .btn--white {
-      border-radius: 3px;
-      padding: 7px 12px;
-      background-color: #ffffff;
-      font-size: 14px;
-      font-weight: 600;
-      line-height: 1.2;
-      color: #776ab0;
-      margin: 0 15px;
+}
+/*Header*/
+header {
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+  padding: 29px 0;
+  .logo_left {
+    img {
+      width: 260px;
+      height: 50px;
     }
   }
-  /*Header*/
-  header {
-    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
-    padding: 29px 0;
-
-    .logo_left {
-      img {
-        width: 260px;
-        height: 50px;
-      }
+  .btn--right {
+    border-radius: 100px;
+    padding: 10px 23px;
+    color: #fff;
+  }
+}
+/*Post Header*/
+.post--header-bg {
+  background-image: linear-gradient(to bottom, #776ab0, #42aac5);
+  padding: 50px 0 85px;
+  .post--title {
+    font-size: 40px;
+    color: #fff;
+    line-height: 1.2;
+    padding: 0 128px;
+  }
+}
+.section-discord-info {
+  margin-top: -50px;
+  background: #fff;
+  padding: 50px 120px;
+  box-shadow: 0px 0px 5px 0 rgba(0, 0, 0, 0.16);
+  .discord--img {
+    text-align: center;
+    img {
+      margin: 0 auto;
+      display: block;
     }
-    .btn--right {
-      border-radius: 100px;
-      padding: 10px 23px;
+  }
+  .discord--text {
+    font-size: 14px;
+  }
+  .discord--link {
+    margin: 30px 0;
+    .btn-default {
       color: #fff;
+      background-color: #776ab0;
+      border-radius: 0;
+      padding: 10px 30px;
     }
   }
-  /*Post Header*/
-  .post--header-bg {
-    background-image: linear-gradient(to bottom, #776ab0, #42aac5);
-    padding: 50px 0 85px;
-    .post--title {
-      font-size: 40px;
-      color: #fff;
-      line-height: 1.2;
-      padding: 0 128px;
-    }
-  }
-  .section-discord-info {
-    margin-top: -50px;
-    background: #fff;
-    padding: 50px 120px;
-    box-shadow: 0px 0px 5px 0 rgba(0, 0, 0, 0.16);
-    .discord--img {
-      text-align: center;
-      img {
-        margin: 0 auto;
-        display: block;
-      }
-    }
-    .discord--text {
-      font-size: 14px;
-    }
-    .discord--link {
-      margin: 30px 0;
-      .btn-default {
-        color: #fff;
-        background-color: #776ab0;
-        border-radius: 0;
-        padding: 10px 30px;
-      }
-    }
-  }
+}
 </style>

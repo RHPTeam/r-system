@@ -23,7 +23,7 @@
                     <span>Truy cập 27 ngày liên tiếp</span>
                 </li>
             </ul>
-        </div>        
+        </div>
     </div>
 </template>
 
@@ -49,7 +49,6 @@ export default {
 <style scoped lang="scss">
 .history {
   color: #242729;
-  font-family: Quicksand;
   .card_title {
     font-size: 16px;
   }
