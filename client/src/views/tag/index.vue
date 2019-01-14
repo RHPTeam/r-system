@@ -8,7 +8,6 @@
           <app-info />
           <app-content />
         </div>
-        <app-user-job />
       </div>
     </div>
   </div>
@@ -17,7 +16,6 @@
 <script>
   import AppInfo from "./components/info";
   import AppContent from "./components/content";
-  import AppUserJob from "@/components/user/user-jobs";
   import AppSidebar from "@/components/sidebar/sidebar-left";
   import AppTopbar from "@/components/navbar/navbar";
   export default {
@@ -26,10 +24,11 @@
       AppTopbar,
       AppInfo,
       AppContent,
-      AppUserJob
-    }
-  };
+    },
 
+    
+  };
+  
 </script>
 
 <style lang="scss" scope>

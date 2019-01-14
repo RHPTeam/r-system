@@ -2,17 +2,9 @@
   <div class="content--tabs">
     <v-tabs show-arrows>
 
-      <v-tab class=".nav--link" v-for="(item,index) in items" :key="index" :href="'#tab-' + item.url">
+      <v-tab class=".nav--link" v-for="(item,index) in items" :key="index" :href="'#tab-' + item.url" >
         {{ item.name }} <span v-if="item.qty>0" class="badge badge_light">212</span>
       </v-tab>
-
-      <!-- <v-tabs-items>
-        <v-tab-item v-for="i in 10" :key="i" :value="'tab-' + i">
-          <v-card flat>
-            <v-card-text>{{i}}</v-card-text>
-          </v-card>
-        </v-tab-item>
-      </v-tabs-items> -->
     </v-tabs>
 
   </div>
@@ -20,11 +12,6 @@
 <script>
   export default {
     props: ['items'],
-    data() {
-      return {
-
-      }
-    }
   };
 
 </script>
@@ -46,7 +33,6 @@
     }
 
     .v-tabs__item {
-      // font-family: SegoeUI !important;
       font-size: 15px !important;
       font-weight: 600 !important;
       color: #a8a8a8 !important;
