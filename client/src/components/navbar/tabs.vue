@@ -34,7 +34,6 @@
   .content--tabs {
     a:hover{
         text-decoration: none;
-        
     }
     .v-tabs__item{
         // font-family: SegoeUI !important;
@@ -56,12 +55,6 @@
       text-align: center;
       
       border-radius: 36px !important;
-    }
-
-    .v-tabs__div {
-    //   padding: 10px 31px;
-    
-     
     }
   }
 
