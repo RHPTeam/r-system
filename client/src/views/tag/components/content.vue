@@ -1,6 +1,6 @@
 <template>
   <div class="content--grid">
-    <!-- router-view -->
+
     <div class="content--question ct_f">
       <div class="">
         <div class="c_12">
@@ -14,16 +14,11 @@
   import ItemContent from "./itemcontent";
 
   export default {
-    props: ['url'],
+
     components: {
       ItemContent
     },
-     computed:{
-        updateUrl(){
-          this.link=url;
-          console.log(this.link);
-        }
-      },
+
     data() {
       return {
         link:"",
@@ -66,7 +61,7 @@
 <style lang="scss" scoped>
   .content--grid {
     margin-top: 20px;
-    border-top: 1px solid grey;
+    border-top: 1px solid #9999;
   }
 
 </style>
