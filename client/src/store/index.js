@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import currentTab from "./modules/currentTab";
 
 Vue.use(Vuex);
 
@@ -21,5 +22,8 @@ export default new Vuex.Store({
     changeStatusMenu: ({ commit }, payload) => {
       commit("changeStatusMenu", payload);
     }
+  },
+  modules:{
+    currentTab
   }
 });
