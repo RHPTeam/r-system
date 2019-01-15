@@ -9,6 +9,7 @@
           <app-content />
           <app-footer/>
         </div>
+
         <app-user-job />
       </div>
     </div>
@@ -74,6 +75,9 @@
 
         .page--content {
           flex-direction: column;
+        }
+        .main--aside{
+          display:none;
         }
       }
     }

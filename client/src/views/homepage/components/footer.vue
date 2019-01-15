@@ -2,9 +2,7 @@
   <div class="footer r">
     <div class="content">
       <div class="logo">
-        <icon-base icon-name="logo" width="200px" height="42" viewBox="0 0 222 30">
-          <icon-logo />
-        </icon-base>
+        <img src="@/assets/rhp-home-icon_@1x.svg"/>
       </div>
       <div class="more">
         <h3>Looking for more</h3>
@@ -18,13 +16,9 @@
 </template>
 
 <script>
-  import IconBase from "@/components/icons/IconBase";
-  import IconLogo from "@/components/icons/IconLogo";
+
   export default {
-    components: {
-      IconBase,
-      IconLogo
-    }
+
   }
 
 </script>
