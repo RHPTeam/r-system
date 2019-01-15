@@ -28,6 +28,11 @@ const userRouter = {
           component: () => import("@/views/user/user-info/user-info-activity")
         },
         {
+          path: "story",
+          name: "user-info-story",
+          component: () => import("@/views/user/user-info/user-info-story")
+        },
+        {
           path: "settings",
           component: () => import("@/views/user/user-info/user-info-setting"),
           children: [

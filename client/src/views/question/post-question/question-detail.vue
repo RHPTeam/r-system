@@ -26,6 +26,6 @@ export default {
 };
 </script>
 <style lang="scss">
-// @import "./../../../assets/scss/rhelp/main-content";
+@import "./../../../assets/scss/rhelp/main-content";
 @import "index";
 </style>
