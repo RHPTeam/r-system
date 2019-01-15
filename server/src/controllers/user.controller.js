@@ -44,9 +44,12 @@ validateMemberForm = async payload => {
 const findUserEmailOrName = async data => {
   try {
     return await User.find()
-      .or([
-        { email: data.email },
-        { nameDisplay: data.nameDisplay }
+      .or([{
+          email: data.email
+        },
+        {
+          nameDisplay: data.nameDisplay
+        }
       ])
       .exec();
   } catch (error) {
@@ -126,11 +129,16 @@ module.exports = {
    */
   updateUser: async (req, res) => {
     try {
-      const { user, body } = req;
+      const {
+        user,
+        body
+      } = req;
       if (findUserEmailOrName(body).length > 1) {
         return res.json(JsonResponse("", 404, "Email or nameDisplay is exist", false))
       }
-      return await User.findByIdAndUpdate({ _id: user._id }, body, (errors, data) => {
+      return await User.findByIdAndUpdate({
+        _id: user._id
+      }, body, (errors, data) => {
         if (errors) {
           return res.json(JsonResponse("", 404, errors, false))
         }
@@ -148,8 +156,12 @@ module.exports = {
    */
   deleteUser: async (req, res) => {
     try {
-      const { user } = req;
-      return await User.findByIdAndDelete({ _id: user._id }, (errors, data) => {
+      const {
+        user
+      } = req;
+      return await User.findByIdAndRemove({
+        _id: user._id
+      }, (errors, data) => {
         if (errors) {
           res.json(JsonResponse("", 404, errors, false))
         }
@@ -169,7 +181,9 @@ module.exports = {
    */
   getByIdUser: async (req, res, next, id) => {
     try {
-      const user = await User.findById({ _id: id })
+      const user = await User.findById({
+          _id: id
+        })
         .select('_id userid name nameDisplay email avatar title about ')
         .exec();
       if (!user) {
@@ -193,8 +207,20 @@ module.exports = {
       if (err) {
         return res.json(JsonResponse("", 403, err, false))
       }
-      return res.json(JsonResponse({ token, data }, 200, "", false))
+      return res.json(JsonResponse({
+        token,
+        data
+      }, 200, "", false))
     })(req, res, next);
+  },
+
+  /**
+   * Check user is Login, if not login redirect to login
+   * @param req
+   * @param res
+   */
+  isLogin: (req, res) => {
+    req.end();
   },
 
   /**

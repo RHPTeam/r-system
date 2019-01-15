@@ -17,7 +17,7 @@ router.route('/:userId')
   .delete(user.deleteUser);
 
 router.param('userId', user.getByIdUser);
-
+router.get('/:userId/is-login', user.isLogin)
 router.post('/login-local', user.loginUser);
 
 
