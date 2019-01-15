@@ -5,11 +5,10 @@
  * date to: 
  * team: BE-RHP
  */
-const express = require('express');
+const router = require('express-promise-router')();
 
 const favorites = require('../../controllers/favorites.controller'); 
 
-const router = express.Router();
 /* GET favorites listing. */
 router.route('/')
   .get(favorites.index);

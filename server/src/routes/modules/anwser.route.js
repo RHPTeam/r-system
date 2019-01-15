@@ -5,11 +5,12 @@
  * date to: 
  * team: BE-RHP
  */
-const express = require('express');
+//import dependences
+const router = require('express-promise-router')();
 
 const awnser = require('../../controllers/anwser.controller'); 
 
-const router = express.Router();
+
 /* GET anwser listing. */
 router.route('/')
   .get(awnser.index);

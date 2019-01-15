@@ -5,11 +5,10 @@
  * date to: 
  * team: BE-RHP
  */
-const express = require('express');
+const router = require('express-promise-router')();
 
 const product = require('../../controllers/product.controller'); 
 
-const router = express.Router();
 /* GET product listing. */
 router.route('/')
   .get(product.index);

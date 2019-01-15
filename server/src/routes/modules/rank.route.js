@@ -5,11 +5,10 @@
  * date to: 
  * team: BE-RHP
  */
-const express = require('express');
+const router = require('express-promise-router')();
 
 const rank = require('../../controllers/rank.controller'); 
 
-const router = express.Router();
 /* GET rank listing. */
 router.route('/')
   .get(rank.index);

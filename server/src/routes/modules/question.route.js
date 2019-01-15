@@ -5,11 +5,10 @@
  * date to: 
  * team: BE-RHP
  */
-const express = require('express');
+const router = require('express-promise-router')();
 
 const question = require('../../controllers/question.controller'); 
 
-const router = express.Router();
 /* GET question listing. */
 router.route('/')
   .get(question.index);

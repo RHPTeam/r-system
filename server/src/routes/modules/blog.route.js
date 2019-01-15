@@ -5,11 +5,10 @@
  * date to: 
  * team: BE-RHP
  */
-const express = require('express');
+const router = require('express-promise-router')();
 
 const blog = require('../../controllers/blog.controller'); 
 
-const router = express.Router();
 /* GET blog listing. */
 router.route('/')
   .get(blog.index);

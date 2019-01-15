@@ -5,11 +5,10 @@
  * date to: 
  * team: BE-RHP
  */
-const express = require('express');
+const router = require('express-promise-router')();
 
 const comment = require('../../controllers/comment.controller'); 
 
-const router = express.Router();
 /* GET comment listing. */
 router.route('/')
   .get(comment.index);

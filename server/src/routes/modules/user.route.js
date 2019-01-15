@@ -4,13 +4,12 @@
  * date: 08/01/2019
  * team: BE-RHP
  */
-const express = require('express');
+const router = require('express-promise-router')();
 
 const user = require('../../controllers/user.controller'); 
 
 const reputation = require('../../controllers/reputation.controller')
 
-const router = express.Router();
 /* GET users listing. */
 router.route('/')
   .post(user.createUser)

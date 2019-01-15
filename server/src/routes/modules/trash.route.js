@@ -5,11 +5,10 @@
  * date to: 
  * team: BE-RHP
  */
-const express = require('express');
+const router = require('express-promise-router')();
 
 const trash = require('../../controllers/trash.controller'); 
 
-const router = express.Router();
 /* GET trash listing. */
 router.route('/')
   .get(trash.index);
