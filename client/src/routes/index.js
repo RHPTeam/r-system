@@ -3,6 +3,7 @@ import Router from "vue-router";
 
 import legaRouter from "./modules/lega";
 import userRouter from "./modules/user";
+import tagRouter from "./modules/tag";
 import blogRouter from "./modules/blog";
 import questionRouter from "./modules/question";
 
@@ -192,6 +193,7 @@ export default new Router({
     },
     legaRouter,
     userRouter,
+    tagRouter,
     blogRouter,
     questionRouter,
     {

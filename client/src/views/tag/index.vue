@@ -1,14 +1,14 @@
 <template>
   <div class="main--wrapper">
-    <app-topbar/>
-    <app-sidebar/>
+    <app-topbar />
+    <app-sidebar />
     <div class="page--wrapper">
       <div class="page--content d_flex">
         <div class="main">
-          <app-info/>
-          <app-content/>
+          <app-info />
+          <app-content />
+          <app-paginate/>
         </div>
-        <app-user-job/>
       </div>
     </div>
   </div>
@@ -17,17 +17,16 @@
 <script>
 import AppInfo from "./components/info";
 import AppContent from "./components/content";
-import AppUserJob from "@/components/user/user-jobs";
 import AppSidebar from "@/components/sidebar/sidebar-left";
 import AppTopbar from "@/components/navbar/navbar";
-
+import AppPaginate from "./components/paginate";
 export default {
   components: {
+    AppPaginate,
     AppSidebar,
     AppTopbar,
     AppInfo,
-    AppContent,
-    AppUserJob
+    AppContent
   }
 };
 </script>
