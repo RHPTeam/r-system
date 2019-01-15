@@ -1,5 +1,8 @@
 /**
  * create route users for project
+ * author: quangnc
+ * date: 08/01/2019
+ * team: BE-RHP
  */
 const express = require('express');
 

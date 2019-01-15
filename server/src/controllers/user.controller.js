@@ -1,3 +1,10 @@
+/**
+ * create controller users for project
+ * author: quangnc
+ * date up: 08/01/2019
+ * date to: 11/01/2019
+ * team: BE-RHP
+ */
 const validator = require('validator');
 const passport = require('passport');
 //const joi = require('joi');
@@ -187,7 +194,7 @@ module.exports = {
         .select('_id userid name nameDisplay email avatar title about ')
         .exec();
       if (!user) {
-        return res.json(JsonResponse("", 404, `User ${user.name} doesn't exist`, false));
+        return res.json(JsonResponse("", 404, `User not found`, false));
       }
       req.user = user;
       next();
