@@ -16,7 +16,7 @@ import VueCkeditor from 'vue-ckeditor2';
         
         data(){
             return {
-                 content:'',
+                content:'',
                 config: {
                     toolbar: [
                     [ 'Source', '-', 'Save', 'NewPage', 'Preview', 'Print', '-', 'Templates' ] ,
