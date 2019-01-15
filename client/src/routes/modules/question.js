@@ -16,7 +16,7 @@ const questionRouter = {
     {
       path: ":id",
       name: "question-details",
-      component: () => import("@/views/question/post-question")
+      component: () => import("@/views/question/post-question/question-detail")
     }
   ]
 };

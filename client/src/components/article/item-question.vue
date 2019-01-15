@@ -24,7 +24,7 @@ export default {};
     label {
       display: inline-block;
       border-bottom: 1px solid #e4e4e4;
-      padding-bottom: 2em;
+      padding-bottom: 1em 0 1.6em 0;
     }
     label:before {
       position: absolute;
