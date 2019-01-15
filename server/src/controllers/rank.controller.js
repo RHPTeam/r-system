@@ -1,11 +1,11 @@
 /**
- * create controller Anwser for project
+ * create controller rank for project
  * author: 
  * date up: 
  * date to: 
  * team: BE-RHP
  */
-const Anwser = require('../models/anwser.model');
+const Rank = require('../models/rank.model');
 const JsonResponse = require('../helpers/json-response')
 
 module.exports = {
@@ -17,7 +17,7 @@ module.exports = {
    */
   index: async (req, res, next) => {
     try {
-      return res.json(JsonResponse("", 200, "success", false));
+      return res.json(JsonResponse( "", 200, "success", false));
     } catch (error) {
       console.log(error)
     }

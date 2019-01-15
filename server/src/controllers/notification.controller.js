@@ -15,6 +15,13 @@ module.exports = {
    * @param res
    * @param next
    */
+  index: async (req, res, next) =>{
+    try {
+      return res.json(JsonResponse("", 200, "success", false));
+    } catch (error) {
+      console.log(error)
+    }
+  },
   createNotification: async (req, res, next) => {
     try {
       
