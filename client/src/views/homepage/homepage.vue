@@ -7,6 +7,7 @@
          <div class="main">
           <app-info />
           <app-content />
+
           <app-footer/>
         </div>
 

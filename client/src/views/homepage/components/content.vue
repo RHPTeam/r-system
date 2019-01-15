@@ -16,14 +16,19 @@
               <item-content/>
             </div>
           </div>
+          <div>
+            <app-paginate/>
+          </div>
         </div>
     </div>
 </template>
 <script>
 import ItemContent from "./itemcontent";
+import AppPaginate from "./paginate";
 export default {
   components: {
-    ItemContent
+    ItemContent,
+    AppPaginate
   }
 };
 </script>
