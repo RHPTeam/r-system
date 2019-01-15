@@ -47,7 +47,7 @@
           tag="li"
           class="sidebar--item"
           active-class="active"
-          :to="'/users'"
+          :to="'/tags'"
         >
           <a class="sidebar--link link--effect"
             ><icon-base icon-name="tags" viewBox="0 0 60 60"

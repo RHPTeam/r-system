@@ -17,10 +17,16 @@
 </script>
 <style lang="scss">
   .content--tabs {
+    max-height:36px;
+    div{
+      height:36px;
+    }
     .badge {
       margin-left: 10px;
-      position: relative;
+      display: inline-block;
       top: -1px;
+      line-height:15px !important;
+      max-height: 30px !important;
       color: #776ab0;
       background-color: #f8f9fa;
       border-radius: 32px;
@@ -36,7 +42,7 @@
       font-size: 15px !important;
       font-weight: 600 !important;
       color: #a8a8a8 !important;
-      padding: 10px 20px;
+      padding: 4px 20px;
       line-height: 29px;
       text-transform: none;
       font-style: normal;

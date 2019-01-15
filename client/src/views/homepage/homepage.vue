@@ -4,9 +4,10 @@
     <app-sidebar />
     <div class="page--wrapper">
       <div class="page--content d_flex">
-        <div class="main">
+         <div class="main">
           <app-info />
           <app-content />
+          <app-footer/>
         </div>
         <app-user-job />
       </div>
@@ -20,13 +21,15 @@
   import AppUserJob from "@/components/user/user-jobs";
   import AppSidebar from "@/components/sidebar/sidebar-left";
   import AppTopbar from "@/components/navbar/navbar";
+  import AppFooter from "./components/footer";
   export default {
     components: {
       AppSidebar,
       AppTopbar,
       AppInfo,
       AppContent,
-      AppUserJob
+      AppUserJob,
+      AppFooter
     }
   };
 
