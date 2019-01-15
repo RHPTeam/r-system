@@ -3,6 +3,15 @@
     <h1 class="text_center">Show All Icon SVG</h1>
     <div class="ct">
       <div class="item--icon">
+        <h3 class="text_center">IconActivity</h3>
+        <div class="d_flex justify_content_start align_items_center">
+          <icon-base icon-name="activity" viewBox="0 0 400 400">
+            <icon-activity/>
+          </icon-base>
+          <code>&lt;icon-base icon-name="activity" viewBox="0 0 400 400"&gt;&lt;icon-activity /&gt;&lt;/icon-base&gt;</code>
+        </div>
+      </div>
+      <div class="item--icon">
         <h3 class="text_center">IconArrowDown</h3>
         <div class="d_flex justify_content_start align_items_center">
           <icon-base icon-name="arrow-down" viewBox="0 0 130 130">
@@ -27,6 +36,16 @@
             <icon-ask/>
           </icon-base>
           <code>&lt;icon-base icon-name="ask" viewBox="0 0 550 550"&gt;&lt;icon-ask /&gt;&lt;/icon-base&gt;</code>
+        </div>
+      </div>
+      <div class="item--icon">
+        <h3 class="text_center">IconBlog</h3>
+        <div class="d_flex justify_content_start align_items_center">
+          <icon-base icon-name="blog" viewBox="0 0 520 520">
+            <icon-blog/>
+          </icon-base>
+          <code>&lt;icon-base icon-name="blog" viewBox="0 0 520 520"&gt;&lt;icon-blog
+            /&gt;&lt;/icon-base&gt;</code>
         </div>
       </div>
       <div class="item--icon">
@@ -142,6 +161,15 @@
         </div>
       </div>
       <div class="item--icon">
+        <h3 class="text_center">IconEditInfo</h3>
+        <div class="d_flex justify_content_start align_items_center">
+          <icon-base icon-name="edit-info" viewBox="0 0 480 520">
+            <icon-edit-info/>
+          </icon-base>
+          <code>&lt;icon-base icon-name="edit-info" viewBox="0 0 480 520"&gt;&lt;icon-edit-info /&gt;&lt;/icon-base&gt;</code>
+        </div>
+      </div>
+      <div class="item--icon">
         <h3 class="text_center">IconEye</h3>
         <div class="d_flex justify_content_start align_items_center">
           <icon-base icon-name="eye" viewBox="0 0 480 520">
@@ -193,6 +221,15 @@
             <icon-inbox/>
           </icon-base>
           <code>&lt;icon-base icon-name="inbox" viewBox="0 0 525 525"&gt;&lt;icon-inbox /&gt;&lt;/icon-base&gt;</code>
+        </div>
+      </div>
+      <div class="item--icon">
+        <h3 class="text_center">IconInfomation</h3>
+        <div class="d_flex justify_content_start align_items_center">
+          <icon-base icon-name="infomation" viewBox="0 0 32 32">
+            <icon-infomation/>
+          </icon-base>
+          <code>&lt;icon-base icon-name="infomation" viewBox="0 0 32 32"&gt;&lt;icon-infomation /&gt;&lt;/icon-base&gt;</code>
         </div>
       </div>
       <div class="item--icon">
@@ -316,6 +353,15 @@
         </div>
       </div>
       <div class="item--icon">
+        <h3 class="text_center">IconRecruit</h3>
+        <div class="d_flex justify_content_start align_items_center">
+          <icon-base icon-name="recruit" viewBox="0 0 540 540">
+            <icon-recruit/>
+          </icon-base>
+          <code>&lt;icon-base icon-name="recruit" viewBox="0 0 540 540"&gt;&lt;icon-recruit /&gt;&lt;/icon-base&gt;</code>
+        </div>
+      </div>
+      <div class="item--icon">
         <h3 class="text_center">IconSearch</h3>
         <div class="d_flex justify_content_start align_items_center">
           <icon-base icon-name="search" viewBox="0 0 65 65">
@@ -350,6 +396,16 @@
             <icon-star-gold/>
           </icon-base>
           <code>&lt;icon-base icon-name="star-gold" viewBox="0 0 515 515"&gt;&lt;icon-star-gold
+            /&gt;&lt;/icon-base&gt;</code>
+        </div>
+      </div>
+      <div class="item--icon">
+        <h3 class="text_center">IconStory</h3>
+        <div class="d_flex justify_content_start align_items_center">
+          <icon-base icon-name="story" viewBox="0 0 511.999 511.999">
+            <icon-story/>
+          </icon-base>
+          <code>&lt;icon-base icon-name="story" viewBox="0 0 511.999 511.999"&gt;&lt;icon-story
             /&gt;&lt;/icon-base&gt;</code>
         </div>
       </div>
@@ -457,6 +513,12 @@ import IconAsk from "../icons/IconAsk";
 import IconTags from "../icons/IconTags";
 import IconPen from "../icons/IconPen";
 import IconThumbsUp from "../icons/IconThumbsUp";
+import IconEditInfo from "../icons/IconEditInfo";
+import IconActivity from "../icons/IconActivity";
+import IconBlog from "../icons/IconBlog";
+import IconInfomation from "../icons/IconInfomation";
+import IconRecruit from "../icons/IconRecruit";
+import IconStory from "../icons/IconStory";
 
 export default {
   components: {
@@ -501,7 +563,13 @@ export default {
     IconThumbsUp,
     IconUser,
     IconTags,
-    IconAsk
+    IconAsk,
+    IconActivity,
+    IconBlog,
+    IconEditInfo,
+    IconInfomation,
+    IconRecruit,
+    IconStory
   }
 };
 </script>

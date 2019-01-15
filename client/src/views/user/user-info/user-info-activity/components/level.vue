@@ -83,6 +83,7 @@ export default {
 
 <style scoped lang="scss">
 .level {
+  height: 100%;
   .card_title {
     font-size: 11px;
     font-weight: 600;

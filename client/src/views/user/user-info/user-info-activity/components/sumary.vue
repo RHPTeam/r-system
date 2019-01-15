@@ -1,18 +1,18 @@
 <template>
   <div class="ct_f p_0">
     <div class="r">
-      <div class="c_12 c_sm_12 c_md_6 c_xl_6 pb_5">
+      <div class="c_12 c_sm_12 c_md_12 c_xl_6 pb_5">
         <app-user-answer/>
       </div>
-      <div class="c_12 c_sm_12 c_md_6 c_xl_6 pb_5">
+      <div class="c_12 c_sm_12 c_md_12 c_xl_6 pb_5">
         <app-user-question/>
       </div>
     </div>
     <div class="r">
-      <div class="c_12 c_sm_12 c_md_6 c_xl_6 pb_5">
+      <div class="c_12 c_sm_12 c_md_12 c_xl_6 pb_5">
         <app-user-reputation/>
       </div>
-      <div class="c_12 c_sm_12 c_md_6 c_xl_6">
+      <div class="c_12 c_sm_12 c_md_12 c_xl_6">
         <app-user-tag/>
       </div>
     </div>

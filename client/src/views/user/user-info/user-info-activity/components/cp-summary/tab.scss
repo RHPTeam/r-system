@@ -1,0 +1,77 @@
+.dropdown--list {
+    list-style-type: none;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.23;
+    letter-spacing: 0.1px;
+    color: #9199a1;
+    li {
+      margin: 0 5px;
+      padding-left: 2.5px;
+      padding-right: 2.5px;
+      transition: all 0.5s ease;
+      cursor: pointer;
+      &:after {
+        content: "";
+        position: absolute;
+        bottom: -7px;
+        left: 0;
+        width: 0;
+        background-color: #776ab0;
+        height: 1px;
+        transition: all 0.4s ease;
+      }
+      &.active,
+      &:hover {
+        color: #3b4045;
+        &:after {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+.dropdown--expand {
+  cursor: pointer;
+}
+
+/*RESPONSIVE MENU LEFT-BAR*/
+// Extra small devices (portrait phones, less than 576px)
+// No media query for `xs` since this is the default in Bootstrap
+
+// Small devices (landscape phones, 576px and up)
+@media (max-width: 576px) {
+  .dropdown--collapse {
+    display: none !important;
+    &.show {
+      display: block !important;
+      margin-left: 0;
+      background-clip: padding-box;
+      background-color: #fff;
+      border: 0;
+      border-radius: 2px;
+      box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.1);
+      color: #3e5569;
+      width: 120px;
+      padding: 0.5em 0;
+      position: absolute;
+      top: 100%;
+      z-index: 10;
+      right: 0;
+      border: 1px solid #e9ebee;
+      margin-top: -2px;
+    }
+    li {
+      padding: 0.5rem 1rem !important;
+      font-weight: 500;
+      text-transform: capitalize;
+      margin: 0 !important;
+      &:after {
+        display: none;
+      }
+      &:hover {
+        background-color: #f8f9fa;
+      }
+    }
+  }
+}
