@@ -1,6 +1,6 @@
 const validator = require('validator');
 const passport = require('passport');
-
+//const joi = require('joi');
 const User = require('../models/user.model');
 const JsonResponse = require('../helpers/json-response')
 
@@ -11,46 +11,46 @@ validateMemberForm = async payload => {
   let message = '';
 
   if (!payload || typeof payload.email !== 'string' || payload.email.trim().length === 0 || !validator.isEmail(payload.email)) {
-      isFormValid = false;
-      errors.email = 'Email is require';
+    isFormValid = false;
+    errors.email = 'Email is require';
   }
 
   if (!payload || typeof payload.password !== 'string' || payload.password.trim().length < 6) {
-      isFormValid = false;
-      errors.password = 'Password is require';
+    isFormValid = false;
+    errors.password = 'Password is require';
   }
 
   if (!payload || typeof payload.name !== 'string' || payload.name.trim().length === 0) {
-      isFormValid = false;
-      errors.name = 'User name is require';
+    isFormValid = false;
+    errors.name = 'User name is require';
   }
 
-  if (!payload || typeof payload.nameDisplay !== 'string' ) {
-      isFormValid = false;
-      errors.nameDisplay = 'Name display is require';
+  if (!payload || typeof payload.nameDisplay !== 'string') {
+    isFormValid = false;
+    errors.nameDisplay = 'Name display is require';
   }
 
   if (!isFormValid) {
-      message = 'Xảy ra sự cố thông tin bạn cung cấp.';
+    message = 'Xảy ra sự cố thông tin bạn cung cấp.';
   }
 
   return {
-      success: isFormValid,
-      message,
-      errors
+    success: isFormValid,
+    message,
+    errors
   };
 }
 
 const findUserEmailOrName = async data => {
   try {
     return await User.find()
-              .or([
-                {email: data.email}, 
-                {nameDisplay: data.nameDisplay}
-              ]) 
-              .exec();
+      .or([
+        { email: data.email },
+        { nameDisplay: data.nameDisplay }
+      ])
+      .exec();
   } catch (error) {
-    
+
   }
 }
 
@@ -74,8 +74,8 @@ module.exports = {
       }
 
       const user = await new User(list_user);
-      user.save(err=> {
-        if(err) {
+      user.save(err => {
+        if (err) {
           return res.json(JsonResponse("", 404, "Email or nameDisplay is exist.", false));
         }
         return res.json(JsonResponse("", 200, "create user success", false))
@@ -94,13 +94,13 @@ module.exports = {
   getAllUsers: async (req, res, next) => {
     try {
       return await User.find()
-                        .select('_id userid name nameDisplay email avatar title about ')
-                        .exec((errors, data) => {
-                          if (errors) {
-                            return res.json(JsonResponse("", 401, errors, false))
-                          }
-                          return res.json(JsonResponse(data, 200, "", false))
-                        });
+        .select('_id userid name nameDisplay email avatar title about ')
+        .exec((errors, data) => {
+          if (errors) {
+            return res.json(JsonResponse("", 401, errors, false))
+          }
+          return res.json(JsonResponse(data, 200, "", false))
+        });
     } catch (error) {
       console.log(error);
     }
@@ -130,7 +130,7 @@ module.exports = {
       if (findUserEmailOrName(body).length > 1) {
         return res.json(JsonResponse("", 404, "Email or nameDisplay is exist", false))
       }
-      return await User.findByIdAndUpdate({_id: user._id}, body, (errors, data) => {
+      return await User.findByIdAndUpdate({ _id: user._id }, body, (errors, data) => {
         if (errors) {
           return res.json(JsonResponse("", 404, errors, false))
         }
@@ -149,7 +149,7 @@ module.exports = {
   deleteUser: async (req, res) => {
     try {
       const { user } = req;
-      return await User.findByIdAndDelete({_id: user._id}, (errors, data) => {
+      return await User.findByIdAndDelete({ _id: user._id }, (errors, data) => {
         if (errors) {
           res.json(JsonResponse("", 404, errors, false))
         }
@@ -169,9 +169,9 @@ module.exports = {
    */
   getByIdUser: async (req, res, next, id) => {
     try {
-      const user = await User.findById({_id: id})
-                              .select('_id userid name nameDisplay email avatar title about ')
-                              .exec();
+      const user = await User.findById({ _id: id })
+        .select('_id userid name nameDisplay email avatar title about ')
+        .exec();
       if (!user) {
         return res.json(JsonResponse("", 404, `User ${user.name} doesn't exist`, false));
       }
