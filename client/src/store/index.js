@@ -23,7 +23,7 @@ export default new Vuex.Store({
       commit("changeStatusMenu", payload);
     }
   },
-  modules:{
+  modules: {
     currentTab
   }
 });

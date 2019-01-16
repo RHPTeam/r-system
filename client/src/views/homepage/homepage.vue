@@ -18,48 +18,47 @@
 </template>
 
 <script>
-  import AppInfo from "./components/info";
-  import AppContent from "./components/content";
-  import AppUserJob from "@/components/user/user-jobs";
-  import AppSidebar from "@/components/sidebar/sidebar-left";
-  import AppTopbar from "@/components/navbar/navbar";
-  import AppFooter from "./components/footer";
-  export default {
-    components: {
-      AppSidebar,
-      AppTopbar,
-      AppInfo,
-      AppContent,
-      AppUserJob,
-      AppFooter
-    },
-    data(){
-      return {
-        items: [{
-            name: "Intersting",
-            url: "intersting"
-          },
-          {
-            name: "Feature",
-            url: "feature",
-            qty: 212
-          },
-          {
-            name: "Hot",
-            url: "Week"
-          },
-          {
-            name: "Month",
-            url: "questioners"
-          },
-
-        ]
-      }
-    }
-  };
-
+import AppInfo from "./components/info";
+import AppContent from "./components/content";
+import AppUserJob from "@/components/user/user-jobs";
+import AppSidebar from "@/components/sidebar/sidebar-left";
+import AppTopbar from "@/components/navbar/navbar";
+import AppFooter from "./components/footer";
+export default {
+  components: {
+    AppSidebar,
+    AppTopbar,
+    AppInfo,
+    AppContent,
+    AppUserJob,
+    AppFooter
+  },
+  data() {
+    return {
+      items: [
+        {
+          name: "Intersting",
+          url: "intersting"
+        },
+        {
+          name: "Feature",
+          url: "feature",
+          qty: 212
+        },
+        {
+          name: "Hot",
+          url: "Week"
+        },
+        {
+          name: "Month",
+          url: "questioners"
+        }
+      ]
+    };
+  }
+};
 </script>
 
 <style lang="scss" scope>
- @import "homepage.scss";
+@import "homepage.scss";
 </style>

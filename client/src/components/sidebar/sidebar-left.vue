@@ -265,10 +265,10 @@ export default {
     }
   }
 }
-#sidebarnav{
-  .active{
-    a{
-      color:black !important;
+#sidebarnav {
+  .active {
+    a {
+      color: black !important;
       opacity: 1 !important;
     }
   }
