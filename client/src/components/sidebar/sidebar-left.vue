@@ -47,7 +47,7 @@
           tag="li"
           class="sidebar--item"
           active-class="active"
-          :to="'/users'"
+          :to="'/tags'"
         >
           <a class="sidebar--link link--effect"
             ><icon-base icon-name="tags" viewBox="0 0 60 60"
@@ -72,7 +72,7 @@
           tag="li"
           class="sidebar--item"
           active-class="active"
-          :to="'/users'"
+          :to="'/ranks'"
           ><a class="sidebar--link link--effect">
             <icon-base icon-name="star-circle" viewBox="0 0 500 500"
               ><icon-star-circle
@@ -84,7 +84,7 @@
           tag="li"
           class="sidebar--item"
           active-class="active"
-          :to="'/users'"
+          :to="'/ask-question'"
           ><a class="sidebar--link link--effect">
             <icon-base icon-name="ask" viewBox="0 0 500 500"
               ><icon-ask
@@ -96,7 +96,7 @@
           tag="li"
           class="sidebar--item"
           active-class="active"
-          :to="'/users'"
+          :to="'/inbox'"
           ><a class="sidebar--link link--effect">
             <icon-base icon-name="inbox" viewBox="0 0 500 500"
               ><icon-inbox
@@ -262,6 +262,14 @@ export default {
     .new,
     .count {
       display: block;
+    }
+  }
+}
+#sidebarnav {
+  .active {
+    a {
+      color: black !important;
+      opacity: 1 !important;
     }
   }
 }

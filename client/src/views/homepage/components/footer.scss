@@ -1,0 +1,52 @@
+.footer {
+
+    margin:60px 0px;
+    svg {
+      color: black;
+    }
+
+    .content {
+      width: 100%;
+    }
+
+    .logo {
+      width: 100%;
+      display: inline-block;
+      text-align: center;
+    }
+
+    .more {
+      margin: 10px auto;
+      max-width: 436px;
+      h3,
+      p {
+        text-align: center;
+      }
+
+      h3 {
+        font-size: 20px;
+        font-weight: normal;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: 1.35;
+        letter-spacing: -0.4px;
+        color: #a8a8a8;
+      }
+
+      p {
+        font-size: 15px;
+        font-weight: normal;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: 1.33;
+        letter-spacing: -0.3px;
+        color: #a8a8a8;
+
+        a {
+          color: #0077dd;
+          text-decoration: none;
+        }
+      }
+
+    }
+  }
