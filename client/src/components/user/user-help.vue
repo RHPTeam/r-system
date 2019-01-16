@@ -22,6 +22,7 @@ export default {
 
 <style scoped lang="scss">
 .help {
+  height: 100%;
   .card_title {
     font-size: 16px;
     margin-bottom: 5px;

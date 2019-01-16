@@ -27,15 +27,15 @@
           <div class="form_group form--social">
             <label>Mạng xã hội</label>
             <div class="form_row">
-              <div class="c position_relative">
+              <div class="c c_12 c_sm_4 c_md_12 c_xl_4 mb_3 position_relative">
                 <icon-base class="position_absolute form--social-icon" icon-name="link" viewBox="0 0 58 58"><icon-link /></icon-base>
                 <input type="text" class="form_control" placeholder="">
               </div>
-              <div class="c position_relative">
+              <div class="c c_12 c_sm_4 c_md_12 c_xl_4 mb_3 position_relative">
                 <icon-base class="position_absolute form--social-icon" icon-name="twitter" viewBox="0 0 600 600"><icon-twitter /></icon-base>
                 <input type="text" class="form_control" placeholder="">
               </div>
-              <div class="c position_relative">
+              <div class="c c_12 c_sm_4 c_md_12 c_xl_4 mb_3 position_relative">
                 <icon-base class="position_absolute form--social-icon" icon-name="github" viewBox="0 0 470 470"><icon-github /></icon-base>
                 <input type="text" class="form_control" placeholder="">
               </div>
@@ -44,14 +44,14 @@
           <div class="form_group">
             <label>Hiện tại bạn đang</label>
             <div class="form_row">
-              <div class="c_5">
+              <div class="c c_12 c_sm_6 c_md_12 c_xl_5 mb_3">
                 <div class="btn_group" role="group" aria-label="Basic example">
                   <button type="button" class="btn btn_outline_secondary">Làm việc</button>
                   <button type="button" class="btn btn_outline_secondary">Học tập</button>
                   <button type="button" class="btn btn_outline_secondary">Lập trình</button>
                 </div>
               </div>
-              <div class="c_7">
+              <div class="c c_12 c_sm_6 c_md_12 c_xl_7 mb_3">
                 <input type="text" class="form_control" placeholder="Điều muốn nói">
               </div>
             </div>

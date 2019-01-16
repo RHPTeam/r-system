@@ -60,6 +60,7 @@ export default {
 
 <style scoped lang="scss">
 .reputation {
+  height: 100%;
   .card_title {
     font-size: 11px;
     font-weight: 600;

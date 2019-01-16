@@ -1,8 +1,9 @@
 <template>
   <div class="answer">
-    <div class="answer--head d_flex justify_content_between align_items_center pb_1 mb_3">
+    <div class="answer--head position_relative d_flex justify_content_between align_items_center pb_1 mb_3">
       <div class="answer--title">Trả lời <span class="answer--title-number">(51,302)</span></div>
-      <ul class="answer--filter-list d_flex justify_content_start align_items_center pl_0 mb_0">
+      <a class="dropdown--expand d_block d_sm_none" @click.prevent="showDropdown = !showDropdown"><icon-base icon-name="more" viewBox="0 0 20 10"><icon-more /></icon-base></a>
+      <ul :class="{ show: !showDropdown }" class="dropdown--collapse dropdown--list d_flex justify_content_start align_items_center pl_0 mb_0">
         <li class="position_relative active">hoạt động</li>
         <li class="position_relative">bình chọn</li>
         <li class="position_relative">mới nhất</li>
@@ -21,14 +22,29 @@
     <div class="answer--more mt_4">
       <span>Xem thêm &#8594;</span>
     </div>
+    
   </div>
 </template>
 
 <script>
-export default {};
+import IconBase from "@/components/icons/IconBase";
+import IconMore from "@/components/icons/IconMore";
+export default {
+  data() {
+    return {
+      baseUrl: process.env.BASE_URL,
+      showDropdown: false
+    };
+  },
+  components: {
+    IconBase,
+    IconMore
+  }
+};
 </script>
 
 <style scoped lang="scss">
+@import "tab";
 .answer--head {
   border-bottom: 1px solid #e9ebee;
   .answer--title {
@@ -39,38 +55,6 @@ export default {};
     color: #0077dd;
     .answer--title-number {
       color: #9199a1;
-    }
-  }
-  .answer--filter-list {
-    list-style-type: none;
-    font-size: 13px;
-    font-weight: 600;
-    line-height: 1.23;
-    letter-spacing: 0.1px;
-    color: #9199a1;
-    li {
-      margin: 0 5px;
-      padding-left: 2.5px;
-      padding-right: 2.5px;
-      transition: all 0.5s ease;
-      cursor: pointer;
-      &:after {
-        content: "";
-        position: absolute;
-        bottom: -7px;
-        left: 0;
-        width: 0;
-        background-color: #776ab0;
-        height: 1px;
-        transition: all 0.4s ease;
-      }
-      &.active,
-      &:hover {
-        color: #3b4045;
-        &:after {
-          width: 100%;
-        }
-      }
     }
   }
 }

@@ -1,10 +1,9 @@
 <template>
   <div class="content--head ct m_0">
     <div class="d_flex align_items_center justify_content_center justify_content_md_start">
-      <!-- <h3>Welcome back with RHP Team</h3> -->
       <app-breadcrumb/>
     </div>
-    <app-tabs :items="items"/>
+    <app-tabs :items="items" />
   </div>
 </template>
 <script>
@@ -15,24 +14,21 @@ export default {
     return {
       items: [
         {
-          name: "High Rank",
-          url: "high_rank"
+          name: "Intersting",
+          url: "intersting"
         },
         {
-          name: "New User",
-          url: "new_user"
+          name: "Feature",
+          url: "feature",
+          qty: 212
         },
         {
-          name: "Voters",
-          url: "voters"
+          name: "Hot",
+          url: "Week"
         },
         {
-          name: "Questioners",
+          name: "Month",
           url: "questioners"
-        },
-        {
-          name: "Answers",
-          url: "answers"
         }
       ]
     };

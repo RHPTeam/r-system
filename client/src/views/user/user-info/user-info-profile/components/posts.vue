@@ -18,24 +18,31 @@
                 </div>
             </div>
             <div class="posts--content">
-              <div class="posts--item d_flex justify_content_start align_items_center">
-                <div class="posts--item-count mr_2 bg_success">80</div>
-                <div class="posts--item-title mr_2">Count unique values with pandas per groups</div>
+              <div class="posts--item d_flex justify_content_start align_items_start align_items_sm_center flex_column flex_sm_row">
+                <div class="d_flex justify_content_start align_items_start align_items_sm_center mt_2 mt_sm_0">
+                  <div class="posts--item-count mr_2 bg_success mt_2 mt_sm_0">80</div>
+                  <div class="posts--item-title mr_2">Count unique values with pandas per groups</div>
+                </div>
                 <div class="posts--item-time ml_auto">20 - 10 - 2019</div>
-                <div class="posts--item-see ml_2"><icon-base class="history--list-icon" icon-name="eye" width="22" height="22" viewBox="0 0 480 520"><icon-eye /></icon-base></div>
+                <div class="posts--item-see ml_2 ml_md_0 d_none d_md_block"><icon-base class="history--list-icon" icon-name="eye" width="22" height="22" viewBox="0 0 480 520"><icon-eye /></icon-base></div>
               </div>
-              <div class="posts--item d_flex justify_content_start align_items_center">
-                <div class="posts--item-count mr_2 bg_success">80</div>
-                <div class="posts--item-title mr_2">Count unique values with pandas per groups</div>
+              <div class="posts--item d_flex justify_content_start align_items_start align_items_sm_center flex_column flex_sm_row">
+                <div class="d_flex justify_content_start align_items_start align_items_sm_center mt_2 mt_sm_0">
+                  <div class="posts--item-count mr_2 bg_success mt_2 mt_sm_0">80</div>
+                  <div class="posts--item-title mr_2">Count unique values with pandas per groups</div>
+                </div>
                 <div class="posts--item-time ml_auto">20 - 10 - 2019</div>
-                <div class="posts--item-see ml_2"><icon-base class="history--list-icon" icon-name="eye" width="22" height="22" viewBox="0 0 480 520"><icon-eye /></icon-base></div>
+                <div class="posts--item-see ml_2 ml_md_0 d_none d_md_block"><icon-base class="history--list-icon" icon-name="eye" width="22" height="22" viewBox="0 0 480 520"><icon-eye /></icon-base></div>
               </div>
-              <div class="posts--item d_flex justify_content_start align_items_center">
-                <div class="posts--item-count mr_2 bg_success">80</div>
-                <div class="posts--item-title mr_2">Count unique values with pandas per groups</div>
+              <div class="posts--item d_flex justify_content_start align_items_start align_items_sm_center flex_column flex_sm_row">
+                <div class="d_flex justify_content_start align_items_start align_items_sm_center mt_2 mt_sm_0">
+                  <div class="posts--item-count mr_2 bg_success mt_2 mt_sm_0">80</div>
+                  <div class="posts--item-title mr_2">Count unique values with pandas per groups</div>
+                </div>
                 <div class="posts--item-time ml_auto">20 - 10 - 2019</div>
-                <div class="posts--item-see ml_2"><icon-base class="history--list-icon" icon-name="eye" width="22" height="22" viewBox="0 0 480 520"><icon-eye /></icon-base></div>
+                <div class="posts--item-see ml_2 ml_md_0 d_none d_md_block"><icon-base class="history--list-icon" icon-name="eye" width="22" height="22" viewBox="0 0 480 520"><icon-eye /></icon-base></div>
               </div>
+
             </div>
             <div class="text_right mt_3">
               <span class="posts--more">
@@ -112,6 +119,7 @@ export default {
 .posts--item {
   border-bottom: 1px solid #e4e4e4;
   min-height: 48px;
+  padding: 5px 0;
   font-weight: 600;
   .posts--item-count {
     border-radius: 3px;
