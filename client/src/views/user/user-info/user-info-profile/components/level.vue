@@ -35,6 +35,7 @@ export default {
 <style scoped lang="scss">
 .level {
   color: #242729;
+  height: 100%;
   .card_title {
     font-size: 16px;
   }

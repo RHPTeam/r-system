@@ -15,17 +15,18 @@
     </div>
     <div class="card mt_3">
       <div class="card_body">
-        <div class="main--filter">
-          <ul class="main--filter-list d_flex justify_content_start align_items_center pl_0 pb_2">
-            <li class="position_relative active">Tổng hợp</li>
-            <li class="position_relative">Câu hỏi</li>
-            <li class="position_relative">Trả lời</li>
-            <li class="position_relative">Thẻ</li>
-            <li class="position_relative">Vinh danh</li>
-            <li class="position_relative">Tất cả hành động</li>
-          </ul>
-        </div>
-        <app-user-summary/>
+          <v-tabs show-arrows class="filter--list mb_3">
+            <v-tabs-slider color="#776ab0"></v-tabs-slider>
+            <v-tab class="position_relative" v-for="(item,index) in items"
+              :key="index" @click="currentTab(index)">
+              {{ item.name }}
+            </v-tab>
+          </v-tabs>
+          <keep-alive>
+            <component
+              v-bind:is="currentTabComponent"
+            ></component>
+          </keep-alive>
       </div>
     </div>
   </div>
@@ -35,54 +36,101 @@ import AppUserReputation from "./components/reputation";
 import AppUserStatisticTag from "./components/statistic-tag";
 import AppUserLevel from "./components/level";
 import AppUserSummary from "./components/sumary";
+import AppUserAnswer from "./components/all-answer";
+import AppUserQuestion from "./components/all-question";
+import AppUserTag from "./components/all-tag";
+import AppUserHonor from "./components/all-honor";
+import AppUserAllActivity from "./components/all-activity";
 
 export default {
+  data() {
+    return {
+      tab: "user-summary",
+      items: [
+        {
+          name: "Tổng hợp",
+          url: "tonghop",
+          component_name: "user-summary"
+        },
+        {
+          name: "Trả lời",
+          url: "traloi",
+          component_name: "user-answer"
+        },
+        {
+          name: "Câu hỏi",
+          url: "cauhoi",
+          component_name: "user-question"
+        },
+
+        {
+          name: "Thẻ",
+          url: "the",
+          component_name: "user-tag"
+        },
+        {
+          name: "Vinh danh",
+          url: "vinhdanh",
+          component_name: "user-honor"
+        },
+        {
+          name: "Tất cả hành động",
+          url: "all",
+          component_name: "user-all-activity"
+        }
+      ]
+    };
+  },
+  methods: {
+    currentTab: function(index) {
+      this.tab = this.items[index].component_name;
+    }
+  },
+  computed: {
+    currentTabComponent: function() {
+      return "app-" + this.tab;
+    }
+  },
   components: {
     AppUserReputation,
     AppUserStatisticTag,
     AppUserLevel,
-    AppUserSummary
+    AppUserSummary,
+    AppUserAnswer,
+    AppUserQuestion,
+    AppUserTag,
+    AppUserHonor,
+    AppUserAllActivity
   }
 };
 </script>
 
-<style lang="scss" scoped>
-.main--filter {
-  .main--filter-list {
-    list-style-type: none;
-    border-bottom: 1px solid #e9ebee;
-    font-size: 13px;
-    font-weight: 600;
-    line-height: 1.23;
-    letter-spacing: 0.1px;
-    color: #9199a1;
-
-    li {
-      margin-right: 5px;
-      padding: 0 5px;
-      transition: all 0.5s ease;
-      cursor: pointer;
-
-      &:after {
-        content: "";
-        position: absolute;
-        bottom: -9px;
-        left: 0;
-        width: 0;
-        background-color: #776ab0;
-        height: 2px;
-        transition: all 0.4s ease;
-      }
-
-      &.active,
-      &:hover {
-        color: #3b4045;
-
-        &:after {
-          width: 100%;
-        }
-      }
-    }
-  }
+<style lang="scss">
+.filter--list {
+  list-style-type: none;
+  border-bottom: 1px solid #e9ebee;
+}
+.v-tabs__container {
+  height: auto !important;
+}
+.v-tabs__item--active,
+.v-tabs__div > a:hover:not(.v-tabs__item--active) {
+  color: #3b4045 !important;
+}
+.v-tabs__div {
+  padding-bottom: 0.5em !important;
+  margin-right: 5px !important;
+}
+.v-tabs__item {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.23;
+  letter-spacing: 0.1px;
+  color: #9199a1 !important;
+  transition: all 0.5s ease;
+  cursor: pointer;
+  text-transform: none;
+  text-decoration: none !important;
+  padding: 0 5px !important;
 }
 </style>
