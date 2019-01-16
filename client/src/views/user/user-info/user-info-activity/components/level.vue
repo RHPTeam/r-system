@@ -3,7 +3,7 @@
     <div class="card_body">
       <div class="ct_f">
         <div class="r p_n1">
-          <div class="c_12 c_sm_4 c_md_4 c_xl_4 p_1">
+          <div class="c_12 c_sm_6 c_md_4 c_xl_4 p_1">
             <div class="level--info d_flex justify_content_between flex_column">
               <div class="level--info-top">
                 <div class="card_title mb_2">THỐNG KÊ CẤP BẬC</div>
@@ -23,13 +23,13 @@
               </div>
             </div>
           </div>
-          <div class="c_12 c_sm_6 c_md_6 c_xl_6 p_1">
+          <div class="c_12 c_sm_12 or_0 or_sm_2 or_md_0 c_md_6 c_xl_6 p_1">
             <rchart type="line" width="100%" :options="options" :series="series"></rchart>
           </div>
-          <div class="c_12 c_sm_2 c_md_2 c_xl_2 p_1 text_center">
-            <div class="level--icon text_center pt_3 mt_n1"><icon-base icon-name="m2" width="120" height="120" viewBox="0 0 510 510"><icon-m2/></icon-base></div>
+          <div class="c_12 c_sm_6 c_md_2 c_xl_2 p_1 text_center">
+            <div class="level--icon text_center pt_0 pt_sm_4"><icon-base icon-name="m2" width="120" height="120" viewBox="0 0 510 510"><icon-m2/></icon-base></div>
             <h4 class="level--name text_center font_weight_bold">Master 2</h4>
-            <div class="level--score text_center">
+            <div class="level--score text_center mt_0 mt_sm_n2 mt_md_0">
                 <icon-base icon-name="star-gold" viewBox="0 0 515 515"><icon-star-gold /></icon-base>
                 1,583
                 <icon-base icon-name="star-gold" viewBox="0 0 515 515"><icon-star-gold /></icon-base>
@@ -101,10 +101,12 @@ export default {
   }
   .level--name {
     font-size: 24px;
+    word-spacing: -2px;
   }
   .level--score {
     font-size: 20px;
     font-weight: 500;
+    word-spacing: -1px !important;
   }
 }
 .level--info-bottom {
@@ -116,5 +118,28 @@ export default {
 }
 .info--opacity {
   opacity: 0.6;
+}
+// Extra small devices (portrait phones, less than 576px)
+// No media query for `xs` since this is the default in Bootstrap
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+}
+
+// Medium devices (tablets, 768px and up)
+@media (max-width: 768px) {
+}
+
+// Large devices (desktops, 992px and up)
+@media (max-width: 992px) {
+  .level--icon svg {
+    width: 100px !important;
+    height: 100px !important;
+  }
+  .level--name {
+    font-size: 22px !important;
+  }
+  .level--score {
+    font-size: 18px !important;
+  }
 }
 </style>
