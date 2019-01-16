@@ -6,7 +6,7 @@
       <p class="story-item story--setting-thumb text_center"><a href="#">Lưu lại thành PDF</a></p>
       <div class="story-item d_flex story--setting-status">
         <p class="story--public w_50 align_items_center">
-          Công khai
+          <span>Công khai</span>
         </p>
         <p class="story-item"><a class="story--rules ml_auto">Điều khoản</a></p>
       </div>

@@ -3,8 +3,9 @@
     <div class="user--hobby text_center">
       <h3>Có xem JAV giống Toản không ?</h3>
       <div class="user--hobby-detail d_flex w_60 m_auto align_items_center">
-        <img src="http://thuthuat123.com/uploads/2018/01/27/anh-dai-dien-dep-nhat-39_093007.jpg" width="100"
-             height="100" alt="">
+        <icon-base icon-name="read" width="100" height="100" viewBox="0 0 120 120"
+        ><icon-read
+        /></icon-base>
         <div class="hobby--destination text_left ml_3">
           Lorem ipsum dolor sit amet consectetur adipisicing elit.
         </div>
@@ -15,6 +16,16 @@
     </div>
   </div>
 </template>
+<script>
+  import IconBase from "@/components/icons/IconBase"
+  import IconRead from "@/components/icons/rank/IconRead"
+  export  default  {
+    components : {
+      IconBase,
+      IconRead
+    }
+  }
+</script>
 <style lang="scss" scoped>
   .w_60 {
     width: 60%;
