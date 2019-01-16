@@ -48,22 +48,6 @@ validateMemberForm = async payload => {
   };
 }
 
-const findUserEmailOrName = async data => {
-  try {
-    return await User.find()
-      .or([{
-          email: data.email
-        },
-        {
-          nameDisplay: data.nameDisplay
-        }
-      ])
-      .exec();
-  } catch (error) {
-
-  }
-}
-
 module.exports = {
   /**
    * Create one user
@@ -79,7 +63,15 @@ module.exports = {
         return res.json(JsonResponse("", 403, validationResult.errors, false))
       }
       //check email or nameDisplay exist
-      if (findUserEmailOrName(list_user).length > 0) {
+      const findUser = await User.find()
+        .or([{
+            email: list_user.email
+          },
+          {
+            nameDisplay: list_user.nameDisplay
+          }
+        ]);
+      if (findUser.length > 0) {
         return res.json(JsonResponse("", 404, "Email or nameDisplay is exist", false))
       }
 
@@ -123,7 +115,7 @@ module.exports = {
    */
   getOneUser: async (req, res) => {
     try {
-      return res.json(req.user);
+      return res.json(JsonResponse(req.user, 200, "", false));
     } catch (error) {
       console.log(error)
     }
@@ -140,7 +132,16 @@ module.exports = {
         user,
         body
       } = req;
-      if (findUserEmailOrName(body).length > 1) {
+
+      const findUser = await User.find()
+        .or([{
+            email: body.email
+          },
+          {
+            nameDisplay: body.nameDisplay
+          }
+        ]);
+      if (findUser.length > 1) {
         return res.json(JsonResponse("", 404, "Email or nameDisplay is exist", false))
       }
       return await User.findByIdAndUpdate({
@@ -149,7 +150,7 @@ module.exports = {
         if (errors) {
           return res.json(JsonResponse("", 404, errors, false))
         }
-        res.json(JsonResponse(data, 200, "", false))
+        res.json(JsonResponse("", 200, `update user success`, false))
       })
     } catch (error) {
       console.log(error);
@@ -163,16 +164,11 @@ module.exports = {
    */
   deleteUser: async (req, res) => {
     try {
-      const {
-        user
-      } = req;
-      return await User.findByIdAndRemove({
-        _id: user._id
-      }, (errors, data) => {
-        if (errors) {
+      return await User.deleteOne(req.user, err => {
+        if (err) {
           res.json(JsonResponse("", 404, errors, false))
         }
-        res.send(JsonResponse("", 200, `Delete user ${user.name} success`, false))
+        res.send(JsonResponse("", 200, `Delete user ${req.user.name} success`, false))
       })
     } catch (error) {
       console.log(error);
@@ -227,7 +223,7 @@ module.exports = {
    * @param res
    */
   isLogin: (req, res) => {
-    req.end();
+    res.end();
   },
 
   /**
@@ -236,7 +232,8 @@ module.exports = {
    * @param res
    */
   logoutUser: (req, res) => {
-    req.logout();
+    res.logout();
+    res.end();
   }
 
 }

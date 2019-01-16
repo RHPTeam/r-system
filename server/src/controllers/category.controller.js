@@ -117,13 +117,11 @@ module.exports = {
       const {
         category
       } = req;
-      return await Category.findByIdAndDelete({
-        _id: category._id
-      }, (errors, data) => {
-        if (errors) {
+      return await Category.deleteOne(req.category, err => {
+        if (err) {
           res.json(JsonResponse("", 404, errors, false))
         }
-        res.send(JsonResponse("", 200, `Delete category ${category.name} success`, false))
+        res.send(JsonResponse("", 200, `Delete category ${req.category.name}`, false))
       })
     } catch (error) {
       console.log(error);

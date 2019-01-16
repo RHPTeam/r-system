@@ -1,18 +1,6 @@
 const Tag = require('../models/tag.model');
 const JsonResponse = require('../helpers/json-response')
 
-findTagByName = async data => {
-  try {
-    return await Tag.find()
-      .or([{
-        name: data.name
-      }])
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-
 module.exports = {
   /**
    * create tag

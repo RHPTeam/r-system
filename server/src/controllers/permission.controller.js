@@ -114,16 +114,11 @@ module.exports = {
    */
   deletePermission: async (req, res) => {
     try {
-      const {
-        permission
-      } = req;
-      return await Permission.findByIdAndDelete({
-        _id: permission._id
-      }, (errors, data) => {
-        if (errors) {
+      return await Permission.deleteOne(req.permission, err => {
+        if (err) {
           res.json(JsonResponse("", 404, errors, false))
         }
-        res.send(JsonResponse("", 200, `Delete Permission ${permission.name} success`, false))
+        res.send(JsonResponse("", 200, `Delete permission ${req.permission.name}`, false))
       })
     } catch (error) {
       console.log(error);
