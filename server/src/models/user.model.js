@@ -61,6 +61,10 @@ const UserSchema = new Schema({
   _favorities: [{
       type: Schema.Types.ObjectId,
       ref: 'Favorite'
+  }],
+  _blogs: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Blog'
   }]
 })
 

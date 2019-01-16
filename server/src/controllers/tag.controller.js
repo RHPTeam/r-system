@@ -68,9 +68,7 @@ module.exports = {
    */
   getOneTag: async (req, res) => {
     try {
-      const {
-        tagId
-      } = req.params;
+      const {tagId} = req.params;
       const tag = await Tag.findById(tagId);
       return res.json(JsonResponse(tag, 200, "", false));
     } catch (error) {
@@ -85,9 +83,7 @@ module.exports = {
    */
   updateTag: async (req, res) => {
     try {
-      const {
-        tagId
-      } = req.params;
+      const {tagId} = req.params;
       const newTag = req.body;
       const findTag = await Tag.find({
         name: newTag.name
@@ -99,7 +95,7 @@ module.exports = {
         if (errors) {
           return res.json(JsonResponse("", 404, errors, false))
         }
-        res.json(JsonResponse(newTag, 200, "update tag success", false))
+        return res.json(JsonResponse(newTag, 200, "update tag success", false))
       })
     } catch (error) {
       console.log(error);
@@ -120,7 +116,7 @@ module.exports = {
         if (errors) {
           res.json(JsonResponse("", 404, errors, false))
         }
-        res.send(JsonResponse("", 200, `Delete tag success`, false))
+        return res.send(JsonResponse("", 200, `Delete tag success`, false))
       })
 
     } catch (error) {

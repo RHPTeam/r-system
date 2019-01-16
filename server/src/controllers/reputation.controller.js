@@ -12,52 +12,26 @@ const Anwser = require('../models/anwser.model');
 const JsonResponse = require('../helpers/json-response');
 const repuConfig = require('../configs/reputationScore');
 
-const reputation = 0;
 
 module.exports = {
-  increasementReputationScore: async (req, res) => {
-    try {
-      const { userId } = req.params;
-      //count questions of user
-      const user = await User.findById(userId).populate('_questions');
-      const resQuestion = json(user._questions);
-      const countQuestion = resQuestion.count();
-      const repuQuestion = countQuestion*repuConfig.score.increasement.createQuestion;
-      //count anwsers in per question
-      const repuAnwserInQuestion = 0;
-      const a=[];
-      const b=[];
-      const countAnwser = 0;
-      const repuAnwser = 0;
-      for(const i=1; i <= questions; i++){
-        a[i]=resQuestion._id;
-        const question = await Question.findById(a[i]).populate('_anwsers'); 
-        const resAnwser =  json(question._anwsers);
-        countAnwser = resAnwser.count()+ countAnwser;
-        repuAnwser = countAnwser*repuConfig.score.increasement.anwserForEachQuestion;
-        for(const j = 1; j <= countAnwser; j++){
-          b[j] = resAnwser._id;
-          const anwser = await Anwser.findById(b[j]).populate('_comment')
-        }
-      }
-      
-    } catch (error){
-      console.log(error);
-    }
-  },
-  decreasementReputationScore: async (req, res) => {
-    try {
+  updateScoreByUser: async (req, res) => {
+    const score = req.body;
 
-    } catch (error){
-      console.log(error);
-    }
+    //score luu lai gia tri se cong
+    //
+    //tao mot bien reputation de luu gia tri hien tai cua user
+    //
+    //update lai reputation = score +/-  reputation
+    const {userId} = req.params
+    const reputation = await User.findById(userId);
+    console.log(reputation);
+    //
+    res.status(200).json(reputation);  
   },
-  awardReputationScore: async (req, res) => {
-    try{
-
-    } catch (error) {
-      console.log(error);
-    } 
+  getReputationByUser: async (req, res, next) => {
+    const {userId} = req.params;
+    const user =  await User.findById(userId);
+    console.log(user);
+    res.status(200).json(user); 
   }
-
 }

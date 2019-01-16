@@ -4,8 +4,9 @@ const Schema = mongoose.Schema
 const CommentSchema = new Schema({
     content: String,
     parent: Number,
-    _post: {
-        type: Schema.Types.ObjectId
+    _blog: {
+        type: Schema.Types.ObjectId,
+        ref: 'Blog'
     },
     _user: {
         type: Schema.Types.ObjectId,

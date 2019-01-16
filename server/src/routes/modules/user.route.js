@@ -17,13 +17,13 @@ router.route('/')
 
 router.route('/:userId')
   .get(user.getOneUser)
-  .put(user.updateUser)
+  .patch(user.updateUser)
   .delete(user.deleteUser);
 
 //get calculate reputation score for per user
 router.route('/:userId/reputation')
-  .get(reputation.increasementReputationScore);
-
+  .patch(reputation.updateScoreByUser)
+  .get(reputation.getReputationByUser)
 router.param('userId', user.getByIdUser);
 router.get('/:userId/is-login', user.isLogin)
 router.post('/login-local', user.loginUser);
