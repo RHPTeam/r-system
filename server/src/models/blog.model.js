@@ -10,6 +10,7 @@ const BlogSchema = new Schema({
     editAt: Date,
     status: String,
     image: String,
+    slug: String,
     _author: {
         type: Schema.Types.ObjectId,
         ref: 'User'
