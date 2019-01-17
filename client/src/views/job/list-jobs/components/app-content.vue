@@ -1,18 +1,23 @@
 <template>
   <div class="main">
     <app-info/>
-    <app-main/>
+    <div class="ct">
+      <app-item/>
+      <app-item/>
+      <app-item/>
+      <app-item/>
+    </div>
     <app-paginate/>
   </div>
 </template>
 <script>
   import AppInfo from "./app-info"
   import AppPaginate from "./app-paginate"
-  import AppMain from "./app-main"
+  import AppItem from "./app-items"
   export default  {
     components: {
       AppInfo,
-      AppMain,
+      AppItem,
       AppPaginate
     }
   }

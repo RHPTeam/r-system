@@ -23,25 +23,6 @@ export default {
 </script>
 
 <style lang="scss" scope>
-<<<<<<< HEAD
-.tag--list {
-  padding: 20px 0px 0px 8%;
-
-  .tag {
-    padding-left: 0px !important;
-    box-sizing: border-box;
-    padding-right: 100px;
-    .top {
-      margin-bottom: 20px;
-
-      .tag--name {
-        padding: 8px 5px;
-        color: black;
-        border-radius: 2px;
-        background-color: #dddfe2;
-        margin-right: 5px;
-        border: 1px solid #dddfe2;
-=======
   .tag--list {
      box-sizing: border-box;
     padding: 0px 0px 0px 8%;
@@ -67,7 +48,6 @@ export default {
           color:#9999;
           padding: 8px 5px;
         }
->>>>>>> dev-lamnt-vue
       }
 
       .tag--qty {
@@ -87,5 +67,4 @@ export default {
       color: #707070;
     }
   }
-}
 </style>

@@ -49,6 +49,10 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+  .content--head {
+    border-bottom: 1px solid #e4e4e4;
+    padding-bottom: 10px;
+  }
 .head--search {
       padding-top: 10px;
       position: relative;
@@ -65,7 +69,7 @@ export default {
         outline: none;
         padding: 9px 0px;
         padding-left: 40px !important;
-        width: 100%;
+        width: 80%;
         border: 1px solid #999999;
         border-radius: 5px;
       }
@@ -74,6 +78,9 @@ export default {
   .content--head {
     h3 {
       font-size: 1.5rem;
+    }
+    .head--search {
+      margin-bottom: 1em;
     }
   }
 }

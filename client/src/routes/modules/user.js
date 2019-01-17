@@ -26,14 +26,11 @@ const userRouter = {
           path: "activity",
           name: "user-info-activity",
           component: () => import("@/views/user/user-info/user-info-activity")
-<<<<<<< HEAD
         },
         {
           path: "story",
           name: "user-info-story",
           component: () => import("@/views/user/user-info/user-info-story")
-=======
->>>>>>> dev-lamnt-vue
         },
         {
           path: "settings",
