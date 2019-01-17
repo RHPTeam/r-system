@@ -50,7 +50,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .content--head {
-  padding: 0px 8%;
+  padding: 0px 2%;
   padding-top: 50px;
   .nav--tags {
     .input--fill {
@@ -100,9 +100,9 @@ export default {
 
         .icon--search {
           width: 25px;
-          height: 25px;
-          top: 19px;
-          left: 26px;
+          height: 20px;
+          top: 15px;
+          left: 20px;
           color: #999999;
         }
 

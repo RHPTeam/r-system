@@ -43,6 +43,7 @@ export default {
         background-color: #dddfe2;
         margin-right: 5px;
         border: 1px solid #dddfe2;
+        margin-bottom: 10px;
       }
 
       .tag--detail p {
