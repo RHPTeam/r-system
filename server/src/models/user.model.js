@@ -91,28 +91,45 @@ UserSchema.pre('save', function (next) {
     });
   });
 });
+UserSchema.methods = {
+  // check notification
+  notification: function (id) {
+    if (this._notifications.indexOf(id) === -1) {
+      this._notifications.push(id);
+    }
 
-UserSchema.methods.notification = id => {
-  if (this._notifications.indexOf(id) === -1) {
-    this._notifications.push(id);
-  }
+    return this.save();
+  },
+  unNotification: function (id) {
+    this._notifications.remove(id);
+    return this.save();
+  },
+  isNotification: function (id) {
+    return this._notifications.some(notificationId => {
+      return notificationId.toString() === id.toString();
+    });
+  },
 
-  return this.save();
+  // check permission
+  permission: function (id) {
+    if (this._permissions.indexOf(id) === -1) {
+      this._permissions.push(id);
+    }
+
+    return this.save();
+  },
+  unPermission: function (id) {
+    this._permissions.remove(id);
+    return this.save();
+  },
+  isPermission: function (id) {
+    return this._permissions.some(permissionId => {
+      console.log("permissionId", permissionId)
+      console.log("id", id)
+      return permissionId.toString() === id.toString();
+    });
+  },
 }
-
-UserSchema.methods.unNotification = id => {
-  this._notifications.remove(id);
-  return this.save();
-};
-
-UserSchema.methods.isNotification = function (id) {
-  return this._notifications.some(notificationId => {
-    return notificationId.toString() === id.toString();
-  });
-};
-
-
-
 
 const User = mongoose.model('User', UserSchema)
 module.exports = User

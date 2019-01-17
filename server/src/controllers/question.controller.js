@@ -13,11 +13,11 @@ module.exports = {
    * create Question
    * @param req
    * @param res
+   * @param next
    */
-  createQuestion: async (req, res) => {
+  createQuestion: async (req, res, next) => {
     try {
       const data = req.body;
-
       const question = await new Question({
         name: data.name,
         content: data.content,
@@ -31,7 +31,7 @@ module.exports = {
         return res.json(JsonResponse(data, 200, "create Question success", false));
       })
     } catch (error) {
-      console.log(error)
+      next(error);
     }
   },
 
@@ -39,8 +39,9 @@ module.exports = {
    * Get all Questions
    * @param req
    * @param res
+   * @param next
    */
-  getAllQuestions: async (req, res) => {
+  getAllQuestions: async (req, res, next) => {
     try {
       return await Question.find({}, (errors, data) => {
         if (errors) {
@@ -50,7 +51,7 @@ module.exports = {
       });
 
     } catch (error) {
-      console.log(error)
+      next(error);
     }
   },
 
@@ -58,12 +59,13 @@ module.exports = {
    * Get one Question
    * @param req
    * @param res
+   * @param next
    */
-  getOneQuestion: async (req, res) => {
+  getOneQuestion: async (req, res, next) => {
     try {
-      return res.json(JsonResponse(req.question, 200, "", false))
+      res.json(JsonResponse(req.question, 200, "", false))
     } catch (error) {
-      console.log(error)
+      next(error);
     }
   },
 
@@ -71,24 +73,23 @@ module.exports = {
    * update Question by id 
    * @param req
    * @param res
+   * @param next
    */
-  updateQuestion: async (req, res) => {
+  updateQuestion: async (req, res, next) => {
     try {
       const {
         question,
         body
       } = req;
       body.editDate = new Date();
-      return await Question.findByIdAndUpdate({
-        _id: question._id
-      }, body, (errors, data) => {
+      return await question.updateOne(body, (errors, data) => {
         if (errors) {
           return res.json(JsonResponse("", 404, errors, false))
         }
         res.json(JsonResponse("", 200, "update question success", false))
       })
     } catch (error) {
-
+      next(error);
     }
   },
 
@@ -96,17 +97,18 @@ module.exports = {
    * delete Question by id
    * @param req
    * @param res
+   * @param next
    */
-  deleteQuestion: async (req, res) => {
+  deleteQuestion: async (req, res, next) => {
     try {
-      return await Question.deleteOne(req.question, err => {
+      return await req.question.remove(err => {
         if (err) {
           res.json(JsonResponse("", 404, errors, false))
         }
         res.send(JsonResponse("", 200, `Delete question ${req.question.name}`, false))
       })
     } catch (error) {
-      console.log(error);
+      next(error);
     }
   },
 
@@ -128,7 +130,7 @@ module.exports = {
       req.question = question;
       next();
     } catch (error) {
-      console.log(error)
+      next(error);
     }
   },
 }

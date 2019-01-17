@@ -50,7 +50,7 @@ module.exports = {
         return res.json(JsonResponse("", 200, "create user success", false))
       })
     } catch (error) {
-      console.log(error)
+      next(error)
     }
   },
 
@@ -71,7 +71,7 @@ module.exports = {
           return res.json(JsonResponse(data, 200, "", false))
         });
     } catch (error) {
-      console.log(error);
+      next(error);
     }
   },
 
@@ -79,12 +79,13 @@ module.exports = {
    * get one user
    * @param req
    * @param res
+   * @param next
    */
-  getOneUser: async (req, res) => {
+  getOneUser: async (req, res, next) => {
     try {
       return res.json(JsonResponse(req.user, 200, "", false));
     } catch (error) {
-      console.log(error)
+      next(error);
     }
   },
 
@@ -92,8 +93,9 @@ module.exports = {
    * update user by id
    * @param req
    * @param res
+   * @param next
    */
-  updateUser: async (req, res) => {
+  updateUser: async (req, res, next) => {
     try {
       const {
         user,
@@ -111,14 +113,14 @@ module.exports = {
       if (findUser.length > 1) {
         return res.json(JsonResponse("", 404, "Email or nameDisplay is exist", false))
       }
-      return await User.updateOne(body, (errors, data) => {
+      return await user.updateOne(body, (errors, data) => {
         if (errors) {
           return res.json(JsonResponse("", 404, errors, false))
         }
         res.json(JsonResponse("", 200, `update user success`, false))
       })
     } catch (error) {
-      console.log(error);
+      next(error);
     }
   },
 
@@ -126,8 +128,9 @@ module.exports = {
    * delete user by id 
    * @param req
    * @param res
+   * @param next
    */
-  deleteUser: async (req, res) => {
+  deleteUser: async (req, res, next) => {
     try {
       return await req.user.remove(err => {
         if (err) {
@@ -136,7 +139,7 @@ module.exports = {
         res.send(JsonResponse("", 200, `Delete user ${req.user.name} success`, false))
       })
     } catch (error) {
-      console.log(error);
+      next(error);
     }
   },
 
@@ -160,7 +163,7 @@ module.exports = {
       req.user = user;
       next();
     } catch (error) {
-      console.log(error)
+      next(error);
     }
   },
 
@@ -207,11 +210,10 @@ module.exports = {
       const newPermission = await new Permission(req.body);
       newPermission._user = user;
       await newPermission.save();
-      user._permissions.push(newPermission.id);
-      await user.save();
+      user.permission(newPermission.id)
       res.json(JsonResponse("", 200, `Create permission by user`, false))
     } catch (error) {
-      console.log(error);
+      next(error);
     }
   },
 
@@ -222,7 +224,23 @@ module.exports = {
       const permissionUser = await User.findById(user._id).populate(' _permissions');
       res.json(JsonResponse(permissionUser, 200, "", false))
     } catch (error) {
-      console.log(error);
+      next(error);
+    }
+  },
+
+  deletePermissionInUser: async (req, res, next) => {
+    try {
+      const {
+        permissionId
+      } = req.params;
+      const check = req.user.isPermission(permissionId)
+      if (!check) {
+        return next(JsonResponse("", 404, `User not found role`, false))
+      }
+      await req.user.unPermission(permissionId);
+      res.json(JsonResponse("", 200, "Delete success", false))
+    } catch (error) {
+      next(error)
     }
   }
 

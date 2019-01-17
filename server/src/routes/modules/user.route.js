@@ -28,6 +28,9 @@ router.route('/:userId/permission')
   .post(user.createPermissionUser)
   .get(user.getPermissionUser)
 
+router.route('/:userId/permission/:permissionId')
+  .delete(user.deletePermissionInUser)
+
 router.param('userId', user.getByIdUser);
 router.get('/:userId/is-login', user.isLogin)
 router.post('/login-local', user.loginUser);
