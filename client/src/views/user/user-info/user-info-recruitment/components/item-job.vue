@@ -10,7 +10,13 @@
                     javascript
                 </span>
                 <span class="tab--name c">
-                    javascript
+                    vuejs
+                </span>
+                <span class="tab--name c">
+                    html5
+                </span>
+                <span class="tab--name c">
+                    html5
                 </span>
             </div>
         </div>
@@ -64,5 +70,12 @@
 
 <style scoped lang="scss">
     @import "list-job.scss";
+    @media (max-width: 450px){
+      .item--action{
 
+        button{
+          margin-bottom:10px;
+        }
+      }
+    }
 </style>

@@ -9,11 +9,11 @@
                 <input type="text" class="form_control" placeholder=" eg: Thiết kế viên">
             </div>
             <div class="form_row">
-                <div class="form_group c_md_6">
+                <div class="form_group c_lg_6 c_md_12">
                     <label>Lương tối thiểu</label>
                     <input type="text" class="form_control" placeholder=" eg: 1000$">
                 </div>
-                <div class="form_group c_md_6">
+                <div class="form_group c_lg_6 c_md_12">
                     <label>Lương tối đa</label>
                     <input type="text" class="form_control" placeholder=" eg: 3000$">
                 </div>
@@ -32,19 +32,19 @@
             </div>
             <div class="form_row">
                 <h3 class="c_md_12 title_info">Thông tin chung</h3>
-                <div class="form_group c_md_6">
+                <div class="form_group c_lg_6 c_md_12">
                     <label>Loại công việc</label>
                     <select class="form_control">
                         <option>Toàn thời gian</option>
                         <option>Bán thời gian</option>
                     </select>
                 </div>
-                <div class="form_group c_md_6">
+                <div class="form_group c_lg_6 c_md_12">
                     <label>Loại công ty</label>
                     <input type="text" class="form_control" placeholder=" eg: phát triển game, giải trí">
                     <small class="form_text text_muted">Cách nhau bằng dấu "," </small>
                 </div>
-                <div class="form_group c_md_6">
+                <div class="form_group c_lg_6 c_md_12">
                     <label>Trình độ</label>
                     <select class="form_control">
                         <option>Fresher</option>
@@ -52,21 +52,21 @@
                         <option>Senior</option>
                     </select>
                 </div>
-                <div class="form_group c_md_6">
-                    <label>Số lượng nhân viên công ty</label>
+                <div class="form_group c_lg_6 c_md_12">
+                    <label>Số lượng nhân viên </label>
                     <select class="form_control">
                         <option>10-30</option>
                         <option>30-50</option>
                     </select>
                 </div>
-                <div class="form_group c_md_6">
+                <div class="form_group c_lg_6 c_md_12">
                     <label>Thuộc vị trí</label>
                     <select class="form_control">
                         <option>Front-End Developer</option>
                         <option>Back-End Developer</option>
                     </select>
                 </div>
-                <div class="form_group c_md_6">
+                <div class="form_group c_lg_6 c_md_12">
                     <label>Công ty thuộc</label>
                     <select class="form_control">
                         <option>Open-Source</option>
@@ -92,7 +92,7 @@
                     <label>Mô tả về công ty</label>
                     <ckeditor class="form_control" :editor="editor" v-model="editorData"></ckeditor>
                 </div>
-                <div class="form_group c_md_6">
+                <div class="form_group c_lg_6 c_md_12">
                     <label>Lợi ích được hưởng</label>
                     <div class="btn_group c_md_12">
 
@@ -100,7 +100,7 @@
                         <button class="btn btn--add">Thêm</button>
                     </div>
                 </div>
-                <div class="form_group c_md_6">
+                <div class="form_group c_lg_6 c_md_12">
                     <label>Danh sách lợi ích</label>
                     <div class="list--benefit">
                         <p class="benefit">> Được hỗ trợ lương tháng 13</p>
@@ -111,7 +111,7 @@
                     <label>Văn hóa công ty</label>
                     <ckeditor class="form_control" :editor="editor" v-model="editorData"></ckeditor>
                 </div>
-                <div class="form_group c_md_6">
+                <div class="form_group c_lg_6 c_md_12">
                     <label>Làm việc cùng ai?</label>
                     <div class="btn_group c_md_12">
 
@@ -119,7 +119,7 @@
                         <button class="btn btn--add">Thêm</button>
                     </div>
                 </div>
-                <div class="form_group c_md_6">
+                <div class="form_group c_lg_6 c_md_12">
                     <label>Danh sách người làm việc cùng</label>
                     <div class="list--partner">
                         <img class="partner" src="https://i.pinimg.com/originals/58/92/e7/5892e7f3cc64c8a912e2494a3ff77e08.jpg" />
