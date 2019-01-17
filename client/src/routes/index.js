@@ -51,7 +51,12 @@ export default new Router({
           path: "",
           name: "job",
           component: () => import("@/views/job/example")
-        }
+        },
+        {
+          path: "list",
+          name: "list-job",
+          component: () => import("@/views/job/list-jobs/index")
+        },
       ]
     },
     {
