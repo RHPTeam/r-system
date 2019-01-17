@@ -1,13 +1,12 @@
 <template>
   <div class="main--wrapper">
-    <app-topbar />
-    <app-sidebar />
+    <app-topbar/>
+    <app-sidebar/>
     <div class="page--wrapper">
       <div class="page--content d_flex">
          <div class="main">
-          <app-info  :items="items"/>
+          <app-info :items="items"/>
           <app-content />
-
           <app-footer/>
         </div>
 
@@ -18,48 +17,47 @@
 </template>
 
 <script>
-  import AppInfo from "./components/info";
-  import AppContent from "./components/content";
-  import AppUserJob from "@/components/user/user-jobs";
-  import AppSidebar from "@/components/sidebar/sidebar-left";
-  import AppTopbar from "@/components/navbar/navbar";
-  import AppFooter from "./components/footer";
-  export default {
-    components: {
-      AppSidebar,
-      AppTopbar,
-      AppInfo,
-      AppContent,
-      AppUserJob,
-      AppFooter
-    },
-    data(){
-      return {
-        items: [{
-            name: "Intersting",
-            url: "intersting"
-          },
-          {
-            name: "Feature",
-            url: "feature",
-            qty: 212
-          },
-          {
-            name: "Hot",
-            url: "Week"
-          },
-          {
-            name: "Month",
-            url: "questioners"
-          },
-
-        ]
-      }
-    }
-  };
-
+import AppInfo from "./components/info";
+import AppContent from "./components/content";
+import AppUserJob from "@/components/user/user-jobs";
+import AppSidebar from "@/components/sidebar/sidebar";
+import AppTopbar from "@/components/navbar/navbar";
+import AppFooter from "./components/footer";
+export default {
+  components: {
+    AppSidebar,
+    AppTopbar,
+    AppInfo,
+    AppContent,
+    AppUserJob,
+    AppFooter
+  },
+  data() {
+    return {
+      items: [
+        {
+          name: "Intersting",
+          url: "intersting"
+        },
+        {
+          name: "Feature",
+          url: "feature",
+          qty: 212
+        },
+        {
+          name: "Hot",
+          url: "Week"
+        },
+        {
+          name: "Month",
+          url: "questioners"
+        }
+      ]
+    };
+  }
+};
 </script>
 
-<style lang="scss" scope>
- @import "homepage.scss";
+<style lang="scss" scoped>
+@import "homepage.scss";
 </style>

@@ -34,7 +34,7 @@ export default {
 <style lang="scss" scoped>
 .content--paginate {
   padding: 20px;
-  padding-right:7%;
+  padding-right: 7%;
   .page_item {
     margin-right: 5px;
     &:last-child {

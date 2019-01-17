@@ -3,7 +3,7 @@
     <div class="answer--head position_relative d_flex justify_content_between align_items_center pb_1 mb_3">
       <div class="answer--title">Trả lời <span class="answer--title-number">(51,302)</span></div>
       <a class="dropdown--expand d_block d_sm_none" @click.prevent="showDropdown = !showDropdown"><icon-base icon-name="more" viewBox="0 0 20 10"><icon-more /></icon-base></a>
-      <ul :class="{ show: !showDropdown }" class="dropdown--collapse dropdown--list d_flex justify_content_start align_items_center pl_0 mb_0">
+      <ul :class="{ show: showDropdown }" class="dropdown--collapse dropdown--list d_flex justify_content_start align_items_center pl_0 mb_0">
         <li class="position_relative active">hoạt động</li>
         <li class="position_relative">bình chọn</li>
         <li class="position_relative">mới nhất</li>
@@ -22,7 +22,7 @@
     <div class="answer--more mt_4">
       <span>Xem thêm &#8594;</span>
     </div>
-    
+
   </div>
 </template>
 
@@ -32,7 +32,6 @@ import IconMore from "@/components/icons/IconMore";
 export default {
   data() {
     return {
-      baseUrl: process.env.BASE_URL,
       showDropdown: false
     };
   },
@@ -44,7 +43,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "tab";
+@import "../tab";
 .answer--head {
   border-bottom: 1px solid #e9ebee;
   .answer--title {
@@ -59,7 +58,7 @@ export default {
   }
 }
 .answer--item {
-  font-weight: 600;
+  font-weight: 500;
   .answer--item-count {
     border-radius: 3px;
     height: 24px;

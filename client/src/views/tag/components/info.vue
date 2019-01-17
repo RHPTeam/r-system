@@ -19,107 +19,100 @@
   </div>
 </template>
 <script>
-  import AppTabs from "@/components/navbar/tabs";
-  import IconBase from "@/components/icons/IconBase";
-  import IconSearch from "@/components/icons/IconSearch";
-  export default {
-    data() {
-      return {
-        items: [{
-            name: "Popular",
-            url: "popular"
-          },
-          {
-            name: "Name",
-            url: "name",
-         
-          },
-          {
-            name: "New",
-            url: "new"
-          },
-        ]
-      }
-    },
-    components: {
-      AppTabs,
-      IconSearch,
-      IconBase
-    }
-  };
-
+import AppTabs from "@/components/navbar/tabs";
+import IconBase from "@/components/icons/IconBase";
+import IconSearch from "@/components/icons/IconSearch";
+export default {
+  data() {
+    return {
+      items: [
+        {
+          name: "Popular",
+          url: "popular"
+        },
+        {
+          name: "Name",
+          url: "name"
+        },
+        {
+          name: "New",
+          url: "new"
+        }
+      ]
+    };
+  },
+  components: {
+    AppTabs,
+    IconSearch,
+    IconBase
+  }
+};
 </script>
 <style lang="scss" scoped>
+.content--head {
+  padding: 0px 8%;
+  padding-top: 50px;
+  .nav--tags {
+    .input--fill {
+      padding-top: 10px;
+      position: relative;
+      .icon--search {
+        width: 25px;
+        height: 25px;
+        top: 19px;
+        left: 26px;
+        position: absolute;
+        color: #999999;
+      }
+
+      input {
+        outline: none;
+        padding: 9px 0px;
+        padding-left: 40px !important;
+        width: 100%;
+        border: 1px solid #999999;
+        border-radius: 5px;
+      }
+    }
+  }
+
+  .title--tags {
+    margin-bottom: 32px;
+    width: 54px;
+    height: 35px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.35;
+    letter-spacing: 0.6px;
+    text-align: left;
+    color: #999999;
+  }
+}
+
+@media (max-width: 767px) {
   .content--head {
     padding: 0px 15px;
     padding-top:50px;
     .nav--tags {
       .input--fill {
-        padding-top: 10px;
-        position: relative;
+        margin-bottom: 10px;
+
         .icon--search {
-          width: 25px;  
+          width: 25px;
           height: 25px;
           top: 19px;
           left: 26px;
-          position: absolute;
           color: #999999;
-
         }
 
         input {
-          outline: none;
           padding: 9px 0px;
-          padding-left: 40px !important;
-          width: 100%;
-          border: 1px solid #999999;
-          border-radius: 5px;
-        }
-      }
-    }
-
-    .title--tags {
-      margin-bottom: 32px;
-      width: 54px;
-      height: 35px;
-      font-weight: 600;
-      font-style: normal;
-      font-stretch: normal;
-      line-height: 1.35;
-      letter-spacing: 0.6px;
-      text-align: left;
-      color: #999999;
-    }
-  }
-
-  @media (max-width: 767px) {
-    .content--head {
-         padding-top:100px;
-      .title-tags {
-        font-size: 1.5rem;
-      }
-
-      .nav--tags {
-        .input--fill {
-          margin-bottom: 10px;
-
-          .icon--search {
-            width: 15px;
-            height: 15px;
-            top: 17px;
-            left: 26px;
-            color: #999999;
-
-          }
-
-          input {
-            padding: 9px 0px;
-            padding-left: 30px !important;
-            height:75%;
-          }
+          padding-left: 30px !important;
+          height: 75%;
         }
       }
     }
   }
-
+}
 </style>

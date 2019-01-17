@@ -12,6 +12,15 @@
         </div>
       </div>
       <div class="item--icon">
+        <h3 class="text_center">IconAlarm</h3>
+        <div class="d_flex justify_content_start align_items_center">
+          <icon-base icon-name="alarm" viewBox="0 0 24.5 28">
+            <icon-alarm/>
+          </icon-base>
+          <code>&lt;icon-base icon-name="alarm" viewBox="0 0 24.5 28"&gt;&lt;icon-alarm /&gt;&lt;/icon-base&gt;</code>
+        </div>
+      </div>
+      <div class="item--icon">
         <h3 class="text_center">IconArrowDown</h3>
         <div class="d_flex justify_content_start align_items_center">
           <icon-base icon-name="arrow-down" viewBox="0 0 130 130">
@@ -55,6 +64,16 @@
             <icon-bookmark/>
           </icon-base>
           <code>&lt;icon-base icon-name="bookmark" viewBox="0 0 58 58"&gt;&lt;icon-bookmark
+            /&gt;&lt;/icon-base&gt;</code>
+        </div>
+      </div>
+      <div class="item--icon">
+        <h3 class="text_center">IconBookmark2</h3>
+        <div class="d_flex justify_content_start align_items_center">
+          <icon-base icon-name="bookmark2" viewBox="0 0 17.321 20.474">
+            <icon-bookmark2/>
+          </icon-base>
+          <code>&lt;icon-base icon-name="bookmark2" viewBox="0 0 17.321 20.474"&gt;&lt;icon-bookmark2
             /&gt;&lt;/icon-base&gt;</code>
         </div>
       </div>
@@ -188,12 +207,30 @@
         </div>
       </div>
       <div class="item--icon">
+        <h3 class="text_center">IconFontSize</h3>
+        <div class="d_flex justify_content_start align_items_center">
+          <icon-base icon-name="font-size" viewBox="0 0 32.678 22.018">
+            <icon-font-size/>
+          </icon-base>
+          <code>&lt;icon-base icon-name="font-size" viewBox="0 0 32.678 22.018"&gt;&lt;icon-font-size /&gt;&lt;/icon-base&gt;</code>
+        </div>
+      </div>
+      <div class="item--icon">
         <h3 class="text_center">IconGithub</h3>
         <div class="d_flex justify_content_start align_items_center">
           <icon-base icon-name="github" viewBox="0 0 470 470">
             <icon-github/>
           </icon-base>
           <code>&lt;icon-base icon-name="github" viewBox="0 0 470 470"&gt;&lt;icon-github /&gt;&lt;/icon-base&gt;</code>
+        </div>
+      </div>
+      <div class="item--icon">
+        <h3 class="text_center">IconHeart</h3>
+        <div class="d_flex justify_content_start align_items_center">
+          <icon-base icon-name="heart" viewBox="0 0 12.413 11.127">
+            <icon-heart/>
+          </icon-base>
+          <code>&lt;icon-base icon-name="heart" viewBox="0 0 12.413 11.127"&gt;&lt;icon-heart /&gt;&lt;/icon-base&gt;</code>
         </div>
       </div>
       <div class="item--icon">
@@ -298,6 +335,15 @@
         </div>
       </div>
       <div class="item--icon">
+        <h3 class="text_center">IconMoon</h3>
+        <div class="d_flex justify_content_start align_items_end">
+          <icon-base icon-name="moon" width="42" height="42" viewBox="0 0 24.678 25.761">
+            <icon-moon/>
+          </icon-base>
+          <code>&lt;icon-base icon-name="moon" width="42" height="42" viewBox="0 0 24.678 25.761"&gt;&lt;icon-moon /&gt;&lt;/icon-base&gt;</code>
+        </div>
+      </div>
+      <div class="item--icon">
         <h3 class="text_center">IconMore</h3>
         <div class="d_flex justify_content_start align_items_end">
           <icon-base icon-name="more" width="42" height="42" viewBox="0 0 20 10">
@@ -371,6 +417,15 @@
         </div>
       </div>
       <div class="item--icon">
+        <h3 class="text_center">IconSearchSolid</h3>
+        <div class="d_flex justify_content_start align_items_center">
+          <icon-base icon-name="search-solid" viewBox="0 0 27.033 28">
+            <icon-search-solid/>
+          </icon-base>
+          <code>&lt;icon-base icon-name="search-solid" viewBox="0 0 27.033 28"&gt;&lt;icon-search-solid /&gt;&lt;/icon-base&gt;</code>
+        </div>
+      </div>
+      <div class="item--icon">
         <h3 class="text_center">IconSkyline</h3>
         <div class="d_flex justify_content_start align_items_center">
           <icon-base icon-name="skyline" viewBox="0 0 550 550">
@@ -406,6 +461,16 @@
             <icon-story/>
           </icon-base>
           <code>&lt;icon-base icon-name="story" viewBox="0 0 511.999 511.999"&gt;&lt;icon-story
+            /&gt;&lt;/icon-base&gt;</code>
+        </div>
+      </div>
+      <div class="item--icon">
+        <h3 class="text_center">IconSun</h3>
+        <div class="d_flex justify_content_start align_items_center">
+          <icon-base icon-name="sun" viewBox="0 0 30.152 30.152">
+            <icon-sun/>
+          </icon-base>
+          <code>&lt;icon-base icon-name="sun" viewBox="0 0 30.152 30.152"&gt;&lt;icon-sun
             /&gt;&lt;/icon-base&gt;</code>
         </div>
       </div>
@@ -519,6 +584,13 @@ import IconBlog from "../icons/IconBlog";
 import IconInfomation from "../icons/IconInfomation";
 import IconRecruit from "../icons/IconRecruit";
 import IconStory from "../icons/IconStory";
+import IconAlarm from "../icons/IconAlarm";
+import IconBookmark2 from "../icons/IconBookmark2";
+import IconFontSize from "../icons/IconFontSize";
+import IconHeart from "../icons/IconHeart";
+import IconMoon from "../icons/IconMoon";
+import IconSearchSolid from "../icons/IconSearchSolid";
+import IconSun from "../icons/IconSun";
 
 export default {
   components: {
@@ -569,7 +641,14 @@ export default {
     IconEditInfo,
     IconInfomation,
     IconRecruit,
-    IconStory
+    IconStory,
+    IconSun,
+    IconSearchSolid,
+    IconMoon,
+    IconHeart,
+    IconFontSize,
+    IconBookmark2,
+    IconAlarm
   }
 };
 </script>

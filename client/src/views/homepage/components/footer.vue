@@ -16,14 +16,9 @@
 </template>
 
 <script>
-
-  export default {
-
-  }
-
+export default {};
 </script>
 
 <style scoped lang="scss">
-  @import "footer.scss";
-
+@import "footer.scss";
 </style>

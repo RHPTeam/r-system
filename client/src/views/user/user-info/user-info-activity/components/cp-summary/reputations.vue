@@ -3,7 +3,7 @@
     <div class="honor--head position_relative d_flex justify_content_between align_items_center pb_1 mb_3">
       <div class="honor--title">Vinh danh <span class="honor--title-number">(51,302)</span></div>
       <a class="dropdown--expand d_block d_sm_none" @click.prevent="showDropdown = !showDropdown"><icon-base icon-name="more" viewBox="0 0 20 10"><icon-more /></icon-base></a>
-      <ul :class="{ show: !showDropdown }" class="dropdown--collapse dropdown--list d_flex justify_content_start align_items_center pl_0 mb_0">
+      <ul :class="{ show: showDropdown }" class="dropdown--collapse dropdown--list d_flex justify_content_start align_items_center pl_0 mb_0">
         <li class="position_relative active">hoạt động</li>
         <li class="position_relative">bình chọn</li>
         <li class="position_relative">mới nhất</li>
@@ -34,7 +34,6 @@ import IconMore from "@/components/icons/IconMore";
 export default {
   data() {
     return {
-      baseUrl: process.env.BASE_URL,
       showDropdown: false,
       options: {
         chart: {
@@ -63,7 +62,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "tab";
+@import "../tab";
 .honor--head {
   border-bottom: 1px solid #e9ebee;
   .honor--title {
@@ -99,6 +98,7 @@ export default {
     line-height: 1.6;
     letter-spacing: 0.2px;
     color: #0077dd;
+    font-weight: 500;
   }
 }
 .honor--more {

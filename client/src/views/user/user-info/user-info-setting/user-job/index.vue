@@ -74,7 +74,7 @@
               </div>
               <div class="c_12">
                 <div class="form_group form--radio">
-                  <label for="work-type" class="d_block">Loại công việc</label>
+                  <label for="work-type1" class="d_block">Loại công việc</label>
                   <div class="custom_control custom_radio custom_control_inline">
                     <input type="radio" id="work-type1" name="work-type" class="custom_control_input">
                     <label class="custom_control_label font_weight_normal pt_1" for="work-type1">Full time</label>

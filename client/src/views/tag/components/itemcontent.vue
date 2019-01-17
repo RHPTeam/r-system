@@ -13,16 +13,13 @@
 </template>
 
 <script>
-  export default {
-    components: {},
-    props:['items'],
-    data() {
-      return {
-      
-      }
-    }
-  };
-
+export default {
+  components: {},
+  props: ["items"],
+  data() {
+    return {};
+  }
+};
 </script>
 
 <style lang="scss" >
@@ -35,23 +32,17 @@
       margin-top:30px;
       padding-left: 0px !important;
      box-sizing: border-box;
-         
+
       .top {
         margin-bottom: 20px;
 
-        .tag--name {
-          padding: 8px 5px;
-          color:black;
-          border-radius: 2px;
-          background-color: #dddfe2;
-          margin-right: 5px;
-          border: 1px solid #dddfe2;
-        }
-
-        .tag--qty {
-          color:#9999;
-          padding: 8px 5px;
-        }
+      .tag--name {
+        padding: 8px 5px;
+        color: black;
+        border-radius: 2px;
+        background-color: #dddfe2;
+        margin-right: 5px;
+        border: 1px solid #dddfe2;
       }
 
       .tag--detail p {
@@ -66,6 +57,22 @@
         color: #707070;
       }
     }
-  }
 
+    .tag--qty {
+      color: #9999;
+      padding: 8px 5px;
+    }
+  }
+}
+
+.tag--detail p {
+  font-size: 12px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.36;
+  letter-spacing: normal;
+  text-align: left;
+  color: #707070;
+}
 </style>

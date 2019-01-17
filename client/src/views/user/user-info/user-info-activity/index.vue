@@ -17,11 +17,16 @@
       <div class="card_body">
           <v-tabs show-arrows class="filter--list mb_3">
             <v-tabs-slider color="#776ab0"></v-tabs-slider>
-          <v-tab class="position_relative" v-for="(item,index) in items" :key="index" :href="'#tab-' + item.url">
-            {{ item.name }}
-          </v-tab>
-        </v-tabs>
-        <app-user-summary/>
+            <v-tab class="position_relative" v-for="(item,index) in items"
+              :key="index" @click="currentTab(index)">
+              {{ item.name }}
+            </v-tab>
+          </v-tabs>
+          <keep-alive>
+            <component
+              v-bind:is="currentTabComponent"
+            ></component>
+          </keep-alive>
       </div>
     </div>
   </div>
@@ -31,43 +36,71 @@ import AppUserReputation from "./components/reputation";
 import AppUserStatisticTag from "./components/statistic-tag";
 import AppUserLevel from "./components/level";
 import AppUserSummary from "./components/sumary";
+import AppUserAnswer from "./components/all-answer";
+import AppUserQuestion from "./components/all-question";
+import AppUserTag from "./components/all-tag";
+import AppUserHonor from "./components/all-honor";
+import AppUserAllActivity from "./components/all-activity";
 
 export default {
   data() {
     return {
+      tab: "user-summary",
       items: [
         {
           name: "Tổng hợp",
-          url: "tonghop"
-        },
-        {
-          name: "Câu hỏi",
-          url: "cauhoi"
+          url: "tonghop",
+          component_name: "user-summary"
         },
         {
           name: "Trả lời",
-          url: "traloi"
+          url: "traloi",
+          component_name: "user-answer"
         },
         {
+          name: "Câu hỏi",
+          url: "cauhoi",
+          component_name: "user-question"
+        },
+
+        {
           name: "Thẻ",
-          url: "the"
+          url: "the",
+          component_name: "user-tag"
         },
         {
           name: "Vinh danh",
-          url: "vinhdanh"
+          url: "vinhdanh",
+          component_name: "user-honor"
         },
         {
           name: "Tất cả hành động",
-          url: "all"
+          url: "all",
+          component_name: "user-all-activity"
         }
       ]
     };
+  },
+  methods: {
+    currentTab: function(index) {
+      this.tab = this.items[index].component_name;
+    }
+  },
+  computed: {
+    currentTabComponent: function() {
+      return "app-" + this.tab;
+    }
   },
   components: {
     AppUserReputation,
     AppUserStatisticTag,
     AppUserLevel,
-    AppUserSummary
+    AppUserSummary,
+    AppUserAnswer,
+    AppUserQuestion,
+    AppUserTag,
+    AppUserHonor,
+    AppUserAllActivity
   }
 };
 </script>

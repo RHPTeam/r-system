@@ -3,7 +3,7 @@
     <div class="d_flex align_items_center justify_content_center justify_content_md_start">
       <app-breadcrumb />
       <div class="ml_auto ask--question">
-        <button class="btn--question">Ask question</button>
+        <button class="btn--question" @click.prevent="$router.push({ name: 'question-remind' })">Ask question</button>
       </div>
 
     </div>
@@ -11,20 +11,16 @@
   </div>
 </template>
 <script>
-  import AppTabs from "@/components/navbar/tabs";
-  import AppContent from "./itemcontent";
-  import AppBreadcrumb from "@/components/breadcrumb/breadcrumb";
-  export default {
-    
-    props:['items'],
+import AppTabs from "@/components/navbar/tabs";
+import AppBreadcrumb from "@/components/breadcrumb/breadcrumb";
+export default {
+  props: ["items"],
 
-    components: {
-      AppTabs,
-      AppBreadcrumb
-    },
-   
-  };
-
+  components: {
+    AppTabs,
+    AppBreadcrumb
+  }
+};
 </script>
 <style lang="scss" scoped>
 @import "info.scss";

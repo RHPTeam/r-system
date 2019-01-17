@@ -4,10 +4,10 @@ const JsonResponse = require('../helpers/json-response')
 findCategoryByName = async data => {
   try {
     return await Category.find()
-                        .or([
-                          { name: data.name}
-                        ]) 
-                        .exec();
+      .or([{
+        name: data.name
+      }])
+      .exec();
   } catch (error) {
     console.log(error)
   }
@@ -25,14 +25,16 @@ module.exports = {
         return res.json(JsonResponse("", 403, "Name category is require", false))
       }
 
-      const findCategory = await Category.find({name: data_category.name})
+      const findCategory = await Category.find({
+        name: data_category.name
+      })
       if (Object.keys(findCategory).length > 0) {
         return res.json(JsonResponse("", 403, "Name category is exist", false))
       }
 
       const category = await new Category(data_category);
       category.save((errors, data) => {
-        if(errors) {
+        if (errors) {
           return res.json(JsonResponse("", 404, errors, false));
         }
         return res.json(JsonResponse(data, 200, "create category success", false));
@@ -50,12 +52,12 @@ module.exports = {
   getAllCategories: async (req, res) => {
     try {
       return await Category.find({}, (errors, data) => {
-        if(errors) {
+        if (errors) {
           return res.json(JsonResponse("", 404, errors, false));
         }
         return res.json(JsonResponse(data, 200, "", false));
       });
-      
+
     } catch (error) {
       console.log(error)
     }
@@ -81,20 +83,27 @@ module.exports = {
    */
   updateCategory: async (req, res) => {
     try {
-      const { category, body } = req; 
-      
-      const findCategory = await Category.find({name: body.name})
+      const {
+        category,
+        body
+      } = req;
+
+      const findCategory = await Category.find({
+        name: body.name
+      })
       if (Object.keys(findCategory).length > 1) {
         return res.json(JsonResponse("", 403, "Name category is exist", false))
       }
-      return await Category.findByIdAndUpdate({_id: category._id}, body, (errors, data) => {
+      return await Category.findByIdAndUpdate({
+        _id: category._id
+      }, body, (errors, data) => {
         if (errors) {
           return res.json(JsonResponse("", 404, errors, false))
         }
         res.json(JsonResponse("", 200, "update category success", false))
       })
     } catch (error) {
-      
+
     }
   },
 
@@ -105,8 +114,12 @@ module.exports = {
    */
   deleteCategory: async (req, res) => {
     try {
-      const { category } = req;
-      return await Category.findByIdAndDelete({_id: category._id}, (errors, data) => {
+      const {
+        category
+      } = req;
+      return await Category.findByIdAndDelete({
+        _id: category._id
+      }, (errors, data) => {
         if (errors) {
           res.json(JsonResponse("", 404, errors, false))
         }
@@ -126,9 +139,11 @@ module.exports = {
    */
   getByIdCategory: async (req, res, next, id) => {
     try {
-      const category = await Category.findById({_id: id});
+      const category = await Category.findById({
+        _id: id
+      });
       if (!category) {
-        return res.json(JsonResponse("", 404, `Category ${category.name} doesn't exist`, false));
+        return res.json(JsonResponse("", 404, `Category doesn't exist`, false));
       }
       req.category = category;
       next();
@@ -136,4 +151,5 @@ module.exports = {
       console.log(error)
     }
   },
+
 }

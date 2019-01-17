@@ -1,11 +1,10 @@
 /**
  * create route Categories for project
  */
-const express = require('express');
+const router = require('express-promise-router')();
 
 const category = require('../../controllers/category.controller'); 
 
-const router = express.Router();
 /* GET Categories listing. */
 router.route('/')
   .post(category.createCategory)

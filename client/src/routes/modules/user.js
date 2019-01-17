@@ -28,6 +28,16 @@ const userRouter = {
           component: () => import("@/views/user/user-info/user-info-activity")
         },
         {
+          path: "story",
+          name: "user-info-story",
+          component: () => import("@/views/user/user-info/user-info-story")
+        },
+        {
+          path: "blog",
+          name: "user-info-blog",
+          component: () => import("@/views/user/user-info/user-info-blog")
+        },
+        {
           path: "settings",
           component: () => import("@/views/user/user-info/user-info-setting"),
           children: [
@@ -38,15 +48,27 @@ const userRouter = {
             },
             {
               path: "profile",
-              name: "user-profile-edit",
+              name: "user-setting-info",
               component: () =>
                 import("@/views/user/user-info/user-info-setting/user-info")
             },
             {
+              path: "story",
+              name: "user-setting-story",
+              component: () =>
+                import("@/views/user/user-info/user-info-setting/user-story")
+            },
+            {
               path: "job",
-              name: "user-job-edit",
+              name: "user-setting-job",
               component: () =>
                 import("@/views/user/user-info/user-info-setting/user-job")
+            },
+            {
+              path: "tag",
+              name: "user-setting-tag",
+              component: () =>
+                import("@/views/user/user-info/user-info-setting/user-tag")
             }
           ]
         },

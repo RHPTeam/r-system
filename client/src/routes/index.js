@@ -1,11 +1,11 @@
 import Vue from "vue";
 import Router from "vue-router";
 
-import legaRouter from './modules/lega'
-import userRouter from './modules/user'
-import tagRouter from './modules/tag'
-import blogRouter from './modules/blog'
-import questionRouter from './modules/question'
+import legaRouter from "./modules/lega";
+import userRouter from "./modules/user";
+import tagRouter from "./modules/tag";
+import blogRouter from "./modules/blog";
+import questionRouter from "./modules/question";
 
 Vue.use(Router);
 
@@ -51,17 +51,11 @@ export default new Router({
           path: "",
           name: "job",
           component: () => import("@/views/job/example")
-        }
-      ]
-    },
-    {
-      path: "/members",
-      component: () => import("@/views/members/index"),
-      children: [
+        },
         {
-          path: "",
-          name: "members",
-          component: () => import("@/views/members/example")
+          path: "list",
+          name: "list-job",
+          component: () => import("@/views/job/list-jobs/index")
         }
       ]
     },
