@@ -1,26 +1,31 @@
 <template>
-    <div class="content--tabs">
-        <ul class="nav nav--pills">
-            <li class="nav--item">
-                <a class="nav--link active" href="#">Iteresting</a>
-            </li>
-            <li class="nav--item">
-                <a class="nav--link" href="#">Featurre <span class="num">212</span> </a>
-            </li>
-            <li class="nav--item">
-                <a class="nav--link" href="#">Hot</a>
-            </li>
-            <li class="nav--item">
-                <a class="nav--link" href="#">Week</a>
-            </li>
-            <li class="nav--item">
-                <a class="nav--link" href="#">Month</a>
-            </li>
-            <li class="nav--item">
-                <a class="nav--link" href="#">Chưa trả lời</a>
-            </li>
-        </ul>
+  <div class="content--tabs ct">
+    <div class="col_md_12">
+      <ul class="nav nav--pills">
+        <li class="nav--item">
+          <a class="nav--link active" href="#">Iteresting</a>
+        </li>
+        <li class="nav--item">
+          <a class="nav--link" href="#">
+            Featurre
+            <span class="num">212</span>
+          </a>
+        </li>
+        <li class="nav--item">
+          <a class="nav--link" href="#">Hot</a>
+        </li>
+        <li class="nav--item">
+          <a class="nav--link" href="#">Week</a>
+        </li>
+        <li class="nav--item">
+          <a class="nav--link" href="#">Month</a>
+        </li>
+        <li class="nav--item">
+          <a class="nav--link" href="#">Chưa trả lời</a>
+        </li>
+      </ul>
     </div>
+  </div>
 </template>
 <script>
 export default {};
