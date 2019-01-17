@@ -25,16 +25,17 @@
 
 </script>
 
-<style lang="scss" scope>
+<style lang="scss" >
+
   .tag--list {
      box-sizing: border-box;
-    padding: 0px 0px 0px 8%;
+    padding: 0px;
 
     .tag {
       margin-top:30px;
       padding-left: 0px !important;
      box-sizing: border-box;
-         padding-right: 100px;
+         
       .top {
         margin-bottom: 20px;
 
@@ -54,6 +55,7 @@
       }
 
       .tag--detail p {
+        margin-top:10px;
         font-size: 12px;
         font-weight: normal;
         font-style: normal;

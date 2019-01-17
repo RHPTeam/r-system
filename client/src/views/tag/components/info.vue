@@ -51,14 +51,14 @@
 </script>
 <style lang="scss" scoped>
   .content--head {
-    padding: 0px 8%;
+    padding: 0px 15px;
     padding-top:50px;
     .nav--tags {
       .input--fill {
         padding-top: 10px;
         position: relative;
         .icon--search {
-          width: 25px;
+          width: 25px;  
           height: 25px;
           top: 19px;
           left: 26px;

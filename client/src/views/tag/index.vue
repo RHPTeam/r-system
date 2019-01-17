@@ -34,7 +34,10 @@
   
 </script>
 
-<style lang="scss" scope>
+<style lang="scss" >
+.r{
+  margin:0px !important;
+}
   .main--wrapper {
     font-family: "Quicksand", sans-serif;
     position: relative;
