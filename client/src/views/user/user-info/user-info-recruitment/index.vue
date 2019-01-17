@@ -25,7 +25,9 @@ import AppCreateJob from "./components/create-job";
 <style scoped lang="scss">
     @media (max-width: 1200px){
         .content{
+            background:#e9ebee;
             .main{
+                 background:#e9ebee;
                 .list--job{
                     margin-bottom: 10px;
                 }
