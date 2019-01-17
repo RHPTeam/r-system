@@ -10,6 +10,8 @@ const passport = require('passport');
 
 //const joi = require('joi');
 const User = require('../models/user.model');
+const Permission = require('../models/permission.model');
+
 const JsonResponse = require('../helpers/json-response')
 const validateUser = require('../validator/user');
 
@@ -109,9 +111,7 @@ module.exports = {
       if (findUser.length > 1) {
         return res.json(JsonResponse("", 404, "Email or nameDisplay is exist", false))
       }
-      return await User.findByIdAndUpdate({
-        _id: user._id
-      }, body, (errors, data) => {
+      return await User.updateOne(body, (errors, data) => {
         if (errors) {
           return res.json(JsonResponse("", 404, errors, false))
         }
@@ -129,7 +129,7 @@ module.exports = {
    */
   deleteUser: async (req, res) => {
     try {
-      return await User.deleteOne(req.user, err => {
+      return await req.user.remove(err => {
         if (err) {
           res.json(JsonResponse("", 404, errors, false))
         }
@@ -152,7 +152,7 @@ module.exports = {
       const user = await User.findById({
           _id: id
         })
-        .select('_id userid name nameDisplay email avatar title about ')
+        .select('_id userid name nameDisplay email avatar title about _permissions')
         .exec();
       if (!user) {
         return res.json(JsonResponse("", 404, `User not found`, false));
@@ -199,6 +199,31 @@ module.exports = {
   logoutUser: (req, res) => {
     res.logout();
     res.end();
+  },
+
+  createPermissionUser: async (req, res) => {
+    try {
+      const user = req.user;
+      const newPermission = await new Permission(req.body);
+      newPermission._user = user;
+      await newPermission.save();
+      user._permissions.push(newPermission.id);
+      await user.save();
+      res.json(JsonResponse("", 200, `Create permission by user`, false))
+    } catch (error) {
+      console.log(error);
+    }
+  },
+
+  getPermissionUser: async (req, res) => {
+    try {
+      const user = req.user;
+      // const permissionUser = user.populate('_permissions')
+      const permissionUser = await User.findById(user._id).populate(' _permissions');
+      res.json(JsonResponse(permissionUser, 200, "", false))
+    } catch (error) {
+      console.log(error);
+    }
   }
 
 }

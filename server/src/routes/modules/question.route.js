@@ -9,7 +9,6 @@ const router = require('express-promise-router')();
 
 const question = require('../../controllers/question.controller'); 
 
-const router = express.Router();
 /* GET questions listing. */
 router.route('/')
   .post(question.createQuestion)

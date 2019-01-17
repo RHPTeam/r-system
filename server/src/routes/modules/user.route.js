@@ -24,6 +24,10 @@ router.route('/:userId')
 router.route('/:userId/reputation')
   .get(reputation.increasementReputationScore);
 
+router.route('/:userId/permission')
+  .post(user.createPermissionUser)
+  .get(user.getPermissionUser)
+
 router.param('userId', user.getByIdUser);
 router.get('/:userId/is-login', user.isLogin)
 router.post('/login-local', user.loginUser);
