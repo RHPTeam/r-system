@@ -14,7 +14,7 @@
           <router-link class="navbar--list-item p_0 pt_1" :to="{ name: 'user-info-blog' }">
             <icon-base width="20" height="20" icon-name="blog" viewBox="0 0 520 520"><icon-blog /></icon-base>
           </router-link>
-          <router-link class="navbar--list-item p_0 pt_1" :to="{ name: '' }">
+          <router-link class="navbar--list-item p_0 pt_1" :to="{ name: 'user-info-recruitment' }">
             <icon-base width="20" height="20" icon-name="recruit" viewBox="0 0 540 540"><icon-recruit /></icon-base>
           </router-link>
           <router-link class="navbar--list-item p_0 pt_1" :to="{ name: 'user-setting-info' }">
@@ -47,7 +47,7 @@
           <router-link class="navbar--list-item" :to="{ name: 'user-info-blog' }">
             Bài viết
           </router-link>
-          <router-link class="navbar--list-item" :to="{ name: '' }">
+          <router-link class="navbar--list-item" :to="{ name: 'user-info-recruitment' }">
             Tuyển dụng
           </router-link>
           <router-link class="navbar--list-item" :to="{ name: 'user-setting-info' }">
