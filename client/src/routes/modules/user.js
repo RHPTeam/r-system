@@ -75,7 +75,7 @@ const userRouter = {
         {
           path: "recruitment",
           name: "user-info-recruitment",
-          component: ()=>
+          component: () =>
             import("@/views/user/user-info/user-info-recruitment")
         }
       ]

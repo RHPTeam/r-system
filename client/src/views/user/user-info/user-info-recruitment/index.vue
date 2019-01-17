@@ -12,45 +12,40 @@
 </template>
 
 <script>
-    import AppListJob from "./components/list-job";
-    import AppCreateJob from "./components/create-job";
-    export default {
-        components: {
-            AppListJob,
-            AppCreateJob
-        }
-    }
-
+import AppListJob from "./components/list-job";
+import AppCreateJob from "./components/create-job";
+export default {
+  components: {
+    AppListJob,
+    AppCreateJob
+  }
+};
 </script>
 
 <style scoped lang="scss">
-    .content {
-        background: #e9ebee !important;
+.content {
+  background: #e9ebee !important;
 
-        .main {
-            background: #e9ebee !important;
-        }
+  .main {
+    background: #e9ebee !important;
+  }
+}
+
+@media (max-width: 1000px) {
+  .content {
+    .main {
+      .list--job {
+        margin-bottom: 10px;
+      }
     }
+  }
+}
 
-    @media (max-width: 1000px) {
-        .content {
-            .main {
-
-                .list--job {
-
-                    margin-bottom: 10px;
-                }
-            }
-        }
+@media (min-width: 1201px) {
+  .main {
+    .create--job {
+      padding-left: 0px !important;
     }
-
-    @media (min-width: 1201px) {
-        .main {
-            .create--job {
-                padding-left: 0px !important;
-            }
-
-        }
-    }
-
+  }
+}
 </style>

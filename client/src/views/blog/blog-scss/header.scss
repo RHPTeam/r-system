@@ -1,0 +1,204 @@
+/* CSS For Nav */
+
+.header {
+    font-family: Quicksand, sans-serif;
+    width: 100%;
+    z-index: 50;
+    font-size: 1rem;
+    .nav--head {
+        height: 60px;
+    }
+    .nav--menu,
+    .nav--right {
+        list-style-type: none;
+    }
+    .nav--menu {
+        min-height: 40px;
+    }
+    .nav--item {
+        cursor: pointer;
+        .nav--item-btn {
+            height: 35px;
+            border-radius: 5px;
+            font-size: 0.9285rem;
+            font-weight: bold;
+            line-height: 1.15;
+            letter-spacing: 0.1px;
+            border: 2px solid #776ab0;
+            box-shadow: none;
+            transition: all 0.4s ease;
+        }
+    }
+    .menu--item {
+        font-weight: 600;
+        line-height: 1.14;
+        letter-spacing: 0.2px;
+        text-transform: uppercase;
+        cursor: pointer;
+        -webkit-transition: all 0.4s ease;
+        &:after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            -webkit-transition: all 0.4s ease;
+            transition: all 0.4s ease;
+        }
+        &:hover,
+        &.active {
+            &:after {
+                width: 100%;
+            }
+        }
+    }
+}
+
+
+/* CSS For Dropdown Profile User */
+
+.dropdown--menu {
+    background-clip: padding-box;
+    background-color: #fff;
+    border: 0;
+    border-radius: 2px;
+    box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.1);
+    color: #3e5569;
+    float: none;
+    font-size: 0.875rem;
+    margin: 0.75rem 0 0;
+    min-width: 280px;
+    padding: 0 0 0.5rem 0;
+    position: absolute;
+    text-align: left;
+    top: 100%;
+    z-index: 1000;
+    &.dropdown--menu-right {
+        right: 0;
+        left: auto;
+        .arrow {
+            right: 0;
+        }
+        .shape {
+            left: auto;
+            right: 10px;
+        }
+    }
+    &.show {
+        display: block;
+    }
+    .arrow {
+        height: 10px;
+        overflow: hidden;
+        position: absolute;
+        top: -10px;
+        width: 40px;
+        &>span {
+            background-color: #7460ee;
+            border-radius: 6px 0 0;
+            content: "";
+            height: 15px;
+            position: absolute;
+            top: 3px;
+            transform: rotate(45deg);
+            width: 15px;
+        }
+    }
+    div:first-of-type {
+        background-color: #7460ee;
+    }
+    .dropdown--item {
+        background-color: transparent;
+        border: 0;
+        clear: both;
+        color: #212529;
+        display: block;
+        padding: 0.65rem 1rem;
+        text-align: inherit;
+        text-decoration: none;
+        white-space: nowrap;
+        width: 100%;
+        &:hover {
+            color: #16181b;
+            text-decoration: none;
+            background-color: #f8f9fa;
+        }
+    }
+    .dropdown--divider {
+        height: 0;
+        margin: 0.5rem 0;
+        overflow: hidden;
+        border-top: 1px solid #f8f9fa;
+    }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.5s;
+}
+
+.fade-enter,
+.fade-leave-to {
+    opacity: 0;
+}
+
+
+/*=============================================
+=                 Light Color                 =
+=============================================*/
+
+.header[data-theme='light'] {
+    background-color: #fff;
+    color: #3b4045;
+    .nav--item {
+        svg {
+            color: #3b4045;
+        }
+        .nav--item-btn {
+            color: #776ab0;
+            background-color: #fff;
+            &:hover {
+                color: #fff;
+                background-color: #776ab0;
+            }
+        }
+    }
+    .menu--item {
+        &.active,
+        &:hover {
+            color: #776ab0;
+        }
+        &:after {
+            background-color: #776ab0;
+        }
+    }
+}
+
+
+/*=============================================
+=                  Dark Color                 =
+=============================================*/
+
+.header[data-theme='dark'] {
+    background-color: #333;
+    color: #f7f7f7;
+    .nav--item {
+        svg {
+            color: #f7f7f7;
+        }
+        .nav--item-btn {
+            color: #fff;
+            background-color: #776ab0;
+            &:hover {
+                color: #776ab0;
+                background-color: #fff;
+            }
+        }
+    }
+    .menu--item {
+        &:after {
+            background-color: #fff;
+        }
+    }
+}

@@ -134,26 +134,18 @@
 </template>
 
 <script>
-    import IconBase from "@/components/icons/IconBase";
-    import IconArrowDown from "@/components/icons/IconArrowDown";
-    import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
-    export default {
-        components: {
-            IconBase,
-            IconArrowDown,
-        },
-        data() {
-            return {
-                editor: ClassicEditor,
-                editorData: ''
-            };
-        },
-    }
-
+export default {
+  data() {
+    return {
+      editor: ClassicEditor,
+      editorData: ""
+    };
+  }
+};
 </script>
 
 <style scoped lang="scss">
-    @import "create-job.scss";
-
+@import "create-job.scss";
 </style>

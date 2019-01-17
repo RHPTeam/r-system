@@ -93,7 +93,7 @@ export default {
 @media (max-width: 767px) {
   .content--head {
     padding: 0px 15px;
-    padding-top:50px;
+    padding-top: 50px;
     .nav--tags {
       .input--fill {
         margin-bottom: 10px;
