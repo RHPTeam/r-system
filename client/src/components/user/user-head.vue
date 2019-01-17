@@ -17,7 +17,7 @@
           <router-link class="navbar--list-item p_0 pt_1" :to="{ name: '' }">
             <icon-base width="20" height="20" icon-name="recruit" viewBox="0 0 540 540"><icon-recruit /></icon-base>
           </router-link>
-          <router-link class="navbar--list-item p_0 pt_1" :to="{ name: 'user-profile-edit' }">
+          <router-link class="navbar--list-item p_0 pt_1" :to="{ name: 'user-setting-info' }">
             <icon-base width="20" height="20" icon-name="edit-info" viewBox="0 0 480 520"><icon-edit-info /></icon-base>
           </router-link>
         </ul>
@@ -50,7 +50,7 @@
           <router-link class="navbar--list-item" :to="{ name: '' }">
             Tuyển dụng
           </router-link>
-          <router-link class="navbar--list-item" :to="{ name: 'user-profile-edit' }">
+          <router-link class="navbar--list-item" :to="{ name: 'user-setting-info' }">
             Chỉnh sửa thông tin
           </router-link>
         </ul>
