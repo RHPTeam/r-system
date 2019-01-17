@@ -15,5 +15,5 @@
 
 
 <style scoped lang="scss">
-  @import "../../../assets/scss/rhelp/main-content";
+@import "../../../assets/scss/rhelp/main-content";
 </style>

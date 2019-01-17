@@ -1,13 +1,13 @@
 import Vue from "vue";
 import Router from "vue-router";
 
-import adminRouter from "./modules/admin"
+import adminRouter from "./modules/admin";
 import legaRouter from "./modules/lega";
 import userRouter from "./modules/user";
 import tagRouter from "./modules/tag";
 import blogRouter from "./modules/blog";
 import questionRouter from "./modules/question";
-import jobRouter from "./modules/job"
+import jobRouter from "./modules/job";
 
 Vue.use(Router);
 

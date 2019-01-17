@@ -2,7 +2,7 @@
 const tagRouter = {
   path: "/tags",
   name: "tags",
-  component: () => import("@/views/tag/index")
+  component: () => import("@/views/tag")
 };
 
 export default tagRouter;
