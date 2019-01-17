@@ -8,7 +8,7 @@
           <router-link tag="button" class="btn btn_dark" to="/">Quay về trang chủ</router-link>
         </div>
       </div>
-      <div class="c_12 c_md_6 c_xl_6">
+      <div class="d_none d_lg_block c_md_6 c_xl_6">
         <div class="bg_svg">
           <img :src="`${base}images/svg/500.svg`" alt="">
         </div>

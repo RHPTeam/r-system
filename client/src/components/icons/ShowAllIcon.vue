@@ -68,12 +68,12 @@
         </div>
       </div>
       <div class="item--icon">
-        <h3 class="text_center">IconBookmarkBlog</h3>
+        <h3 class="text_center">IconBookmark2</h3>
         <div class="d_flex justify_content_start align_items_center">
-          <icon-base icon-name="bookmark-blog" viewBox="0 0 431.972 431.972">
-            <icon-bookmark-blog/>
+          <icon-base icon-name="bookmark2" viewBox="0 0 17.321 20.474">
+            <icon-bookmark2/>
           </icon-base>
-          <code>&lt;icon-base icon-name="bookmark-blog" viewBox="0 0 431.972 431.972"&gt;&lt;icon-bookmark-blog
+          <code>&lt;icon-base icon-name="bookmark2" viewBox="0 0 17.321 20.474"&gt;&lt;icon-bookmark2
             /&gt;&lt;/icon-base&gt;</code>
         </div>
       </div>
@@ -436,16 +436,6 @@
         </div>
       </div>
       <div class="item--icon">
-        <h3 class="text_center">IconShortLogo</h3>
-        <div class="d_flex justify_content_start align_items_center">
-          <icon-base width="40" height="40" icon-name="short-logo" viewBox="0 0 130.769 54.954">
-            <icon-short-logo/>
-          </icon-base>
-          <code>&lt;icon-base width="40" height="40" icon-name="short-logo" viewBox="0 0 130.769 54.954"&gt;&lt;icon-short-logo
-            /&gt;&lt;/icon-base&gt;</code>
-        </div>
-      </div>
-      <div class="item--icon">
         <h3 class="text_center">IconStarCircle</h3>
         <div class="d_flex justify_content_start align_items_center">
           <icon-base icon-name="star-circle" viewBox="0 0 515 515">
@@ -595,13 +585,12 @@ import IconInfomation from "../icons/IconInfomation";
 import IconRecruit from "../icons/IconRecruit";
 import IconStory from "../icons/IconStory";
 import IconAlarm from "../icons/IconAlarm";
-import IconBookmarkBlog from "../icons/IconBookmarkBlog";
+import IconBookmark2 from "../icons/IconBookmark2";
 import IconFontSize from "../icons/IconFontSize";
 import IconHeart from "../icons/IconHeart";
 import IconMoon from "../icons/IconMoon";
 import IconSearchSolid from "../icons/IconSearchSolid";
 import IconSun from "../icons/IconSun";
-import IconShortLogo from "../icons/IconShortLogo";
 
 export default {
   components: {
@@ -658,9 +647,8 @@ export default {
     IconMoon,
     IconHeart,
     IconFontSize,
-    IconBookmarkBlog,
-    IconAlarm,
-    IconShortLogo
+    IconBookmark2,
+    IconAlarm
   }
 };
 </script>

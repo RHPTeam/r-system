@@ -1,6 +1,6 @@
 <template>
-  <header class="header" :data-theme="currentTheme">
-      <nav class="nav ct p_0 pb_1">
+  <header class="nav--top" :data-theme="currentTheme">
+      <nav class="nav ct pb_1">
         <div class="nav--head d_flex align_items_center justify_content_between">
           <router-link
             tag="a"
@@ -133,5 +133,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../blog-scss/header";
+@import "../blog-scss/blog";
+@import "../blog-scss/user-dropdown";
 </style>

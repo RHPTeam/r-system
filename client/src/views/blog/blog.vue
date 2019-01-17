@@ -1,33 +1,9 @@
 <template>
   <div :data-theme="currentTheme" class="blog--content">
     <app-header/>
-    <div class="ct pl_4 pr_4 pr_sm_0 pl_sm_0">
-      <div class="r">
-        <div class="c_12">
-          <app-trend/>
-        </div>
-        <div class="c_12">
-          <hr/>
-        </div>
-        <div class="c_12 c_sm_12 c_md_12 c_lg_8 c_xl_8 pl_lg_3 pr_lg_3">
-          <app-lastest/>
-          <div class="c_12 p_0 d_block d_lg_none">
-            <hr/>
-          </div>
-        </div>
-        <div class="c_12 c_sm_12 c_md_12 c_lg_4 c_xl_4 pl_lg_3 pr_lg_3">
-          <app-popular/>
-          <app-ads class="d_none d_lg_block"/>
-        </div>
-        <div class="c_12">
-          <hr/>
-        </div>
-        <div class="c_12 c_sm_12 c_md_12 c_lg_8 c_xl_8">
-          <app-feature/>
-        </div>
-      </div>
+    <div class="ct pt_5 pb_5">
+      <app-trend/>
     </div>
-    <app-footer/>
     <div class="blog--change position_fixed text_center">
       <div class="change--theme" @click="changeTheme">
         <div v-if="isThemeLight" class="theme--light"><icon-base icon-name="moon" width="30" height="30" viewBox="0 0 24.678 25.761"><icon-moon /></icon-base></div>
@@ -45,11 +21,6 @@ import IconMoon from "@/components/icons/IconMoon";
 import IconSun from "@/components/icons/IconSun";
 import AppHeader from "@/views/blog/blog-component/header";
 import AppTrend from "@/views/blog/blog-component/trend";
-import AppLastest from "@/views/blog/blog-component/lastest";
-import AppFeature from "@/views/blog/blog-component/feature";
-import AppPopular from "@/views/blog/blog-component/popular";
-import AppAds from "@/views/blog/blog-component/ads";
-import AppFooter from "@/views/blog/blog-component/footer";
 export default {
   data() {
     return {
@@ -63,12 +34,7 @@ export default {
     IconMoon,
     IconSun,
     AppHeader,
-    AppTrend,
-    AppLastest,
-    AppFeature,
-    AppPopular,
-    AppAds,
-    AppFooter
+    AppTrend
   },
   computed: {
     valueTheme() {
@@ -86,6 +52,7 @@ export default {
       } else {
         this.theme = "dark";
       }
+      console.log(this.valueTheme);
       this.$store.dispatch("changeTheme", this.valueTheme);
     }
   }
@@ -94,4 +61,23 @@ export default {
 
 <style scoped lang="scss">
 @import "./blog-scss/blog";
+.blog--change {
+  background-color: transparent;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+  z-index: 49;
+  .change--theme,
+  .change--size {
+    border: 2px solid #776ab0;
+    border-radius: 5px;
+    width: 45px;
+    height: 45px;
+    line-height: 58px;
+    cursor: pointer;
+  }
+  .change--theme {
+    margin-bottom: -2px;
+  }
+}
 </style>

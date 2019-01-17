@@ -3,16 +3,17 @@
         <div class="card_body">
             <h5 class="card_title font_weight_bold">CÀI ĐẶT NGƯỜI DÙNG</h5>
             <ul class="setting--content mb_0 pl_0">
-                <router-link class="d_block setting--content-item active" :to="{ name: 'user-profile-edit' }">
+                <router-link class="d_block setting--content-item" active-class="active"
+                             exact :to="{ name: 'user-setting-info' } ">
                   Thông tin người dùng
                 </router-link>
-                <router-link class="d_block setting--content-item" :to="{ name: '' }">
+                <router-link class="d_block setting--content-item" active-class="active" :to="{ name: 'user-setting-story' }">
                   Câu chuyện công việc
                 </router-link>
-                <router-link class="d_block setting--content-item" :to="{ name: 'user-job-edit' }">
+                <router-link class="d_block setting--content-item" active-class="active" :to="{ name: 'user-setting-job' }">
                   Thông tin công việc
                 </router-link>
-                <router-link class="d_block setting--content-item" :to="{ name: '' }">
+                <router-link class="d_block setting--content-item" active-class="active" :to="{ name: 'user-setting-tag' }">
                   Thiết lập thẻ tag
                 </router-link>
             </ul>

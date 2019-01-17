@@ -8,10 +8,10 @@
           <router-link class="navbar--list-item p_0 pt_1" :to="{ name: 'user-info-profile' }">
             <icon-base width="20" height="20" icon-name="infomation" viewBox="0 0 32 32"><icon-infomation /></icon-base>
           </router-link>
-          <router-link class="navbar--list-item p_0 pt_1" :to="{ name: '' }">
+          <router-link class="navbar--list-item p_0 pt_1" :to="{ name: 'user-info-story' }">
             <icon-base width="20" height="20" icon-name="story" viewBox="0 0 511.999 511.999"><icon-story /></icon-base>
           </router-link>
-          <router-link class="navbar--list-item p_0 pt_1" :to="{ name: '' }">
+          <router-link class="navbar--list-item p_0 pt_1" :to="{ name: 'user-info-blog' }">
             <icon-base width="20" height="20" icon-name="blog" viewBox="0 0 520 520"><icon-blog /></icon-base>
           </router-link>
           <router-link class="navbar--list-item p_0 pt_1" :to="{ name: '' }">
@@ -41,10 +41,10 @@
           <router-link class="navbar--list-item" :to="{ name: 'user-info-profile' }">
             Thông tin
           </router-link>
-          <router-link class="navbar--list-item" :to="{ name: '' }">
+          <router-link class="navbar--list-item" :to="{ name: 'user-info-story' }">
             Câu chuyện lập trình
           </router-link>
-          <router-link class="navbar--list-item" :to="{ name: '' }">
+          <router-link class="navbar--list-item" :to="{ name: 'user-info-blog' }">
             Bài viết
           </router-link>
           <router-link class="navbar--list-item" :to="{ name: '' }">

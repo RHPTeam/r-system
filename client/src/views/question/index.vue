@@ -5,7 +5,6 @@
     <router-view />
   </div>
 </template>
-
 <script>
 import AppSidebar from "@/components/sidebar/sidebar";
 import AppTopbar from "@/components/navbar/navbar";
@@ -16,7 +15,6 @@ export default {
   }
 };
 </script>
-
 <style lang="scss">
 .main--wrapper {
   font-family: "Quicksand", sans-serif;
