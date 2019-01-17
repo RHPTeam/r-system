@@ -64,7 +64,7 @@
 <script>
 import IconBase from "@/components/icons/IconBase";
 import IconClose from "@/components/icons/IconClose";
-import  IconStop from "@/components/icons/IconStop"
+import IconStop from "@/components/icons/IconStop";
 export default {
   components: {
     IconBase,
@@ -109,15 +109,17 @@ h3 {
       margin-right: 10px;
       a {
         text-decoration: none;
-        svg{
+        svg {
           margin-left: 5px;
           margin-bottom: -7px;
           color: #000;
         }
       }
-      &:hover,&:active,&:focus {
+      &:hover,
+      &:active,
+      &:focus {
         background: #776ab0;
-        a{
+        a {
           color: #fff;
         }
       }
@@ -137,7 +139,7 @@ h3 {
       }
     }
     .edit--button {
-      a{
+      a {
         text-decoration: none;
         padding: 8px 15px;
         background: transparent;
