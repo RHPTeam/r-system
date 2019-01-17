@@ -4,12 +4,13 @@
     <app-sidebar/>
     <div class="page--wrapper">
       <div class="page--content d_flex">
-        <div class="main">
+         <div class="main">
           <app-info :items="items"/>
-          <app-content/>
+          <app-content />
           <app-footer/>
         </div>
-        <app-user-job/>
+
+        <app-user-job />
       </div>
     </div>
   </div>
@@ -19,10 +20,9 @@
 import AppInfo from "./components/info";
 import AppContent from "./components/content";
 import AppUserJob from "@/components/user/user-jobs";
-import AppSidebar from "@/components/sidebar/sidebar-left";
+import AppSidebar from "@/components/sidebar/sidebar";
 import AppTopbar from "@/components/navbar/navbar";
 import AppFooter from "./components/footer";
-
 export default {
   components: {
     AppSidebar,

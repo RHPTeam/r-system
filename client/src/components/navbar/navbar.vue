@@ -108,7 +108,7 @@
                 </router-link>
                 <div class="dropdown--divider"></div>
                 <router-link class="dropdown--item" :to="{ name: 'users' }">
-                  Đăng xuất {{ statusMenu }}
+                  Đăng xuất
                 </router-link>
               </div>
             </transition>
@@ -130,7 +130,7 @@ export default {
     return {
       baseUrl: process.env.BASE_URL,
       statusDropdown: false,
-      statusBar: false
+      statusBar: true
     };
   },
   components: {

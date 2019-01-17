@@ -17,7 +17,7 @@
 <script>
 import AppInfo from "./components/info";
 import AppContent from "./components/content";
-import AppSidebar from "@/components/sidebar/sidebar-left";
+import AppSidebar from "@/components/sidebar/sidebar";
 import AppTopbar from "@/components/navbar/navbar";
 import AppPaginate from "./components/paginate";
 export default {
