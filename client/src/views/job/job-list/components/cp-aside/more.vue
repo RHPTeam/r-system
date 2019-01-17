@@ -20,7 +20,7 @@
       width: 103px;
       height: 103px;
       margin: auto;
-      background: url(../../../../assets/rocket.svg) no-repeat;
+      background: url(../../../../../assets/rocket.svg) no-repeat;
       background-position: center;
       background-size: cover;
     }

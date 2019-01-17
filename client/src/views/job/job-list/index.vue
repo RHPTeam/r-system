@@ -13,8 +13,8 @@
   </div>
 </template>
 <script>
-import AppContent from "./components/app-content";
-import AppAside from "./components/app-aside";
+import AppContent from "./components/content";
+import AppAside from "./components/aside";
 export default {
   components: {
     AppContent,
@@ -24,5 +24,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "./../../../assets/scss/rhelp/main-content";
+@import "../../../assets/scss/rhelp/main-content";
 </style>

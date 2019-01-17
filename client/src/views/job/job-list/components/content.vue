@@ -11,9 +11,9 @@
   </div>
 </template>
 <script>
-import AppInfo from "./app-info";
-import AppPaginate from "./app-paginate";
-import AppItem from "./app-items";
+import AppInfo from "./cp-content/info";
+import AppPaginate from "./cp-content/paginate";
+import AppItem from "./cp-content/items";
 export default {
   components: {
     AppInfo,

@@ -41,7 +41,7 @@
 <script>
 import IconBase from "@/components/icons/IconBase";
 import IconLocation from "@/components/icons/IconLocation";
-import AppMore from "./app-more";
+import AppMore from "./cp-aside/more";
 export default {
   components: {
     IconBase,
