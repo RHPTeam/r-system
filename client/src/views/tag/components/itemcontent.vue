@@ -1,6 +1,6 @@
 <template>
   <div class="tag--list r">
-    <div v-for="(item,index) in items" :key="index" class="tag c_md_3 c_sm_4 c_xs_6">
+    <div v-for="(item,index) in items" :key="index" class="tag c_lg_3 c_md_4 c_sm_4 c_xs_6">
       <div class="top r">
         <span class="tag--name">{{item.name}}</span>
         <span class="tag--qty">x{{item.qty}}</span>
@@ -23,6 +23,7 @@ export default {
 </script>
 
 <style lang="scss" scope>
+<<<<<<< HEAD
 .tag--list {
   padding: 20px 0px 0px 8%;
 
@@ -40,6 +41,33 @@ export default {
         background-color: #dddfe2;
         margin-right: 5px;
         border: 1px solid #dddfe2;
+=======
+  .tag--list {
+     box-sizing: border-box;
+    padding: 0px 0px 0px 8%;
+
+    .tag {
+      margin-top:30px;
+      padding-left: 0px !important;
+     box-sizing: border-box;
+         padding-right: 100px;
+      .top {
+        margin-bottom: 20px;
+
+        .tag--name {
+          padding: 8px 5px;
+          color:black;
+          border-radius: 2px;
+          background-color: #dddfe2;
+          margin-right: 5px;
+          border: 1px solid #dddfe2;
+        }
+
+        .tag--qty {
+          color:#9999;
+          padding: 8px 5px;
+        }
+>>>>>>> dev-lamnt-vue
       }
 
       .tag--qty {

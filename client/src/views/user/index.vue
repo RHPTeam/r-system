@@ -6,7 +6,7 @@
   </div>
 </template>
 <script>
-import AppSidebar from "@/components/sidebar/sidebar";
+import AppSidebar from "@/components/sidebar/sidebar-left";
 import AppTopbar from "@/components/navbar/navbar";
 export default {
   components: {

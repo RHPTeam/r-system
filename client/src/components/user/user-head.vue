@@ -1,46 +1,82 @@
 <template>
-    <div class="head">
-      <div class="navbar d_block d_md_none pl_0">
+    <div class="head bg_light">
+      <div class="navbar d_block d_lg_none pl_0">
         <ul class="navbar--list d_flex justify_content_between align_items_center pl_0">
-          <li class="navbar--list-item"><icon-base icon-name="menu" viewBox="0 0 500 500"><icon-menu/></icon-base></li>
-          <li class="navbar--list-item"><icon-base icon-name="menu" viewBox="0 0 500 500"><icon-menu /></icon-base></li>
-          <li class="navbar--list-item"><icon-base icon-name="menu" viewBox="0 0 500 500"><icon-menu /></icon-base></li>
-          <li class="navbar--list-item"><icon-base icon-name="menu" viewBox="0 0 500 500"><icon-menu /></icon-base></li>
-          <li class="navbar--list-item"><icon-base icon-name="menu" viewBox="0 0 500 500"><icon-menu /></icon-base></li>
-          <li class="navbar--list-item"><icon-base icon-name="menu" viewBox="0 0 500 500"><icon-menu /></icon-base></li>
+          <router-link class="navbar--list-item p_0 pt_1" :to="{ name: 'user-info-activity' }">
+            <icon-base width="20" height="20" icon-name="activity" viewBox="0 0 400 400"><icon-activity /></icon-base>
+          </router-link>
+          <router-link class="navbar--list-item p_0 pt_1" :to="{ name: 'user-info-profile' }">
+            <icon-base width="20" height="20" icon-name="infomation" viewBox="0 0 32 32"><icon-infomation /></icon-base>
+          </router-link>
+          <router-link class="navbar--list-item p_0 pt_1" :to="{ name: '' }">
+            <icon-base width="20" height="20" icon-name="story" viewBox="0 0 511.999 511.999"><icon-story /></icon-base>
+          </router-link>
+          <router-link class="navbar--list-item p_0 pt_1" :to="{ name: '' }">
+            <icon-base width="20" height="20" icon-name="blog" viewBox="0 0 520 520"><icon-blog /></icon-base>
+          </router-link>
+          <router-link class="navbar--list-item p_0 pt_1" :to="{ name: '' }">
+            <icon-base width="20" height="20" icon-name="recruit" viewBox="0 0 540 540"><icon-recruit /></icon-base>
+          </router-link>
+          <router-link class="navbar--list-item p_0 pt_1" :to="{ name: 'user-profile-edit' }">
+            <icon-base width="20" height="20" icon-name="edit-info" viewBox="0 0 480 520"><icon-edit-info /></icon-base>
+          </router-link>
         </ul>
       </div>
       <div class="wallpaper position_relative d_flex align_items_sm_end">
-          <div class="wallpaper--info d_flex justify_content_center justify_content_sm_start flex_column flex_sm_row align_items_center mb_sm_n4">
+          <div class="wallpaper--info d_flex justify_content_center justify_content_sm_start flex_column flex_sm_row align_items_center mb_0 mt_3 pt_1 mb_sm_4 mb_lg_n4">
               <div class="wallpaper--avatar position_relative">
                   <img src="http://www.igeacps.it/app/uploads/2018/05/profile_uni_user.png" class="position_absolute">
               </div>
-              <div class="user--info ml_0 ml_sm_3 text_center text_sm_left">
+              <div class="user--info ml_0 ml_sm_3 mt_1 mt_sm_0 text_center text_sm_left align_self_end align_self_lg_center">
                   <div class="user--info-name">Sky Albert</div>
                   <div class="user--info-alias">(Trần Quốc Toản)</div>
               </div>
           </div>
       </div>
-      <div class="navbar d_none d_md_block">
+      <div class="navbar d_none d_lg_block">
         <ul class="navbar--list d_flex justify_content_start align_items_center">
-          <li class="navbar--list-item">Hoạt động</li>
-          <li class="navbar--list-item">Thông tin</li>
-          <li class="navbar--list-item">Câu chuyện lập trình</li>
-          <li class="navbar--list-item">Bài viết</li>
-          <li class="navbar--list-item">Tuyển dụng</li>
-          <li class="navbar--list-item">Chỉnh sửa thông tin</li>
+          <router-link class="navbar--list-item" :to="{ name: 'user-info-activity' }">
+            Hoạt động
+          </router-link>
+          <router-link class="navbar--list-item" :to="{ name: 'user-info-profile' }">
+            Thông tin
+          </router-link>
+          <router-link class="navbar--list-item" :to="{ name: '' }">
+            Câu chuyện lập trình
+          </router-link>
+          <router-link class="navbar--list-item" :to="{ name: '' }">
+            Bài viết
+          </router-link>
+          <router-link class="navbar--list-item" :to="{ name: '' }">
+            Tuyển dụng
+          </router-link>
+          <router-link class="navbar--list-item" :to="{ name: 'user-profile-edit' }">
+            Chỉnh sửa thông tin
+          </router-link>
         </ul>
       </div>
   </div>
 </template>
 
+
+
 <script>
 import IconBase from "../icons/IconBase";
-import IconMenu from "../icons/IconMenu";
+import IconEditInfo from "../icons/IconEditInfo";
+import IconActivity from "../icons/IconActivity";
+import IconBlog from "../icons/IconBlog";
+import IconInfomation from "../icons/IconInfomation";
+import IconRecruit from "../icons/IconRecruit";
+import IconStory from "../icons/IconStory";
 export default {
   components: {
     IconBase,
-    IconMenu
+    IconActivity,
+    IconBlog,
+    IconEditInfo,
+    IconInfomation,
+    IconRecruit,
+    IconStory
   }
 };
 </script>
@@ -89,7 +125,7 @@ export default {
 }
 .navbar {
   background-color: #ffffff;
-  padding-left: 200px;
+  padding-left: 175px;
   border-bottom: 1px solid #e4e4e4;
   .navbar--list {
     list-style-type: none;
@@ -99,16 +135,60 @@ export default {
       font-weight: 600;
       letter-spacing: 0.2px;
       color: #0077dd;
-      padding: 10px 20px;
+      padding: 10px 12.5px;
+      text-decoration: none;
       border-left: 1px solid #e4e4e4;
+      transition: all 0.5s ease;
       &:last-child {
         border-right: 1px solid #e4e4e4;
       }
+      &:hover {
+        color: #7460ee;
+      }
+    }
+    svg {
+      color: #7460ee;
     }
   }
 }
 
 // Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) {
+@media (max-width: 576px) {
+  .wallpaper {
+    .wallpaper--avatar {
+      width: 150px;
+      height: 150px;
+    }
+    .user--info {
+      width: 100%;
+    }
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (max-width: 768px) {
+}
+
+@media (min-width: 768px) {
+}
+// Large devices (desktops, 992px and up)
+@media (max-width: 992px) {
+  .navbar {
+    padding: 0 20px !important;
+    border-top: 1px solid #e4e4e4;
+    .navbar--list {
+      height: 42px;
+      .navbar--list-item {
+        border-left: 0;
+        &:last-child {
+          border-right: 0;
+        }
+      }
+    }
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
 }
 </style>

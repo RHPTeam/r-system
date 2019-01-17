@@ -1,11 +1,19 @@
 import Vue from "vue";
 import Router from "vue-router";
 
+<<<<<<< HEAD
 import legaRouter from "./modules/lega";
 import userRouter from "./modules/user";
 import tagRouter from "./modules/tag";
 import blogRouter from "./modules/blog";
 import questionRouter from "./modules/question";
+=======
+import legaRouter from './modules/lega'
+import userRouter from './modules/user'
+import tagRouter from './modules/tag'
+import blogRouter from './modules/blog'
+import questionRouter from './modules/question'
+>>>>>>> dev-lamnt-vue
 
 Vue.use(Router);
 

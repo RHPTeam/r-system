@@ -1,8 +1,9 @@
 <template>
   <div class="question">
-    <div class="question--head d_flex justify_content_between align_items_center pb_1 mb_3">
+    <div class="question--head position_relative d_flex justify_content_between align_items_center pb_1 mb_3">
       <div class="question--title">Câu hỏi <span class="question--title-number">(0)</span></div>
-      <ul class="question--filter-list d_flex justify_content_start align_items_center pl_0 mb_0">
+      <a class="dropdown--expand d_block d_sm_none" @click.prevent="showDropdown = !showDropdown"><icon-base icon-name="more" viewBox="0 0 20 10"><icon-more /></icon-base></a>
+      <ul :class="{ show: !showDropdown }" class="dropdown--collapse dropdown--list d_flex justify_content_start align_items_center pl_0 mb_0">
         <li class="position_relative active">hoạt động</li>
         <li class="position_relative">bình chọn</li>
         <li class="position_relative">mới nhất</li>
@@ -15,10 +16,24 @@
 </template>
 
 <script>
-export default {};
+import IconBase from "@/components/icons/IconBase";
+import IconMore from "@/components/icons/IconMore";
+export default {
+  data() {
+    return {
+      baseUrl: process.env.BASE_URL,
+      showDropdown: false
+    };
+  },
+  components: {
+    IconBase,
+    IconMore
+  }
+};
 </script>
 
 <style scoped lang="scss">
+@import "tab";
 .question--head {
   border-bottom: 1px solid #e9ebee;
   .question--title {
@@ -29,38 +44,6 @@ export default {};
     color: #0077dd;
     .question--title-number {
       color: #9199a1;
-    }
-  }
-  .question--filter-list {
-    list-style-type: none;
-    font-size: 13px;
-    font-weight: 600;
-    line-height: 1.23;
-    letter-spacing: 0.1px;
-    color: #9199a1;
-    li {
-      margin: 0 5px;
-      padding-left: 2.5px;
-      padding-right: 2.5px;
-      transition: all 0.5s ease;
-      cursor: pointer;
-      &:after {
-        content: "";
-        position: absolute;
-        bottom: -7px;
-        left: 0;
-        width: 0;
-        background-color: #776ab0;
-        height: 1px;
-        transition: all 0.4s ease;
-      }
-      &.active,
-      &:hover {
-        color: #3b4045;
-        &:after {
-          width: 100%;
-        }
-      }
     }
   }
 }
