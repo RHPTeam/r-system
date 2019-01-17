@@ -1,3 +1,10 @@
+/**
+ * create controller question for project
+ * author: quangnc 
+ * date up: 15/01/2019
+ * date to: 16/01/2019
+ * team: BE-RHP
+ */
 const Question = require('../models/question.model');
 const JsonResponse = require('../helpers/json-response')
 

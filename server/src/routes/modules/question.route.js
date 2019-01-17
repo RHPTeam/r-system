@@ -5,7 +5,7 @@
  * date: 16/01/2019
  * team: BE-RHP
  */
-const express = require('express');
+const router = require('express-promise-router')();
 
 const question = require('../../controllers/question.controller'); 
 

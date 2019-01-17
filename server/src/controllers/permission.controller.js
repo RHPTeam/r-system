@@ -1,3 +1,10 @@
+/**
+ * create controller permission for project
+ * author: quangnc 
+ * date up: 14/01/2019
+ * date to: 15/01/2019
+ * team: BE-RHP
+ */
 const Permission = require('../models/permission.model');
 const JsonResponse = require('../helpers/json-response')
 

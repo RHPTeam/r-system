@@ -1,11 +1,10 @@
 /**
  * create route Tags for project
  */
-const express = require('express');
+const router = require('express-promise-router')();
 
 const tag = require('../../controllers/tag.controller'); 
 
-const router = express.Router();
 /* GET Tag listing. */
 router.route('/')
     .post(tag.createTag)

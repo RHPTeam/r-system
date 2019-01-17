@@ -21,10 +21,10 @@ const JobSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
-    _partners: [{
-        type: Schema.Types.ObjectId,
-        type: 'User'
-    }],
+    // _partners: [{
+    //     type: Schema.Types.ObjectId,
+    //     type: 'User'
+    // }],
     website: String,
     createAt: Date
 })

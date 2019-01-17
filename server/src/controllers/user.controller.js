@@ -5,48 +5,13 @@
  * date to: 11/01/2019
  * team: BE-RHP
  */
-const validator = require('validator');
+
 const passport = require('passport');
 
+//const joi = require('joi');
 const User = require('../models/user.model');
 const JsonResponse = require('../helpers/json-response')
-
-// validate form data 
-validateMemberForm = async payload => {
-  const errors = {};
-  let isFormValid = true;
-  let message = '';
-
-  if (!payload || typeof payload.email !== 'string' || payload.email.trim().length === 0 || !validator.isEmail(payload.email)) {
-    isFormValid = false;
-    errors.email = 'Email is require';
-  }
-
-  if (!payload || typeof payload.password !== 'string' || payload.password.trim().length < 6) {
-    isFormValid = false;
-    errors.password = 'Password is require';
-  }
-
-  if (!payload || typeof payload.name !== 'string' || payload.name.trim().length === 0) {
-    isFormValid = false;
-    errors.name = 'User name is require';
-  }
-
-  if (!payload || typeof payload.nameDisplay !== 'string') {
-    isFormValid = false;
-    errors.nameDisplay = 'Name display is require';
-  }
-
-  if (!isFormValid) {
-    message = 'Xảy ra sự cố thông tin bạn cung cấp.';
-  }
-
-  return {
-    success: isFormValid,
-    message,
-    errors
-  };
-}
+const validateUser = require('../validator/user');
 
 module.exports = {
   /**
@@ -58,7 +23,7 @@ module.exports = {
   createUser: async (req, res, next) => {
     try {
       const list_user = req.body;
-      const validationResult = await validateMemberForm(list_user);
+      const validationResult = await validateUser.createUser(list_user);
       if (!validationResult.success) {
         return res.json(JsonResponse("", 403, validationResult.errors, false))
       }

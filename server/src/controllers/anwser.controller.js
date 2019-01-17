@@ -1,11 +1,11 @@
 /**
- * create controller blog for project
+ * create controller Anwser for project
  * author: 
  * date up: 
  * date to: 
  * team: BE-RHP
  */
-const Blog = require('../models/blog.model');
+const Anwser = require('../models/anwser.model');
 const JsonResponse = require('../helpers/json-response')
 
 module.exports = {
