@@ -1,13 +1,13 @@
 import Vue from "vue";
 import Router from "vue-router";
 
-import adminRouter from "./modules/admin";
+// import adminRouter from "./modules/admin";
 import legaRouter from "./modules/lega";
 import userRouter from "./modules/user";
 import tagRouter from "./modules/tag";
 import blogRouter from "./modules/blog";
 import questionRouter from "./modules/question";
-import jobRouter from "./modules/job";
+// import jobRouter from "./modules/job";
 
 Vue.use(Router);
 
@@ -46,6 +46,22 @@ export default new Router({
       ]
     },
     {
+      path: "/job",
+      component: () => import("@/views/job/index"),
+      children: [
+        {
+          path: "",
+          name: "job",
+          component: () => import("@/views/job/example")
+        },
+        {
+          path: "list",
+          name: "list-job",
+          component: () => import("@/views/job/list-jobs/index")
+        }
+      ]
+    },
+    {
       path: "/signin",
       component: () => import("@/views/signin/index"),
       children: [
@@ -68,6 +84,94 @@ export default new Router({
       ]
     },
     {
+      path: "/admin",
+      component: () => import("@/views/admin/dashboard/index"),
+      children: [
+        {
+          path: "",
+          name: "admin",
+          component: () => import("@/views/admin/dashboard/example")
+        },
+        {
+          path: "post",
+          component: () => import("@/views/admin/post/index"),
+          children: [
+            {
+              path: "",
+              name: "admin_post",
+              component: () => import("@/views/admin/post/example")
+            }
+          ]
+        },
+        {
+          path: "categorys",
+          component: () => import("@/views/admin/categorys/index"),
+          children: [
+            {
+              path: "",
+              name: "admin_categorys",
+              component: () => import("@/views/admin/categorys/example")
+            }
+          ]
+        },
+        {
+          path: "library",
+          component: () => import("@/views/admin/library/index"),
+          children: [
+            {
+              path: "",
+              name: "admin_library",
+              component: () => import("@/views/admin/library/example")
+            }
+          ]
+        },
+        {
+          path: "pages",
+          component: () => import("@/views/admin/pages/index"),
+          children: [
+            {
+              path: "",
+              name: "admin_pages",
+              component: () => import("@/views/admin/pages/example")
+            }
+          ]
+        },
+        {
+          path: "permission",
+          component: () => import("@/views/admin/permission/index"),
+          children: [
+            {
+              path: "",
+              name: "admin_permission",
+              component: () => import("@/views/admin/permission/example")
+            }
+          ]
+        },
+        {
+          path: "rhelp",
+          component: () => import("@/views/admin/rhelp/index"),
+          children: [
+            {
+              path: "",
+              name: "admin_rhelp",
+              component: () => import("@/views/admin/rhelp/example")
+            }
+          ]
+        },
+        {
+          path: "users",
+          component: () => import("@/views/admin/users/index"),
+          children: [
+            {
+              path: "",
+              name: "admin_users",
+              component: () => import("@/views/admin/users/example")
+            }
+          ]
+        }
+      ]
+    },
+    {
       path: "/discord",
       component: () => import("@/views/discord"),
       children: [
@@ -83,13 +187,11 @@ export default new Router({
         }
       ]
     },
-    adminRouter,
     legaRouter,
     userRouter,
     tagRouter,
     blogRouter,
     questionRouter,
-    jobRouter,
     {
       path: "/404",
       name: "notfound",
