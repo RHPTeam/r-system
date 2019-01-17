@@ -1,16 +1,14 @@
 <template>
-  <div class="ct">
-    <div class="position_relative job--items p_5">
-      <div class="job--title mt_2">
-        <h4>Development Engineer (Server-side) - Working in Japan</h4>
-        <span class="position_absolute">18 gio truoc</span>
-      </div>
-      <div class="job--of-company mt_1"><span>Microsoft - Silicon Valley</span></div>
-      <div class="job--offer mt_1"><span>500$ - 1000$</span></div>
-      <div class="job--tags mt_4">
-        <a href="#">Javascript</a>
-        <a href="#">Vuejs</a>
-      </div>
+  <div class="position_relative job--items p_5">
+    <div class="job--title mt_2">
+      <h4>Development Engineer (Server-side) - Working in Japan</h4>
+      <span class="position_absolute">18 gio truoc</span>
+    </div>
+    <div class="job--of-company mt_1"><span>Microsoft - Silicon Valley</span></div>
+    <div class="job--offer mt_1"><span>500$ - 1000$</span></div>
+    <div class="job--tags mt_4">
+      <a href="#">Javascript</a>
+      <a href="#">Vuejs</a>
     </div>
   </div>
 </template>

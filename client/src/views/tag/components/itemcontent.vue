@@ -22,7 +22,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" scope>
 .tag--list {
   box-sizing: border-box;
   padding: 0px 0px 0px 8%;
@@ -32,7 +32,6 @@ export default {
     padding-left: 0px !important;
     box-sizing: border-box;
     padding-right: 100px;
-
     .top {
       margin-bottom: 20px;
 
@@ -50,17 +49,22 @@ export default {
         padding: 8px 5px;
       }
     }
-  }
 
-  .tag--detail p {
-    font-size: 12px;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.36;
-    letter-spacing: normal;
-    text-align: left;
-    color: #707070;
+    .tag--qty {
+      color: #9999;
+      padding: 8px 5px;
+    }
   }
+}
+
+.tag--detail p {
+  font-size: 12px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.36;
+  letter-spacing: normal;
+  text-align: left;
+  color: #707070;
 }
 </style>
