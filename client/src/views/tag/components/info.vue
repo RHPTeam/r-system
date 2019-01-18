@@ -2,7 +2,7 @@
   <div class="content--head ct_f">
     <div class="d_flex align_items_center justify_content_center justify_content_md_start">
       <h2 class="title--tags">
-        Tabs
+        Tags
       </h2>
     </div>
     <div class="nav--tags r">
@@ -10,7 +10,7 @@
         <icon-base class="icon--search" icon-name="search" viewBox="0 0 65 65">
           <icon-search />
         </icon-base>
-        <input  placeholder="Fillter by tag name">
+        <input class="form_control" placeholder="Lọc theo tên">
       </div>
       <div class="tab--fill o_md_4 o_lg_6 c_lg_3 c_md_4 c_sm_12 c_xs_12">
         <app-tabs :items="items" />
@@ -27,15 +27,15 @@ export default {
     return {
       items: [
         {
-          name: "Popular",
+          name: "Phổ biến",
           url: "popular"
         },
         {
-          name: "Name",
+          name: "Tên",
           url: "name"
         },
         {
-          name: "New",
+          name: "Mới nhất",
           url: "new"
         }
       ]
@@ -56,11 +56,12 @@ export default {
     .input--fill {
       padding-top: 10px;
       position: relative;
+      padding-left:0px !important;
       .icon--search {
         width: 25px;
         height: 25px;
-        top: 19px;
-        left: 26px;
+        top: 15px;
+        left: 2%;
         position: absolute;
         color: #999999;
       }
@@ -70,7 +71,7 @@ export default {
         padding: 9px 0px;
         padding-left: 40px !important;
         width: 100%;
-        border: 1px solid #999999;
+        ;
         border-radius: 5px;
       }
     }
