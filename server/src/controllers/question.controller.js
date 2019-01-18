@@ -15,10 +15,10 @@ const Anwser = require('../models/anwser.model');
 const JsonResponse = require('../helpers/json-response')
 
 const includes = {
-  user: "User",
-  tag: "Tag",
-  anwser: "Anwser",
-  vote: "Vote"
+  user: "user",
+  tag: "tag",
+  anwser: "anwser",
+  vote: "vote"
 }
 
 module.exports = {

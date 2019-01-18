@@ -6,7 +6,7 @@
  */
 const router = require('express-promise-router')();
 
-const permission = require('../../controllers/permission.controller'); 
+const permission = require('../../controllers/permission.controller');
 
 /* GET permissions listing. */
 router.route('/')
@@ -16,7 +16,7 @@ router.route('/')
 router.route('/:permissionId')
   .get(permission.getOnePermission)
   .put(permission.updatePermission)
-  .delete(permission.deletePermission);
+  .delete(permission.deletePermission)
 
 router.param('permissionId', permission.getByIdPermission);
 

@@ -16,15 +16,20 @@ const User = require('../models/user.model');
 const Notification = require('../models/notification.model');
 const Question = require('../models/question.model');
 const Anwser = require('../models/anwser.model');
+const Permission = require('../models/permission.model');
+const Favoritie = require('../models/favorites.model');
 
 const JsonResponse = require('../helpers/json-response')
 const validateUser = require('../validator/user');
 
 const includes = {
   notifications: "notifications",
-  tag: "Tag",
-  anwser: "Anwser",
-  vote: "Vote"
+  questions: "questions",
+  anwsers: "anwsers",
+  reputation: "reputation",
+  permissions: "permissions",
+  ranks: "ranks",
+  favorities: "favorities"
 }
 
 module.exports = {
