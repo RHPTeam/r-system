@@ -18,18 +18,22 @@ router.route('/')
 router.route('/:userId')
   .get(user.getOneUser)
   .put(user.updateUser)
-  .delete(user.deleteUser);
+  .delete(user.deleteUser)
+  .post(user.createUserPopulate);
 
+router.route('/:userId/populate')
+  .delete(user.deleteUserPopulate)
+  
 //get calculate reputation score for per user
 router.route('/:userId/reputation')
   .get(reputation.increasementReputationScore);
 
-router.route('/:userId/permission')
-  .post(user.createPermissionUser)
-  .get(user.getPermissionUser)
+// router.route('/:userId/permission')
+//   .post(user.createPermissionUser)
+//   .get(user.getPermissionUser)
 
-router.route('/:userId/permission/:permissionId')
-  .delete(user.deletePermissionInUser)
+// router.route('/:userId/permission/:permissionId')
+//   .delete(user.deletePermissionInUser)
 
 router.param('userId', user.getByIdUser);
 router.get('/:userId/is-login', user.isLogin)

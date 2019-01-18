@@ -123,7 +123,7 @@ module.exports = {
    */
   deleteQuestion: async (req, res, next) => {
     try {
-      return await question.remove(err => {
+      return await req.question.remove(err => {
         if (err) {
           res.json(JsonResponse("", 404, errors, false))
         }
@@ -144,13 +144,10 @@ module.exports = {
    */
   getByIdQuestion: async (req, res, next, id) => {
     try {
-      const {
-        query,
-      } = req;
       const question = await Question.findById({
           _id: id
         })
-        .populate(`_${query._includes}`);
+        .populate(`_${req.query._includes}`);
       if (!question) {
         return res.json(JsonResponse("", 404, `Question doesn't exist`, false));
       }
@@ -167,27 +164,28 @@ module.exports = {
         query
       } = req;
       const question = await Question.findById(req.question._id);
-      let save = {}
       switch (query._includes) {
         case "tags":
           const tag = await new Tag(req.body);
           tag._questions = question;
           await tag.save();
           question._tags.push(tag._id);
-          save = await question.save();
           break;
         case "anwsers":
           const anwser = await new Anwser(req.body);
-          anwser._questions = question;
+          anwser._question = question;
           anwser.save();
           question._anwsers.push(anwser._id);
-          save = await question.save();
           break;
         default:
           return res.json(JsonResponse("", 404, `error query`, false))
       }
-      console.log(save);
-      res.json(JsonResponse("", 200, `Create permission by user`, false))
+      await question.save((err, data) => {
+        if (err) {
+          return next(JsonResponse("", 404, `error`, false))
+        }
+        res.json(JsonResponse("", 200, "Create success", false))
+      })
     } catch (error) {
       next(error)
     }

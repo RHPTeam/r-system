@@ -7,13 +7,25 @@
  */
 
 const passport = require('passport');
+const omit = require('lodash/omit');
+const split = require('lodash/split');
+const forEach = require('lodash/forEach');
 
 //const joi = require('joi');
 const User = require('../models/user.model');
-const Permission = require('../models/permission.model');
+const Notification = require('../models/notification.model');
+const Question = require('../models/question.model');
+const Anwser = require('../models/anwser.model');
 
 const JsonResponse = require('../helpers/json-response')
 const validateUser = require('../validator/user');
+
+const includes = {
+  notifications: "notifications",
+  tag: "Tag",
+  anwser: "Anwser",
+  vote: "Vote"
+}
 
 module.exports = {
   /**
@@ -62,8 +74,19 @@ module.exports = {
    */
   getAllUsers: async (req, res, next) => {
     try {
-      return await User.find()
+      const {
+        query,
+      } = req;
+      const include = []
+      forEach(split(query._includes, ','), i => {
+        if (includes[i]) {
+          include.push(includes[i]);
+        }
+      });
+
+      return await User.find(omit(query, ['_includes']))
         .select('_id userid name nameDisplay email avatar title about ')
+        .populate(include)
         .exec((errors, data) => {
           if (errors) {
             return res.json(JsonResponse("", 401, errors, false))
@@ -156,6 +179,7 @@ module.exports = {
           _id: id
         })
         .select('_id userid name nameDisplay email avatar title about _permissions')
+        .populate(`_${req.query._includes}`)
         .exec();
       if (!user) {
         return res.json(JsonResponse("", 404, `User not found`, false));
@@ -204,44 +228,156 @@ module.exports = {
     res.end();
   },
 
-  createPermissionUser: async (req, res) => {
-    try {
-      const user = req.user;
-      const newPermission = await new Permission(req.body);
-      newPermission._user = user;
-      await newPermission.save();
-      user.permission(newPermission.id)
-      res.json(JsonResponse("", 200, `Create permission by user`, false))
-    } catch (error) {
-      next(error);
-    }
-  },
-
-  getPermissionUser: async (req, res) => {
-    try {
-      const user = req.user;
-      // const permissionUser = user.populate('_permissions')
-      const permissionUser = await User.findById(user._id).populate(' _permissions');
-      res.json(JsonResponse(permissionUser, 200, "", false))
-    } catch (error) {
-      next(error);
-    }
-  },
-
-  deletePermissionInUser: async (req, res, next) => {
+  createUserPopulate: async (req, res, next) => {
     try {
       const {
-        permissionId
-      } = req.params;
-      const check = req.user.isPermission(permissionId)
-      if (!check) {
-        return next(JsonResponse("", 404, `User not found role`, false))
+        query
+      } = req;
+      const user = await User.findById(req.user._id);
+      switch (query._includes) {
+        case "notifications":
+          const notification = await new Notification(req.body);
+          notification._users = user;
+          await notification.save();
+          user._notifications.push(notification._id);
+          break;
+        case "questions":
+          const question = await new Question(req.body);
+          question._user = user;
+          question.save();
+          user._questions.push(question._id);
+          break;
+        case "anwsers":
+          const anwser = await new Anwser(req.body);
+          anwser._user = question;
+          anwser.save();
+          user._anwsers.push(anwser._id);
+          break;
+        case "permissions":
+          const permission = await new Permission(req.body);
+          permission._user = question;
+          permission.save();
+          user._permissions.push(permission._id);
+          break;
+        case "favorities":
+          const favoritie = await new Favoritie(req.body);
+          favoritie._user = question;
+          favoritie.save();
+          user._anwsers.push(favoritie._id);
+          break;
+        default:
+          return res.json(JsonResponse("", 404, `error query`, false))
       }
-      await req.user.unPermission(permissionId);
-      res.json(JsonResponse("", 200, "Delete success", false))
+      return await user.save((err, data) => {
+        if (err) {
+          return next(JsonResponse("", 404, `error`, false))
+        }
+        res.json(JsonResponse("", 200, "Create success", false))
+      })
     } catch (error) {
       next(error)
     }
-  }
+  },
+  /**
+   * localhost:8888/api/v1/questions/5c40cfa476ecf70d00fb1842/populate?_includes=tags&_id=5c40da73c30d5d0f3fecd6d9
+   */
+  deleteUserPopulate: async (req, res, next) => {
+    try {
+      const {
+        query,
+        user
+      } = req;
+      // kiem tra query co _includes and _id ?
+      // ....
+
+      switch (query._includes) {
+        case "notifications":
+          const checkNotification = await user._notifications && user._notifications.map(i => i._id.toString() === query._id.toString())
+          if (!checkNotification) {
+            return next(JsonResponse("", 404, `Notification not found in User`, false))
+          }
+          await user._notifications.remove(query._id);
+          break;
+        case "questions":
+          const checkQuestion = await user._questions && user._questions.map(i => i._id.toString() === query._id.toString())
+          if (!checkQuestion) {
+            return next(JsonResponse("", 404, `Anwser not found in User`, false))
+          }
+          await user._questions.remove(query._id);
+          break;
+        case "anwsers":
+          const checkAnwser = await user._anwsers && user._anwsers.map(i => i._id.toString() === query._id.toString())
+          if (!checkAnwser) {
+            return next(JsonResponse("", 404, `Anwser not found in Question`, false))
+          }
+          await user._anwsers.remove(query._id);
+          break;
+        case "permissions":
+          const checkPermission = await user._permissions && user._permissions.map(i => i._id.toString() === query._id.toString())
+          if (!checkPermission) {
+            return next(JsonResponse("", 404, `Permission not found in Question`, false))
+          }
+          await user._permissions.remove(query._id);
+          break;
+        case "favorities":
+          const checkFavorite = await user._favorities && user._favorities.map(i => i._id.toString() === query._id.toString())
+          if (!checkFavorite) {
+            return next(JsonResponse("", 404, `Anwser not found in Question`, false))
+          }
+          await user._favorities.remove(query._id);
+          break;
+        default:
+          return
+      }
+      await user.save((err, data) => {
+        if (err) {
+          return next(JsonResponse("", 404, `error`, false))
+        }
+        res.json(JsonResponse("", 200, "Delete success", false))
+      })
+    } catch (error) {
+      next(error)
+    }
+  },
+
+  // createPermissionUser: async (req, res) => {
+  //   try {
+  //     const user = req.user;
+  //     const newPermission = await new Permission(req.body);
+  //     newPermission._user = user;
+  //     await newPermission.save();
+  //     user.permission(newPermission.id)
+  //     res.json(JsonResponse("", 200, `Create permission by user`, false))
+  //   } catch (error) {
+  //     next(error);
+  //   }
+  // },
+
+  // getPermissionUser: async (req, res) => {
+  //   try {
+  //     const user = req.user;
+  //     // const permissionUser = user.populate('_permissions')
+  //     const permissionUser = await User.findById(user._id).populate(' _permissions');
+  //     res.json(JsonResponse(permissionUser, 200, "", false))
+  //   } catch (error) {
+  //     next(error);
+  //   }
+  // },
+
+  // deletePermissionInUser: async (req, res, next) => {
+  //   try {
+  //     const {
+  //       permissionId
+  //     } = req.params;
+  //     const check = req.user.isPermission(permissionId)
+  //     if (!check) {
+  //       return next(JsonResponse("", 404, `User not found role`, false))
+  //     }
+  //     await req.user.unPermission(permissionId);
+  //     res.json(JsonResponse("", 200, "Delete success", false))
+  //   } catch (error) {
+  //     next(error)
+  //   }
+  // }
 
 }
