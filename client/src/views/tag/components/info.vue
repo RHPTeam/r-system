@@ -8,12 +8,12 @@
     <div class="nav--tags r">
       <div class="input--fill c_md_4 c_lg_3 c_sm_12 c_xs_12">
         <icon-base class="icon--search" icon-name="search" viewBox="0 0 65 65">
-          <icon-search />
+          <icon-search/>
         </icon-base>
-        <input  placeholder="Fillter by tag name">
+        <input placeholder="Fillter by tag name">
       </div>
       <div class="tab--fill o_md_4 o_lg_6 c_lg_3 c_md_4 c_sm_12 c_xs_12">
-        <app-tabs :items="items" />
+        <app-tabs :items="items"/>
       </div>
     </div>
   </div>
@@ -22,6 +22,7 @@
 import AppTabs from "@/components/navbar/tabs";
 import IconBase from "@/components/icons/IconBase";
 import IconSearch from "@/components/icons/IconSearch";
+
 export default {
   data() {
     return {
@@ -50,12 +51,14 @@ export default {
 </script>
 <style lang="scss" scoped>
 .content--head {
-  padding: 0px 8%;
+  padding: 0px 2%;
   padding-top: 50px;
+
   .nav--tags {
     .input--fill {
       padding-top: 10px;
       position: relative;
+
       .icon--search {
         width: 25px;
         height: 25px;
@@ -92,20 +95,15 @@ export default {
 
 @media (max-width: 767px) {
   .content--head {
-    padding-top: 100px;
-    .title-tags {
-      font-size: 1.5rem;
-    }
-
+    padding: 15px 15px 0 15px;
     .nav--tags {
       .input--fill {
         margin-bottom: 10px;
-
         .icon--search {
-          width: 15px;
-          height: 15px;
-          top: 17px;
-          left: 26px;
+          width: 25px;
+          height: 20px;
+          top: 15px;
+          left: 20px;
           color: #999999;
         }
 

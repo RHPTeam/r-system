@@ -9,17 +9,12 @@ const userRouter = {
       component: () => import("@/views/blog/blog")
     },
     {
-      path: "posts",
-      name: "posts",
-      component: () => import("@/views/blog/posts")
-    },
-    {
       path: "posts/:id",
       name: "post",
-      component: () => import("@/views/blog/post")
+      component: () => import("@/views/blog/blog-detail")
     },
     {
-      path: "categories/:id",
+      path: "categories",
       name: "posts-category",
       component: () => import("@/views/blog/posts-category")
     }

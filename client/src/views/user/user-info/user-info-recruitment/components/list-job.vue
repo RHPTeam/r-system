@@ -1,26 +1,26 @@
 <template>
-  <div class="list---blog ct">
-    <div class="title--blog r">
+  <div class="list---job ct">
+    <div class="title--job r">
       <h2>Danh sách công việc</h2>
     </div>
     <div v-for="(n,index) in 9" :key="index">
-      <app-blog/>
+       <app-job/>
     </div>
     <app-paginate/>
   </div>
 </template>
 
 <script>
-import AppBlog from "./item-blog";
+import AppJob from "./item-job";
 import AppPaginate from "./paginate";
 export default {
   components: {
-    AppBlog,
+    AppJob,
     AppPaginate
   }
 };
 </script>
 
 <style scoped lang="scss">
-@import "list-blog.scss";
+@import "list-job.scss";
 </style>

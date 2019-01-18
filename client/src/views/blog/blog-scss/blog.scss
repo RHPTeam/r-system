@@ -1,144 +1,48 @@
-.nav--top {
-    font-family: Quicksand, sans-serif;
-    width: 100%;
-    z-index: 50;
-    font-size: 1rem;
-    .nav--head {
-        height: 60px;
-    }
-    .nav--menu,
-    .nav--right {
-        list-style-type: none;
-    }
-    .nav--menu {
-        min-height: 40px;
-    }
-    .nav--item {
-        cursor: pointer;
-        .nav--item-btn {
-            height: 35px;
-            border-radius: 5px;
-            font-size: 0.9285rem;
-            font-weight: bold;
-            line-height: 1.15;
-            letter-spacing: 0.1px;
-            border: 2px solid #776ab0;
-            box-shadow: none;
-            transition: all 0.4s ease;
-        }
-    }
-    .menu--item {
-        font-weight: 600;
-        line-height: 1.14;
-        letter-spacing: 0.2px;
-        text-transform: uppercase;
-        cursor: pointer;
-        -webkit-transition: all 0.4s ease;
-        &:after {
-            content: "";
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            -webkit-transition: all 0.4s ease;
-            transition: all 0.4s ease;
-        }
-        &:hover,
-        &.active {
-            &:after {
-                width: 100%;
-            }
-        }
-    }
-}
+/* Main content */
 
 .blog--content {
     min-height: 100vh;
-}
-
-
-/* ChangeColor */
-
-
-/* Light */
-
-.nav--top[data-theme='light'] {
-    background-color: #fff;
-    color: #3b4045;
-    .nav--item {
-        svg {
-            color: #3b4045;
-        }
-        .nav--item-btn {
-            color: #776ab0;
-            background-color: #fff;
-            &:hover {
-                color: #fff;
-                background-color: #776ab0;
-            }
-        }
-    }
-    .menu--item {
-        &.active,
-        &:hover {
-            color: #776ab0;
-        }
-        &:after {
-            background-color: #776ab0;
-        }
+    hr {
+        width: 100%;
+        border: 0;
+        border-bottom: 1px solid #e4e4e4;
     }
 }
+
+.blog--change {
+    background-color: transparent;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    z-index: 49;
+    .change--theme,
+    .change--size {
+        border: 2px solid #776ab0;
+        border-radius: 5px;
+        width: 45px;
+        height: 45px;
+        line-height: 58px;
+        cursor: pointer;
+    }
+    .change--theme {
+        margin-bottom: -2px;
+    }
+}
+
+
+/*=============================================
+=                 Light Color                 =
+=============================================*/
 
 .blog--content[data-theme='light'] {
     background-color: #fff;
 }
 
 
-/* Dark */
-
-.nav--top[data-theme='dark'] {
-    background-color: #333;
-    color: #f7f7f7;
-    .nav--item {
-        svg {
-            color: #f7f7f7;
-        }
-        .nav--item-btn {
-            color: #fff;
-            background-color: #776ab0;
-            &:hover {
-                color: #776ab0;
-                background-color: #fff;
-            }
-        }
-    }
-    .menu--item {
-        &:after {
-            background-color: #fff;
-        }
-    }
-}
+/*=============================================
+=                  Dark Color                 =
+=============================================*/
 
 .blog--content[data-theme='dark'] {
     background-color: #444;
 }
-
-
-/*RESPONSIVE MENU LEFT-BAR*/
-
-// Extra small devices (portrait phones, less than 576px)
-// No media query for `xs` since this is the default in Bootstrap
-// Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) {}
-
-// Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {}
-
-@media (max-width: 767px) {}
-
-// Large devices (desktops, 992px and up)
-@media (min-width: 992px) {}
-
-// Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {}
