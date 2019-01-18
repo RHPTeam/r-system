@@ -9,13 +9,17 @@
           <li>
             <a href="#">
               css
-              <icon-base icon-name="close" width="16" height="16" viewBox="0 0 420 420"><icon-close/></icon-base>
+              <icon-base icon-name="close" width="16" height="16" viewBox="0 0 420 420">
+                <icon-close/>
+              </icon-base>
             </a>
           </li>
           <li>
             <a href="#">
               scss
-              <icon-base icon-name="close" width="16" height="16" viewBox="0 0 420 420"><icon-close/></icon-base>
+              <icon-base icon-name="close" width="16" height="16" viewBox="0 0 420 420">
+                <icon-close/>
+              </icon-base>
             </a>
           </li>
           <li>
