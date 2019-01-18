@@ -65,6 +65,10 @@ const UserSchema = new Schema({
   _blogs: [{
       type: Schema.Types.ObjectId,
       ref: 'Blog'
+  }],
+  _comments: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Comment'
   }]
 })
 

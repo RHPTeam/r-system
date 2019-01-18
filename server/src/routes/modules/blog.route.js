@@ -17,17 +17,19 @@ router.route('/')
 /* GET blog by id listing. */
 router.route('/:blogId')
   .get(blog.getOneBlog)
-  .post(blog.updateBlog)
+  .patch(blog.updateBlog)
   .delete(blog.deleteBlog);
 
 /*GET blog by user */
-router.route('/:userId')
+router.route('/user/id=:userId')
   .get(blog.getBlogByUser)
+router.route('/user/userId=:userId&categoryId=:categoryId')
   .post(blog.createBlogByUser);
 
 /*GET blog by category */
-router.route('/:categoryId')
+router.route('/category/id=:categoryId')
   .get(blog.getBlogByCategoryId);
+
 
 /*GET blog by comment */
 router.route('/:blogId/comment')
