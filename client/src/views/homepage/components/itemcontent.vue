@@ -28,7 +28,7 @@
           </icon-base>
         </span>
       </div>
-      <div class="comt d_flex flex_column align_items_center active">
+      <div class="comt d_flex flex_column align_items_center">
         <span class="num">0</span>
         <span>answers</span>
         <span>
