@@ -76,8 +76,8 @@ const UserSchema = new Schema({
 UserSchema.methods.comparePassword = function comparePassword(password, callback) {
   bcrypt.compare(password, this.password, callback);
 };
-
-// bcrypt code password
+//
+// // bcrypt code password
 UserSchema.pre('save', function (next) {
   const user = this;
 

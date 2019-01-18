@@ -28,8 +28,8 @@
                   <img src="http://www.igeacps.it/app/uploads/2018/05/profile_uni_user.png" class="position_absolute">
               </div>
               <div class="user--info ml_0 ml_sm_3 mt_1 mt_sm_0 text_center text_sm_left align_self_end align_self_lg_center">
-                  <div class="user--info-name">Sky Albert</div>
-                  <div class="user--info-alias">(Trần Quốc Toản)</div>
+                  <div class="user--info-name">{{ user.name }}</div>
+                  <div class="user--info-alias">( {{ user.nameDisplay }} )</div>
               </div>
           </div>
       </div>
@@ -68,7 +68,10 @@ import IconBlog from "../icons/IconBlog";
 import IconInfomation from "../icons/IconInfomation";
 import IconRecruit from "../icons/IconRecruit";
 import IconStory from "../icons/IconStory";
+
+import UserService from "@/services/modules/user.service";
 export default {
+  props: ["idRoute"],
   components: {
     IconBase,
     IconActivity,
@@ -77,6 +80,16 @@ export default {
     IconInfomation,
     IconRecruit,
     IconStory
+  },
+  computed: {
+    user () {
+      return this.$store.getters.user
+    }
+  },
+  async mounted() {
+    await UserService.show(this.idRoute).then((res) => {
+      this.$store.dispatch("show", res.data.data)
+    })
   }
 };
 </script>

@@ -11,17 +11,17 @@ import Api from "@/services/Api";
 export default {
   index() {
     return Api().get("users");
+  },
+  create(user) {
+    return Api().post("users", user);
+  },
+  show(userId) {
+    return Api().get(`users/${userId}`);
+  },
+  update(user) {
+    return Api().patch(`users/${user._id}`, user);
+  },
+  delete(userId) {
+    return Api().delete(`users/${userId}`);
   }
-  // create(project) {
-  //   return Api().post("projects", project);
-  // },
-  // show(projectId) {
-  //   return Api().get(`projects/${projectId}`);
-  // },
-  // update(project) {
-  //   return Api().patch(`projects/${project._id}`, project);
-  // },
-  // delete(projectId) {
-  //   return Api().delete(`projects/${projectId}`);
-  // }
 };

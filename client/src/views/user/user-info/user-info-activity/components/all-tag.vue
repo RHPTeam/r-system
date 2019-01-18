@@ -13,7 +13,7 @@
         <div class="tag--item c_12 c_sm_6 c_md_6 c_xl_4 mb_3">
           <span class="tag--item-score">59k</span>
           <span class="tag--item-name ml_1 mr_1">sql</span>
-          <span class="tag--item-posts">x 43103</span>
+          <span class="tag--item-posts">x 431</span>
         </div>
         <div class="tag--item c_12 c_sm_6 c_md_6 c_xl_4 mb_3">
           <span class="tag--item-score">59k</span>

@@ -17,7 +17,7 @@ router.route('/')
 
 router.route('/:userId')
   .get(user.getOneUser) //done
-  .put(user.updateUser) // issues check errors
+  .patch(user.updateUser) // issues check errors
   .delete(user.deleteUser) //done
   .post(user.createUserPopulate);
 
