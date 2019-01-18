@@ -30,8 +30,8 @@
     <app-footer/>
     <div class="blog--change position_fixed text_center">
       <div class="change--theme" @click="changeTheme">
-        <div v-if="isThemeLight" class="theme--light"><icon-base icon-name="moon" width="30" height="30" viewBox="0 0 24.678 25.761"><icon-moon /></icon-base></div>
-        <div v-else class="theme--dark"><icon-base icon-name="sun" width="30" height="30" viewBox="0 0 30.152 30.152"><icon-sun/></icon-base></div>
+        <div v-if="isThemeLight" class="theme--dark"><icon-base icon-name="moon" width="30" height="30" viewBox="0 0 24.678 25.761"><icon-moon /></icon-base></div>
+        <div v-else class="theme--light"><icon-base icon-name="sun" width="30" height="30" viewBox="0 0 30.152 30.152"><icon-sun/></icon-base></div>
       </div>
       <div class="change--size"><icon-base icon-name="font-size" width="30" height="30" viewBox="0 0 32.678 22.018"><icon-font-size /></icon-base></div>
     </div>
@@ -43,13 +43,13 @@ import IconBase from "@/components/icons/IconBase";
 import IconFontSize from "@/components/icons/IconFontSize";
 import IconMoon from "@/components/icons/IconMoon";
 import IconSun from "@/components/icons/IconSun";
-import AppHeader from "@/views/blog/blog-component/header";
-import AppTrend from "@/views/blog/blog-component/trend";
-import AppLastest from "@/views/blog/blog-component/lastest";
-import AppFeature from "@/views/blog/blog-component/feature";
-import AppPopular from "@/views/blog/blog-component/popular";
-import AppAds from "@/views/blog/blog-component/ads";
-import AppFooter from "@/views/blog/blog-component/footer";
+import AppHeader from "@/components/blog/header";
+import AppFooter from "@/components/blog/footer";
+import AppAds from "@/components/blog/ads";
+import AppTrend from "@/views/blog/home/components/trend";
+import AppLastest from "@/views/blog/home/components/lastest";
+import AppFeature from "@/views/blog/home/components/feature";
+import AppPopular from "@/views/blog/home/components/popular";
 export default {
   data() {
     return {
@@ -93,5 +93,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "./blog-scss/blog";
+@import "../../../components/blog/scss/main";
 </style>

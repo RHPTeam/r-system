@@ -6,17 +6,17 @@ const userRouter = {
     {
       path: "",
       name: "blog-home",
-      component: () => import("@/views/blog/blog")
+      component: () => import("@/views/blog/home")
     },
     {
       path: "posts/:id",
       name: "post",
-      component: () => import("@/views/blog/blog-detail")
+      component: () => import("@/views/blog/detail")
     },
     {
       path: "categories",
-      name: "posts-category",
-      component: () => import("@/views/blog/posts-category")
+      name: "category",
+      component: () => import("@/views/blog/category")
     }
   ]
 };

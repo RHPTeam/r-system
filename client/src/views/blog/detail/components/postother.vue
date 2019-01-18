@@ -4,14 +4,14 @@
             <div class="c_md_4">
                 <div class="item">
                     <div class="item--title h3">A Recap of Frontend Development in 2018</div>
-                    <div class="author d_flex justify_content_start align_items_center">          
+                    <div class="author d_flex justify_content_start align_items_center">
                         <div class="author--avatar position_relative">
                             <img class="position_absolute" src="http://www.igeacps.it/app/uploads/2018/05/profile_uni_user.png">
                         </div>
                         <div class="author--info">
                             <span class="author--info-name">Lukas Gisder-Dubé</span>
                         </div>
-                    </div> 
+                    </div>
                     <div class="item--reactive d_flex justify_content_end align_items_center">
                       <div class="item--reactive-clap d_flex align_items_center">
                         <span>10</span>
@@ -27,14 +27,14 @@
             <div class="c_md_4">
                 <div class="item">
                     <div class="item--title h3">A Recap of Frontend Development in 2018</div>
-                    <div class="author d_flex justify_content_start align_items_center">          
+                    <div class="author d_flex justify_content_start align_items_center">
                         <div class="author--avatar position_relative">
                             <img class="position_absolute" src="http://www.igeacps.it/app/uploads/2018/05/profile_uni_user.png">
                         </div>
                         <div class="author--info">
                             <span class="author--info-name">Lukas Gisder-Dubé</span>
                         </div>
-                    </div> 
+                    </div>
                     <div class="item--reactive d_flex justify_content_end align_items_center">
                       <div class="item--reactive-clap d_flex align_items_center">
                         <span>10</span>
@@ -50,14 +50,14 @@
             <div class="c_md_4">
                 <div class="item">
                     <div class="item--title h3">A Recap of Frontend Development in 2018</div>
-                    <div class="author d_flex justify_content_start align_items_center">          
+                    <div class="author d_flex justify_content_start align_items_center">
                         <div class="author--avatar position_relative">
                             <img class="position_absolute" src="http://www.igeacps.it/app/uploads/2018/05/profile_uni_user.png">
                         </div>
                         <div class="author--info">
                             <span class="author--info-name">Lukas Gisder-Dubé</span>
                         </div>
-                    </div> 
+                    </div>
                     <div class="item--reactive d_flex justify_content_end align_items_center">
                       <div class="item--reactive-clap d_flex align_items_center">
                         <span>10</span>
@@ -70,16 +70,16 @@
                     </div>
                 </div>
             </div>
-            
+
         </div>
     </div>
 
 </template>
 
 <script>
-import IconBase from "../../../components/icons/IconBase";
-import IconClap from "../../../components/icons/IconClap.vue";
-import IconComment from "../../../components/icons/IconComment.vue";
+import IconBase from "@/components/icons/IconBase";
+import IconClap from "@/components/icons/IconClap.vue";
+import IconComment from "@/components/icons/IconComment.vue";
 export default {
   components: {
     IconBase,
