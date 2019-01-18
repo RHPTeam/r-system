@@ -1,7 +1,7 @@
 <template>
     <div class="comment">
-        <div class="d_flex justify_content_between align_items_start">  
-          <div class="author d_flex justify_content_start align_items_center">          
+        <div class="d_flex justify_content_between align_items_start">
+          <div class="author d_flex justify_content_start align_items_center">
             <div class="author--avatar position_relative">
                 <img class="position_absolute" src="http://www.igeacps.it/app/uploads/2018/05/profile_uni_user.png">
             </div>
@@ -9,14 +9,14 @@
                 <span class="author--info-name">Lukas Gisder-Dubé</span>
                 <span class="author--info-time">09:00 PM - Jan 7</span>
             </div>
-          </div>        
+          </div>
           <div class="comment--action position_relative" @click="showDropdown">
               <span><icon-base icon-name="more" width="42" height="42" viewBox="0 0 20 10"><icon-more /></icon-base></span>
               <ul class="comment--dropdown position_absolute" :class="{ show: showdropdown }">
                 <li>Xóa Bài Viết</li>
               </ul>
             </div>
-        </div>        
+        </div>
         <div class="comment--content">
             Really nice article, I will definitely use those tricks in my daily work. I really liked the async/await which finally gets me out of callback hell ;)
         </div>
@@ -24,8 +24,8 @@
 </template>
 
 <script>
-import IconBase from "../../../components/icons/IconBase";
-import IconMore from "../../../components/icons/IconMore.vue";
+import IconBase from "@/components/icons/IconBase";
+import IconMore from "@/components/icons/IconMore.vue";
 export default {
   data() {
     return {

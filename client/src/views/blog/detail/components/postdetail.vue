@@ -1,7 +1,7 @@
 <template>
     <div class="postdetail">
         <h1 class="postdetail--title">9 Tricks for Kickass JavaScript Developers in 2019</h1>
-        <div class="author d_flex justify_content_start align_items_center">          
+        <div class="author d_flex justify_content_start align_items_center">
           <div class="author--avatar position_relative">
             <img class="position_absolute" src="http://www.igeacps.it/app/uploads/2018/05/profile_uni_user.png">
           </div>
@@ -9,7 +9,7 @@
             <span class="author--info-name">Lukas Gisder-Dubé</span>
             <span class="author--info-time">09:00 PM - Jan 7</span>
           </div>
-        </div>  
+        </div>
         <div class="postdetail--content">
           Yet another year is over and JavaScript is ever changing. However, there are some tips that can help you write clean and efficient code that scales, even (or maybe especially?) in 2019. Below is a list of 9 pragmatic tips that will make you a better developer.
           <h2>1. async / await</h2>
@@ -34,10 +34,10 @@
 </template>
 
 <script>
-import IconBase from "../../../components/icons/IconBase";
-import IconMore from "../../../components/icons/IconMore.vue";
-import IconClap from "../../../components/icons/IconClap.vue";
-import IconClapActive from "../../../components/icons/IconClapActive.vue";
+import IconBase from "@/components/icons/IconBase";
+import IconMore from "@/components/icons/IconMore.vue";
+import IconClap from "@/components/icons/IconClap.vue";
+import IconClapActive from "@/components/icons/IconClapActive.vue";
 
 export default {
   data() {

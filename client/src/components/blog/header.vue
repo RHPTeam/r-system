@@ -133,5 +133,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../blog-scss/header";
+@import "./scss/header";
 </style>

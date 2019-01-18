@@ -1,5 +1,5 @@
 <template>
-  <div class="ads mt_n4">
+  <div class="ads">
       <span>Advertisement </span>
   </div>
 </template>
