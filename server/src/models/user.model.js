@@ -91,6 +91,7 @@ UserSchema.pre('save', function (next) {
     });
   });
 });
+
 UserSchema.methods = {
   // check notification
   notification: function (id) {
@@ -124,8 +125,6 @@ UserSchema.methods = {
   },
   isPermission: function (id) {
     return this._permissions.some(permissionId => {
-      console.log("permissionId", permissionId)
-      console.log("id", id)
       return permissionId.toString() === id.toString();
     });
   },

@@ -17,8 +17,12 @@ router.route('/')
 router.route('/:questionId')
   .get(question.getOneQuestion)
   .put(question.updateQuestion)
-  .delete(question.deleteQuestion);
+  .delete(question.deleteQuestion)
+  .post(question.createQuestionPopulate)
 
+router.route('/:questionId/populate')
+  .delete(question.deleteQuestionPopulate)
+  
 router.param('questionId', question.getByIdQuestion);
 
 
