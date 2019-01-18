@@ -46,29 +46,6 @@ export default new Router({
       ]
     },
     {
-      path: "/job",
-      component: () => import("@/views/job/index"),
-      children: [
-        {
-          path: "",
-          name: "job",
-          component: () => import("@/views/job/example")
-        },
-        {
-          path: "list",
-          // name: "list-job",
-          component: () => import("@/views/job/list-jobs/index"),
-          children: [
-            {
-              path: ":id",
-              name: "job-detail",
-              component: () => import("@/views/job/jobs-detail/index")
-            },
-          ]
-        },
-      ]
-    },
-    {
       path: "/signin",
       component: () => import("@/views/signin/index"),
       children: [
