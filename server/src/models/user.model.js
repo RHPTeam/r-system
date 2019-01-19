@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const bcrypt   = require('bcrypt');
+const bcrypt = require('bcrypt');
 
 const Schema = mongoose.Schema;
 
@@ -15,56 +15,60 @@ const UserSchema = new Schema({
   title: String,
   about: String,
   social: {
-      website: String,
-      stack: String,
-      github: String
+    website: String,
+    stack: String,
+    github: String
   },
   career: {
-      type: String,
-      content: String
+    type: String,
+    content: String
   },
   story: {
-      info: String,
-      skill: String,
-      exp: [{
-          title: String,
-          content: String,
-          currentWork: Number,
-          startAt: Date,
-          startEnd: Date
-      }]
+    info: String,
+    skill: String,
+    exp: [{
+      title: String,
+      content: String,
+      currentWork: Number,
+      startAt: Date,
+      startEnd: Date
+    }]
   },
-  _notfications: [{
-      type: Schema.Types.ObjectId,
-      ref: 'Notification'
+  _notifications: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Notification'
   }],
   _questions: [{
-      type: Schema.Types.ObjectId,
-      ref: 'Question'
+    type: Schema.Types.ObjectId,
+    ref: 'Question'
   }],
   _anwsers: [{
-      type: Schema.Types.ObjectId,
-      ref: 'Anwser'
+    type: Schema.Types.ObjectId,
+    ref: 'Anwser'
   }],
   _reputation: {
-      type: Schema.Types.ObjectId,
-      ref: 'Reputation'
+    type: Schema.Types.ObjectId,
+    ref: 'Reputation'
   },
   _permissions: [{
-      type: Schema.Types.ObjectId,
-      ref: 'Permission'
+    type: Schema.Types.ObjectId,
+    ref: 'Permission'
   }],
   _ranks: {
-      type: Schema.Types.ObjectId,
-      ref: 'Rank'
+    type: Schema.Types.ObjectId,
+    ref: 'Rank'
   },
   _favorities: [{
-      type: Schema.Types.ObjectId,
-      ref: 'Favorite'
+    type: Schema.Types.ObjectId,
+    ref: 'Favorite'
   }],
   _blogs: [{
-      type: Schema.Types.ObjectId,
-      ref: 'Blog'
+    type: Schema.Types.ObjectId,
+    ref: 'Blog'
+  }],
+  _comments: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Comment'
   }]
 })
 
@@ -72,31 +76,67 @@ const UserSchema = new Schema({
 UserSchema.methods.comparePassword = function comparePassword(password, callback) {
   bcrypt.compare(password, this.password, callback);
 };
-
-// bcrypt code password
+//
+// // bcrypt code password
 UserSchema.pre('save', function (next) {
   const user = this;
 
   if (!user.isModified('password')) {
-      return next();
+    return next();
   }
 
   bcrypt.genSalt((saltError, salt) => {
-      if (saltError) {
+    if (saltError) {
       return next(saltError);
-      }
+    }
 
-      bcrypt.hash(user.password, salt, (hashError, hash) => {
+    bcrypt.hash(user.password, salt, (hashError, hash) => {
       if (hashError) {
-          return next(hashError);
+        return next(hashError);
       }
       user.password = hash;
       return next();
-      });
+    });
   });
 });
 
+UserSchema.methods = {
+  // check notification
+  notification: function (id) {
+    if (this._notifications.indexOf(id) === -1) {
+      this._notifications.push(id);
+    }
 
+    return this.save();
+  },
+  unNotification: function (id) {
+    this._notifications.remove(id);
+    return this.save();
+  },
+  isNotification: function (id) {
+    return this._notifications.some(notificationId => {
+      return notificationId.toString() === id.toString();
+    });
+  },
+
+  // check permission
+  permission: function (id) {
+    if (this._permissions.indexOf(id) === -1) {
+      this._permissions.push(id);
+    }
+
+    return this.save();
+  },
+  unPermission: function (id) {
+    this._permissions.remove(id);
+    return this.save();
+  },
+  isPermission: function (id) {
+    return this._permissions.some(permissionId => {
+      return permissionId.toString() === id.toString();
+    });
+  },
+}
 
 const User = mongoose.model('User', UserSchema)
 module.exports = User

@@ -1,6 +1,8 @@
 import Vue from "vue";
 import Vuex from "vuex";
+
 import currentTab from "./modules/currentTab";
+import user from "./modules/user";
 
 Vue.use(Vuex);
 
@@ -34,6 +36,7 @@ export default new Vuex.Store({
     }
   },
   modules: {
-    currentTab
+    currentTab,
+    user
   }
 });

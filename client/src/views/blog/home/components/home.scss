@@ -32,6 +32,11 @@
             .card_title {
                 font-size: 1.857rem;
                 font-weight: 600;
+                transition: all 0.4s ease;
+                cursor: pointer;
+                &:hover {
+                    color: #776ab0;
+                }
             }
             .card_text {
                 font-size: 1.071rem;
@@ -41,8 +46,8 @@
             }
         }
     }
-    .item {
-        .item-img {
+    .item--blog {
+        .item--img {
             overflow: hidden;
             width: 100%;
             &:before {
@@ -93,9 +98,15 @@
                 height: 3px;
                 border-radius: 50%;
                 background-color: currentColor;
-                top: 50%;
-                transform: translateY(-50%);
+                top: 8px;
                 left: -12px;
+            }
+        }
+        .item--info-name {
+            transition: all 0.4s ease;
+            cursor: pointer;
+            &:hover {
+                color: #776ab0 !important;
             }
         }
     }
