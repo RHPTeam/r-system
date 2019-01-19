@@ -1,46 +1,26 @@
 <template>
-    <div class="addcomment">
-        <input type="text" name="" class="" placeholder="Nhập nội dung bình luận...">
-        <!-- <span class="narbar--search-border"></span> -->
+  <div class="add--comment mb_4">
+    <div class="add--comment-title mb_3">Phản hồi</div>
+    <div class="add--input bg--item d_flex justify_content_start align_item_start p_3" :data-bg="currentTheme">
+      <div class="avatar--user position_relative mr_3">
+        <img
+          class="position_absolute"
+          src="http://www.igeacps.it/app/uploads/2018/05/profile_uni_user.png"
+        >
+      </div>
+      <input type="text" name class placeholder="Nhập nội dung bình luận...">
     </div>
+  </div>
 </template>
-
 <script>
-export default {};
-</script>
-
-<style scoped lang="scss">
-.addcomment {
-  background-color: #fff;
-  padding: 30px 55px;
-  font-size: 32px;
-  input {
-    padding: 10px;
-    display: block;
-    width: 100%;
-    outline: none;
-    border: none;
-    transition: all 0.5s ease;
-    border-bottom: 2px solid #707070;
-    &:focus {
-      border-color: #776ab0;
-    }
-    ::-webkit-input-placeholder {
-      /* Chrome/Opera/Safari */
-      color: #707070;
-    }
-    ::-moz-placeholder {
-      /* Firefox 19+ */
-      color: #707070;
-    }
-    :-ms-input-placeholder {
-      /* IE 10+ */
-      color: #707070;
-    }
-    :-moz-placeholder {
-      /* Firefox 18- */
-      color: #707070;
+export default {
+  computed: {
+    currentTheme() {
+      return this.$store.getters.themeName;
     }
   }
-}
+};
+</script>
+<style scoped lang="scss">
+@import "./detail";
 </style>

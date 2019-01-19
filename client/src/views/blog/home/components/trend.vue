@@ -19,7 +19,7 @@
                     <div class="item--bottom d_flex justify_content_between align_items_center">
                       <div class="item--info d_inline mb_0">
                         <span class="item--info-time mr_4 position_relative">Jan 14</span>
-                        <span class="item--info-like mr_4 position_relative"><icon-base class="pr_1 pt_1" icon-name="heart" viewBox="0 0 12.413 11.127"><icon-heart /></icon-base>26</span>
+                        <span class="item--info-like mr_4 position_relative"><icon-base class="pr_1 pt_1" icon-name="heart" viewBox="0 0 378.94 378.94"><icon-heart /></icon-base>26</span>
                         <span class="item--info-author position_relative">by <span class="item--info-name">dangyen103</span></span>
                       </div>
                       <div class="item--icon text_right" ><span  @click="isBookmark = !isBookmark"><icon-base :class="{selected: isBookmark}" icon-name="bookmark-blog" viewBox="0 0 431.972 431.972"><icon-bookmark-blog/></icon-base></span></div>
@@ -48,7 +48,7 @@
                     <div class="item--bottom d_flex justify_content_between align_items_center">
                       <div class="item--info d_inline mb_0">
                         <span class="item--info-time mr_4 position_relative">Jan 14</span>
-                        <span class="item--info-like mr_4 position_relative"><icon-base class="pr_1 pt_1" icon-name="heart" viewBox="0 0 12.413 11.127"><icon-heart /></icon-base>26</span>
+                        <span class="item--info-like mr_4 position_relative"><icon-base class="pr_1 pt_1" icon-name="heart" viewBox="0 0 378.94 378.94"><icon-heart /></icon-base>26</span>
                         <span class="item--info-author position_relative">by <span class="item--info-name">dangyen103</span></span>
                       </div>
                       <div class="item--icon text_right" ><span  @click="isBookmark = !isBookmark"><icon-base :class="{selected: isBookmark}" icon-name="bookmark-blog" viewBox="0 0 431.972 431.972"><icon-bookmark-blog/></icon-base></span></div>
@@ -76,7 +76,7 @@
                     <div class="item--bottom d_flex justify_content_between align_items_center">
                       <div class="item--info d_inline mb_0">
                         <span class="item--info-time mr_4 position_relative">Jan 14</span>
-                        <span class="item--info-like mr_4 position_relative"><icon-base class="pr_1 pt_1" icon-name="heart" viewBox="0 0 12.413 11.127"><icon-heart /></icon-base>26</span>
+                        <span class="item--info-like mr_4 position_relative"><icon-base class="pr_1 pt_1" icon-name="heart" viewBox="0 0 378.94 378.94"><icon-heart /></icon-base>26</span>
                         <span class="item--info-author position_relative">by <span class="item--info-name">dangyen103</span></span>
                       </div>
                       <div class="item--icon text_right" ><span  @click="isBookmark = !isBookmark"><icon-base :class="{selected: isBookmark}" icon-name="bookmark-blog" viewBox="0 0 431.972 431.972"><icon-bookmark-blog/></icon-base></span></div>
@@ -104,7 +104,7 @@
                     <div class="item--bottom d_flex justify_content_between align_items_center">
                       <div class="item--info d_inline mb_0">
                         <span class="item--info-time mr_4 position_relative">Jan 14</span>
-                        <span class="item--info-like mr_4 position_relative"><icon-base class="pr_1 pt_1" icon-name="heart" viewBox="0 0 12.413 11.127"><icon-heart /></icon-base>26</span>
+                        <span class="item--info-like mr_4 position_relative"><icon-base class="pr_1 pt_1" icon-name="heart" viewBox="0 0 378.94 378.94"><icon-heart /></icon-base>26</span>
                         <span class="item--info-author position_relative">by <span class="item--info-name">dangyen103</span></span>
                       </div>
                       <div class="item--icon text_right" ><span  @click="isBookmark = !isBookmark"><icon-base :class="{selected: isBookmark}" icon-name="bookmark-blog" viewBox="0 0 431.972 431.972"><icon-bookmark-blog/></icon-base></span></div>
@@ -132,7 +132,7 @@
                     <div class="item--bottom d_flex justify_content_between align_items_center">
                       <div class="item--info d_inline mb_0">
                         <span class="item--info-time mr_4 position_relative">Jan 14</span>
-                        <span class="item--info-like mr_4 position_relative"><icon-base class="pr_1 pt_1" icon-name="heart" viewBox="0 0 12.413 11.127"><icon-heart /></icon-base>26</span>
+                        <span class="item--info-like mr_4 position_relative"><icon-base class="pr_1 pt_1" icon-name="heart" viewBox="0 0 378.94 378.94"><icon-heart /></icon-base>26</span>
                         <span class="item--info-author position_relative">by <span class="item--info-name">dangyen103</span></span>
                       </div>
                       <div class="item--icon text_right" ><span  @click="isBookmark = !isBookmark"><icon-base :class="{selected: isBookmark}" icon-name="bookmark-blog" viewBox="0 0 431.972 431.972"><icon-bookmark-blog/></icon-base></span></div>

@@ -1,44 +1,141 @@
 <template>
-    <div class="postdetail">
-        <h1 class="postdetail--title">9 Tricks for Kickass JavaScript Developers in 2019</h1>
-        <div class="author d_flex justify_content_start align_items_center">
-          <div class="author--avatar position_relative">
-            <img class="position_absolute" src="http://www.igeacps.it/app/uploads/2018/05/profile_uni_user.png">
-          </div>
-          <div class="author--info">
-            <span class="author--info-name">Lukas Gisder-Dubé</span>
-            <span class="author--info-time">09:00 PM - Jan 7</span>
-          </div>
-        </div>
-        <div class="postdetail--content">
-          Yet another year is over and JavaScript is ever changing. However, there are some tips that can help you write clean and efficient code that scales, even (or maybe especially?) in 2019. Below is a list of 9 pragmatic tips that will make you a better developer.
-          <h2>1. async / await</h2>
-          If you’re still stuck in callback hell, 2014 wants its code back. Just don’t use callbacks, unless it is absolutely necessary, for example required by a library or for performance reasons. Promises are fine, but they’re a bit awkward to use if your codebase gets bigger. My go-to solution nowadays is async / await, which makes reading and improving my code a lot cleaner. In fact, you can await every Promise in JavaScript, in case a library you’re using is returning a Promise, simply await it. In fact, async/await is just syntactical sugar around promises. To make your code work, you only need to add the async keyword in front of a function. Here’s a quick example:
-        </div>
-        <div class="action d_flex justify_content_end align_items_center">
-            <div class="action--clap d_flex justify_content_start align_items_center" @click="clap">
-              <span>100</span>
-              <icon-base v-if="!isClap" icon-name="clap" width="42" height="42" viewBox="0 0 25 25"><icon-clap /></icon-base>
-              <icon-base v-else class="svg--active" icon-name="clap-active" width="42" height="42" viewBox="0 0 26 26"><icon-clap-active /></icon-base>
+  <div class="post--detail detail-component ct mt_4 mb_4" :data-color="currentTheme">
+    <div class="r">
+      <div
+        class="c_12 c_sm_12 c_md_12 c_lg_1 c_xl_2 d_none d_lg_flex flex_column justify_content_center align_item_start"
+      >
+        <span class="detail--icon mt_2 mb_2 d_flex align_items_center">
+          <icon-base
+            class="selected mr_2"
+            icon-name="heart"
+            width="30"
+            height="30"
+            viewBox="0 0 378.94 378.94"
+          >
+            <icon-heart/>
+          </icon-base>26
+        </span>
+        <span class="detail--icon mt_2 mb_2">
+          <icon-base width="30" height="34" icon-name="bookmark-blog" viewBox="0 0 431.972 431.972">
+            <icon-bookmark-blog/>
+          </icon-base>
+        </span>
+        <span class="detail--icon mt_2 mb_2">
+          <icon-base width="30" height="26" icon-name="facebook" viewBox="0 0 512 512">
+            <icon-facebook/>
+          </icon-base>
+        </span>
+      </div>
+      <div class="c_12 c_sm_12 c_md_12 c_lg_10 c_xl_8 p_0">
+        <div class="detail--content">
+          <div class="detail--content-title">There’s Nothing New at CES 2019</div>
+          <div class="author author--top d_flex justify_content_start align_items_center mt_4 mb_4">
+            <div class="author--avatar position_relative mr_3">
+              <img
+                class="position_absolute"
+                src="http://www.igeacps.it/app/uploads/2018/05/profile_uni_user.png"
+              >
             </div>
-            <div class="action--list position_relative" @click="showDropdown">
-              <span><icon-base icon-name="more" width="42" height="42" viewBox="0 0 20 10"><icon-more /></icon-base></span>
-              <ul class="action--dropdown position_absolute" :class="{ show: showdropdown }">
-                <li>Lưu Bài Viết</li>
-                <li>Sửa Bài Viết</li>
-                <li>Xóa Bài Viết</li>
-              </ul>
+            <div class="author--info">
+              <div class="mb_1 d_flex justify_content_start align_items_end">
+                <div class="author--info-name">Yen Dang</div>
+                <div class="author--follow ml_2">
+                  <button class="btn">Follow</button>
+                </div>
+              </div>
+              <div class="author--start">
+                <span class="author--start-time mr_4 position_relative">Jan 14</span>
+                <span class="author--start-icon mr_4 position_relative">
+                  <icon-base class="pr_1 pt_1" icon-name="heart" viewBox="0 0 378.94 378.94">
+                    <icon-heart/>
+                  </icon-base>26
+                </span>
+              </div>
             </div>
+          </div>
+          <div class="detail--img position_relative">
+            <img
+              class="position_absolute"
+              src="http://ttol.vietnamnetjsc.vn//2017/05/25/15/05/hoa-sen-dep-moc-mac-thanh-cao-hiem-co-loai-hoa-nao-sanh-bang_8.jpg"
+            >
+          </div>
+          <div class="detail--text mt_4 mb_4">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </div>
+          <div class="detail--react pb_3 d_flex justify_content_between align_items_center">
+            <span class="detail--react-like d_flex align_items_center">
+              <icon-base
+                class="mr_1"
+                icon-name="heart"
+                width="30"
+                height="30"
+                viewBox="0 0 378.94 378.94"
+              >
+                <icon-heart/>
+              </icon-base>26
+            </span>
+            <div class="d_flex justify_content_end align_items_center">
+              <span class="detail--react-comment d_flex align_items_center">
+                <icon-base
+                  class="mr_1"
+                  icon-name="answer"
+                  width="40"
+                  height="30"
+                  viewBox="0 0 18.657 11.994"
+                >
+                  <icon-answer/>
+                </icon-base>22
+              </span>
+              <span class="ml_3 detail--react-facebook">
+                <icon-base width="30" height="30" icon-name="facebook" viewBox="0 0 512 512">
+                  <icon-facebook/>
+                </icon-base>
+              </span>
+              <span class="ml_3 detail--react-bookmark">
+                <icon-base
+                  width="30"
+                  height="30"
+                  icon-name="bookmark-blog"
+                  viewBox="0 0 431.972 431.972"
+                >
+                  <icon-bookmark-blog/>
+                </icon-base>
+              </span>
+            </div>
+          </div>
+          <div class="author author--bottom mt_4 mb_4">
+            <div class="d_flex justify_content_start align_items_center">
+              <div class="author--avatar position_relative mr_3">
+                <img
+                  class="position_absolute"
+                  src="http://www.igeacps.it/app/uploads/2018/05/profile_uni_user.png"
+                >
+              </div>
+              <div class="author--info">
+                <div class="mb_1 d_flex justify_content_between align_items_end">
+                  <div class="author--info-name">Yen Dang</div>
+                  <div class="author--follow ml_2">
+                    <button class="btn">Follow</button>
+                  </div>
+                </div>
+                <div class="author--info-join">Member since May 2017</div>
+              </div>
+            </div>
+            <div class="author--slogan mt_2 ml_5 pl_5">"What you do today determines your tomorrow"</div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
 import IconBase from "@/components/icons/IconBase";
-import IconMore from "@/components/icons/IconMore.vue";
-import IconClap from "@/components/icons/IconClap.vue";
-import IconClapActive from "@/components/icons/IconClapActive.vue";
-
+import IconHeart from "@/components/icons/IconHeart";
+import IconBookmarkBlog from "@/components/icons/IconBookmarkBlog";
+import IconAnswer from "@/components/icons/IconAnswer";
+import IconFacebook from "@/components/icons/IconFacebook";
 export default {
   data() {
     return {
@@ -46,136 +143,21 @@ export default {
       showdropdown: false
     };
   },
-  methods: {
-    showDropdown() {
-      this.showdropdown = !this.showdropdown;
-    },
-    clap() {
-      this.isClap = !this.isClap;
+  computed: {
+    currentTheme() {
+      return this.$store.getters.themeName;
     }
   },
   components: {
     IconBase,
-    IconMore,
-    IconClap,
-    IconClapActive
+    IconHeart,
+    IconBookmarkBlog,
+    IconAnswer,
+    IconFacebook
   }
 };
 </script>
 
 <style scoped lang="scss">
-.postdetail {
-  background-color: #ffffff;
-  padding: 15px 55px;
-  margin-bottom: 20px;
-
-  .postdetail--title {
-    font-size: 48px;
-    font-weight: bold;
-    color: #707070;
-  }
-  .postdetail--content {
-    font-size: 28px;
-  }
-}
-.author {
-  margin-top: 20px;
-  margin-bottom: 50px;
-  .author--avatar {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin-right: 30px;
-    &:before {
-      content: "";
-      display: block;
-      padding-top: 100%;
-    }
-    img {
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      width: 100%;
-      height: auto;
-    }
-  }
-  .author--info {
-    font-size: 32px;
-    color: #707070;
-    .author--info-name {
-      font-weight: bold;
-      display: block;
-    }
-  }
-}
-.action {
-  font-size: 32px;
-  color: #707070;
-  margin-top: 50px;
-  .action--clap {
-    cursor: pointer;
-    margin-right: 42px;
-    span {
-      margin-right: 10px;
-      padding-top: 7.5px;
-      user-select: none;
-    }
-    .svg--active {
-      color: #776ab0;
-    }
-  }
-  .action--list {
-    cursor: pointer;
-  }
-  .action--dropdown {
-    font-size: 24px;
-    right: -50px;
-    z-index: 10;
-    top: calc(100% + 10px);
-    min-width: 200px;
-    width: auto;
-    border: 2px solid #776ab0;
-    pointer-events: auto;
-    transition: all 0.4s ease;
-    transition-delay: 0.2s;
-    transform: translate(15px, 15px);
-    text-align: left;
-    visibility: hidden;
-    opacity: 0;
-    padding: 2.5px 15px 7.5px 15px;
-    border-radius: 5px;
-    list-style-type: none;
-    margin-bottom: 0;
-    background-color: #fff;
-    &.show {
-      visibility: visible;
-      opacity: 1;
-      transform: translate(0px, 0px);
-    }
-    &:after {
-      content: "";
-      position: absolute;
-      top: -13px;
-      border: 6px solid transparent;
-      height: 0;
-      left: 126px;
-      border-bottom-color: #776ab0;
-    }
-    li {
-      border-bottom: 1px solid #a8a8a8;
-      padding: 7.5px 0;
-      transition: all 0.4s ease;
-      cursor: pointer;
-      &:hover {
-        color: #776ab0;
-      }
-      &:last-child {
-        border-bottom: 0;
-        padding-bottom: 0;
-        color: #ff3242;
-      }
-    }
-  }
-}
+@import "./detail";
 </style>
