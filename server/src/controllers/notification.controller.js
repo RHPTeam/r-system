@@ -2,7 +2,7 @@
  * create controller notification for project
  * author: quangnc
  * date up: 14/01/2019
- * date to: 14/01/2019
+ * date to: 20/01/2019
  * team: BE-RHP
  */
 const Notification = require('../models/notification.model');

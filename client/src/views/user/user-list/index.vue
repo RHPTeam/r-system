@@ -8,7 +8,6 @@
           <app-paginate/>
         </div>
         <div class="c_md_4 c_12">
-          <app-aside/>
         </div>
       </div>
     </div>
