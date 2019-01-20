@@ -8,12 +8,12 @@
     <div class="nav--tags r">
       <div class="input--fill c_md_4 c_lg_3 c_sm_12 c_xs_12">
         <icon-base class="icon--search" icon-name="search" viewBox="0 0 65 65">
-          <icon-search />
+          <icon-search/>
         </icon-base>
         <input class="form_control" placeholder="Lọc theo tên">
       </div>
       <div class="tab--fill o_md_4 o_lg_6 c_lg_3 c_md_4 c_sm_12 c_xs_12">
-        <app-tabs :items="items" />
+        <app-tabs :items="items"/>
       </div>
     </div>
   </div>
@@ -22,6 +22,7 @@
 import AppTabs from "@/components/navbar/tabs";
 import IconBase from "@/components/icons/IconBase";
 import IconSearch from "@/components/icons/IconSearch";
+
 export default {
   data() {
     return {
@@ -52,11 +53,11 @@ export default {
 .content--head {
   padding: 0px 2%;
   padding-top: 50px;
+
   .nav--tags {
     .input--fill {
       padding-top: 10px;
       position: relative;
-      padding-left:0px !important;
       .icon--search {
         width: 25px;
         height: 25px;
@@ -93,12 +94,10 @@ export default {
 
 @media (max-width: 767px) {
   .content--head {
-    padding: 0px 15px;
-    padding-top:50px;
+    padding: 15px 15px 0 15px;
     .nav--tags {
       .input--fill {
         margin-bottom: 10px;
-
         .icon--search {
           width: 25px;
           height: 20px;

@@ -37,7 +37,7 @@
           tag="li"
           class="sidebar--item"
           active-class="active"
-          :to="{ name: 'job' }"
+          to="/jobs"
         >
           <a class="sidebar--link link--effect"
           >
@@ -70,7 +70,7 @@
           tag="li"
           class="sidebar--item"
           active-class="active"
-          :to="'/tags'"
+          to="/tags"
         >
           <a class="sidebar--link link--effect"
           >
@@ -86,7 +86,7 @@
           tag="li"
           class="sidebar--item"
           active-class="active"
-          :to="'/users'"
+          to="/users"
         ><a class="sidebar--link link--effect">
           <icon-base icon-name="user" viewBox="0 0 60 60"
           >
@@ -96,20 +96,20 @@
           <span class="sidebar--item-text pt_2">USERS</span></a
         >
         </router-link>
-        <router-link
-          tag="li"
-          class="sidebar--item"
-          active-class="active"
-          :to="'/users'"
-        ><a class="sidebar--link link--effect">
-          <icon-base icon-name="star-circle" viewBox="0 0 500 500"
-          >
-            <icon-star-circle
-            />
-          </icon-base>
-          <span class="sidebar--item-text pt_2">RANKS</span></a
-        >
-        </router-link>
+        <!--<router-link-->
+          <!--tag="li"-->
+          <!--class="sidebar&#45;&#45;item"-->
+          <!--active-class="active"-->
+          <!--:to="'/users'"-->
+        <!--&gt;<a class="sidebar&#45;&#45;link link&#45;&#45;effect">-->
+          <!--<icon-base icon-name="star-circle" viewBox="0 0 500 500"-->
+          <!--&gt;-->
+            <!--<icon-star-circle-->
+            <!--/>-->
+          <!--</icon-base>-->
+          <!--<span class="sidebar&#45;&#45;item-text pt_2">RANKS</span></a-->
+        <!--&gt;-->
+        <!--</router-link>-->
 
         <!--<router-link-->
         <!--tag="li"-->
@@ -135,9 +135,9 @@ import IconJobs from "../icons/IconJobs";
 import IconDocs from "../icons/IconDocs";
 import IconTags from "../icons/IconTags";
 import IconUser from "../icons/IconUser";
-import IconAsk from "../icons/IconAsk";
+// import IconAsk from "../icons/IconAsk";
 // import IconInbox from "../icons/IconInbox";
-import IconStarCircle from "../icons/IconStarCircle";
+// import IconStarCircle from "../icons/IconStarCircle";
 
 export default {
   components: {
@@ -146,10 +146,10 @@ export default {
     IconJobs,
     IconDocs,
     IconTags,
-    IconUser,
-    IconAsk,
+    IconUser
+    // IconAsk,
     // IconInbox,
-    IconStarCircle
+    // IconStarCircle
   },
   computed: {
     statusMenu() {

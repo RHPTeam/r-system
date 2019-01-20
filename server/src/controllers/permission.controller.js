@@ -1,24 +1,29 @@
+/**
+ * create controller permission for project
+ * author: quangnc 
+ * date up: 14/01/2019
+ * date to: 15/01/2019
+ * team: BE-RHP
+ */
+const omit = require('lodash/omit');
+const split = require('lodash/split');
+const forEach = require('lodash/forEach');
+
 const Permission = require('../models/permission.model');
 const JsonResponse = require('../helpers/json-response')
 
-findPermissionByName = async data => {
-  try {
-    return await permission.find()
-      .or([{
-        name: data.name
-      }])
-      .exec();
-  } catch (error) {
-    console.log(error)
-  }
+const includes = {
+  user: "user"
 }
+
 module.exports = {
   /**
    * create Permission
    * @param req
    * @param res
+   * @param next
    */
-  createPermission: async (req, res) => {
+  createPermission: async (req, res, next) => {
     try {
       const data_permission = req.body;
       if (!data_permission.name) {
@@ -40,7 +45,7 @@ module.exports = {
         return res.json(JsonResponse(data, 200, "create Permission success", false));
       })
     } catch (error) {
-      console.log(error)
+      next(err)
     }
   },
 
@@ -48,18 +53,29 @@ module.exports = {
    * Get all Categories
    * @param req
    * @param res
+   * @param next
    */
-  getAllPermissions: async (req, res) => {
+  getAllPermissions: async (req, res, next) => {
     try {
-      return await Permission.find({}, (errors, data) => {
-        if (errors) {
-          return res.json(JsonResponse("", 404, errors, false));
+      const {
+        query,
+      } = req;
+      const include = []
+      forEach(split(query._includes, ','), i => {
+        if (includes[i]) {
+          include.push(includes[i]);
         }
-        return res.json(JsonResponse(data, 200, "", false));
       });
-
+      return await Permission.find(omit(query, ['_includes']))
+        .populate(include)
+        .exec((errors, data) => {
+          if (errors) {
+            return res.json(JsonResponse("", 401, errors, false))
+          }
+          return res.json(JsonResponse(data, 200, "", false))
+        });
     } catch (error) {
-      console.log(error)
+      next(error)
     }
   },
 
@@ -67,12 +83,13 @@ module.exports = {
    * Get one Permission
    * @param req
    * @param res
+   * @param next
    */
-  getOnePermission: async (req, res) => {
+  getOnePermission: async (req, res, next) => {
     try {
       return res.json(JsonResponse(req.permission, 200, "", false))
     } catch (error) {
-      console.log(error)
+      next(next)
     }
   },
 
@@ -80,8 +97,9 @@ module.exports = {
    * update Permission by id 
    * @param req
    * @param res
+   * @param next
    */
-  updatePermission: async (req, res) => {
+  updatePermission: async (req, res, next) => {
     try {
       const {
         permission,
@@ -100,10 +118,10 @@ module.exports = {
         if (errors) {
           return res.json(JsonResponse("", 404, errors, false))
         }
-        res.json(JsonResponse("", 200, "update Permission success", false))
+        res.json(JsonResponse("", 200, "Update Permission success", false))
       })
     } catch (error) {
-
+      next(error)
     }
   },
 
@@ -111,22 +129,18 @@ module.exports = {
    * delete Permission by id
    * @param req
    * @param res
+   * @param next
    */
-  deletePermission: async (req, res) => {
+  deletePermission: async (req, res, next) => {
     try {
-      const {
-        permission
-      } = req;
-      return await Permission.findByIdAndDelete({
-        _id: permission._id
-      }, (errors, data) => {
-        if (errors) {
+      return await Permission.deleteOne(req.permission, err => {
+        if (err) {
           res.json(JsonResponse("", 404, errors, false))
         }
-        res.send(JsonResponse("", 200, `Delete Permission ${permission.name} success`, false))
+        res.send(JsonResponse("", 200, `Delete permission ${req.permission.name}`, false))
       })
     } catch (error) {
-      console.log(error);
+      next(error);
     }
   },
 
@@ -141,14 +155,15 @@ module.exports = {
     try {
       const permission = await Permission.findById({
         _id: id
-      });
+      })
+      .populate(`_${req.query._includes}`);;
       if (!permission) {
         return res.json(JsonResponse("", 404, `Permission doesn't exist`, false));
       }
       req.permission = permission;
       next();
     } catch (error) {
-      console.log(error)
+      next(error)
     }
   },
 }

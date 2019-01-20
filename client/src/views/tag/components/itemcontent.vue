@@ -23,18 +23,17 @@ export default {
 </script>
 
 <style lang="scss" >
+.tag--list {
+  box-sizing: border-box;
+  padding: 0px;
 
-  .tag--list {
-     box-sizing: border-box;
-    padding: 0px;
+  .tag {
+    margin-top: 30px;
+    padding-left: 0px !important;
+    box-sizing: border-box;
 
-    .tag {
-      margin-top:30px;
-      padding-left: 0px !important;
-     box-sizing: border-box;
-
-      .top {
-        margin-bottom: 20px;
+    .top {
+      margin-bottom: 20px;
 
       .tag--name {
         padding: 8px 10px;
@@ -47,7 +46,7 @@ export default {
       }
 
       .tag--detail p {
-        margin-top:10px;
+        margin-top: 10px;
         font-size: 12px;
         font-weight: normal;
         font-style: normal;

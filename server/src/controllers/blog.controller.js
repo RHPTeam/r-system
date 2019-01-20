@@ -141,24 +141,30 @@ module.exports = {
   createBlogByUser: async (req, res) => {
     try {
       const {userId} = req.params;
-      // Create new blog
+      const {categoryId} = req.params;
+      // Create new blog with author = userId
+      req.body["_author"] = userId;
+      req.body["_category"] = categoryId;
       const newBlog = new Blog(req.body);
-      // get user
+      // get user, get category
       const user = await User.findById(userId)
-      // assign blog to user
+      const category = await Category.findById(categoryId)
+      // assign blog to user,assign blog to category
       newBlog.user = user;
+      newBlog.category = category
       //save blog
       await newBlog.save();
       //add blog to user
       user._blogs.push(newBlog);
-      //save user
+      category._blogs.push(newBlog);
+      //save user, category
       await user.save();
-      return res.json(JsonResponse(newBlog, 201, "create blog by user success ", false))
+      await category.save()
+      return res.json(JsonResponse(newBlog, 200, "create blog by user success ", false))
     } catch (error) {
       console.log(error)
     }
   },
-
   /**
    * get blog by user
    * @param req
@@ -168,7 +174,7 @@ module.exports = {
   getBlogByUser: async (req, res) => {
     try {
       const {userId} = req.params;
-      const user = await User.findById(userId).populate(_blogs)
+      const user = await User.findById(userId)
       return res.json(JsonResponse(user._blogs, 200, "get blog by user success ", false))
     } catch (error) {
       console.log(error)
@@ -185,7 +191,7 @@ module.exports = {
   getBlogByCategoryId: async (req, res) => {
     try {
       const {categoryId} = req.params;
-      const category = await Category.findById(categoryId).populate('_blogs')
+      const category = await Category.findById(categoryId)
       return res.json(JsonResponse(category._blogs, 200, "get category by user success ", false))
     } catch (error) {
       console.log(error)
@@ -194,7 +200,7 @@ module.exports = {
 
   /************************____COMMENT____*************/
   /**
-   * get blog by categoryId
+   * get blog by commentId
    * @param req
    * @param res
    * 
@@ -208,9 +214,5 @@ module.exports = {
       console.log(error);
     }
   },
-
-  
-
-
 
 }

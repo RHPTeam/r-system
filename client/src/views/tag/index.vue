@@ -32,13 +32,13 @@ export default {
 </script>
 
 <style lang="scss" >
-.r{
-  margin:0px !important;
+.r {
+  margin: 0px !important;
 }
-  .main--wrapper {
-    font-family: "Quicksand", sans-serif;
-    position: relative;
-    color: #3b4045;
+.main--wrapper {
+  font-family: "Quicksand", sans-serif;
+  position: relative;
+  color: #3b4045;
 
   .page--wrapper {
     background-color: #fff;

@@ -51,31 +51,29 @@
 </template>
 
 <script>
-    import IconBase from "@/components/icons/IconBase";
-    import IconClockHistory from "@/components/icons/IconClockHistory";
-    import IconEye from "@/components/icons/IconEye";
-    import IconPen from "@/components/icons/IconPen";
-    import IconDelete from "@/components/icons/IconDelete";
-    export default {
-        components: {
-            IconBase,
-            IconClockHistory,
-            IconEye,
-            IconPen,
-            IconDelete
-        }
-    }
-
+import IconBase from "@/components/icons/IconBase";
+import IconClockHistory from "@/components/icons/IconClockHistory";
+import IconEye from "@/components/icons/IconEye";
+import IconPen from "@/components/icons/IconPen";
+import IconDelete from "@/components/icons/IconDelete";
+export default {
+  components: {
+    IconBase,
+    IconClockHistory,
+    IconEye,
+    IconPen,
+    IconDelete
+  }
+};
 </script>
 
 <style scoped lang="scss">
-    @import "list-job.scss";
-    @media (max-width: 450px){
-      .item--action{
-
-        button{
-          margin-bottom:10px;
-        }
-      }
+@import "list-job.scss";
+@media (max-width: 450px) {
+  .item--action {
+    button {
+      margin-bottom: 10px;
     }
+  }
+}
 </style>

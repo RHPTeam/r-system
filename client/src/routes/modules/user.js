@@ -9,7 +9,7 @@ const userRouter = {
       component: () => import("@/views/user/user-list/index")
     },
     {
-      path: ":id",
+      path: ":userId",
       props: true,
       component: () => import("@/views/user/user-info/index"),
       children: [
@@ -75,7 +75,7 @@ const userRouter = {
         {
           path: "recruitment",
           name: "user-info-recruitment",
-          component: ()=>
+          component: () =>
             import("@/views/user/user-info/user-info-recruitment")
         }
       ]

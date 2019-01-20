@@ -16,54 +16,50 @@
   </div>
 </template>
 <script>
-  import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-  export default {
-    data() {
-      return {
-        editor: ClassicEditor,
-        editorData: '',
-
-      };
-    }
-  };
-
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+export default {
+  data() {
+    return {
+      editor: ClassicEditor,
+      editorData: ""
+    };
+  }
+};
 </script>
 
 <style lang="scss">
-  .ck-editor__editable {
-    min-height: 400px;
-  }
+.ck-editor__editable {
+  min-height: 400px;
+}
 
-  @media (max-width:768px) {
-    .btn--action {
-      text-align: center !important;
-    }
-  }
-
+@media (max-width: 768px) {
   .btn--action {
-    margin-top: 10px;
-    text-align: right;
+    text-align: center !important;
+  }
+}
 
-    button {
-      font-size: 14px;
-      font-weight: 500;
-      font-style: normal;
-      font-stretch: normal;
-      line-height: 1.29;
-      letter-spacing: 0.2px;
-      text-align: center;
-      color: #ffffff;
+.btn--action {
+  margin-top: 10px;
+  text-align: right;
 
-    }
-
-    .btn--save {
-      background: #776ab0;
-      margin-right: 10px;
-    }
-
-    .btn--cancel {
-      background: #9999;
-    }
+  button {
+    font-size: 14px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.29;
+    letter-spacing: 0.2px;
+    text-align: center;
+    color: #ffffff;
   }
 
+  .btn--save {
+    background: #776ab0;
+    margin-right: 10px;
+  }
+
+  .btn--cancel {
+    background: #9999;
+  }
+}
 </style>
