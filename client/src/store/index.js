@@ -3,6 +3,7 @@ import Vuex from "vuex";
 
 import currentTab from "./modules/currentTab";
 import user from "./modules/user";
+import anwser from "./modules/answer";
 
 Vue.use(Vuex);
 
@@ -37,6 +38,7 @@ export default new Vuex.Store({
   },
   modules: {
     currentTab,
-    user
+    user,
+    anwser
   }
 });

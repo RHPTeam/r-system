@@ -26,6 +26,8 @@ import AppWho from "./components/who";
 import AppComments from "./components/comments";
 import AppForm from "./components/form";
 import AppNote from "./components/note";
+import AnwserService from "@/services/modules/answer.service";
+
 export default {
   components: {
     AppHeader,
@@ -35,6 +37,17 @@ export default {
     AppComments,
     AppForm,
     AppNote
-  }
+  },
+  computed: {
+    anwser(){
+      return this.$store.getters.anwser;
+    }
+  },
+  async created() {
+     await AnwserService.getOne("5c40db2dc30d5d0f3fecd6da").then((res)=>{
+       this.$store.dispatch("setAnwser",res.data.data);
+     })
+  },
+
 };
 </script>
