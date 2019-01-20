@@ -28,7 +28,7 @@
       </div>
       <div class="c_12 c_sm_12 c_md_12 c_lg_10 c_xl_8 p_0">
         <div class="detail--content">
-          <div class="detail--content-title">There’s Nothing New at CES 2019</div>
+          <div class="detail--content-title">{{blog.title}}</div>
           <div class="author author--top d_flex justify_content_start align_items_center mt_4 mb_4">
             <div class="author--avatar position_relative mr_3">
               <img
@@ -59,10 +59,7 @@
               src="http://ttol.vietnamnetjsc.vn//2017/05/25/15/05/hoa-sen-dep-moc-mac-thanh-cao-hiem-co-loai-hoa-nao-sanh-bang_8.jpg"
             >
           </div>
-          <div class="detail--text mt_4 mb_4">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </div>
+          <div class="detail--text mt_4 mb_4">{{blog.body}}</div>
           <div class="detail--react pb_3 d_flex justify_content_between align_items_center">
             <span class="detail--react-like d_flex align_items_center">
               <icon-base
@@ -137,6 +134,7 @@ import IconBookmarkBlog from "@/components/icons/IconBookmarkBlog";
 import IconAnswer from "@/components/icons/IconAnswer";
 import IconFacebook from "@/components/icons/IconFacebook";
 export default {
+  props: ["blog"],
   data() {
     return {
       isClap: false,

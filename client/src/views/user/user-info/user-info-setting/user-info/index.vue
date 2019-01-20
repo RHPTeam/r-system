@@ -79,10 +79,10 @@ import IconGithub from "@/components/icons/IconGithub";
 
 import UserService from "@/services/modules/user.service";
 export default {
-  data () {
+  data() {
     return {
-      message: ''
-    }
+      message: ""
+    };
   },
   components: {
     IconBase,
@@ -91,22 +91,22 @@ export default {
     IconGithub
   },
   computed: {
-    user () {
-      return this.$store.getters.user
+    user() {
+      return this.$store.getters.user;
     }
   },
   methods: {
-    submit () {
-      UserService.update(this.user).then((res) => {
-        this.message = res.data.message
-      })
+    submit() {
+      UserService.update(this.user).then(res => {
+        this.message = res.data.message;
+      });
     }
   },
-  async mounted () {
-    const userId = this.$route.params.userId
-    await UserService.show(userId).then((res) => {
-      this.$store.dispatch("show", res.data.data)
-    })
+  async mounted() {
+    const userId = this.$route.params.userId;
+    await UserService.show(userId).then(res => {
+      this.$store.dispatch("show", res.data.data);
+    });
   }
 };
 </script>

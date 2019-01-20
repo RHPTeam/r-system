@@ -2,7 +2,7 @@
   <div class="post--wrapper blog--content" :data-theme="currentTheme">
     <app-header/>
     <div class="pl_4 pr_4">
-      <app-post-detail/>
+      <app-post-detail :blog = 'detailBlog'/>
     </div>
     <div class="detail--other-info p_4 mb_4" :data-theme="currentTheme">
       <div class="ct p_0">
@@ -40,6 +40,8 @@
 </template>
 
 <script>
+import BlogService from "@/services/modules/blog.service";
+
 import IconBase from "@/components/icons/IconBase";
 import IconFontSize from "@/components/icons/IconFontSize";
 import IconMoon from "@/components/icons/IconMoon";
@@ -76,6 +78,9 @@ export default {
     },
     currentTheme() {
       return this.$store.getters.themeName;
+    },
+    detailBlog() {
+      return this.$store.getters.blog;
     }
   },
   methods: {
@@ -88,6 +93,11 @@ export default {
       }
       this.$store.dispatch("changeTheme", this.valueTheme);
     }
+  },
+  async mounted() {
+    const blogId = this.$route.params.blogId;
+    const res = await BlogService.show(blogId);
+    this.$store.dispatch("show", res.data.data);
   }
 };
 </script>

@@ -4,7 +4,7 @@
     <div class="ct pl_4 pr_4 pr_sm_0 pl_sm_0">
       <div class="r">
         <div class="c_12">
-          <app-trend/>
+          <app-trend :blogs='allBlog'/>
         </div>
         <div class="c_12">
           <hr/>
@@ -27,6 +27,7 @@
         </div>
       </div>
     </div>
+    <div>{{allBlog}}</div>
     <app-footer/>
     <div class="blog--change position_fixed text_center">
       <div class="change--theme" @click="changeTheme">
@@ -39,6 +40,8 @@
 </template>
 
 <script>
+import BlogService from "@/services/modules/blog.service";
+
 import IconBase from "@/components/icons/IconBase";
 import IconFontSize from "@/components/icons/IconFontSize";
 import IconMoon from "@/components/icons/IconMoon";
@@ -76,6 +79,9 @@ export default {
     },
     currentTheme() {
       return this.$store.getters.themeName;
+    },
+    allBlog() {
+      return this.$store.getters.blogs;
     }
   },
   methods: {
@@ -88,6 +94,10 @@ export default {
       }
       this.$store.dispatch("changeTheme", this.valueTheme);
     }
+  },
+  async mounted() {
+    const allblog = await BlogService.index();
+    this.$store.dispatch("index", allblog.data.data);
   }
 };
 </script>
