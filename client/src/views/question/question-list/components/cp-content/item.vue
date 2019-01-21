@@ -1,47 +1,39 @@
-<template>
-  <div class="c_12">
-    <div class="card--question r" v-for="question in questions" :key="question._id">
-      <div class="card--left r_auto">
+<template>  
+<div class="card--question r">
+    <div class="card--left r_auto">
         <div class="card--title">
-        <!--Lorem ipsum dolor sit amet, consectetur adipiscing elit-->
-          {{question.content}}
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit
         </div>
         <div class="card--tabs">
-            <a href="" class="card--btn">
-              <!--python-->
-              {{question.tags}}
-            </a>
-            <!--<a href="" class="card&#45;&#45;btn">javascript</a>-->
+            <a href="" class="card--btn">python</a>
+            <a href="" class="card--btn">javascript</a>
         </div>
         <div class="created">
         <span class="circle-icon">
          <icon-base icon-name="pen" width="10" height="10" viewBox="0 0 9.374 9.328"><icon-pen /></icon-base>
         </span>
-            modifiled {{question.createdDate}} <a href="">{{question.name}}</a>
+           
+            modifiled 1 min ago <a href="">clusterdude 122</a>
         </div>
-      </div>
-      <div class="card-right ml_auto d_flex ">
-        <div class="like  d_flex flex_column align_items_center">
-          <span class="num">0</span>
-          <span>
-            <!--votes-->
-            {{question.__v}}
-          </span>
-          <span><icon-base icon-name="thumbs" viewBox="0 0 18.657 11.994"><icon-thumbs-up /></icon-base></span>
-        </div>
-        <div class="comt d_flex flex_column align_items_center">
-          <span class="num">0</span>
-          <span>answers</span>
-          <span><icon-base icon-name="answer" viewBox="0 0 18.657 11.994"><icon-answer /></icon-base></span>
-        </div>
-        <div class="views d_flex flex_column align_items_center">
-          <span class="num">0</span>
-          <span>views</span>
-          <span><icon-base icon-name="eye" viewBox="0 0 480 520"><icon-eye /></icon-base></span>
-        </div>
-      </div>
     </div>
-  </div>
+    <div class="card-right ml_auto d_flex ">
+    <div class="like  d_flex flex_column align_items_center">
+        <span class="num">0</span>
+        <span>votes</span>
+        <span><icon-base icon-name="thumbs" viewBox="0 0 18.657 11.994"><icon-thumbs-up /></icon-base></span>
+    </div>
+    <div class="comt d_flex flex_column align_items_center">
+        <span class="num">0</span>
+        <span>answers</span>
+        <span><icon-base icon-name="answer" viewBox="0 0 18.657 11.994"><icon-answer /></icon-base></span>
+    </div>
+    <div class="views d_flex flex_column align_items_center">
+        <span class="num">0</span>
+        <span>views</span>
+        <span><icon-base icon-name="eye" viewBox="0 0 480 520"><icon-eye /></icon-base></span>
+    </div>
+    </div>
+</div>
 </template>
 
 <script>
@@ -50,8 +42,6 @@ import IconThumbsUp from "@/components/icons/IconThumbsUp";
 import IconEye from "@/components/icons/IconEye";
 import IconAnswer from "@/components/icons/IconAnswer";
 import IconBase from "@/components/icons/IconBase";
-
-import QuestionService from "@/services/modules/question.service";
 export default {
   components: {
     IconPen,
@@ -59,44 +49,6 @@ export default {
     IconEye,
     IconThumbsUp,
     IconAnswer
-  },
-  computed: {
-    questions() {
-      return this.$store.getters.questions;
-    }
-  },
-  async mounted() {
-    await QuestionService.index().then(res => {
-      this.$store.dispatch("index", res.data.data);
-    });
-  },
-  methods: {
-    // getMinutess() {
-    //   var isl = this.data.data.createDate
-    //   var compareDate = new Date("2019-01-17 18:55:32.594");
-    //   var now = new Date();
-    //
-    //   var diff = now - compareDate;
-    //
-    //   var seconds = parseInt(diff / 1000, 10);
-    //
-    //   var days = Math.floor(seconds / (3600 * 24));
-    //   seconds -= days * 3600 * 24;
-    //   var hrs = Math.floor(seconds / 3600);
-    //   seconds -= hrs * 3600;
-    //   var mnts = Math.floor(seconds / 60);
-    //   seconds -= mnts * 60;
-    //   console.log(
-    //     days +
-    //       " days, " +
-    //       hrs +
-    //       " Hrs, " +
-    //       mnts +
-    //       " Minutes, " +
-    //       seconds +
-    //       " Seconds"
-    //   );
-    // }
   }
 };
 </script>

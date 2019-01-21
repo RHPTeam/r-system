@@ -18,7 +18,7 @@
             <app-lastest/>
             <div class="c_12 p_0"><hr/></div>
             <app-all/>
-            <!--<app-pagination/>-->
+            <app-pagination/>
           </div>
           <div class="c_12 c_sm_12 c_md_12 c_lg_4 c_xl_4 pl_lg_3 pr_lg_3">
             <app-ads class="d_none d_lg_block"/>
@@ -50,7 +50,7 @@ import AppFeature from "@/views/blog/category/components/feature";
 import AppPopular from "@/views/blog/category/components/popular";
 import AppLastest from "@/views/blog/category/components/lastest";
 import AppAll from "@/views/blog/category/components/all";
-// import AppPagination from "@/views/blog/category/components/pagination";
+import AppPagination from "@/views/blog/category/components/pagination";
 export default {
   data() {
     return {
@@ -69,8 +69,8 @@ export default {
     AppFeature,
     AppPopular,
     AppLastest,
-    AppAll
-    // AppPagination
+    AppAll,
+    AppPagination
   },
   computed: {
     valueTheme() {
