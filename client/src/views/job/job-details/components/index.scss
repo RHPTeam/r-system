@@ -1,0 +1,44 @@
+.main--content {
+  border-top: 1px solid #e4e4e4;
+}
+.job--border {
+  border-bottom: 1px solid #e4e4e4;
+}
+ul.job {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  li {
+    display: inline-block;
+    .about--tag {
+      color: #a8a8a8;
+      padding: 6px 13px;
+      border: 1px solid #a8a8a8;
+      border-radius: 10px;
+      margin-right: 8px;
+      outline: 0;
+      text-decoration: none;
+      cursor: pointer;
+      &:hover,&:active,&:focus {
+        border-color: #776ab0;
+        color: #776ab0;
+      }
+    }
+  }
+}
+h4 {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.4px;
+  color: #707070;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+a{
+  text-decoration: none;
+}
+.w_50 {
+  width: 50%;
+}
+

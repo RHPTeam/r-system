@@ -13,6 +13,7 @@
 <script>
 import AppInfo from "./cp-content/info";
 import AppPaginate from "./cp-content/paginate";
+
 import AppItem from "./cp-content/items";
 export default {
   components: {

@@ -69,6 +69,10 @@ const UserSchema = new Schema({
   _comments: [{
     type: Schema.Types.ObjectId,
     ref: 'Comment'
+  }],
+  _jobs: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Job'
   }]
 })
 

@@ -29,7 +29,7 @@
               </div>
               <div class="user--info ml_0 ml_sm_3 mt_1 mt_sm_0 text_center text_sm_left align_self_end align_self_lg_center">
                   <div class="user--info-name">{{ user.name }}</div>
-                  <div class="user--info-alias">( {{ user.nameDisplay }} )</div>
+                  <div class="user--info-alias" v-if="user.nameDisplay != null">( {{ user.nameDisplay }} )</div>
               </div>
           </div>
       </div>
@@ -82,14 +82,14 @@ export default {
     IconStory
   },
   computed: {
-    user () {
-      return this.$store.getters.user
+    user() {
+      return this.$store.getters.user;
     }
   },
   async mounted() {
-    await UserService.show(this.idRoute).then((res) => {
-      this.$store.dispatch("show", res.data.data)
-    })
+    await UserService.show(this.idRoute).then(res => {
+      this.$store.dispatch("show", res.data.data);
+    });
   }
 };
 </script>

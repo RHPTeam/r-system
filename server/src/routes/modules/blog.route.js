@@ -7,32 +7,31 @@
  */
 const router = require('express-promise-router')();
 
-const blog = require('../../controllers/blog.controller'); 
+const blog = require('../../controllers/blog.controller');
 
 /* GET blog listing. */
 router.route('/')
-  .get(blog.getAllBlogs)
-  .post(blog.createBlog);//create by hand of admin
+    .get(blog.getAllBlogs)
+    .post(blog.createBlog); //create by hand of admin
 
 /* GET blog by id listing. */
-router.route('/:blogId')
-  .get(blog.getOneBlog)
-  .patch(blog.updateBlog)
-  .delete(blog.deleteBlog);
+router.route('/blogId=:blogId')
+    .get(blog.getOneBlog)
+    .patch(blog.updateBlog)
+    .delete(blog.deleteBlog);
 
 /*GET blog by user */
-router.route('/user/id=:userId')
-  .get(blog.getBlogByUser)
-router.route('/user/userId=:userId&categoryId=:categoryId')
-  .post(blog.createBlogByUser);
+router.route('/userId=:userId')
+    .get(blog.getBlogByUser)
+router.route('/userId=:userId&categoryId=:categoryId')
+    .post(blog.createBlogByUser);
 
 /*GET blog by category */
 router.route('/category/id=:categoryId')
-  .get(blog.getBlogByCategoryId);
-
+    .get(blog.getBlogByCategoryId);
 
 /*GET blog by comment */
 router.route('/:blogId/comment')
-  .get(blog.getCommentInBlog)
+    .get(blog.getCommentInBlog)
 
 module.exports = router;
