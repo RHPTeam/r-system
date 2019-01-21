@@ -1,10 +1,10 @@
 const state = {
-  questions: []
+  questions: [],
 };
 const getters = {
   questions: state => {
     return state.questions;
-  }
+  },
 };
 const mutations = {
   index: (state, payload) => {

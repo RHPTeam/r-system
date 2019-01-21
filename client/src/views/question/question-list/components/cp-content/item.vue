@@ -1,6 +1,6 @@
 <template>
   <div class="c_12">
-    <div class="card--question r" v-for="question in questions" v-bind:key="question">
+    <div class="card--question r" v-for="question in questions" :key="question._id">
       <div class="card--left r_auto">
         <div class="card--title">
         <!--Lorem ipsum dolor sit amet, consectetur adipiscing elit-->
@@ -68,14 +68,14 @@ export default {
   async mounted() {
     await QuestionService.index().then(res => {
       this.$store.dispatch("index", res.data.data);
-      // console.log(res.data.data);
     });
   },
   methods: {
     // getMinutess() {
+    //   var isl = this.data.data.createDate
     //   var compareDate = new Date("2019-01-17 18:55:32.594");
     //   var now = new Date();
-    //   console.log(now)
+    //
     //   var diff = now - compareDate;
     //
     //   var seconds = parseInt(diff / 1000, 10);

@@ -6,7 +6,7 @@
         <a href="#">Thêm thông tin không bố kick giờ</a>
       </p>
     </div>
-    <div class="user--add-info">
+    <div class="user--add-info position_absolute">
       <div class="card">
         <div class="card_body">
           <form>
@@ -42,6 +42,9 @@
     </div>
   </div>
 </template>
+<script>
+export default {};
+</script>
 <style lang="scss" scoped>
 .user--info {
   padding: 1em 0 0 0;
@@ -57,7 +60,7 @@
   top: 0;
   left: 0;
   z-index: +99;
-  display: none;
+  display: block;
   .card_body {
     background: #f4f8fb;
   }
