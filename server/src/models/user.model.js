@@ -73,6 +73,10 @@ const UserSchema = new Schema({
   _jobs: [{
     type: Schema.Types.ObjectId,
     ref: 'Job'
+  }],
+  _posts: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Post'
   }]
 })
 
