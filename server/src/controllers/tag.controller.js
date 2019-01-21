@@ -126,9 +126,7 @@ module.exports = {
 
   getTagByQuestion: async (req, res) => {
     try {
-      const {
-        tagId
-      } = req.params;
+      const {tagId} = req.params;
       const tag = await Tag.findById(tagId).populate('_question');
       if (errors) {
         res.json(JsonResponse("", 404, errors, false))

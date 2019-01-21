@@ -58,7 +58,7 @@ const UserSchema = new Schema({
       type: Schema.Types.ObjectId,
       ref: 'Rank'
   },
-  _favorities: [{
+  _favorite: [{
       type: Schema.Types.ObjectId,
       ref: 'Favorite'
   }],

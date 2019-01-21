@@ -15,24 +15,24 @@ router.route('/')
   .post(blog.createBlog);//create by hand of admin
 
 /* GET blog by id listing. */
-router.route('/:blogId')
+router.route('/blogId=:blogId')
   .get(blog.getOneBlog)
   .patch(blog.updateBlog)
   .delete(blog.deleteBlog);
 
 /*GET blog by user */
-router.route('/user/id=:userId')
+router.route('/userId=:userId')
   .get(blog.getBlogByUser)
-router.route('/user/userId=:userId&categoryId=:categoryId')
+router.route('/userId=:userId&categoryId=:categoryId')
   .post(blog.createBlogByUser);
 
 /*GET blog by category */
-router.route('/category/id=:categoryId')
+router.route('/categoryId=:categoryId')
   .get(blog.getBlogByCategoryId);
 
 
 /*GET blog by comment */
-router.route('/:blogId/comment')
+router.route('/blogId=:blogId/comment')
   .get(blog.getCommentInBlog)
 
 module.exports = router;
