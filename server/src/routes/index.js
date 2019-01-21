@@ -1,3 +1,4 @@
+
 /* CONFIG ROUTES INDEX ALL OF ROUTES BEFORE IMPORT TO APP.JS */
 /**
  * create all route for project
@@ -11,11 +12,12 @@ const anwsers = require('./modules/anwser.route')
 const blogs = require('./modules/blog.route')
 const categories = require('./modules/category.route')
 const comments = require('./modules/comment.route')
-const favorites = require('./modules/favorites.route')
+const favorities = require('./modules/favorites.route')
 const jobs = require('./modules/job.route')
 const library = require('./modules/library.route')
 const notifications = require('./modules/notification.route')
 const permissions = require('./modules/permission.route')
+const posts = require('./modules/post.route')
 
 const products = require('./modules/product.route')
 const questions = require('./modules/question.route')
@@ -31,11 +33,12 @@ router.use('/anwsers',anwsers)
 router.use('/blogs',blogs)
 router.use('/categories', categories)
 router.use('/comments', comments)
-router.use('/favorites', favorites)
+router.use('/favorities', favorities)
 router.use('/jobs', jobs)
 router.use('/library', library)
 router.use('/notifications', notifications)
 router.use('/permissions', permissions)
+router.use('/posts', posts)
 
 router.use('/products', products)
 router.use('/questions', questions)
