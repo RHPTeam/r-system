@@ -31,6 +31,33 @@
         </div>
       </div>
     </div>
+    <div class="user--add-frame">
+      <div class="card">
+        <div class="card_body">
+          <form>
+            <div class="form_group">
+              <label>Personal statement</label>
+              <textarea name="" id="" class="form_control">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</textarea>
+              <div class="user--check mt_3">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, possimus!
+              </div>
+            </div>
+            <div class="form_group">
+              <label>Personal statement</label>
+              <textarea name="" class="form_control">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</textarea>
+            </div>
+            <div class="r form_group">
+              <div class="c_12 c_sm_12 c_md_6 c_lg_6 text_center">
+                <button type="button" class="btn_primary btn--user">Add</button>
+              </div>
+              <div class="c_12 c_sm_12 c_md_6 c_lg_6 text_center">
+                <button type="button" class="btn_danger btn--user">Cancel</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -39,11 +66,6 @@ export default {
     return {
       isShow: false
     };
-  },
-  methods: {
-    openAddInfo: () => {
-      document.getElementsByClassName("click--add")[0].show("user--add-frame");
-    }
   }
 };
 </script>

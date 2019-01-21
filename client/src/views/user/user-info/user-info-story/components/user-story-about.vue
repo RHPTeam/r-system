@@ -3,16 +3,16 @@
     <div class="user--info card text_center position_relative">
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, autem.</p>
       <p>
-        <a href="javascript:void(0)">Thêm thông tin không bố kick giờ</a>
+        <a href="#">Thêm thông tin không bố kick giờ</a>
       </p>
     </div>
-    <div class="user--add-info position_absolute">
+    <div class="user--add-info">
       <div class="card">
         <div class="card_body">
-          <form method="post">
+          <form>
             <div class="form_group">
               <label>Personal statement</label>
-              <textarea name="txtInfo"  class="form_control">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</textarea>
+              <textarea name="" id="" class="form_control">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</textarea>
               <div class="user--check mt_3">
                 <input type="checkbox" id="check_info"/>
                 <span>Only show your pesonal statement to employers</span>

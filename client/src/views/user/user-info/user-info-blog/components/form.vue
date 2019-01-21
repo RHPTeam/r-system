@@ -3,43 +3,119 @@
     <div class="title--blog r">
       <h2>Tạo bài viết</h2>
     </div>
-    <div class="create--blog--form">
+    <form class="create--blog--form" @submit.prevent="createBlog">
       <div class="form_group">
         <label>Tên bài viết</label>
-        <input type="text" class="form_control" placeholder=" Tiêu đề bài viết">
+        <input
+          type="text"
+          class="form_control"
+          v-model="blog.title"
+          placeholder=" Tiêu đề bài viết"
+        >
       </div>
       <div class="form_group">
         <label>Slug bài viết</label>
         <div class="d_flex align_items_center">
-          <span class="slug-url">https://rhpteam.dev/blogs/</span> <input type="text" class="form_control" placeholder=" example-foo-bar">
+          <span class="slug-url">https://rhpteam.dev/blogs/{{slug}}</span>
         </div>
       </div>
-
+      <div class="form_group">
+        <label>Mô tả bài viết</label>
+        <ckeditor class="form_control" :editor="editor" v-model="blog.desc">
+          It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+          There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
+        </ckeditor>
+      </div>
       <div class="form_group">
         <label>Thể loại bài viết</label>
-        <input type="text" class="form_control" placeholder=" eg: Javascript">
-        <small class="form_text text_muted">Nếu bài viết của bạn quá nhiều lần chọn sai thể loại bài viết, bạn sẽ bị mất quyền viết bài.</small>
+        <input
+          type="text"
+          class="form_control"
+          placeholder=" eg: Javascript"
+          v-model="blog._category"
+        >
+        <small
+          class="form_text text_muted"
+        >Nếu bài viết của bạn quá nhiều lần chọn sai thể loại bài viết, bạn sẽ bị mất quyền viết bài.</small>
       </div>
       <div class="form_group form_textarea">
         <label>Nội dung bài viết</label>
-        <ckeditor class="form_control" :editor="editor" v-model="editorData">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-          There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</ckeditor>
+        <ckeditor class="form_control" :editor="editor" v-model="blog.body">
+          It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+          There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
+        </ckeditor>
       </div>
-
-      <button class="btn btn_primary btn--create">Thêm bài viết</button>
-    </div>
+      <div class="form_group">
+        <label>Ảnh bài viết</label>
+        <input type="text" class="form_control" placeholder="http://" v-model="blog.image">
+      </div>
+      <button class="btn btn_primary btn--create" type="submit">Thêm bài viết</button>
+    </form>
   </div>
 </template>
 
 <script>
+// import UserService from "@/services/modules/user.service";
+import BlogService from "@/services//modules/blog.service";
+
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 export default {
   data() {
     return {
       editor: ClassicEditor,
-      editorData: ""
+      editorData: "",
+      blog: {
+        title: "",
+        desc: "",
+        body: "",
+        image: "",
+        _category: "5c3ff69f311a6c2b58b8b837"
+      }
     };
+  },
+  computed: {
+    slug() {
+      const slug = this.sanitizeTitle(this.blog.title);
+      return slug;
+    }
+  },
+  methods: {
+    createBlog() {
+      const userId = this.$route.params.userId;
+      BlogService.createByUser(userId, this.blog._category, this.blog)
+        .then(res => {
+          this.$store.dispatch("create", res.data.data);
+        })
+        .then(this.resetForm);
+    },
+    resetForm() {
+      this.blog.title = "";
+      this.blog.desc = "";
+      this.blog.body = "";
+      this.blog.image = "";
+    },
+    sanitizeTitle(title) {
+      let slug = "";
+      // Change to lower case
+      let titleLower = title.toLowerCase();
+      // Letter "e"
+      slug = titleLower.replace(/e|é|è|ẽ|ẻ|ẹ|ê|ế|ề|ễ|ể|ệ/gi, "e");
+      // Letter "a"
+      slug = slug.replace(/a|á|à|ã|ả|ạ|ă|ắ|ằ|ẵ|ẳ|ặ|â|ấ|ầ|ẫ|ẩ|ậ/gi, "a");
+      // Letter "o"
+      slug = slug.replace(/o|ó|ò|õ|ỏ|ọ|ô|ố|ồ|ỗ|ổ|ộ|ơ|ớ|ờ|ỡ|ở|ợ/gi, "o");
+      // Letter "u"
+      slug = slug.replace(/u|ú|ù|ũ|ủ|ụ|ư|ứ|ừ|ữ|ử|ự/gi, "u");
+      // Letter "d"
+      slug = slug.replace(/đ/gi, "d");
+      // Trim the last whitespace
+      slug = slug.replace(/\s*$/g, "");
+      // Change whitespace to "-"
+      slug = slug.replace(/\s+/g, "-");
+
+      return slug;
+    }
   }
 };
 </script>

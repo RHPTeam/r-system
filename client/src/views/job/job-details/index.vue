@@ -3,15 +3,17 @@
     <div class="page--content">
       <div class="r">
         <div class="c_12 c_sm_12 c_md_8 c_xl_8">
+          <h3>Noi dung cho job chi tiet</h3>
           <app-content/>
         </div>
-        <div class="c_12 c_sm_12 c_md_4 c_xl_4 p_0">
+        <div class="c_12 c_sm_12 c_md_4 c_xl_4">
           <app-aside/>
         </div>
       </div>
     </div>
   </div>
 </template>
+
 <script>
 import AppContent from "../job-details/components/content";
 import AppAside from "../job-details/components/aside";
