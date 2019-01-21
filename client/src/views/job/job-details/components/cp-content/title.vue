@@ -1,16 +1,21 @@
 <template>
   <div class="job--title job--border position_relative pt_3 pb_3">
-    <h3>Senior Web Engineer</h3>
-    <p>Microsoft - Silicon Valey</p>
+    <h3>{{job[0].position}}</h3>
+    <p>{{job[0].nameCompany}} - {{job[0].locationCompany}}</p>
     <div class="d_flex">
       <p class="job--title-small border--right">15 minutes</p>
-      <p class="job--title-small pl_2">by khangle</p>
+      <p class="job--title-small pl_2">{{job[0]._createPerson.nameDisplay}}</p>
     </div>
     <div class="job--button position_absolute">
       <a href="#" class="btn--save">Save</a>
     </div>
   </div>
 </template>
+<script>
+  export default {
+    props:["job"],
+  }
+</script>
 <style lang="scss" scoped>
 .job--title {
   h3 {

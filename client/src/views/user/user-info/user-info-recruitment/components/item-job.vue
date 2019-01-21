@@ -30,12 +30,12 @@
         18 giờ trước
       </p>
       <div class="item--action">
-        <button class="button action--view">
+        <router-link class="button action--view" tag="button" :to="{name:'job-details',params:{jobId:job._id}}">
           <icon-base icon-name="eye" viewBox="0 0 480 520">
             <icon-eye/>
           </icon-base>
-        </button>
-        <button class="button action--edit">
+        </router-link>
+        <button class="button action--edit" @click.prevent="editJob">
           <icon-base icon-name="pen" viewBox="0 0 9.374 9.328">
             <icon-pen/>
           </icon-base>
@@ -51,40 +51,41 @@
 </template>
 
 <script>
-  import IconBase from "@/components/icons/IconBase";
-  import IconClockHistory from "@/components/icons/IconClockHistory";
-  import IconEye from "@/components/icons/IconEye";
-  import IconPen from "@/components/icons/IconPen";
-  import IconDelete from "@/components/icons/IconDelete";
+import IconBase from "@/components/icons/IconBase";
+import IconClockHistory from "@/components/icons/IconClockHistory";
+import IconEye from "@/components/icons/IconEye";
+import IconPen from "@/components/icons/IconPen";
+import IconDelete from "@/components/icons/IconDelete";
 
-  import JobService from "@/services/modules/job.service"
+import JobService from "@/services/modules/job.service";
 
-  export default {
-    components: {
-      IconBase,
-      IconClockHistory,
-      IconEye,
-      IconPen,
-      IconDelete
+export default {
+  components: {
+    IconBase,
+    IconClockHistory,
+    IconEye,
+    IconPen,
+    IconDelete
+  },
+  methods: {
+    async remove(index) {
+      await JobService.delete(this.job._id);
+      this.$store.dispatch("delete", index);
     },
-    methods: {
-      async remove(index) {
-        await JobService.delete(this.job._id)
-        this.$store.dispatch("delete", index)
-      }
-    },
-    props: ["job", "index"]
-  };
+    editJob() {}
+  },
+  props: ["job", "index"]
+};
 </script>
 
 <style scoped lang="scss">
-  @import "list-job.scss";
+@import "list-job.scss";
 
-  @media (max-width: 450px) {
-    .item--action {
-      button {
-        margin-bottom: 10px;
-      }
+@media (max-width: 450px) {
+  .item--action {
+    button {
+      margin-bottom: 10px;
     }
   }
+}
 </style>

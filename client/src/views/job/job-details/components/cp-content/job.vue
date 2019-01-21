@@ -3,18 +3,23 @@
     <h4>About this job</h4>
     <div class="about-detail d-flex">
       <div class="about--detail-job justify_content_md_start w_50">
-        <p class="mb_1"><span>Job type :</span><label>Fulltime</label></p>
-        <p class="mb_1"><span>Experience level :</span><label>Senior</label></p>
-        <p class="mb_1"><span>Role :</span><label>Frontend Developer</label></p>
+        <p class="mb_1"><span>Job type :</span><label>{{job[0].type}}</label></p>
+        <p class="mb_1"><span>Experience level :</span><label>{{job[0].level}}</label></p>
+        <p class="mb_1"><span>Role :</span><label>{{job[0].role}}</label></p>
       </div>
       <div class="about--job-company w_50">
-        <p class="mb_1"><span>Industry :</span> <label>Education, Entertainment, Gaming</label></p>
-        <p class="mb_1"><span>Company size :</span><label>51 - 200 people</label></p>
-        <p class="mb_1"><span>Company type :</span><label>Private</label></p>
+        <p class="mb_1"><span>Industry :</span> <label>{{job[0].typeCompany}}</label></p>
+        <p class="mb_1"><span>Company size :</span><label>{{job[0].sizeCompany}} người</label></p>
+        <p class="mb_1"><span>Company type :</span><label>{{job[0].office}}</label></p>
       </div>
     </div>
   </div>
 </template>
+<script>
+  export default {
+    props: ["job"],
+  }
+</script>
 <style>
 .w_50 {
   width: 50%;

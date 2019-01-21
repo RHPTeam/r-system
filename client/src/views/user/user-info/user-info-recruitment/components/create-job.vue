@@ -97,16 +97,15 @@
         <div class="form_group c_lg_6 c_md_12">
           <label>Lợi ích được hưởng</label>
           <div class="btn_group c_md_12">
-
-            <input type="text" class="form_control" placeholder="nhập lợi ích">
-            <button class="btn btn--add">Thêm</button>
+            <input type="text" class="form_control" placeholder="nhập lợi ích" v-model="benefit">
+            <button class="btn btn--add" @click.prevent="addBenefit">Thêm</button>
           </div>
+          <span>double click để xóa lợi ích</span>
         </div>
         <div class="form_group c_lg_6 c_md_12">
           <label>Danh sách lợi ích</label>
           <div class="list--benefit">
-            <p class="benefit">> Được hỗ trợ lương tháng 13</p>
-            <p class="benefit">> Được hỗ trợ máy tính cá nhân</p>
+            <p class="benefit" v-for="(benefit,index) in benefits" :key="index" @dblclick.prevent="deleteBenefit(index)"> 🤣 {{benefit}}</p>
           </div>
         </div>
         <div class="form_group c_md_12">
@@ -116,19 +115,26 @@
         <div class="form_group c_lg_6 c_md_12">
           <label>Làm việc cùng ai?</label>
           <div class="btn_group c_md_12">
-
-            <input type="text" class="form_control" placeholder="nhập lợi ích">
+            <input type="text" class="form_control" placeholder="nhập lợi ích" @click.prevent="showPartner" v-model="search">
             <button class="btn btn--add">Thêm</button>
           </div>
         </div>
         <div class="form_group c_lg_6 c_md_12">
           <label>Danh sách người làm việc cùng</label>
           <div class="list--partner">
-            <img class="partner" src="https://i.pinimg.com/originals/58/92/e7/5892e7f3cc64c8a912e2494a3ff77e08.jpg"/>
-            <img class="partner" src="https://i.pinimg.com/originals/58/92/e7/5892e7f3cc64c8a912e2494a3ff77e08.jpg"/>
-            <img class="partner" src="https://i.pinimg.com/originals/58/92/e7/5892e7f3cc64c8a912e2494a3ff77e08.jpg"/>
+            <div v-for="partner in partners" :key="partner" @dblclick.prevent="removeUserFromPartner(partner)">{{partner.nameDisplay}}</div>
+            <!--<img class="partner" src="https://i.pinimg.com/originals/58/92/e7/5892e7f3cc64c8a912e2494a3ff77e08.jpg"/>-->
+            <!--<img class="partner" src="https://i.pinimg.com/originals/58/92/e7/5892e7f3cc64c8a912e2494a3ff77e08.jpg"/>-->
+            <!--<img class="partner" src="https://i.pinimg.com/originals/58/92/e7/5892e7f3cc64c8a912e2494a3ff77e08.jpg"/>-->
           </div>
         </div>
+      </div>
+      <div class="result--user" v-if="statusShowPartner">
+        <ul>
+          <li :class="{selected:statusPartner}" v-for="(user,index) in filteredList" :key="index" @click="addUserToPartner(user,index)">
+            {{user.nameDisplay}}
+          </li>
+        </ul>
       </div>
       <div class="form_group ">
         <label>Link website công ty</label>
@@ -142,7 +148,8 @@
 <script>
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
-import JobService from "@/services/modules/job.service"
+import JobService from "@/services/modules/job.service";
+import UserService from "@/services/modules/user.service";
 
 export default {
   data() {
@@ -167,11 +174,27 @@ export default {
         content: "",
         infoCompany: "",
         website: ""
-      }
+      },
+      benefits: [],
+      benefit: "",
+      statusShowPartner: false,
+      users: [],
+      search: "",
+      partners: [],
+      statusPartner: false
     };
   },
+  computed: {
+    filteredList() {
+      return this.users.filter(user => {
+        return user.nameDisplay
+          .toLowerCase()
+          .includes(this.search.toLowerCase());
+      });
+    }
+  },
   methods: {
-    async submit () {
+    async submit() {
       // Init new job
       const job = {
         position: this.job.position,
@@ -189,11 +212,33 @@ export default {
         infoCompany: this.job.infoCompany,
         website: this.job.website,
         _createPerson: this.$route.params.userId
-      }
+      };
       // validate (Should be: Create a new methods to validate pratices
       // send to api
-      await JobService.create(job).then(res => this.message = res.data.message)
-      this.$store.dispatch("create", job)
+      await JobService.create(job).then(
+        res => (this.message = res.data.message)
+      );
+      this.$store.dispatch("create", job);
+    },
+    addBenefit() {
+      this.benefits.push(this.benefit);
+      this.benefit = "";
+    },
+    deleteBenefit(index) {
+      this.benefits.splice(index, 1);
+    },
+    async showPartner() {
+      await UserService.index().then(res => {
+        this.users = res.data.data;
+      });
+      this.statusShowPartner = !this.statusShowPartner;
+    },
+    addUserToPartner(user) {
+      this.partners.push(user);
+      this.statusPartner = true;
+    },
+    removeUserFromPartner(partner) {
+      this.partners.pop(partner);
     }
   }
 };
