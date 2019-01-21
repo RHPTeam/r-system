@@ -82,14 +82,14 @@ export default {
     IconStory
   },
   computed: {
-    user () {
-      return this.$store.getters.user
+    user() {
+      return this.$store.getters.user;
     }
   },
   async mounted() {
-    await UserService.show(this.idRoute).then((res) => {
-      this.$store.dispatch("show", res.data.data)
-    })
+    await UserService.show(this.idRoute).then(res => {
+      this.$store.dispatch("show", res.data.data);
+    });
   }
 };
 </script>

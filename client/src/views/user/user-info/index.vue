@@ -11,7 +11,7 @@
 <script>
 import AppUserHead from "@/components/user/user-head";
 export default {
-  props: ['userId'],
+  props: ["userId"],
   components: {
     AppUserHead
   }

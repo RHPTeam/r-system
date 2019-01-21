@@ -1,27 +1,27 @@
 <template>
   <div class="pl_md_2 pr_md_2 mb_3">
-    <div class="user--info card text_center">
+    <div class="user--info card text_center position_relative">
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, autem.</p>
-      <p><a href="#">Thêm thông tin không bố kick giờ</a></p>
+      <p class="click--add" @click.prevent="openAddInfo"><a href="javascript:void(0)">Thêm thông tin không bố kick giờ</a></p>
     </div>
-    <div class="user--add-frame">
+    <div class="user--add-frame position_absolute">
       <div class="card">
         <div class="card_body">
           <form>
             <div class="form_group">
               <label>Personal statement</label>
-              <textarea name="" id="" class="form_control">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</textarea>
+              <textarea name="txtText" class="form_control">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</textarea>
               <div class="user--check mt_3">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, possimus!
               </div>
             </div>
             <div class="form_group">
               <label>Personal statement</label>
-              <textarea name="" id="" class="form_control">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</textarea>
+              <textarea name="txtOther"  class="form_control">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</textarea>
             </div>
             <div class="r form_group">
               <div class="c_12 c_sm_12 c_md_6 c_lg_6 text_center">
-                <button type="button" class="btn_primary btn--user">Add <3</button>
+                <button type="button" class="btn_primary btn--user">Add</button>
               </div>
               <div class="c_12 c_sm_12 c_md_6 c_lg_6 text_center">
                 <button type="button" class="btn_danger btn--user">Cancel</button>
@@ -33,6 +33,20 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      isShow: false
+    };
+  },
+  methods: {
+    openAddInfo: () => {
+      document.getElementsByClassName("click--add")[0].show("user--add-frame");
+    }
+  }
+};
+</script>
 <style lang="scss" scoped>
 .user--info {
   padding: 1em 0 0 0;
@@ -45,6 +59,12 @@
   }
 }
 .user--add-frame {
+  top: -20px;
+  left: 0;
+  z-index: +99;
+  width: 110%;
+  height: auto;
+  display: none;
   .card_body {
     background: #f4f8fb;
   }

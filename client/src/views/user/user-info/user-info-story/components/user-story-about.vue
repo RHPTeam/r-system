@@ -1,21 +1,18 @@
 <template>
   <div class="pl_md_2 pr_md_2 mb_3">
-    <div class="user--info card text_center">
+    <div class="user--info card text_center position_relative">
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, autem.</p>
       <p>
-        <a href="#">Thêm thông tin không bố kick giờ</a>
+        <a href="javascript:void(0)">Thêm thông tin không bố kick giờ</a>
       </p>
-      <!--<router-link class="d_block setting&#45;&#45;content-item" active-class="active" :to="{ name: 'user-setting-story' }">-->
-        <!--Câu chuyện công việc-->
-      <!--</router-link>-->
     </div>
-    <div class="user--add-info">
+    <div class="user--add-info position_absolute">
       <div class="card">
         <div class="card_body">
-          <form>
+          <form method="post">
             <div class="form_group">
               <label>Personal statement</label>
-              <textarea name="" id="" class="form_control">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</textarea>
+              <textarea name="txtInfo"  class="form_control">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</textarea>
               <div class="user--check mt_3">
                 <input type="checkbox" id="check_info"/>
                 <span>Only show your pesonal statement to employers</span>
@@ -33,7 +30,7 @@
             </div>
             <div class="r form_group">
               <div class="c_12 c_sm_12 c_md_6 c_lg_6 text_center">
-                <button type="button" class="btn_primary btn--user">Add <3</button>
+                <button type="button" class="btn_primary btn--user">Add</button>
               </div>
               <div class="c_12 c_sm_12 c_md_6 c_lg_6 text_center">
                 <button type="button" class="btn_danger btn--user">Cancel</button>
@@ -57,6 +54,10 @@
   }
 }
 .user--add-info {
+  top: 0;
+  left: 0;
+  z-index: +99;
+  display: none;
   .card_body {
     background: #f4f8fb;
   }
@@ -77,7 +78,6 @@
         min-height: 68px;
         max-height: 100px;
         outline: 0;
-
       }
       input[type="text"] {
         height: 40px;
@@ -86,14 +86,8 @@
       .btn--user {
         padding: 8px 15px;
         border-radius: 8px;
-        /*background: #776ab0;*/
         width: 60%;
       }
-      /*textarea, input, button {*/
-        /*&:hover,&:focus,&:active {*/
-          /*outline: 0;*/
-        /*}*/
-      /*}*/
     }
   }
 }

@@ -3,18 +3,10 @@
         <!-- router-view -->
         <div class="content--question ct_f">
           <div class="">
-            <div class="c_12">
-              <item/>
-            </div>
-            <div class="c_12">
-              <item/>
-            </div>
-            <div class="c_12">
-              <item/>
-            </div>
-            <div class="c_12">
-              <item/>
-            </div>
+            <item/>
+            <item/>
+            <item/>
+            <item/>
           </div>
         </div>
     </div>
