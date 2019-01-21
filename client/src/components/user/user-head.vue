@@ -14,7 +14,7 @@
           <router-link class="navbar--list-item p_0 pt_1" :to="{ name: 'user-info-blog' }">
             <icon-base width="20" height="20" icon-name="blog" viewBox="0 0 520 520"><icon-blog /></icon-base>
           </router-link>
-          <router-link class="navbar--list-item p_0 pt_1" :to="{ name: '' }">
+          <router-link class="navbar--list-item p_0 pt_1" :to="{ name: 'user-info-recruitment' }">
             <icon-base width="20" height="20" icon-name="recruit" viewBox="0 0 540 540"><icon-recruit /></icon-base>
           </router-link>
           <router-link class="navbar--list-item p_0 pt_1" :to="{ name: 'user-setting-info' }">
@@ -28,8 +28,8 @@
                   <img src="http://www.igeacps.it/app/uploads/2018/05/profile_uni_user.png" class="position_absolute">
               </div>
               <div class="user--info ml_0 ml_sm_3 mt_1 mt_sm_0 text_center text_sm_left align_self_end align_self_lg_center">
-                  <div class="user--info-name">Sky Albert</div>
-                  <div class="user--info-alias">(Trần Quốc Toản)</div>
+                  <div class="user--info-name">{{ user.name }}</div>
+                  <div class="user--info-alias">( {{ user.nameDisplay }} )</div>
               </div>
           </div>
       </div>
@@ -47,7 +47,7 @@
           <router-link class="navbar--list-item" :to="{ name: 'user-info-blog' }">
             Bài viết
           </router-link>
-          <router-link class="navbar--list-item" :to="{ name: '' }">
+          <router-link class="navbar--list-item" :to="{ name: 'user-info-recruitment' }">
             Tuyển dụng
           </router-link>
           <router-link class="navbar--list-item" :to="{ name: 'user-setting-info' }">
@@ -68,7 +68,10 @@ import IconBlog from "../icons/IconBlog";
 import IconInfomation from "../icons/IconInfomation";
 import IconRecruit from "../icons/IconRecruit";
 import IconStory from "../icons/IconStory";
+
+import UserService from "@/services/modules/user.service";
 export default {
+  props: ["idRoute"],
   components: {
     IconBase,
     IconActivity,
@@ -77,6 +80,16 @@ export default {
     IconInfomation,
     IconRecruit,
     IconStory
+  },
+  computed: {
+    user () {
+      return this.$store.getters.user
+    }
+  },
+  async mounted() {
+    await UserService.show(this.idRoute).then((res) => {
+      this.$store.dispatch("show", res.data.data)
+    })
   }
 };
 </script>

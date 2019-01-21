@@ -21,11 +21,18 @@
 .user--story-setting {
   p.story-item {
     padding: 8px;
-    background: #e1ecf4;
+    background: #776ab0;
+    /*color: #fff;*/
     border-radius: 3px;
     a {
-      color: #39739d;
+      color: #fff;
       text-decoration: none;
+    }
+    &:hover,&:active,&:focus {
+      background: #0077dd;
+      a{
+        color: #fff;
+      }
     }
   }
 }

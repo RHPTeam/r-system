@@ -3,26 +3,27 @@
     <div class="card_body">
       <h5 class="card_title font_weight_bold">Chỉnh sửa thông tin người dùng</h5>
       <div class="form--content pt_2">
+        <div class="alert alert_success" v-if="message != ''" v-text="message"></div>
         <form @submit.prevent="submit">
           <div class="form_group">
             <label for="username">Tên hiển thị</label>
-            <input type="text" class="form_control" id="username" value="htchinh" placeholder="Nhập tên">
+            <input type="text" class="form_control" id="username" v-model="user.nameDisplay" placeholder="Nhập tên">
           </div>
           <div class="form_group">
             <label for="address">Địa chỉ</label>
-            <input type="text" class="form_control" id="address" placeholder="Nhập địa chỉ">
+            <input type="text" class="form_control" id="address" v-model="user.location" placeholder="Nhập địa chỉ">
           </div>
           <div class="form_group">
             <label for="slogan">Câu nói yêu thích của bạn là gì?</label>
-            <input type="text" class="form_control" id="slogan" placeholder="Nhập câu nói yêu thích của bạn">
+            <input type="text" class="form_control" id="slogan" v-model="user.title" placeholder="Nhập câu nói yêu thích của bạn">
           </div>
           <div class="form_group">
             <label for="about">Giới thiệu</label>
-            <textarea class="form_control" id="about"></textarea>
+            <textarea class="form_control" id="about" v-model="user.about"></textarea>
           </div>
           <div class="live--preview position_relative mb_3">
             <span class="live--preview-tag position_absolute">live preview</span>
-            <div class="live--preview-content"></div>
+            <div class="live--preview-content" v-text="user.about"></div>
           </div>
           <div class="form_group form--social">
             <label>Mạng xã hội</label>
@@ -58,10 +59,10 @@
           </div>
           <div class="form_group">
             <label for="private-name">Tên thật <span class="text--support">(không hiển thị công khai)</span></label>
-            <input type="text" value="Ho Thi Chinh" class="form_control" id="private-name">
+            <input type="text" value="Ho Thi Chinh" class="form_control" id="private-name" v-model="user.name">
           </div>
           <div class="form--btn pt_3">
-            <button class="btn form--btn-save" type="button">Lưu</button>
+            <button class="btn form--btn-save" type="submit">Lưu</button>
             <button class="btn form--btn-cancel" type="button">Hủy bỏ</button>
           </div>
         </form>
@@ -75,12 +76,37 @@ import IconBase from "@/components/icons/IconBase";
 import IconLink from "@/components/icons/IconLink";
 import IconTwitter from "@/components/icons/IconTwitter";
 import IconGithub from "@/components/icons/IconGithub";
+
+import UserService from "@/services/modules/user.service";
 export default {
+  data () {
+    return {
+      message: ''
+    }
+  },
   components: {
     IconBase,
     IconLink,
     IconTwitter,
     IconGithub
+  },
+  computed: {
+    user () {
+      return this.$store.getters.user
+    }
+  },
+  methods: {
+    submit () {
+      UserService.update(this.user).then((res) => {
+        this.message = res.data.message
+      })
+    }
+  },
+  async mounted () {
+    const userId = this.$route.params.userId
+    await UserService.show(userId).then((res) => {
+      this.$store.dispatch("show", res.data.data)
+    })
   }
 };
 </script>

@@ -1,0 +1,153 @@
+/* Blog--component */
+
+.blog--component {
+    .component--header {
+        .component--header-title {
+            font-size: 1.857rem;
+            font-weight: 600;
+            line-height: 1.19;
+            letter-spacing: 0.3px;
+        }
+    }
+    .blog--filter {
+        list-style-type: none;
+        .blog--fliter-item {
+            font-size: 1.071rem;
+            font-weight: 500;
+            line-height: 1.13;
+            letter-spacing: 0.2px;
+            color: #a8a8a8;
+            transition: all 0.4s ease;
+            &.active,
+            &:hover {
+                color: #776ab0;
+            }
+        }
+    }
+    .card {
+        border: 0;
+        border-radius: 0;
+        background-color: transparent;
+        &.card_body {
+            .card_title {
+                font-size: 1.857rem;
+                font-weight: 600;
+                transition: all 0.4s ease;
+                cursor: pointer;
+                &:hover {
+                    color: #776ab0;
+                }
+            }
+            .card_text {
+                font-size: 1.071rem;
+                font-weight: 400;
+                line-height: 1.37;
+                letter-spacing: 0.2px;
+            }
+        }
+    }
+    .item--blog {
+        .item--img {
+            overflow: hidden;
+            width: 100%;
+            &:before {
+                display: block;
+                padding-top: calc(200% / 3);
+                content: '';
+            }
+            img {
+                top: 50%;
+                max-width: none;
+                width: 100%;
+                height: auto;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+        &.item--horizontal {
+            &:last-child {
+                margin-bottom: 0 !important;
+            }
+        }
+        &.item--popular {
+            .item--popular-number {
+                font-size: 2.857rem;
+                font-weight: bold;
+                line-height: 1.18;
+                letter-spacing: 0.4px;
+                text-align: left;
+                color: #a8a8a8;
+            }
+        }
+    }
+    .item--bottom {
+        width: 100%;
+    }
+    .item--info {
+        font-weight: 500;
+        line-height: 1.29;
+        letter-spacing: 0.2px;
+        font-size: 1rem;
+        color: #a8a8a8;
+        .item--info-like,
+        .item--info-author {
+            &::before {
+                content: "";
+                position: absolute;
+                width: 3px;
+                height: 3px;
+                border-radius: 50%;
+                background-color: currentColor;
+                top: 8px;
+                left: -12px;
+            }
+        }
+        .item--info-name {
+            transition: all 0.4s ease;
+            cursor: pointer;
+            &:hover {
+                color: #776ab0 !important;
+            }
+        }
+    }
+    .item--icon {
+        svg {
+            color: #a8a8a8;
+            cursor: pointer;
+            &.selected {
+                color: #776ab0;
+            }
+        }
+    }
+}
+
+
+/*=============================================
+=                 Light Color                 =
+=============================================*/
+
+.blog--component[data-theme='light'] {
+    color: #3b4045;
+    .item--info {
+        .item--info-name {
+            color: #3b4045;
+        }
+    }
+}
+
+
+/*=============================================
+=                  Dark Color                 =
+=============================================*/
+
+
+/* Blog--component */
+
+.blog--component[data-theme='dark'] {
+    color: #f7f7f7;
+    .item--info {
+        .item--info-name {
+            color: #f7f7f7;
+        }
+    }
+}
