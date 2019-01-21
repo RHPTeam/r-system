@@ -57,7 +57,7 @@ module.exports = {
       infoCompany: Joi.string().min(100).required(),
       website: Joi.string().min(10).required()
     }),
-    postSchema: Joi.Object().keys({
+    postSchema: Joi.object().keys({
       parent: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required(),
       score: Joi.number().required(),
       views: Joi.number().required(),

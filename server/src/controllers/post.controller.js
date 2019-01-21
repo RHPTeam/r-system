@@ -17,7 +17,7 @@ module.exports = {
    * @param next
    */
   index: async (req, res, next) => {
-
+    console.log("Ha ha hihi ")
   },
 
   /**
@@ -35,7 +35,7 @@ module.exports = {
     post._owner = who;
     await post.save();
 
-    who._posts.push(post);
+    who._postsList.push(post);
     await who.save();
 
     res.json(JsonResponse("", 200, "Thêm dữ liệu thành công", false))

@@ -1,3 +1,4 @@
+
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt');
 
@@ -34,6 +35,10 @@ const UserSchema = new Schema({
       startEnd: Date
     }]
   },
+  _postsList: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Post'
+  }],
   _notifications: [{
     type: Schema.Types.ObjectId,
     ref: 'Notification'
@@ -73,12 +78,8 @@ const UserSchema = new Schema({
   _jobs: [{
     type: Schema.Types.ObjectId,
     ref: 'Job'
-  }],
-  _posts: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Post'
   }]
-})
+});
 
 // compare code password
 UserSchema.methods.comparePassword = function comparePassword(password, callback) {
