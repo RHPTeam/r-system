@@ -198,6 +198,15 @@
         </div>
       </div>
       <div class="item--icon">
+        <h3 class="text_center">IconFacebook</h3>
+        <div class="d_flex justify_content_start align_items_center">
+          <icon-base icon-name="facebook" viewBox="0 0 512 512">
+            <icon-facebook/>
+          </icon-base>
+          <code>&lt;icon-base icon-name="facebook" viewBox="0 0 512 512"&gt;&lt;icon-facebook /&gt;&lt;/icon-base&gt;</code>
+        </div>
+      </div>
+      <div class="item--icon">
         <h3 class="text_center">IconFile</h3>
         <div class="d_flex justify_content_start align_items_center">
           <icon-base icon-name="file" viewBox="0 0 55 60">
@@ -227,10 +236,10 @@
       <div class="item--icon">
         <h3 class="text_center">IconHeart</h3>
         <div class="d_flex justify_content_start align_items_center">
-          <icon-base icon-name="heart" viewBox="0 0 12.413 11.127">
+          <icon-base icon-name="heart" viewBox="0 0 378.94 378.94">
             <icon-heart/>
           </icon-base>
-          <code>&lt;icon-base icon-name="heart" viewBox="0 0 12.413 11.127"&gt;&lt;icon-heart /&gt;&lt;/icon-base&gt;</code>
+          <code>&lt;icon-base icon-name="heart" viewBox="0 0 378.94 378.94"&gt;&lt;icon-heart /&gt;&lt;/icon-base&gt;</code>
         </div>
       </div>
       <div class="item--icon">
@@ -591,6 +600,7 @@ import IconHeart from "../icons/IconHeart";
 import IconMoon from "../icons/IconMoon";
 import IconSearchSolid from "../icons/IconSearchSolid";
 import IconSun from "../icons/IconSun";
+import IconFacebook from "../icons/IconFacebook";
 
 export default {
   components: {
@@ -648,7 +658,8 @@ export default {
     IconHeart,
     IconFontSize,
     IconBookmark2,
-    IconAlarm
+    IconAlarm,
+    IconFacebook
   }
 };
 </script>

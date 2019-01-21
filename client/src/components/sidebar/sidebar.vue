@@ -135,7 +135,7 @@ import IconJobs from "../icons/IconJobs";
 import IconDocs from "../icons/IconDocs";
 import IconTags from "../icons/IconTags";
 import IconUser from "../icons/IconUser";
-// import IconAsk from "../icons/IconAsk";
+import IconAsk from "../icons/IconAsk";
 // import IconInbox from "../icons/IconInbox";
 // import IconStarCircle from "../icons/IconStarCircle";
 
@@ -146,8 +146,8 @@ export default {
     IconJobs,
     IconDocs,
     IconTags,
-    IconUser
-    // IconAsk,
+    IconUser,
+    IconAsk
     // IconInbox,
     // IconStarCircle
   },

@@ -9,7 +9,8 @@ const userRouter = {
       component: () => import("@/views/blog/home")
     },
     {
-      path: "posts/:id",
+      path: "posts/:blogId",
+      props: true,
       name: "post",
       component: () => import("@/views/blog/detail")
     },

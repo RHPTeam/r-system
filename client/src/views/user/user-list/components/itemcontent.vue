@@ -1,7 +1,7 @@
 <template>
   <div class="r">
     {{ usersRes }}
-    <div class="c_md_4 c_sm_6 c_12" v-for="user in users">
+    <div class="c_md_4 c_sm_6 c_12" v-for="user in users" :key="user._id">
       <div class="user--item">
         <div class="card_body">
           <div class="d_flex">
@@ -30,65 +30,65 @@
 </template>
 
 <script>
-  import UserService from "@/services/modules/user.service";
+import UserService from "@/services/modules/user.service";
 
-  export default {
-    computed: {
-      users() {
-        return this.$store.getters.users
-      }
-    },
-    async created() {
-      await UserService.index().then((res) => {
-        this.$store.dispatch("index", res.data.data)
-      })
+export default {
+  computed: {
+    users() {
+      return this.$store.getters.users;
     }
-  };
+  },
+  async created() {
+    await UserService.index().then(res => {
+      this.$store.dispatch("index", res.data.data);
+    });
+  }
+};
 </script>
 
 <style lang="scss" scoped>
-  .user--item {
-    margin: 0 0 0 5px;
+.user--item {
+  margin: 0 0 0 5px;
+}
+
+.card_body {
+  padding-left: 0;
+
+  .user--avatar {
+    width: 100px;
+
+    img {
+      cursor: pointer;
+    }
   }
 
-  .card_body {
-    padding-left: 0;
+  .user--info {
+    margin-left: 5px;
+    overflow: hidden;
 
-    .user--avatar {
-      width: 100px;
-
-      img {
-        cursor: pointer;
-      }
+    h3 {
+      color: #0077dd;
+      font-size: 18px;
+      font-weight: 600;
+      margin: 0;
+      cursor: pointer;
     }
 
-    .user--info {
-      margin-left: 5px;
+    p {
+      margin: 0;
+    }
+
+    p.text--counts {
+      color: #707070;
+      font-weight: 600;
+      letter-spacing: -0.3px;
+    }
+
+    .text--country {
       overflow: hidden;
-
-      h3 {
-        color: #0077dd;
-        font-size: 18px;
-        font-weight: 600;
-        margin: 0;
-        cursor: pointer;
-      }
-
-      p {
-        margin: 0;
-      }
-
-      p.text--counts {
-        color: #707070;
-        font-weight: 600;
-        letter-spacing: -0.3px;
-      }
-
-      .text--country {
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-      }
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
   }
+}
 </style>

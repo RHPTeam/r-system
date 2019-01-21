@@ -1,5 +1,3 @@
-
-
 const state = {
   users: [],
   user: {} // khong bao gio gia tri la string
@@ -10,31 +8,31 @@ const getters = {
     return state.users;
   },
   user: state => {
-    return state.user
+    return state.user;
   }
 };
 
 const mutations = {
   index: (state, payload) => {
-  state.users = payload
-},
+    state.users = payload;
+  },
   create: (state, payload) => {
-    state.users = payload
+    state.users = payload;
   },
   show: (state, payload) => {
-    state.user = payload
+    state.user = payload;
   }
 };
 
 const actions = {
   index: async ({ commit }, payload) => {
-    await commit("index", payload)
+    await commit("index", payload);
   },
   createUser: async ({ commit }, payload) => {
     await commit("createUser", payload);
   },
   show: async ({ commit }, payload) => {
-    await commit("show", payload)
+    await commit("show", payload);
   }
 };
 export default {
