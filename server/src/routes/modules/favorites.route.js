@@ -23,4 +23,12 @@ router.route('/userId=:userId')
 
 router.route('/favoriteId=:favoriteId/tagId=:tagId')
   .post(favorites.addTagToFavorite)
+
+router.route('/favoriteId=:favoriteId/questionId=:questionId')
+  .post(favorites.addQuestionToFavorite)
+
+
+router.route('/favoriteId=:favoriteId/anwserId=:anwserId')
+  .post(favorites.addAnwserToFavorite)
+  
 module.exports = router;
