@@ -16,8 +16,7 @@ router.route('/')
   .get(user.getAllUsers);
 
 router.route('/:userId')
-  
-  .get(user.getOneUserById)
+  .get(user.getOneUser)
   .patch(user.updateUser)
   .delete(user.deleteUser);
 

@@ -13,14 +13,14 @@ const favorites = require('../../controllers/favorites.controller');
 router.route('/')
   .get(favorites.getAllFavorities)
 
-router.route('/:favoriteId')
+router.route('/favoriteId=:favoriteId')
   .get(favorites.getOneFavoriteById)
   .delete(favorites.deleteFavoriteById)
 
 
-router.route('/:userId')
+router.route('/userId=:userId')
   .post(favorites.createFavoriteByUser);
 
-router.route('/:favoriteId/:tagId')
+router.route('/favoriteId=:favoriteId/tagId=:tagId')
   .post(favorites.addTagToFavorite)
 module.exports = router;

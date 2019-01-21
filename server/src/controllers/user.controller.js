@@ -238,16 +238,4 @@ module.exports = {
   logoutUser: (req, res) => {
     req.logout();
   },
-
-
-  getOneUserById: async (req, res) => {
-    try{
-      const {userId} = req.params;
-      const user = await User.findById(userId);
-      return res.json(JsonResponse(user, 200, "", false))
-    } catch (error) {
-      console.log(error)
-    }
-  },
-
 }
