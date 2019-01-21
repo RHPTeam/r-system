@@ -84,72 +84,72 @@
 </template>
 
 <script>
-  import IconBase from "@/components/icons/IconBase";
-  import IconHeart from "@/components/icons/IconHeart";
-  import IconBookmarkBlog from "@/components/icons/IconBookmarkBlog";
+import IconBase from "@/components/icons/IconBase";
+import IconHeart from "@/components/icons/IconHeart";
+import IconBookmarkBlog from "@/components/icons/IconBookmarkBlog";
 
-  export default {
-    props: ["blogs"],
-    data() {
-      return {
-        isBookmark: false,
-        theme: "light"
-      };
+export default {
+  props: ["blogs"],
+  data() {
+    return {
+      isBookmark: false,
+      theme: "light"
+    };
+  },
+  computed: {
+    currentTheme() {
+      return this.$store.getters.themeName;
     },
-    computed: {
-      currentTheme() {
-        return this.$store.getters.themeName;
-      },
-      lastBlog() {
-        return this.blogs.slice(-1);
-      },
-      listBlog() {
-        // Get 5 last item in arr
-        const getFiveLast = this.blogs.slice(Math.max(this.blogs.length - 5, 1));
-
-        //Remove last item
-        getFiveLast.pop();
-
-        //Return arr 4 item and reverse arr
-        return getFiveLast.reverse();
-      }
+    lastBlog() {
+      return this.blogs.slice(-1);
     },
-    filters: {
-      cutMainDesc(value) {
-        if (typeof value != "string") {
-          return;
-        }
-        // Count word in string
-        // const countWord = value.split(" ").length;
+    listBlog() {
+      // Get 5 last item in arr
+      const getFiveLast = this.blogs.slice(Math.max(this.blogs.length - 5, 1));
 
-        // Return desc for show
-        if (value.length > 200) {
-          value = value.slice(0, 200) + "...";
-        }
-        return value;
-      },
-      cutDescList(value) {
-        if (typeof value != "string") {
-          return;
-        }
-        // Count word in string
-        // const countWord = value.split(" ").length;
+      //Remove last item
+      getFiveLast.pop();
 
-        // Return desc for show
-        if (value.length > 150) {
-          value = value.slice(0, 150) + "...";
-        }
-        return value;
-      }
-    },
-    components: {
-      IconBase,
-      IconHeart,
-      IconBookmarkBlog
+      //Return arr 4 item and reverse arr
+      return getFiveLast.reverse();
     }
-  };
+  },
+  filters: {
+    cutMainDesc(value) {
+      if (typeof value != "string") {
+        return;
+      }
+      // Count word in string
+      // const countWord = value.split(" ").length;
+
+      // Return desc for show
+      if (value.length > 200) {
+        value = value.slice(0, 200) + "...";
+      }
+      return value;
+    },
+    cutDescList(value) {
+      if (typeof value != "string") {
+        return;
+      }
+      // Count word in string
+      // const countWord = value.split(" ").length;
+
+      // Return desc for show
+      if (value.length > 150) {
+        value = value.slice(0, 150) + "...";
+      }
+      return value;
+    }
+  },
+  components: {
+    IconBase,
+    IconHeart,
+    IconBookmarkBlog
+  }
+};
 </script>
 
 <style scoped lang="scss">
-  @import "home";
+@import "home";
 </style>

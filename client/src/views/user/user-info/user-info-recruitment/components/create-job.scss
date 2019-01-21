@@ -102,3 +102,11 @@
         }
     }
 }
+.result--user {
+  ul {
+    list-style: none;
+    li.selected {
+      background: red;
+    }
+  }
+}

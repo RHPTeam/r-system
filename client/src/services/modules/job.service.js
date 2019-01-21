@@ -15,9 +15,9 @@ export default {
   create(job) {
     return Api().post("jobs", job);
   },
-  // show(userId) {
-  //   return Api().get(`users/${userId}`);
-  // },
+  show(jobId) {
+    return Api().get(`jobs?_id=${jobId}`);
+  },
   // update(user) {
   //   return Api().patch(`users/${user._id}`, user);
   // },

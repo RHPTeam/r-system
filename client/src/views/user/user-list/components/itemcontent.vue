@@ -12,8 +12,8 @@
               />
             </div>
             <div class="user--info">
-              <h3>{{ user.name }}</h3>
-              <p class="text--info text--country">{{ user.email }}</p>
+              <h3></h3>
+              <p class="text--info text--country"></p>
               <p class="text--info text--counts">1,014</p>
               <div class="info--tag">
                 <a href="#" class="text--info tag--item">Javascript</a>

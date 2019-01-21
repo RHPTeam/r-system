@@ -142,7 +142,7 @@
 <script>
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
-import JobService from "@/services/modules/job.service"
+import JobService from "@/services/modules/job.service";
 
 export default {
   data() {
@@ -171,7 +171,7 @@ export default {
     };
   },
   methods: {
-    async submit () {
+    async submit() {
       // Init new job
       const job = {
         position: this.job.position,
@@ -189,11 +189,13 @@ export default {
         infoCompany: this.job.infoCompany,
         website: this.job.website,
         _createPerson: this.$route.params.userId
-      }
+      };
       // validate (Should be: Create a new methods to validate pratices
       // send to api
-      await JobService.create(job).then(res => this.message = res.data.message)
-      this.$store.dispatch("create", job)
+      await JobService.create(job).then(
+        res => (this.message = res.data.message)
+      );
+      this.$store.dispatch("create", job);
     }
   }
 };

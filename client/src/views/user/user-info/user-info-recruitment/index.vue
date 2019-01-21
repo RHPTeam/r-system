@@ -15,7 +15,7 @@
 import AppListJob from "./components/list-job";
 import AppCreateJob from "./components/create-job";
 
-import JobService from "@/services/modules/job.service"
+import JobService from "@/services/modules/job.service";
 
 export default {
   components: {
@@ -23,13 +23,13 @@ export default {
     AppCreateJob
   },
   computed: {
-    jobs () {
-      return this.$store.getters.jobs
+    jobs() {
+      return this.$store.getters.jobs;
     }
   },
-  async mounted () {
-    const res = await JobService.index()
-    this.$store.dispatch("index", res.data.data)
+  async mounted() {
+    const res = await JobService.index();
+    this.$store.dispatch("index", res.data.data);
   }
 };
 </script>

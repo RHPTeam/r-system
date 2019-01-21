@@ -12,11 +12,11 @@ const question = require('../../controllers/question.controller');
 
 /* GET questions listing. */
 router.route('/')
-  .post(question.createQuestion)
-  .get(question.getAllQuestions);
+  .post(question.createQuestion)//done
+  .get(question.getAllQuestions); //done
 
 router.route('/:questionId')
-  .get(question.getOneQuestion)
+  .get(question.getOneQuestion)//done
   .put(question.updateQuestion)
   .delete(question.deleteQuestion)
   .post(question.createQuestionPopulate)
