@@ -208,7 +208,7 @@ module.exports = {
   getCommentInBlog: async (req, res) => {
     try {
       const {blogId} = req.params;
-      const blog = await Blog.findById(blogId).populate('_comments');
+      const blog = await Blog.findById(blogId);
       return res.json(JsonResponse(blog._comments, 200, "get comments by user success ", false))
     } catch (error) {
       console.log(error);
