@@ -136,7 +136,7 @@ module.exports = {
      * create blog by user
      * @param req
      * @param res
-     * 
+     *
      */
     createBlogByUser: async(req, res) => {
         try {
@@ -169,7 +169,7 @@ module.exports = {
      * get blog by user
      * @param req
      * @param res
-     * 
+     *
      */
     getBlogByUser: async(req, res) => {
         try {
@@ -186,7 +186,7 @@ module.exports = {
      * get blog by categoryId
      * @param req
      * @param res
-     * 
+     *
      */
     getBlogByCategoryId: async(req, res) => {
         try {
@@ -203,7 +203,7 @@ module.exports = {
      * get blog by commentId
      * @param req
      * @param res
-     * 
+     *
      */
     getCommentInBlog: async(req, res) => {
         try {
@@ -216,3 +216,4 @@ module.exports = {
     },
 
 }
+

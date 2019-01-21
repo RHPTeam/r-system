@@ -15,6 +15,7 @@ router.route('/')
     .post(blog.createBlog); //create by hand of admin
 
 /* GET blog by id listing. */
+<<<<<<< HEAD
 router.route('/blogId=:blogId')
     .get(blog.getOneBlog)
     .patch(blog.updateBlog)
@@ -29,6 +30,23 @@ router.route('/userId=:userId&categoryId=:categoryId')
 /*GET blog by category */
 router.route('/category/id=:categoryId')
     .get(blog.getBlogByCategoryId);
+
+=======
+router.route('/:blogId')
+  .get(blog.getOneBlog)
+  .patch(blog.updateBlog)
+  .delete(blog.deleteBlog);
+
+/*GET blog by user */
+router.route('/user/id=:userId')
+  .get(blog.getBlogByUser)
+router.route('/user/userId=:userId&categoryId=:categoryId')
+  .post(blog.createBlogByUser);
+
+/*GET blog by category */
+router.route('/category/id=:categoryId')
+  .get(blog.getBlogByCategoryId);
+>>>>>>> dev-khanglt-00-vue
 
 
 /*GET blog by comment */

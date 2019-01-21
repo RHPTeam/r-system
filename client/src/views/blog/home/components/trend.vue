@@ -63,7 +63,6 @@
             </div>
           </div>
           <!-- End. Horizontal item -->
-
         </div>
       </div>
     </div>

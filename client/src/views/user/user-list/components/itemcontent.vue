@@ -1,6 +1,5 @@
 <template>
   <div class="r">
-    {{ usersRes }}
     <div class="c_md_4 c_sm_6 c_12" v-for="user in users" :key="user._id">
       <div class="user--item">
         <div class="card_body">
@@ -86,8 +85,30 @@ export default {
 
     .text--country {
       overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
+
+      h3 {
+        color: #0077dd;
+        font-size: 18px;
+        font-weight: 600;
+        margin: 0;
+        cursor: pointer;
+      }
+
+      p {
+        margin: 0;
+      }
+
+      p.text--counts {
+        color: #707070;
+        font-weight: 600;
+        letter-spacing: -0.3px;
+      }
+
+      .text--country {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
     }
   }
 }

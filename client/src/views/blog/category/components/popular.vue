@@ -21,6 +21,7 @@
                   <span class="item--info-time mr_4 position_relative">Jan 14</span>
                   <span class="item--info-like mr_4 position_relative">
                     <icon-base class="pr_1 pt_1" icon-name="heart" viewBox="0 0 378.94 378.94">
+
                       <icon-heart/>
                     </icon-base>26
                   </span>
@@ -58,6 +59,7 @@
                   <span class="item--info-time mr_4 position_relative">Jan 14</span>
                   <span class="item--info-like mr_4 position_relative">
                     <icon-base class="pr_1 pt_1" icon-name="heart" viewBox="0 0 378.94 378.94">
+
                       <icon-heart/>
                     </icon-base>26
                   </span>
@@ -95,6 +97,7 @@
                   <span class="item--info-time mr_4 position_relative">Jan 14</span>
                   <span class="item--info-like mr_4 position_relative">
                     <icon-base class="pr_1 pt_1" icon-name="heart" viewBox="0 0 378.94 378.94">
+
                       <icon-heart/>
                     </icon-base>26
                   </span>
