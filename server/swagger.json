@@ -1,3 +1,4 @@
+
 {
   "swagger": "2.0",
   "info": {
@@ -7,16 +8,10 @@
   },
   "host": "localhost:8888",
   "basePath": "/api/v1",
-  "tags": [
-    {
-      "name": "Users",
-      "description": "API for users in the system"
-    },
-    {
-      "name": "Blogs",
-      "description": "API for users in the system"
-    }
-  ],
+  "tags": [{
+    "name": "Users",
+    "description": "API for users in the system"
+  }],
   "schemes": [
     "http"
   ],
@@ -27,16 +22,14 @@
           "Users"
         ],
         "description": "Create new user in system",
-        "parameters": [
-          {
-            "name": "user",
-            "in": "body",
-            "description": "User that we want to create",
-            "schema": {
-              "$ref": "#/definitions/User"
-            }
+        "parameters": [{
+          "name": "user",
+          "in": "body",
+          "description": "User that we want to create",
+          "schema": {
+            "$ref": "#/definitions/UserCreate"
           }
-        ],
+        }],
         "produces": [
           "application/json"
         ],
@@ -44,7 +37,7 @@
           "200": {
             "description": "New user is created",
             "schema": {
-              "$ref": "#/definitions/Blog"
+              "$ref": "#/definitions/User"
             }
           }
         }
@@ -62,11 +55,135 @@
             }
           }
         },
-        "security": [
-          {
-            "JWT": []
+        "security": [{
+          "JWT": []
+        }]
+      }
+    },
+    "/users/{userId}": {
+      "parameters": [{
+        "name": "userId",
+        "in": "path",
+        "required": true,
+        "description": "ID of user that we want to find",
+        "type": "string"
+      }],
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Get user with given ID",
+        "responses": {
+          "200": {
+            "description": "User is found",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
           }
-        ]
+        }
+      },
+      "delete": {
+        "summary": "Delete user with given ID",
+        "tags": [
+          "Users"
+        ],
+        "responses": {
+          "200": {
+            "description": "User is deleted",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update user with give ID",
+        "tags": [
+          "Users"
+        ],
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "description": "body",
+          "schema": {
+            "$ref": "#/definitions/ICal"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "User is updated",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      }
+    },
+    "/users/is-login": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Check isLogin user",
+        "responses": {
+          "200": {
+            "description": "User is Login",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/users/login": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Login user by email and password in system",
+        "parameters": [{
+          "name": "login",
+          "in": "body",
+          "description": "Login user ",
+          "schema": {
+            "$ref": "#/definitions/UserLogin"
+          }
+        }],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Login success",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      }
+    },
+    "/users/google": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Login by google",
+        "parameters": [{
+          "name": "Login google",
+          "in": "body",
+          "description": "Login google user",
+          "schema": {
+            "$ref": "#/definitions/Google"
+          }
+        }],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Login google success"
+          }
+        }
       }
     }
 
@@ -79,13 +196,9 @@
     }
   },
   "definitions": {
-    "User": {
+    "UserCreate": {
       "properties": {
-        "firstName": {
-          "type": "string",
-          "uniqueItems": true
-        },
-        "lastName": {
+        "userid": {
           "type": "string",
           "uniqueItems": true
         },
@@ -97,28 +210,120 @@
           "type": "string",
           "uniqueItems": true
         },
-        "role": {
+        "name": {
           "type": "string",
-          "uniqueItems": false
+          "uniqueItems": true
         },
-        "created": {
-          "type": "string"
-        },
-        "updated": {
-          "type": "string"
-        },
-        "facebook": {
-          "type": "object"
-        },
-        "google": {
-          "type": "object"
+        "nameDisplay": {
+          "type": "string",
+          "uniqueItems": true
         }
       },
       "required": [
-        "firstName",
-        "lastName",
+        "userid",
+        "email",
+        "password",
+        "name",
+        "nameDisplay"
+      ]
+    },
+    "UserLogin": {
+      "properties": {
+        "email": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "password": {
+          "type": "string",
+          "uniqueItems": true
+        }
+      },
+      "required": [
         "email",
         "password"
+      ]
+    },
+    "Google": {
+      "required": [
+        "asset-token"
+      ],
+      "properties": {
+        "asset-token": {
+          "type": "string",
+          "uniqueItems": true
+        }
+      }
+    },
+    "User": {
+      "properties": {
+        "_id": {
+          "type": "integer"
+        },
+        "userid": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "email": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "password": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "name": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "nameDisplay": {
+          "type": "integer"
+        },
+        "location": {
+          "type": "string"
+        },
+        "avatar": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "about": {
+          "type": "string"
+        },
+        "social": {
+          "type": "string"
+        },
+        "story": {
+          "type": "string"
+        },
+        "_notifications": {
+          "type": "array"
+        },
+        "_questions": {
+          "type": "array"
+        },
+        "_anwsers": {
+          "type": "array"
+        },
+        "_reputation": {
+          "type": "object"
+        },
+        "_permissions": {
+          "type": "array"
+        },
+        "_ranks": {
+          "type": "object"
+        },
+        "_favorities": {
+          "type": "array"
+        }
+      },
+      "required": [
+        "userid",
+        "email",
+        "password",
+        "name",
+        "nameDisplay"
       ]
     },
     "Users": {

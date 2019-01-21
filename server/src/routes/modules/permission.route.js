@@ -1,3 +1,4 @@
+
 /**
  * create route permission for project
  * author: quangnc
@@ -22,3 +23,4 @@ router.param('permissionId', permission.getByIdPermission);
 
 
 module.exports = router;
+

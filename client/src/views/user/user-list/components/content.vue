@@ -7,14 +7,13 @@
     </div>
 </template>
 <script>
+import ItemContent from "./itemcontent";
 
-  import ItemContent from "./itemcontent";
-
-  export default {
-    components: {
-      ItemContent
-    }
+export default {
+  components: {
+    ItemContent
   }
+};
 </script>
 <style lang="scss" scoped>
 </style>

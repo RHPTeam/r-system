@@ -3,13 +3,13 @@
     <app-info/>
     <div class="ct_f">
       <div class="main--content p_3">
-        <app-title/>
-        <app-job/>
-        <app-tags/>
-        <app-detail/>
-        <app-company/>
-        <app-skill/>
-        <app-parner/>
+        <app-title :job="job"/>
+        <app-job :job="job"/>
+        <app-tags :job="job"/>
+        <app-detail :job="job"/>
+        <app-company :job="job"/>
+        <app-culture :job="job"/>
+        <app-parner :job="job"/>
       </div>
     </div>
   </div>
@@ -21,9 +21,10 @@ import AppJob from "./cp-content/job";
 import AppTags from "./cp-content/tags";
 import AppDetail from "./cp-content/detail";
 import AppCompany from "./cp-content/company";
-import AppSkill from "./cp-content/skill";
+import AppCulture from "./cp-content/culture";
 import AppParner from "./cp-content/partner";
 export default {
+  props: ["job"],
   components: {
     AppInfo,
     AppTitle,
@@ -31,7 +32,7 @@ export default {
     AppTags,
     AppDetail,
     AppCompany,
-    AppSkill,
+    AppCulture,
     AppParner
   }
 };

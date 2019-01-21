@@ -18,25 +18,25 @@
   </div>
 </template>
 <style lang="scss" scoped>
-.user--story-setting {
-  p.story-item {
-    padding: 8px;
-    background: #776ab0;
-    /*color: #fff;*/
-    border-radius: 3px;
-    a {
-      color: #fff;
-      text-decoration: none;
-    }
-    &:hover,&:active,&:focus {
-      background: #0077dd;
-      a{
+  .user--story-setting {
+    p.story-item {
+      padding: 8px;
+      background: #776ab0;
+      /*color: #fff;*/
+      border-radius: 3px;
+      a {
         color: #fff;
+        text-decoration: none;
+      }
+      &:hover,&:active,&:focus {
+        background: #0077dd;
+        a{
+          color: #fff;
+        }
       }
     }
   }
-}
-.w_50 {
-  width: 50%;
-}
+  .w_50 {
+    width: 50%;
+  }
 </style>

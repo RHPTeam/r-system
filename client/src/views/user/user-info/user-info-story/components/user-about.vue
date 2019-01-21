@@ -5,9 +5,6 @@
       <p>
         <a href="#">Thêm thông tin không bố kick giờ</a>
       </p>
-      <!--<router-link class="d_block setting&#45;&#45;content-item" active-class="active" :to="{ name: 'user-setting-story' }">-->
-        <!--Câu chuyện công việc-->
-      <!--</router-link>-->
     </div>
     <div class="user--add-info">
       <div class="card">
@@ -77,7 +74,6 @@
         min-height: 68px;
         max-height: 100px;
         outline: 0;
-
       }
       input[type="text"] {
         height: 40px;
@@ -90,9 +86,9 @@
         width: 60%;
       }
       /*textarea, input, button {*/
-        /*&:hover,&:focus,&:active {*/
-          /*outline: 0;*/
-        /*}*/
+      /*&:hover,&:focus,&:active {*/
+      /*outline: 0;*/
+      /*}*/
       /*}*/
     }
   }

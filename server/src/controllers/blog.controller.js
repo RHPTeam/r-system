@@ -17,7 +17,7 @@ findBlogByTitle = async data => {
       .or([{
         name: data.title
       }])
-  } catch (error){
+  } catch (error) {
     console.log(error);
   }
 }
@@ -32,21 +32,21 @@ module.exports = {
   createBlog: async (req, res, next) => {
     try {
       const data_blog = req.body
-      if(!data_blog) {
+      if (!data_blog) {
         return res.json(JsonResponse("", 403, "Title blog is require", false))
       }
 
       const findBlog = await Blog.find({
-        title:data_blog.title
+        title: data_blog.title
       })
 
-      if(Object.keys(findBlog).length >0) {
+      if (Object.keys(findBlog).length > 0) {
         return res.json(JsonResponse("", 403, "Title blog is exist", false))
       }
 
       const blog = await new Blog(data_blog)
-      blog.save((errors,data) => {
-        if(errors) {
+      blog.save((errors, data) => {
+        if (errors) {
           return res.json(JsonResponse("", 404, errors, false));
         }
         return res.json(JsonResponse(data, 200, "create blog successful", false))
@@ -63,8 +63,8 @@ module.exports = {
    */
   getAllBlogs: async (req, res) => {
     try {
-      return await Blog.find({}, (errors,data) =>{
-        if(errors){
+      return await Blog.find({}, (errors, data) => {
+        if (errors) {
           return res.json(JsonResponse("", 404, errors, false));
         }
         return res.json(JsonResponse(data, 200, "", false));
@@ -80,7 +80,7 @@ module.exports = {
    * @param res
    */
   getOneBlog: async (req, res) => {
-    try{
+    try {
       const {blogId} = req.params;
       const blog = await Blog.findById(blogId);
       return res.json(JsonResponse(blog, 200, "", false))
@@ -98,12 +98,12 @@ module.exports = {
     try {
       const {blogId} = req.params;
       const newBlog = req.body;
-      const findBlog = await Blog.find({title:newBlog.title})
-      if (Object.keys(findBlog).length> 1){
+      const findBlog = await Blog.find({title: newBlog.title})
+      if (Object.keys(findBlog).length > 1) {
         return res.json(JsonResponse("", 403, "Title blog is exist", false))
       }
       return await Blog.findByIdAndUpdate(blogId, newBlog, (errors, data) => {
-        if(errors) {
+        if (errors) {
           return res.json(JsonResponse("", 404, errors, false))
         }
         return res.json(JsonResponse(newBlog, 200, "update blog success", false))
@@ -120,8 +120,8 @@ module.exports = {
   deleteBlog: async (req, res) => {
     try {
       const {blogId} = req.params;
-      return await Blog.findByIdAndRemove(blogId, (errors,data) => {
-        if(errors) {
+      return await Blog.findByIdAndRemove(blogId, (errors, data) => {
+        if (errors) {
           res.json(JsonResponse("", 404, errors, false))
         }
         return res.send(JsonResponse("", 200, `Delete blog success`, false))
@@ -136,7 +136,7 @@ module.exports = {
    * create blog by user
    * @param req
    * @param res
-   * 
+   *
    */
   createBlogByUser: async (req, res) => {
     try {
@@ -169,12 +169,12 @@ module.exports = {
    * get blog by user
    * @param req
    * @param res
-   * 
+   *
    */
   getBlogByUser: async (req, res) => {
     try {
       const {userId} = req.params;
-      const user = await User.findById(userId)
+      const user = await User.findById(userId).populate("_blogs")
       return res.json(JsonResponse(user._blogs, 200, "get blog by user success ", false))
     } catch (error) {
       console.log(error)
@@ -186,7 +186,7 @@ module.exports = {
    * get blog by categoryId
    * @param req
    * @param res
-   * 
+   *
    */
   getBlogByCategoryId: async (req, res) => {
     try {
@@ -203,7 +203,7 @@ module.exports = {
    * get blog by commentId
    * @param req
    * @param res
-   * 
+   *
    */
   getCommentInBlog: async (req, res) => {
     try {
@@ -215,4 +215,6 @@ module.exports = {
     }
   },
 
+
 }
+
