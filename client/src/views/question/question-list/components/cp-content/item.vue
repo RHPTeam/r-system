@@ -1,6 +1,6 @@
 <template>
   <div class="c_12">
-    <div class="card--question r" v-for="question in questions">
+    <div class="card--question r" v-for="question in questions" v-bind:key="question">
       <div class="card--left r_auto">
         <div class="card--title">
         <!--Lorem ipsum dolor sit amet, consectetur adipiscing elit-->
@@ -63,7 +63,7 @@ export default {
   computed: {
     questions() {
       return this.$store.getters.questions;
-    },
+    }
   },
   async mounted() {
     await QuestionService.index().then(res => {

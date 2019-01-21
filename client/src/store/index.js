@@ -3,9 +3,8 @@ import Vuex from "vuex";
 
 import currentTab from "./modules/currentTab";
 import user from "./modules/user";
-import question from "./modules/question"
+import question from "./modules/question";
 import blog from "./modules/blog";
-
 
 Vue.use(Vuex);
 
