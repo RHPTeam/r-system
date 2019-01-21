@@ -44,7 +44,7 @@ module.exports = {
       position: Joi.string().min(5).max(50).required(),
       nameCompany: Joi.string().min(5).max(100).required(),
       locationCompany: Joi.string().min(10).required(),
-      salary: Joi.number().integer().min(1000000),
+      salary: Joi.string().required(),
       type: Joi.string().required(),
       level: Joi.string().required(),
       role: Joi.string().required(),

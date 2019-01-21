@@ -11,9 +11,10 @@ const {
   validateParam,
   validateBody,
   schemas
-} = require('../../helpers/validatorRoute')
+} = require('../../helpers/validatorRoute');
 
 router.route('/')
+  .get(post.index)
   .post(validateBody(schemas.postSchema), post.create);
 
 module.exports = router;

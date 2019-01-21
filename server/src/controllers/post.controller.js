@@ -17,7 +17,16 @@ module.exports = {
    * @param next
    */
   index: async (req, res, next) => {
-    console.log("Ha ha hihi ")
+    const query = req.query;
+    await Post.find(query, (err, data) => {
+      if (err) {
+        return res.json(JsonResponse("", 404, err, true));
+      }
+      return res.json(JsonResponse(data, 200, "Lấy dữ liệu thành công! ^_^", false))
+    }).populate({
+      path: "_tags",
+      select: "name"
+    })
   },
 
   /**
