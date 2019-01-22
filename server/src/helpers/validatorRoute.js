@@ -71,6 +71,37 @@ module.exports = {
       commentCount: Joi.number().required(),
       FavoriteCount: Joi.number().required(),
       closedDate: Joi.date().required()
+    }),
+    tagSchema: Joi.object().keys({
+      name: Joi.string().min(5).max(100).required(),
+      desc: Joi.string().min(3).max(100).required(),
+      _question: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required(),
+    }),
+    blogSchema: Joi.object().keys({
+      title: Joi.string().required(),
+      desc: Joi.string().required(),
+      body: Joi.string().required(),
+      clap: Joi.number().required(),
+      createAt: Joi.date().required(),
+      editAt: Joi.date().required(),
+      _author: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required(),
+      _category: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required(),
+      _comments: Joi.array().required(),
+    }),
+    favoriteSchema: Joi.object().keys({
+      _question: Joi.array().required(),
+      _anwser: Joi.array().required(),
+      _blog: Joi.array().required(),
+      _user: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required(),
+    }),
+    commentSchema: Joi.object().keys({
+      content:  Joi.string().required(),
+      _blog: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required(),
+      _user: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required(),
+      _reputation: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required(),
+      _question: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required(),
+      _anwser: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required(),
     })
+
   }
 }

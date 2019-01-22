@@ -94,9 +94,9 @@ module.exports = {
    * create comment by user in blog
    * @param req
    * @param res
-   * @param next
+   * 
    */
-  createCommentByUserInBlog: async (req, res, next) => {
+  createCommentByUserInBlog: async (req, res) => {
     try {
       const { userId } = req.params;
       const { blogId } = req.params;
@@ -128,9 +128,9 @@ module.exports = {
    * create comment by user in question
    * @param req
    * @param res
-   * @param next
+   * 
    */
-  createCommentByUserInQuestion: async (req, res, next) => {
+  createCommentByUserInQuestion: async (req, res) => {
     try {
       const { userId } = req.params;
       const { questionId } = req.params;
@@ -162,9 +162,9 @@ module.exports = {
    * create comment by user in awnser
    * @param req
    * @param res
-   * @param next
+   * 
    */
-  createCommentByUserInAnwser: async (req, res, next) => {
+  createCommentByUserInAnwser: async (req, res) => {
     try {
       const { userId } = req.params;
       const { anwserId } = req.params;

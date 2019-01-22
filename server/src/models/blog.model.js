@@ -6,8 +6,14 @@ const BlogSchema = new Schema({
     desc: String,
     body: String,
     clap: Number,
-    createAt: Date,
-    editAt: Date,
+    createAt: {
+        type: Date,
+        default: Date.now()
+    },
+    editAt:  {
+        type: Date,
+        default: Date.now()
+    },
     status: String,
     image: String,
     slug: String,
