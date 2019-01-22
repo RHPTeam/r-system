@@ -81,7 +81,7 @@ module.exports = {
     const { jobId } = req.value.params;
 
     const job = await Job.findById(jobId);
-    if (!job) return res.json(JsonResponse("", 403, "Công việc này không tồn tại! :)", false));
+    if (!job) return res.json(JsonResponse("", 403, "Công việc này không tồn tại! :)", true));
 
     const who = await User.findById(job._createPerson)
 
@@ -89,7 +89,7 @@ module.exports = {
     who._jobs.pull(job);
     await who.save();
 
-    res.json(JsonResponse("", 200, "Xóa công việc thành công! T_T"));
+    res.json(JsonResponse("", 200, "Xóa công việc thành công! T_T", false));
   }
 };
 

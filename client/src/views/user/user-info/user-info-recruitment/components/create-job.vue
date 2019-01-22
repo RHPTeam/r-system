@@ -149,7 +149,10 @@
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 import JobService from "@/services/modules/job.service";
+<<<<<<< HEAD
 import UserService from "@/services/modules/user.service";
+=======
+>>>>>>> dev-toantr-vue
 
 export default {
   data() {
@@ -219,6 +222,7 @@ export default {
         res => (this.message = res.data.message)
       );
       this.$store.dispatch("create", job);
+<<<<<<< HEAD
     },
     addBenefit() {
       this.benefits.push(this.benefit);
@@ -239,6 +243,8 @@ export default {
     },
     removeUserFromPartner(partner) {
       this.partners.pop(partner);
+=======
+>>>>>>> dev-toantr-vue
     }
   }
 };

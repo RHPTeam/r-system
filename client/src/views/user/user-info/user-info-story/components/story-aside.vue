@@ -18,12 +18,32 @@
   </div>
 </template>
 <style lang="scss" scoped>
+<<<<<<< HEAD:client/src/views/user/user-info/user-info-story/components/story-aside.vue
   .user--story-setting {
     p.story-item {
       padding: 8px;
       background: #776ab0;
       /*color: #fff;*/
       border-radius: 3px;
+=======
+.user--story-setting {
+  p.story-item {
+    padding: 8px;
+    background: #776ab0;
+    /*color: #fff;*/
+    border-radius: 3px;
+
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+      background: #0077dd;
+
+>>>>>>> dev-toantr-vue:client/src/views/user/user-info/user-info-story/components/story-aside.vue
       a {
         color: #fff;
         text-decoration: none;
@@ -36,7 +56,15 @@
       }
     }
   }
+<<<<<<< HEAD:client/src/views/user/user-info/user-info-story/components/story-aside.vue
   .w_50 {
     width: 50%;
   }
+=======
+}
+
+.w_50 {
+  width: 50%;
+}
+>>>>>>> dev-toantr-vue:client/src/views/user/user-info/user-info-story/components/story-aside.vue
 </style>

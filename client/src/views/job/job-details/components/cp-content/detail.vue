@@ -5,9 +5,9 @@
   </div>
 </template>
 <script>
-  export default {
-    props: ['job']
-  }
+export default {
+  props: ["job"]
+};
 </script>
 <style>
 </style>

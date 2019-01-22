@@ -17,4 +17,8 @@ router.route('/')
   .get(post.index)
   .post(validateBody(schemas.postSchema), post.create);
 
+router.route('/:postId')
+  .patch([validateParam(schemas.idSchema, "postId")], post.update)
+  .delete(validateParam(schemas.idSchema, "postId"), post.delete);
+
 module.exports = router;

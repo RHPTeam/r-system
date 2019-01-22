@@ -17,19 +17,19 @@
 import AppContent from "../job-details/components/content";
 import AppAside from "../job-details/components/aside";
 
-import JobServices from "@/services/modules/job.service"
+import JobServices from "@/services/modules/job.service";
 export default {
   components: {
     AppContent,
     AppAside
   },
   async mounted() {
-    const res = await JobServices.show(this.$route.params.jobId)
-    this.$store.dispatch("show", res.data.data)
+    const res = await JobServices.show(this.$route.params.jobId);
+    this.$store.dispatch("show", res.data.data);
   },
   computed: {
-    job(){
-      return this.$store.getters.job
+    job() {
+      return this.$store.getters.job;
     }
   }
 };

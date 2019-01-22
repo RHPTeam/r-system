@@ -27,3 +27,4 @@ router.route('/userId=:userId/questionId=:questionId')
   .post(comment.createCommentByUserInQuestion);
 
 module.exports = router;
+

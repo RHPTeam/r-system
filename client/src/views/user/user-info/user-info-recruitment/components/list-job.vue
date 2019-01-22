@@ -11,18 +11,18 @@
 </template>
 
 <script>
-  import AppJob from "./item-job";
-  import AppPaginate from "./paginate";
+import AppJob from "./item-job";
+import AppPaginate from "./paginate";
 
-  export default {
-    components: {
-      AppJob,
-      AppPaginate
-    },
-    props: ["jobs"]
-  };
+export default {
+  components: {
+    AppJob,
+    AppPaginate
+  },
+  props: ["jobs"]
+};
 </script>
 
 <style scoped lang="scss">
-  @import "list-job.scss";
+@import "list-job.scss";
 </style>

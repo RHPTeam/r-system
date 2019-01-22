@@ -4,7 +4,7 @@ import Vuex from "vuex";
 import currentTab from "./modules/currentTab";
 import user from "./modules/user";
 import blog from "./modules/blog";
-import job from "./modules/job"
+import job from "./modules/job";
 
 Vue.use(Vuex);
 
