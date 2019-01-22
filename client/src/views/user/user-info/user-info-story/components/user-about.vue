@@ -3,10 +3,10 @@
     <div class="user--info card text_center">
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, autem.</p>
       <p>
-        <a href="#">Thêm thông tin không bố kick giờ</a>
+        <span @click="showContent = !showContent">Thêm thông tin không bố kick giờ</span>
       </p>
     </div>
-    <div class="user--add-info">
+    <div class="user--add-info" :class="{show: showContent}">
       <div class="card">
         <div class="card_body">
           <form>
@@ -42,18 +42,34 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      showContent: false
+    }
+  }
+}
+</script>
+
 <style lang="scss" scoped>
 .user--info {
   padding: 1em 0 0 0;
   p {
     font-size: 16px;
-    a {
+    span {
       color: #0077dd;
       font-size: 14px;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      &:hover {
+        border-bottom: 1px solid #07d
+      }
     }
   }
 }
 .user--add-info {
+  display: none;
   .card_body {
     background: #f4f8fb;
   }
@@ -91,6 +107,9 @@
       /*}*/
       /*}*/
     }
+  }
+  &.show {
+    display: block;
   }
 }
 </style>
