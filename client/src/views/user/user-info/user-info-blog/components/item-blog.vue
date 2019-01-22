@@ -24,7 +24,7 @@
               <icon-eye/>
             </icon-base>
           </button>
-          <button class="button action--edit">
+          <button class="button action--edit" @click="editBlog(blog._id)">
             <icon-base icon-name="pen" viewBox="0 0 9.374 9.328">
               <icon-pen/>
             </icon-base>
@@ -66,6 +66,15 @@ export default {
 
       // Xoa phan tu trong store
       this.$store.dispatch("deleteBlog", index);
+    },
+    async editBlog(blogId) {
+      const res = await BlogService.show(blogId)
+      const formChange = {
+        title: "Chỉnh sửa bài viết",
+        button: "Cập nhật"
+      }
+      this.$store.dispatch("formChange", formChange)
+      this.$store.dispatch("showBlog", res.data.data)
     }
   }
 };

@@ -5,43 +5,45 @@ import currentTab from "./modules/currentTab";
 import user from "./modules/user";
 import blog from "./modules/blog";
 import job from "./modules/job";
+import category from "./modules/category";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  strict: true,
-  state: {
-    statusMenu: false,
-    themeName: "light"
-  },
-  getters: {
-    statusMenu: state => {
-      return state.statusMenu;
+    // strict: true,
+    state: {
+        statusMenu: false,
+        themeName: "light"
     },
-    themeName: state => {
-      return state.themeName;
-    }
-  },
-  mutations: {
-    changeStatusMenu: (state, payload) => {
-      state.statusMenu = payload;
+    getters: {
+        statusMenu: state => {
+            return state.statusMenu;
+        },
+        themeName: state => {
+            return state.themeName;
+        }
     },
-    changeTheme: (state, payload) => {
-      state.themeName = payload;
-    }
-  },
-  actions: {
-    changeStatusMenu: ({ commit }, payload) => {
-      commit("changeStatusMenu", payload);
+    mutations: {
+        changeStatusMenu: (state, payload) => {
+            state.statusMenu = payload;
+        },
+        changeTheme: (state, payload) => {
+            state.themeName = payload;
+        }
     },
-    changeTheme: ({ commit }, payload) => {
-      commit("changeTheme", payload);
+    actions: {
+        changeStatusMenu: ({ commit }, payload) => {
+            commit("changeStatusMenu", payload);
+        },
+        changeTheme: ({ commit }, payload) => {
+            commit("changeTheme", payload);
+        }
+    },
+    modules: {
+        currentTab,
+        user,
+        blog,
+        job,
+        category
     }
-  },
-  modules: {
-    currentTab,
-    user,
-    blog,
-    job
-  }
 });
