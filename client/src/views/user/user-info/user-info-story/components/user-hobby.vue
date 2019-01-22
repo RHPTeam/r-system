@@ -33,14 +33,11 @@ export default {
 .w_60 {
   width: 60%;
 }
-
 .user--hobby {
   padding-top: 2em;
-
   h3 {
     margin-bottom: 2em;
   }
-
   &:hover {
     background: #f4f8fb;
     .user--hobby-add {
@@ -48,13 +45,11 @@ export default {
     }
   }
 }
-
 .user--hobby-add {
   top: 1.5em;
   right: 1em;
   z-index: +9;
   display: none;
-
   button {
     padding: 8px 35px;
     background: #776ab0;

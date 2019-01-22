@@ -5,11 +5,13 @@ import currentTab from "./modules/currentTab";
 import user from "./modules/user";
 import anwser from "./modules/answer";
 import blog from "./modules/blog";
+import job from "./modules/job";
 
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
+  strict: true,
   state: {
     statusMenu: false,
     themeName: "light"
@@ -42,6 +44,7 @@ export default new Vuex.Store({
     currentTab,
     user,
     anwser,
-    blog
+    blog,
+    job
   }
 });

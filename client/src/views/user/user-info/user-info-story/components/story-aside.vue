@@ -24,20 +24,24 @@
     background: #776ab0;
     /*color: #fff;*/
     border-radius: 3px;
+
     a {
       color: #fff;
       text-decoration: none;
     }
+
     &:hover,
     &:active,
     &:focus {
       background: #0077dd;
+
       a {
         color: #fff;
       }
     }
   }
 }
+
 .w_50 {
   width: 50%;
 }

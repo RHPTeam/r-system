@@ -5,9 +5,6 @@
       <p>
         <a href="#">Thêm thông tin không bố kick giờ</a>
       </p>
-      <!--<router-link class="d_block setting&#45;&#45;content-item" active-class="active" :to="{ name: 'user-setting-story' }">-->
-        <!--Câu chuyện công việc-->
-      <!--</router-link>-->
     </div>
     <div class="user--add-info">
       <div class="card">

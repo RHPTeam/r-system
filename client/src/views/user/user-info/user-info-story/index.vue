@@ -5,33 +5,33 @@
         <div class="c_md_9 c_12">
           <div class="card card--user-story">
             <div class="card_body">
-              <user-story-info/>
-              <user-story-about/>
-              <user-story-frame/>
-              <user-story-hobby/>
+              <user-info/>
+              <user-about/>
+              <user-frame/>
+              <user-hobby/>
             </div>
           </div>
         </div>
         <div class="c_md_3 c_12 pl_md_2">
-          <user-story-aside/>
+          <story-aside/>
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
-import UserStoryInfo from "./components/user-story-info";
-import UserStoryAbout from "./components/user-story-about";
-import UserStoryFrame from "./components/user-story-frame";
-import UserStoryHobby from "./components/user-story-hobby";
-import UserStoryAside from "./components/user-story-aside";
+import UserInfo from "./components/user-info";
+import UserAbout from "./components/user-about";
+import UserFrame from "./components/user-frame";
+import UserHobby from "./components/user-hobby";
+import StoryAside from "./components/story-aside";
 export default {
   components: {
-    UserStoryInfo,
-    UserStoryAbout,
-    UserStoryFrame,
-    UserStoryHobby,
-    UserStoryAside
+    UserInfo,
+    UserAbout,
+    UserFrame,
+    UserHobby,
+    StoryAside
   }
 };
 </script>
