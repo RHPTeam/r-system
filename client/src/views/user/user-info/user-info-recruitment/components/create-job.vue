@@ -1,10 +1,10 @@
 <template>
   <div class="create---job ct">
     <div class="title--job r">
-      <h2>Tạo công việc</h2>
+      <h2 v-text="formChange.title == '' ? 'Tạo Công Việc': formChange.title"></h2>
     </div>
     <div class="alert alert_success" v-if="message != ''">{{ message }}</div>
-    <form class="create--job--form" @submit.prevent="submit">
+    <form class="create--job--form" @submit.prevent="formChange.title == '' ? submit() : updateJob()">
       <div class="form_group">
         <label>Vị trí tuyển dụng</label>
         <input type="text" class="form_control" placeholder=" eg: Thiết kế viên" v-model="job.position">
@@ -140,7 +140,12 @@
         <label>Link website công ty</label>
         <input type="text" class="form_control" placeholder="https://wwww.example.com" v-model="job.website">
       </div>
-      <button class="btn btn_primary btn--create" type="submit">Thêm tin tuyển dụng</button>
+      <button
+        class="btn btn_primary btn--create"
+        type="submit"
+        v-text="formChange.button == '' ? 'Thêm công việc': formChange.button"
+      >Thêm tin tuyển dụng</button>
+      <button class="btn btn_primary btn--create" type="button">Hủy</button>
     </form>
   </div>
 </template>
@@ -149,10 +154,7 @@
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 import JobService from "@/services/modules/job.service";
-<<<<<<< HEAD
 import UserService from "@/services/modules/user.service";
-=======
->>>>>>> dev-toantr-vue
 
 export default {
   data() {
@@ -162,29 +164,13 @@ export default {
       editorData: "",
       startSalary: "",
       endSalary: "",
-      job: {
-        position: "",
-        nameCompany: "",
-        locationCompany: "",
-        salary: "",
-        type: "",
-        level: "",
-        role: "",
-        office: "",
-        sizeCompany: "",
-        typeCompany: "",
-        technologies: "",
-        content: "",
-        infoCompany: "",
-        website: ""
-      },
       benefits: [],
       benefit: "",
       statusShowPartner: false,
       users: [],
       search: "",
       partners: [],
-      statusPartner: false
+      statusPartner: false,
     };
   },
   computed: {
@@ -194,6 +180,12 @@ export default {
           .toLowerCase()
           .includes(this.search.toLowerCase());
       });
+    },
+    job(){
+      return this.$store.getters.job[0]
+    },
+    formChange() {
+      return this.$store.getters.formChange;
     }
   },
   methods: {
@@ -222,7 +214,6 @@ export default {
         res => (this.message = res.data.message)
       );
       this.$store.dispatch("create", job);
-<<<<<<< HEAD
     },
     addBenefit() {
       this.benefits.push(this.benefit);
@@ -243,8 +234,9 @@ export default {
     },
     removeUserFromPartner(partner) {
       this.partners.pop(partner);
-=======
->>>>>>> dev-toantr-vue
+    },
+    updateJob(){
+      alert('Nothing change')
     }
   }
 };

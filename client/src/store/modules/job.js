@@ -1,6 +1,10 @@
 const state = {
   jobs: [],
-  job: {}
+  job: {},
+  formChange: {
+    title: "",
+    button: ""
+  }
 };
 
 const getters = {
@@ -9,6 +13,9 @@ const getters = {
   },
   job: state => {
     return state.job;
+  },
+  formChange: state => {
+    return state.formChange;
   }
 };
 
@@ -24,6 +31,9 @@ const mutations = {
   },
   show: (state, payload) => {
     state.job = payload;
+  },
+  formChange: (state, payload) => {
+    state.formChange = payload;
   }
 };
 
@@ -39,6 +49,9 @@ const actions = {
   },
   show: async ({ commit }, payload) => {
     await commit("show", payload);
+  },
+  formChange: async ({ commit }, payload) => {
+    await commit("formChange", payload);
   }
 };
 export default {

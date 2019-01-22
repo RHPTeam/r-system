@@ -18,9 +18,9 @@ export default {
   show(jobId) {
     return Api().get(`jobs?_id=${jobId}`);
   },
-  // update(user) {
-  //   return Api().patch(`users/${user._id}`, user);
-  // },
+  update(job) {
+    return Api().patch(`jobs/${job._id}`,job);
+  },
   delete(jobId) {
     return Api().delete(`jobs/${jobId}`);
   }
