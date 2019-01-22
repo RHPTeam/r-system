@@ -107,13 +107,13 @@ export default {
       return this.$store.getters.themeName;
     },
     lastBlog() {
-      if (typeof(this.blogs) == "undefined") return;
+      if (typeof this.blogs == "undefined") return;
       if (this.blogs.length == 0) return;
       const lastBlog = this.blogs.slice(-1);
       return lastBlog[0];
     },
     listBlog() {
-      if (typeof(this.blogs) == "undefined") return;
+      if (typeof this.blogs == "undefined") return;
       if (this.blogs.length == 0) return;
       // Get 5 last item in arr
       const getFiveLast = this.blogs.slice(Math.max(this.blogs.length - 5, 0));

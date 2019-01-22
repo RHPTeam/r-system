@@ -35,27 +35,22 @@ const mutations = {
 };
 
 const actions = {
-  getAllJob: async ({commit}, payload) => {
-    await commit("getAllJob", payload)
-  }
-  ,
-  index: async ({commit}, payload) => {
+  getAllJob: async ({ commit }, payload) => {
+    await commit("getAllJob", payload);
+  },
+  index: async ({ commit }, payload) => {
     await commit("index", payload);
   },
-  create:
-    async ({commit}, payload) => {
-      await commit("push", payload);
-    },
-  delete:
-    async ({commit}, payload) => {
-      await commit("pop", payload);
-    },
-  show:
-    async ({commit}, payload) => {
-      await commit("show", payload);
-    }
+  create: async ({ commit }, payload) => {
+    await commit("push", payload);
+  },
+  delete: async ({ commit }, payload) => {
+    await commit("pop", payload);
+  },
+  show: async ({ commit }, payload) => {
+    await commit("show", payload);
   }
-;
+};
 export default {
   state,
   getters,

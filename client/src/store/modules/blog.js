@@ -19,7 +19,7 @@ const getters = {
     return state.blogsByUser;
   },
   formChange: state => {
-    return state.formChange
+    return state.formChange;
   }
 };
 
@@ -43,48 +43,46 @@ const mutations = {
     state.blogsByUser.splice(payload, 1);
   },
   formChange: (state, payload) => {
-    state.formChange = payload
+    state.formChange = payload;
   },
-  clearData: (state) => {
-    state.blog = {}
+  clearData: state => {
+    state.blog = {};
   },
   clearForm: (state, payload) => {
-    state.formChange = payload
+    state.formChange = payload;
   }
 };
 
 const actions = {
-  getAllBlog: async ({commit}, payload) => {
+  getAllBlog: async ({ commit }, payload) => {
     await commit("getAllBlog", payload);
   },
-  create: async ({commit}, payload) => {
+  create: async ({ commit }, payload) => {
     await commit("create", payload);
   },
-  updateBlog: async ({commit}, payload) => {
-    await commit("updateBlog", payload)
+  updateBlog: async ({ commit }, payload) => {
+    await commit("updateBlog", payload);
   },
-  showBlog: async ({
-                     commit
-                   }, payload) => {
+  showBlog: async ({ commit }, payload) => {
     await commit("showBlog", payload);
   },
-  showByUser: async ({commit}, payload) => {
+  showByUser: async ({ commit }, payload) => {
     await commit("showByUser", payload);
   },
-  deleteBlog: async ({commit}, payload) => {
+  deleteBlog: async ({ commit }, payload) => {
     await commit("deleteBlog", payload);
   },
-  formChange: async ({commit}, payload) => {
+  formChange: async ({ commit }, payload) => {
     await commit("formChange", payload);
   },
-  clearData: async ({commit}) => {
+  clearData: async ({ commit }) => {
     await commit("clearData");
   },
-  clearForm: async ({commit}) => {
+  clearForm: async ({ commit }) => {
     const formChange = {
-      title: '',
-      button: ''
-    }
+      title: "",
+      button: ""
+    };
     await commit("clearForm", formChange);
   }
 };

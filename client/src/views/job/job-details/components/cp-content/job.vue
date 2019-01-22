@@ -17,24 +17,24 @@
   </div>
 </template>
 <script>
-  export default {
-    props: ["job"]
-  };
+export default {
+  props: ["job"]
+};
 </script>
 <style>
-  .w_50 {
-    width: 50%;
-  }
+.w_50 {
+  width: 50%;
+}
 
-  .about-detail {
-    width: 100%;
-  }
+.about-detail {
+  width: 100%;
+}
 
-  label {
-    font-weight: 500;
-    line-height: 1.29;
-    letter-spacing: -0.3px;
-    color: #707070;
-    margin-left: 5px;
-  }
+label {
+  font-weight: 500;
+  line-height: 1.29;
+  letter-spacing: -0.3px;
+  color: #707070;
+  margin-left: 5px;
+}
 </style>

@@ -19,10 +19,10 @@ import AppAside from "../job-details/components/aside";
 
 import JobServices from "@/services/modules/job.service";
 export default {
-  data () {
+  data() {
     return {
       componentStatus: false
-    }
+    };
   },
   components: {
     AppContent,

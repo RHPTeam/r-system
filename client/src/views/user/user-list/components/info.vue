@@ -10,10 +10,10 @@
 import AppTabs from "./tabs";
 import AppBreadcrumb from "@/components/breadcrumb/breadcrumb";
 export default {
-  data () {
+  data() {
     return {
       breadcrumb: "Users"
-    }
+    };
   },
   components: {
     AppTabs,

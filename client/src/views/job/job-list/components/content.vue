@@ -8,7 +8,7 @@
   </div>
 </template>
 <script>
-  import JobService from "@/services/modules/job.service";
+import JobService from "@/services/modules/job.service";
 
 import AppInfo from "./cp-content/info";
 import AppPaginate from "./cp-content/paginate";
@@ -20,20 +20,20 @@ export default {
     AppItem,
     AppPaginate
   },
-  data () {
+  data() {
     return {
       componentStatus: false
-    }
+    };
   },
   computed: {
-    jobs () {
+    jobs() {
       if (!this.componentStatus) return;
       return this.$store.getters.jobAll;
     }
   },
-  async mounted () {
+  async mounted() {
     const res = await JobService.index();
-    await this.$store.dispatch("getAllJob", res.data.data)
+    await this.$store.dispatch("getAllJob", res.data.data);
     this.componentStatus = true;
   }
 };

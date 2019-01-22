@@ -6,13 +6,13 @@
   </div>
 </template>
 <script>
-  import ItemContent from "./item";
+import ItemContent from "./item";
 
-  export default {
-    components: {
-      ItemContent
-    }
-  };
+export default {
+  components: {
+    ItemContent
+  }
+};
 </script>
 <style lang="scss" scoped>
 </style>

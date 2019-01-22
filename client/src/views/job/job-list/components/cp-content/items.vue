@@ -10,23 +10,23 @@
       <div class="job--offer mt_1"><span>{{ job.salary }} VNĐ</span></div>
       <div v-if="!tags"></div>
       <div v-else class="job--tags mt_4">
-        <router-link tag="a" v-for="tag in tags" to="/jobs">{{ tag }}</router-link>
+        <router-link tag="a" v-for="tag in tags" :key="tag" to="/jobs">{{ tag }}</router-link>
       </div>
     </div>
   </div>
 </template>
 <script>
-  export default {
-    props: ["job"],
-    computed: {
-      tags () {
-        if (!this.job) return;
-        if (!this.job.technologies) return;
-        const arr = this.job.technologies.split(",");
-        return arr;
-      }
+export default {
+  props: ["job"],
+  computed: {
+    tags() {
+      if (!this.job) return;
+      if (!this.job.technologies) return;
+      const arr = this.job.technologies.split(",");
+      return arr;
     }
   }
+};
 </script>
 <style lang="scss" scoped>
 @import "items";

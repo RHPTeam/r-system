@@ -40,5 +40,4 @@ export default {
   // getByCategory(categoryId) {
   //   return Api().get(`blogs/category/${categoryId}`);
   // }
-
 };

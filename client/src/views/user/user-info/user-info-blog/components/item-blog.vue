@@ -68,13 +68,13 @@ export default {
       this.$store.dispatch("deleteBlog", index);
     },
     async editBlog(blogId) {
-      const res = await BlogService.show(blogId)
+      const res = await BlogService.show(blogId);
       const formChange = {
         title: "Chỉnh sửa bài viết",
         button: "Cập nhật"
-      }
-      this.$store.dispatch("formChange", formChange)
-      this.$store.dispatch("showBlog", res.data.data)
+      };
+      this.$store.dispatch("formChange", formChange);
+      this.$store.dispatch("showBlog", res.data.data);
     }
   }
 };

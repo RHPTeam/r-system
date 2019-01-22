@@ -51,72 +51,72 @@
 </template>
 
 <script>
-  import BlogService from "@/services/modules/blog.service";
+import BlogService from "@/services/modules/blog.service";
 
-  import IconBase from "@/components/icons/IconBase";
-  import IconFontSize from "@/components/icons/IconFontSize";
-  import IconMoon from "@/components/icons/IconMoon";
-  import IconSun from "@/components/icons/IconSun";
-  import AppHeader from "@/components/blog/header";
-  import AppFooter from "@/components/blog/footer";
-  import AppAds from "@/components/blog/ads";
-  import AppTrend from "@/views/blog/home/components/trend";
-  import AppLastest from "@/views/blog/home/components/lastest";
-  import AppFeature from "@/views/blog/home/components/feature";
-  import AppPopular from "@/views/blog/home/components/popular";
+import IconBase from "@/components/icons/IconBase";
+import IconFontSize from "@/components/icons/IconFontSize";
+import IconMoon from "@/components/icons/IconMoon";
+import IconSun from "@/components/icons/IconSun";
+import AppHeader from "@/components/blog/header";
+import AppFooter from "@/components/blog/footer";
+import AppAds from "@/components/blog/ads";
+import AppTrend from "@/views/blog/home/components/trend";
+import AppLastest from "@/views/blog/home/components/lastest";
+import AppFeature from "@/views/blog/home/components/feature";
+import AppPopular from "@/views/blog/home/components/popular";
 
-  export default {
-    data() {
-      return {
-        isThemeLight: true,
-        theme: "light",
-        componentLoaded: false
-      };
+export default {
+  data() {
+    return {
+      isThemeLight: true,
+      theme: "light",
+      componentLoaded: false
+    };
+  },
+  components: {
+    IconBase,
+    IconFontSize,
+    IconMoon,
+    IconSun,
+    AppHeader,
+    AppTrend,
+    AppLastest,
+    AppFeature,
+    AppPopular,
+    AppAds,
+    AppFooter
+  },
+  computed: {
+    valueTheme() {
+      return this.theme;
     },
-    components: {
-      IconBase,
-      IconFontSize,
-      IconMoon,
-      IconSun,
-      AppHeader,
-      AppTrend,
-      AppLastest,
-      AppFeature,
-      AppPopular,
-      AppAds,
-      AppFooter
+    currentTheme() {
+      return this.$store.getters.themeName;
     },
-    computed: {
-      valueTheme() {
-        return this.theme;
-      },
-      currentTheme() {
-        return this.$store.getters.themeName;
-      },
-      allBlog() {
-        if (!this.componentLoaded) return;
-        return this.$store.getters.blogs;
-      }
-    },
-    methods: {
-      changeTheme() {
-        this.isThemeLight = !this.isThemeLight;
-        if (this.isThemeLight == true) {
-          this.theme = "light";
-        } else {
-          this.theme = "dark";
-        }
-        this.$store.dispatch("changeTheme", this.valueTheme);
-      }
-    },
-    async mounted() {
-      const allblog = await BlogService.index();
-      this.$store.dispatch("getAllBlog", allblog.data.data);
-      this.componentLoaded = true
+    allBlog() {
+      if (!this.componentLoaded) return;
+      return this.$store.getters.blogs;
     }
-  };
+  },
+  methods: {
+    changeTheme() {
+      this.isThemeLight = !this.isThemeLight;
+      if (this.isThemeLight == true) {
+        this.theme = "light";
+      } else {
+        this.theme = "dark";
+      }
+      this.$store.dispatch("changeTheme", this.valueTheme);
+    }
+  },
+  async mounted() {
+    const allblog = await BlogService.index();
+    this.$store.dispatch("getAllBlog", allblog.data.data);
+    this.componentLoaded = true;
+  }
+};
 </script>
 
 <style scoped lang="scss">
-  @import "../../../components/blog/scss/main";
+@import "../../../components/blog/scss/main";
 </style>
