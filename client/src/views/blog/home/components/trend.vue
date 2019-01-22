@@ -22,12 +22,12 @@
                     <p class="card_text mb_2">{{lastBlog[0].desc | cutMainDesc}}</p>
                     <div class="item--bottom d_flex justify_content_between align_items_center">
                       <div class="item--info d_inline mb_0">
-                        <span class="item--info-time mr_4 position_relative">Jan 14</span>
+                        <span class="item--info-time mr_4 position_relative">{{lastBlog[0].createAt}}</span>
                         <span class="item--info-like mr_4 position_relative"><icon-base class="pr_1 pt_1"
                                                                                         icon-name="heart"
                                                                                         viewBox="0 0 378.94 378.94"><icon-heart/></icon-base>26</span>
                         <span class="item--info-author position_relative">by <span
-                          class="item--info-name">dangyen103</span></span>
+                          class="item--info-name">{{lastBlog[0]._author.nameDisplay}}</span></span>
                       </div>
                       <div class="item--icon text_right"><span @click="isBookmark = !isBookmark"><icon-base
                         :class="{selected: isBookmark}" icon-name="bookmark-blog" viewBox="0 0 431.972 431.972"><icon-bookmark-blog/></icon-base></span>
@@ -57,7 +57,7 @@
                                  class="card_title mb_2 mt_2 mt_md_0">
                       {{blog.title}}
                     </router-link>
-                    <p class="card_text mb_2">{{blog.desc}}</p>
+                    <p class="card_text mb_2" v-html="blog.desc"></p>
                     <div class="item--bottom d_flex justify_content_between align_items_center">
                       <div class="item--info d_inline mb_0">
                         <span class="item--info-time mr_4 position_relative">Jan 14</span>
@@ -105,10 +105,12 @@ export default {
     },
     listBlog() {
       // Get 5 last item in arr
-      const getFiveLast = this.blogs.slice(Math.max(this.blogs.length - 5, 1));
+      const getFiveLast = this.blogs.slice(Math.max(this.blogs.length - 5, 0));
+      console.log(getFiveLast);
 
       //Remove last item
       getFiveLast.pop();
+      console.log(getFiveLast);
 
       //Return arr 4 item and reverse arr
       return getFiveLast.reverse();
