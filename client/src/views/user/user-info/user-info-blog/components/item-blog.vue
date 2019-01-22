@@ -1,7 +1,7 @@
 <template>
   <div class="item r flex_column">
     <div class="item--left ">
-      <a href="#" class="blog--name">{{blog.title}}</a>
+      <router-link tag="a" class="blog--name" :to="{ name: 'post', params: { blogId: blog._id }}">{{blog.title}}</router-link>
       <div class="item--time">
         <i>
           <icon-base icon-name="clock-history" viewBox="0 0 500 500">
@@ -19,11 +19,11 @@
           <span class="tab--name "> vuejs </span>
         </div>
         <div class="item--action">
-          <button class="button action--view">
+          <router-link class="button action--view" tag="button" :to="{ name: 'post', params: { blogId: blog._id }}">
             <icon-base icon-name="eye" viewBox="0 0 480 520">
               <icon-eye/>
             </icon-base>
-          </button>
+          </router-link>
           <button class="button action--edit" @click="editBlog(blog._id)">
             <icon-base icon-name="pen" viewBox="0 0 9.374 9.328">
               <icon-pen/>

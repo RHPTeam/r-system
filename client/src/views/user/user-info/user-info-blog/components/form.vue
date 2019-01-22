@@ -3,7 +3,7 @@
     <div class="title--blog r">
       <h2 v-text="formChange.title == '' ? 'Tạo bài viết': formChange.title"></h2>
     </div>
-    <form class="create--blog--form" @submit.prevent="formChange.title == '' ? createBlog: updateBlog">
+    <form class="create--blog--form" @submit.prevent="formChange.title == '' ? createBlog() : updateBlog()">
       <div class="form_group">
         <label>Tên bài viết</label>
         <input
@@ -23,20 +23,6 @@
         <label>Mô tả bài viết</label>
         <textarea class="form_control" v-model="blog.desc" placeholder="Mô tả bài viết"></textarea>
       </div>
-      <!-- <div class="form_group">
-        <label>Thể loại bài viết</label>
-        <select class="form_control" v-model="blog._category">
-          <option :selected="status-select">Chọn thể loại bài viết</option>
-          <option
-            v-for="category in categories"
-            :key="category._id"
-            value="category._id"
-          >{{category.name}}</option>
-        </select>
-        <small
-          class="form_text text_muted"
-        >Nếu bài viết của bạn quá nhiều lần chọn sai thể loại bài viết, bạn sẽ bị mất quyền viết bài.</small>
-      </div> -->
       <div class="form_group">
         <label>Thể loại bài viết</label>
         <select class="form_control" v-model="blog._category">
@@ -109,10 +95,8 @@ export default {
         .then(this.resetForm);
     },
     resetForm() {
-      this.blog.title = "";
-      this.blog.desc = "";
-      this.blog.body = "";
-      this.blog.image = "";
+      this.$store.dispatch("clearData")
+      this.$store.dispatch("clearForm")
     },
     sanitizeTitle(title) {
       let slug = "";
@@ -136,7 +120,14 @@ export default {
       return slug;
     },
     updateBlog() {
-      alert('Hello')
+      BlogService.update(this.blog).then(res => {
+        this.$store.dispatch("updateBlog", this.blog)
+        // Update BlogByUser
+        BlogService.getByUser(this.$route.params.userId).then(res => {
+          this.$store.dispatch("showByUser", res.data.data)
+        })
+      })
+
     }
   },
   async mounted() {

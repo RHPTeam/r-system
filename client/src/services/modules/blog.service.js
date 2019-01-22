@@ -25,8 +25,8 @@ export default {
   show(blogId) {
     return Api().get(`blogs/blogId=${blogId}`);
   },
-  update(blogId) {
-    return Api().patch(`blogs/blogId=${blogId}`);
+  update(blog) {
+    return Api().patch(`blogs/blogId=${blog._id}`, blog);
   },
   delete(blogId) {
     return Api().delete(`blogs/blogId=${blogId}`);
@@ -36,10 +36,9 @@ export default {
   },
   createByUser(userId, categoryId, blog) {
     return Api().post(`blogs/userId=${userId}&categoryId=${categoryId}`, blog);
-  },
-  getByCategory(categoryId) {
-    return Api().get(`blogs/category/${categoryId}`);
   }
+  // getByCategory(categoryId) {
+  //   return Api().get(`blogs/category/${categoryId}`);
+  // }
 
-  //getByComment?
 };

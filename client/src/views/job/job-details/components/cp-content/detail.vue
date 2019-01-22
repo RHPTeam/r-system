@@ -1,7 +1,10 @@
 <template>
   <div class="about--jobs-des job--border pt_3 pb_3">
-    <h4>Job description</h4>
-    <p>{{job[0].content}}</p>
+    <div v-if="!job"></div>
+    <div v-else class="job--desc-wrap">
+      <h4>Job description</h4>
+      <p>{{job.content}}</p>
+    </div>
   </div>
 </template>
 <script>

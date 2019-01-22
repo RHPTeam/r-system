@@ -1,9 +1,13 @@
 const state = {
+  jobAll: [],
   jobs: [],
   job: {}
 };
 
 const getters = {
+  jobAll: state => {
+    return state.jobAll;
+  },
   jobs: state => {
     return state.jobs;
   },
@@ -13,6 +17,9 @@ const getters = {
 };
 
 const mutations = {
+  getAllJob: (state, payload) => {
+    state.jobAll = payload;
+  },
   index: (state, payload) => {
     state.jobs = payload;
   },
@@ -28,19 +35,27 @@ const mutations = {
 };
 
 const actions = {
-  index: async ({ commit }, payload) => {
+  getAllJob: async ({commit}, payload) => {
+    await commit("getAllJob", payload)
+  }
+  ,
+  index: async ({commit}, payload) => {
     await commit("index", payload);
   },
-  create: async ({ commit }, payload) => {
-    await commit("push", payload);
-  },
-  delete: async ({ commit }, payload) => {
-    await commit("pop", payload);
-  },
-  show: async ({ commit }, payload) => {
-    await commit("show", payload);
+  create:
+    async ({commit}, payload) => {
+      await commit("push", payload);
+    },
+  delete:
+    async ({commit}, payload) => {
+      await commit("pop", payload);
+    },
+  show:
+    async ({commit}, payload) => {
+      await commit("show", payload);
+    }
   }
-};
+;
 export default {
   state,
   getters,
