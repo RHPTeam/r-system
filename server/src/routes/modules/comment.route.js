@@ -26,5 +26,8 @@ router.route('/userId=:userId/blogId=:blogId')
 router.route('/userId=:userId/questionId=:questionId')
   .post(comment.createCommentByUserInQuestion);
 
+router.route('/userId=:userId/anwserId=:anwserId')
+  .post(comment.createCommentByUserInAnwser);
+
 module.exports = router;
 
