@@ -18,6 +18,8 @@ router.route('/')
 /* GET blog by id listing. */
 router.route('/blogId=:blogId')
     .get(blog.getOneBlog)
+
+router.route('/userId=:userId/blogId=:blogId') 
     .patch(blog.updateBlog)
     .delete(blog.deleteBlog);
 

@@ -97,17 +97,18 @@ module.exports = {
   updateBlog: async (req, res) => {
     try {
       const {blogId} = req.params;
+      const {userId} = req.params;
       const newBlog = req.body;
-      const findBlog = await Blog.find({title: newBlog.title})
-      if (Object.keys(findBlog).length > 1) {
-        return res.json(JsonResponse("", 403, "Title blog is exist", false))
+      const blog = await Blog.findById(blogId)
+      //check privilege edit
+      if(!blog){
+        return res.json(JsonResponse("", 403, "Blog is not exist! :)", true));
+      }  else if(!blog._author.equals(userId)) {
+        return res.json(JsonResponse("", 500, "you don't privilege edit! :)", true));
+      } else {
+        const blogUpdate= await Blog.findByIdAndUpdate(blogId, newBlog)
+        return res.json(JsonResponse(blogUpdate, 200, "update blog success", false))
       }
-      return await Blog.findByIdAndUpdate(blogId, newBlog, (errors, data) => {
-        if (errors) {
-          return res.json(JsonResponse("", 404, errors, false))
-        }
-        return res.json(JsonResponse(newBlog, 200, "update blog success", false))
-      })
     } catch (error) {
       console.log(error)
     }
@@ -120,12 +121,22 @@ module.exports = {
   deleteBlog: async (req, res) => {
     try {
       const {blogId} = req.params;
-      return await Blog.findByIdAndRemove(blogId, (errors, data) => {
-        if (errors) {
-          res.json(JsonResponse("", 404, errors, false))
-        }
-        return res.send(JsonResponse("", 200, `Delete blog success`, false))
-      })
+      const {userId} = req.params;
+      const blog = await Blog.findById(blogId)
+      //check privilege edit
+      if(!blog){
+        return res.json(JsonResponse("", 403, "Blog is not exist! :)", true));
+      }  else if(!blog._author.equals(userId)) {
+        return res.json(JsonResponse("", 500, "you don't privilege delete! :)", true));
+      } else {
+        return await Blog.findByIdAndRemove(blogId, (errors, data) => {
+          if (errors) {
+            res.json(JsonResponse("", 404, errors, false))
+          }
+          return res.send(JsonResponse("", 200, `Delete blog success`, false))
+        })
+      }
+     
     } catch (error) {
       console.log(error);
     }
@@ -208,7 +219,7 @@ module.exports = {
   getCommentInBlog: async (req, res) => {
     try {
       const {blogId} = req.params;
-      const blog = await Blog.findById(blogId).populate('_comments');
+      const blog = await Blog.findById(blogId)
       return res.json(JsonResponse(blog._comments, 200, "get comments by user success ", false))
     } catch (error) {
       console.log(error);

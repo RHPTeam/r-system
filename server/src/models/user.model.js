@@ -63,7 +63,8 @@ const UserSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Rank'
   },
-  _favorities: [{
+  //define to write favorite api (don't edit!)
+  _favorite: [{
     type: Schema.Types.ObjectId,
     ref: 'Favorite'
   }],
