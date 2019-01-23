@@ -22,7 +22,7 @@ module.exports = {
   getAllComments: async (req, res) => {
       return await Comment.find({}, (errors, data) => {
         if (errors) {
-          return res.json(JsonResponse("", 404, errors, false));
+          return res.json(JsonResponse("", 404, errors, true));
         }
       res.json(JsonResponse(data, 200, "", false));
       })
@@ -47,10 +47,13 @@ module.exports = {
    */
   updateComment: async (req, res) => {
       const { commentId } = req.params;
+      const {userId} = req.params;
       const newComment = req.body;
-      const findComment = await Comment.find({ content: newComment.content })
-      if (Object.keys(findComment).length > 1) {
-        return res.json(JsonResponse("", 403, "Nội dung bình luận đã tồn tại! -_- ", false))
+      const findComment = await Comment.findById(commentId)
+      if (!findComment) {
+        return res.json(JsonResponse("", 403, "Bình luận này không tồn tại! -_- ", true))
+      } else if(!findComment._user.equals(userId)){
+        return res.json(JsonResponse("", 500, "Bạn không có quyền sửa bình luận! -_- ", true))
       }
       return await Comment.findByIdAndUpdate(commentId, newComment, (errors, data) => {
         if (errors) {
@@ -67,6 +70,13 @@ module.exports = {
    */
   deleteCommentById: async (req, res) => {
       const { commentId } = req.params;
+      const {userId} = req.params;
+      const findComment = await Comment.findById(commentId)
+      if (!findComment) {
+        return res.json(JsonResponse("", 403, "Bình luận này không tồn tại! -_- ", true))
+      } else if(!findComment._user.equals(userId)){
+        return res.json(JsonResponse("", 500, "Bạn không có quyền xóa bình luận! -_- ", true))
+      }
       return await Comment.findByIdAndRemove(commentId, (errors, data) => {
         if (errors) {
           return res.json(JsonResponse("", 404, errors, true))
