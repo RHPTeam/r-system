@@ -27,14 +27,25 @@
         </div>
       </div>
     </div>
-    <div>{{allBlog}}</div>
     <app-footer/>
     <div class="blog--change position_fixed text_center">
       <div class="change--theme" @click="changeTheme">
-        <div v-if="isThemeLight" class="theme--dark"><icon-base icon-name="moon" width="30" height="30" viewBox="0 0 24.678 25.761"><icon-moon /></icon-base></div>
-        <div v-else class="theme--light"><icon-base icon-name="sun" width="30" height="30" viewBox="0 0 30.152 30.152"><icon-sun/></icon-base></div>
+        <div v-if="isThemeLight" class="theme--dark">
+          <icon-base icon-name="moon" width="30" height="30" viewBox="0 0 24.678 25.761">
+            <icon-moon/>
+          </icon-base>
+        </div>
+        <div v-else class="theme--light">
+          <icon-base icon-name="sun" width="30" height="30" viewBox="0 0 30.152 30.152">
+            <icon-sun/>
+          </icon-base>
+        </div>
       </div>
-      <div class="change--size"><icon-base icon-name="font-size" width="30" height="30" viewBox="0 0 32.678 22.018"><icon-font-size /></icon-base></div>
+      <div class="change--size">
+        <icon-base icon-name="font-size" width="30" height="30" viewBox="0 0 32.678 22.018">
+          <icon-font-size/>
+        </icon-base>
+      </div>
     </div>
   </div>
 </template>
@@ -53,11 +64,13 @@ import AppTrend from "@/views/blog/home/components/trend";
 import AppLastest from "@/views/blog/home/components/lastest";
 import AppFeature from "@/views/blog/home/components/feature";
 import AppPopular from "@/views/blog/home/components/popular";
+
 export default {
   data() {
     return {
       isThemeLight: true,
-      theme: "light"
+      theme: "light",
+      componentLoaded: false
     };
   },
   components: {
@@ -81,6 +94,7 @@ export default {
       return this.$store.getters.themeName;
     },
     allBlog() {
+      if (!this.componentLoaded) return;
       return this.$store.getters.blogs;
     }
   },
@@ -97,7 +111,8 @@ export default {
   },
   async mounted() {
     const allblog = await BlogService.index();
-    this.$store.dispatch("index", allblog.data.data);
+    this.$store.dispatch("getAllBlog", allblog.data.data);
+    this.componentLoaded = true;
   }
 };
 </script>

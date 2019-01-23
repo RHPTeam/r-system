@@ -1,15 +1,18 @@
 <template>
   <div class="about--company job--border pb_3 pt_3">
-    <h4>About company</h4>
-    <p>{{job[0].infoCompany}}</p>
-    <h4>Benefits</h4>
-    <ul>
-      <li> Lorem ipsum dolor sit amet.</li>
-      <li> Lorem ipsum dolor sit amet.</li>
-      <li> Lorem ipsum dolor sit amet.</li>
-      <li> Lorem ipsum dolor sit amet.</li>
-      <li> Lorem ipsum dolor sit amet.</li>
-    </ul>
+    <div v-if="!job"></div>
+    <div v-else class="about--company-wrap">
+      <h4>About company</h4>
+      <p>{{job.infoCompany}}</p>
+      <h4>Benefits</h4>
+      <ul>
+        <li> Lorem ipsum dolor sit amet.</li>
+        <li> Lorem ipsum dolor sit amet.</li>
+        <li> Lorem ipsum dolor sit amet.</li>
+        <li> Lorem ipsum dolor sit amet.</li>
+        <li> Lorem ipsum dolor sit amet.</li>
+      </ul>
+    </div>
   </div>
 </template>
 <script>

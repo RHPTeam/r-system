@@ -1,7 +1,7 @@
 <template>
   <div class="content--head ct m_0">
     <div class="d_flex align_items_center justify_content_center justify_content_md_start">
-      <app-breadcrumb/>
+      <app-breadcrumb :breadcrumb="breadcrumb"/>
     </div>
     <div class="r">
       <div class="head--search c_12 c_sm_12 c_md_5 c_xl_5">
@@ -24,6 +24,7 @@ import AppBreadcrumb from "@/components/breadcrumb/breadcrumb";
 export default {
   data() {
     return {
+      breadcrumb: "Jobs",
       items: [
         {
           name: "All",

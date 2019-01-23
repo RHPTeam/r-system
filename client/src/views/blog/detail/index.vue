@@ -41,7 +41,6 @@
 
 <script>
 import BlogService from "@/services/modules/blog.service";
-
 import IconBase from "@/components/icons/IconBase";
 import IconFontSize from "@/components/icons/IconFontSize";
 import IconMoon from "@/components/icons/IconMoon";
@@ -52,7 +51,6 @@ import AppPostDetail from "@/views/blog/detail/components/postdetail";
 import AppComment from "@/views/blog/detail/components/comment";
 import AppAddComment from "@/views/blog/detail/components/addcomment";
 import AppPostOther from "@/views/blog/detail/components/postother";
-
 export default {
   data() {
     return {

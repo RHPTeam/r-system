@@ -68,7 +68,10 @@ module.exports = {
           return res.json(JsonResponse("", 404, errors, false));
         }
         return res.json(JsonResponse(data, 200, "", false));
-      })
+      }).populate({
+        path: "_author",
+        select: "nameDisplay title"
+      });
     } catch (error) {
       console.log(error)
     }
@@ -82,7 +85,10 @@ module.exports = {
   getOneBlog: async (req, res) => {
     try {
       const {blogId} = req.params;
-      const blog = await Blog.findById(blogId);
+      const blog = await Blog.findById(blogId).populate({
+        path: "_author",
+        select: "nameDisplay title"
+      });
       return res.json(JsonResponse(blog, 200, "", false))
     } catch (error) {
       console.log(error)
@@ -217,4 +223,3 @@ module.exports = {
 
 
 }
-
