@@ -132,11 +132,11 @@ module.exports = {
    */
   deleteCategory: async (req, res, next) => {
     try {
-      return await req.question.remove(err => {
+      return await req.category.remove(err => {
         if (err) {
           res.json(JsonResponse("", 404, errors, false))
         }
-        res.send(JsonResponse("", 200, `Delete category ${req.category.name}`, false))
+        res.send(JsonResponse("", 200, `Delete category ${req.category.name} success`, false))
       })
     } catch (error) {
       next(error);
