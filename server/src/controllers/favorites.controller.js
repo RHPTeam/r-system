@@ -25,7 +25,7 @@ module.exports = {
   getAllFavorities: async (req, res) => {
       return await Favorite.find({}, (errors, data) => {
         if (errors) {
-          return res.json(JsonResponse("", 404, errors, false));
+          return res.json(JsonResponse("", 404, errors, true));
         }
       res.json(JsonResponse(data, 200, "Lấy dữ liệu thành công!", false));
       })
@@ -73,6 +73,7 @@ module.exports = {
       //get user
       const user = await User.findById(userId)
       const checkArr = user._favorite;
+      console.log(user._favorite)
       if (checkArr.length === 0) {
         //Create new favorite with userid
         req.body["_user"] = userId;
