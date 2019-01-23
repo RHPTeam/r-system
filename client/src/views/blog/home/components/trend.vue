@@ -63,7 +63,7 @@
                       {{blog.title}}
                     </router-link>
                     <div v-if="!blog"></div>
-                    <p v-else class="card_text mb_2" v-html="blog.desc"></p>
+                    <p v-else class="card_text mb_2" >{{blog.desc}}</p>
                     <div class="item--bottom d_flex justify_content_between align_items_center">
                       <div class="item--info d_inline mb_0">
                         <span class="item--info-time mr_4 position_relative">Jan 14</span>
@@ -71,7 +71,7 @@
                                                                                         icon-name="heart"
                                                                                         viewBox="0 0 378.94 378.94"><icon-heart/></icon-base>26</span>
                         <span class="item--info-author position_relative">by <span
-                          class="item--info-name">dangyen103</span></span>
+                          class="item--info-name">{{blog._author.nameDisplay}}</span></span>
                       </div>
                       <div class="item--icon text_right"><span @click="isBookmark = !isBookmark"><icon-base
                         :class="{selected: isBookmark}" icon-name="bookmark-blog" viewBox="0 0 431.972 431.972"><icon-bookmark-blog/></icon-base></span>
@@ -109,20 +109,15 @@ export default {
     lastBlog() {
       if (typeof this.blogs == "undefined") return;
       if (this.blogs.length == 0) return;
-      const lastBlog = this.blogs.slice(-1);
-      return lastBlog[0];
+      const lastBlog = this.blogs[0];
+      return lastBlog;
     },
     listBlog() {
       if (typeof this.blogs == "undefined") return;
       if (this.blogs.length == 0) return;
-      // Get 5 last item in arr
-      const getFiveLast = this.blogs.slice(Math.max(this.blogs.length - 5, 0));
-
-      //Remove last item
-      getFiveLast.pop();
-
-      //Return arr 4 item and reverse arr
-      return getFiveLast.reverse();
+      // Get 4 last item in arr
+      const getFourLast = this.blogs.splice(1, 4)
+      return getFourLast;
     }
   },
   filters: {

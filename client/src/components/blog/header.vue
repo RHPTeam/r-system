@@ -58,7 +58,6 @@
         <ul class="nav--menu d_flex align_items_center justify_content_start mb_0 pl_0 ml_n3 mr_n3 mt_n1">
           <li class="menu--item active mr_3 ml_3 position_relative">Trang chủ</li>
           <li class="menu--item mr_3 ml_3 position_relative" v-for="item in menu" :key="item">{{item}}</li>
-
         </ul>
       </nav>
   </header>
@@ -70,7 +69,7 @@ import IconLogo from "@/components/icons/IconLogo";
 import IconSearchSolid from "@/components/icons/IconSearchSolid";
 import IconAlarm from "@/components/icons/IconAlarm";
 export default {
-  props: ['menu'],
+  props: ["menu"],
   data() {
     return {
       statusDropdown: false

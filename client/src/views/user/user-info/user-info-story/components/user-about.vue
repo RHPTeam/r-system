@@ -47,9 +47,9 @@ export default {
   data() {
     return {
       showContent: false
-    }
+    };
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -63,7 +63,7 @@ export default {
       cursor: pointer;
       transition: all 0.4s ease;
       &:hover {
-        border-bottom: 1px solid #07d
+        border-bottom: 1px solid #07d;
       }
     }
   }
