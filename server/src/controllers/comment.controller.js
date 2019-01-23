@@ -1,6 +1,6 @@
 /**
  * create controller comment for project
- * author: h
+ * author: hocpv
  * date up: 
  * date to: 
  * team: BE-RHP
@@ -20,16 +20,12 @@ module.exports = {
     * @param res
     */
   getAllComments: async (req, res) => {
-    try {
       return await Comment.find({}, (errors, data) => {
         if (errors) {
           return res.json(JsonResponse("", 404, errors, false));
         }
-        return res.json(JsonResponse(data, 200, "", false));
+      res.json(JsonResponse(data, 200, "", false));
       })
-    } catch (error) {
-      console.log(error)
-    }
   },
 
   /**
@@ -38,13 +34,10 @@ module.exports = {
   * @param res
   */
   getOneCommentById: async (req, res) => {
-    try {
       const { commentId } = req.params;
       const comment = await Comment.findById(commentId);
+      if(!comment) return res.json(JsonResponse("", 403, "Bình luận này không tồn tại! :)", true));
       return res.json(JsonResponse(comment, 200, "", false))
-    } catch (error) {
-      console.log(error)
-    }
   },
 
   /**
@@ -53,22 +46,18 @@ module.exports = {
    * @param res
    */
   updateComment: async (req, res) => {
-    try {
       const { commentId } = req.params;
       const newComment = req.body;
       const findComment = await Comment.find({ content: newComment.content })
       if (Object.keys(findComment).length > 1) {
-        return res.json(JsonResponse("", 403, "Content comment is exist", false))
+        return res.json(JsonResponse("", 403, "Nội dung bình luận đã tồn tại! -_- ", false))
       }
       return await Comment.findByIdAndUpdate(commentId, newComment, (errors, data) => {
         if (errors) {
-          return res.json(JsonResponse("", 404, errors, false))
+          return res.json(JsonResponse("", 404, errors, true))
         }
-        return res.json(JsonResponse(newComment, 200, "update comment success", false))
+      res.json(JsonResponse(newComment, 200, "Cập nhật bình luận thành công! <3", false))
       })
-    } catch (error) {
-      console.log(error)
-    }
   },
 
   /**
@@ -77,17 +66,13 @@ module.exports = {
    * @param res
    */
   deleteCommentById: async (req, res) => {
-    try {
       const { commentId } = req.params;
       return await Comment.findByIdAndRemove(commentId, (errors, data) => {
         if (errors) {
-          res.json(JsonResponse("", 404, errors, false))
+          return res.json(JsonResponse("", 404, errors, true))
         }
-        return res.send(JsonResponse("", 200, `Delete Comment success`, false))
+      res.send(JsonResponse("", 200, `Xóa bình luận thành công!`, false))
       })
-    } catch (error) {
-      console.log(error);
-    }
   },
 
   /**
@@ -97,7 +82,6 @@ module.exports = {
    * 
    */
   createCommentByUserInBlog: async (req, res) => {
-    try {
       const { userId } = req.params;
       const { blogId } = req.params;
       // Create new comment with author = userId
@@ -107,6 +91,7 @@ module.exports = {
       // get user, get blog
       const user = await User.findById(userId)
       const blog = await Blog.findById(blogId)
+      if(!blog) return res.json(JsonResponse("", 403, "Bài viết này không tồn tại! :)", true));
       // assign Comment to user,assign Comment to blog
       newComment.user = user;
       newComment.blog = blog
@@ -118,10 +103,7 @@ module.exports = {
       //save user, blog
       await user.save();
       await blog.save()
-      return res.json(JsonResponse(newComment, 200, "create Comment by user success ", false))
-    } catch (error) {
-      console.log(error)
-    }
+      res.json(JsonResponse(newComment, 200, "Tạo bình luận trong bài viết thành công! <3", false))
   },
 
   /**
@@ -131,7 +113,7 @@ module.exports = {
    * 
    */
   createCommentByUserInQuestion: async (req, res) => {
-    try {
+  
       const { userId } = req.params;
       const { questionId } = req.params;
       // Create new comment with author = userId
@@ -141,6 +123,7 @@ module.exports = {
       // get user, get question
       const user = await User.findById(userId)
       const question = await Question.findById(questionId)
+      if(!question) return res.json(JsonResponse("", 403, "Câu hỏi này không tồn tại! :)", true));
       // assign Comment to user,assign Comment to question
       newComment.user = user;
       newComment.question = question
@@ -152,10 +135,7 @@ module.exports = {
       //save user, question
       await user.save();
       await question.save()
-      return res.json(JsonResponse(newComment, 200, "create Comment by user in question success ", false))
-    } catch (error) {
-      console.log(error)
-    }
+      res.json(JsonResponse(newComment, 200, "Tạo bình luận trong câu hỏi thành công! <3", false))
   },
 
   /**
@@ -165,7 +145,6 @@ module.exports = {
    * 
    */
   createCommentByUserInAnwser: async (req, res) => {
-    try {
       const { userId } = req.params;
       const { anwserId } = req.params;
       // Create new comment with author = userId
@@ -175,6 +154,7 @@ module.exports = {
       // get user, get answer
       const user = await User.findById(userId)
       const anwser = await Anwser.findById(anwserId)
+      if(!anwser) return res.json(JsonResponse("", 403, "Câu trả lời này không tồn tại! :)", true));
       // assign Comment to user,assign Comment to anser
       newComment.user = user;
       newComment.anwser = anwser
@@ -186,10 +166,7 @@ module.exports = {
       //save user, blog
       await user.save();
       await anwser.save()
-      return res.json(JsonResponse(newComment, 200, "create Comment by user in anwser success ", false))
-    } catch (error) {
-      console.log(error)
-    }
+      return res.json(JsonResponse(newComment, 200, "Tạo bình luận trong câu trả lời thành công! <3", false))
   },
 
 }
