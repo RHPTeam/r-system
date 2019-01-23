@@ -19,7 +19,7 @@ const mutations = {
   create: (state, payload) => {
     state.users = payload;
   },
-  show: (state, payload) => {
+  showUser: (state, payload) => {
     state.user = payload;
   }
 };
@@ -31,8 +31,8 @@ const actions = {
   createUser: async ({ commit }, payload) => {
     await commit("createUser", payload);
   },
-  show: async ({ commit }, payload) => {
-    await commit("show", payload);
+  showUser: async ({ commit }, payload) => {
+    await commit("showUser", payload);
   }
 };
 export default {

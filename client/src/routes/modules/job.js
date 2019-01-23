@@ -9,7 +9,8 @@ const jobRouter = {
       component: () => import("@/views/job/job-list/index")
     },
     {
-      path: ":id",
+      path: ":jobId",
+      props: true,
       name: "job-details",
       component: () => import("@/views/job/job-details/index")
     }

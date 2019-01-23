@@ -2,7 +2,7 @@
   <div class="content">
     <div class="main r">
       <div class="list--job c_md_12 c_lg_6  c_sm_12 c_xs_12">
-        <app-list-job/>
+        <app-list-job :jobs="jobs"/>
       </div>
       <div class="create--job c_md_12 c_lg_6 c_sm_12 c_xs_12">
         <app-create-job/>
@@ -15,10 +15,21 @@
 import AppListJob from "./components/list-job";
 import AppCreateJob from "./components/create-job";
 
+import JobService from "@/services/modules/job.service";
+
 export default {
   components: {
     AppListJob,
     AppCreateJob
+  },
+  computed: {
+    jobs() {
+      return this.$store.getters.jobs;
+    }
+  },
+  async mounted() {
+    const res = await JobService.index();
+    this.$store.dispatch("index", res.data.data);
   }
 };
 </script>

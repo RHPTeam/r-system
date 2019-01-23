@@ -1,16 +1,24 @@
 <template>
   <div class="job--title job--border position_relative pt_3 pb_3">
-    <h3>Senior Web Engineer</h3>
-    <p>Microsoft - Silicon Valey</p>
-    <div class="d_flex">
-      <p class="job--title-small border--right">15 minutes</p>
-      <p class="job--title-small pl_2">by khangle</p>
-    </div>
-    <div class="job--button position_absolute">
-      <a href="#" class="btn--save">Save</a>
+    <div v-if="!job"></div>
+    <div v-else class="job--title-wrap">
+      <h3>{{job.position}}</h3>
+      <p>{{job.nameCompany}} - {{job.locationCompany}}</p>
+      <div class="d_flex">
+        <p class="job--title-small border--right">15 minutes</p>
+        <p class="job--title-small pl_2">{{job._createPerson.nameDisplay}}</p>
+      </div>
+      <div class="job--button position_absolute">
+        <a href="#" class="btn--save">Save</a>
+      </div>
     </div>
   </div>
 </template>
+<script>
+export default {
+  props: ["job"]
+};
+</script>
 <style lang="scss" scoped>
 .job--title {
   h3 {

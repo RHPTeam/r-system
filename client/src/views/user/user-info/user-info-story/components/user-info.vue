@@ -2,7 +2,7 @@
   <div class="pl_md_2 pr_md_2 d_flex flex_column justify_content_center">
     <div class="user--info-thumb text_center">
       <div class="user--avatar">
-      <img src="http://thuthuat123.com/uploads/2018/01/27/anh-dai-dien-dep-nhat-39_093007.jpg" class="img_thumbnail" width="160" height="160" alt="user-avatar">
+        <img src="http://thuthuat123.com/uploads/2018/01/27/anh-dai-dien-dep-nhat-39_093007.jpg" class="img_thumbnail" width="160" height="160" alt="user-avatar">
       </div>
       <h3 class="p_2">Toản cực gắt</h3>
     </div>
@@ -42,7 +42,6 @@ import IconLocation from "@/components/icons/IconLocation";
 import IconLink from "@/components/icons/IconLink";
 import IconTwitter from "@/components/icons/IconTwitter";
 import IconGithub from "@/components/icons/IconGithub";
-
 export default {
   components: {
     IconBase,

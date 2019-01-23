@@ -3,7 +3,6 @@ const Schema = mongoose.Schema
 
 const CommentSchema = new Schema({
     content: String,
-    parent: Number,
     _blog: {
         type: Schema.Types.ObjectId,
         ref: 'Blog'
@@ -11,6 +10,10 @@ const CommentSchema = new Schema({
     _user: {
         type: Schema.Types.ObjectId,
         ref: 'User'
+    },
+    _reputation: {
+      type: Schema.Types.ObjectId,
+      ref: 'Reputation'
     },
     _question: {
         type: Schema.Types.ObjectId,

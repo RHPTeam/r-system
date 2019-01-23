@@ -5,7 +5,7 @@ const JobSchema = new Schema({
     position: String,
     nameCompany: String,
     locationCompany: String,
-    salary: Number,
+    salary: String,
     type: String,
     level: String,
     role: String,
@@ -25,3 +25,4 @@ const JobSchema = new Schema({
 
 const Job = mongoose.model('Job', JobSchema);
 module.exports = Job;
+

@@ -1,7 +1,11 @@
 const state = {
   blogs: [],
   blog: {},
-  blogsByUser: []
+  blogsByUser: [],
+  formChange: {
+    title: "",
+    button: ""
+  }
 };
 
 const getters = {
@@ -13,17 +17,23 @@ const getters = {
   },
   blogsByUser: state => {
     return state.blogsByUser;
+  },
+  formChange: state => {
+    return state.formChange;
   }
 };
 
 const mutations = {
-  index: (state, payload) => {
+  getAllBlog: (state, payload) => {
     state.blogs = payload;
   },
   create: (state, payload) => {
     state.blogsByUser.push(payload);
   },
-  show: (state, payload) => {
+  updateBlog: (state, payload) => {
+    state.blog = payload;
+  },
+  showBlog: (state, payload) => {
     state.blog = payload;
   },
   showByUser: (state, payload) => {
@@ -31,24 +41,49 @@ const mutations = {
   },
   deleteBlog: (state, payload) => {
     state.blogsByUser.splice(payload, 1);
+  },
+  formChange: (state, payload) => {
+    state.formChange = payload;
+  },
+  clearData: state => {
+    state.blog = {};
+  },
+  clearForm: (state, payload) => {
+    state.formChange = payload;
   }
 };
 
 const actions = {
-  index: async ({ commit }, payload) => {
-    await commit("index", payload);
+  getAllBlog: async ({ commit }, payload) => {
+    await commit("getAllBlog", payload);
   },
   create: async ({ commit }, payload) => {
     await commit("create", payload);
   },
-  show: async ({ commit }, payload) => {
-    await commit("show", payload);
+  updateBlog: async ({ commit }, payload) => {
+    await commit("updateBlog", payload);
+  },
+  showBlog: async ({ commit }, payload) => {
+    await commit("showBlog", payload);
   },
   showByUser: async ({ commit }, payload) => {
     await commit("showByUser", payload);
   },
   deleteBlog: async ({ commit }, payload) => {
     await commit("deleteBlog", payload);
+  },
+  formChange: async ({ commit }, payload) => {
+    await commit("formChange", payload);
+  },
+  clearData: async ({ commit }) => {
+    await commit("clearData");
+  },
+  clearForm: async ({ commit }) => {
+    const formChange = {
+      title: "",
+      button: ""
+    };
+    await commit("clearForm", formChange);
   }
 };
 export default {

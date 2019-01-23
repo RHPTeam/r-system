@@ -22,7 +22,8 @@ export default {
   },
   computed: {
     blogs() {
-      return this.$store.getters.blogsByUser;
+      const listBlogs = this.$store.getters.blogsByUser;
+      return listBlogs.reverse();
     }
   },
   async mounted() {

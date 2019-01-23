@@ -44,7 +44,7 @@ module.exports = {
       position: Joi.string().min(5).max(50).required(),
       nameCompany: Joi.string().min(5).max(100).required(),
       locationCompany: Joi.string().min(10).required(),
-      salary: Joi.number().integer().min(1000000),
+      salary: Joi.string().required(),
       type: Joi.string().required(),
       level: Joi.string().required(),
       role: Joi.string().required(),
@@ -56,6 +56,21 @@ module.exports = {
       _createPerson: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required(),
       infoCompany: Joi.string().min(100).required(),
       website: Joi.string().min(10).required()
+    }),
+    postSchema: Joi.object().keys({
+      parent: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required(),
+      score: Joi.number().required(),
+      views: Joi.number().required(),
+      body: Joi.string().required(),
+      _owner: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required(),
+      lastEditDate: Joi.date().required(),
+      lastActivityDate: Joi.date().required(),
+      title: Joi.string().required(),
+      _tags: Joi.array().required(),
+      answerCount: Joi.number().required(),
+      commentCount: Joi.number().required(),
+      FavoriteCount: Joi.number().required(),
+      closedDate: Joi.date().required()
     })
   }
 }
