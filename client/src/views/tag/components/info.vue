@@ -62,7 +62,7 @@ export default {
         width: 25px;
         height: 25px;
         top: 15px;
-        left: 2%;
+        left: 22px;
         position: absolute;
         color: #999999;
       }
