@@ -1,10 +1,10 @@
 <template>
   <div :data-theme="currentTheme" class="blog--content">
-    <app-header/>
+    <app-header :menu='homeMenu'/>
     <div class="ct pl_4 pr_4 pr_sm_0 pl_sm_0">
       <div class="r">
         <div class="c_12">
-          <app-trend :blogs='allBlog'/>
+          <app-trend :blogs='blogsTrend'/>
         </div>
         <div class="c_12">
           <hr/>
@@ -52,6 +52,7 @@
 
 <script>
 import BlogService from "@/services/modules/blog.service";
+import CategoryService from "@/services//modules/category.service";
 
 import IconBase from "@/components/icons/IconBase";
 import IconFontSize from "@/components/icons/IconFontSize";
@@ -70,7 +71,7 @@ export default {
     return {
       isThemeLight: true,
       theme: "light",
-      componentLoaded: false
+      componentLoaded: false,
     };
   },
   components: {
@@ -93,9 +94,25 @@ export default {
     currentTheme() {
       return this.$store.getters.themeName;
     },
-    allBlog() {
+    blogsTrend() {
       if (!this.componentLoaded) return;
-      return this.$store.getters.blogs;
+      return this.$store.getters.blogsTrend;
+    },
+    categories() {
+      return this.$store.getters.categories;
+    },
+    homeMenu() {
+      if (this.categories.length == 0) return;
+      // Sort categories by number of blogs in category
+      const ascCategories = this.categories.sort((a,b) => b._blogs.length-a._blogs.length);
+      // Get all name categories
+      const nameCategory = [];
+      for(let i = 0; i < ascCategories.length; i++) {
+        nameCategory.push(ascCategories[i].name)
+      }
+      // Get 10 item categories for Home Menu
+      const homeMenu = nameCategory.slice(0, 10)
+      return homeMenu;
     }
   },
   methods: {
@@ -110,8 +127,17 @@ export default {
     }
   },
   async mounted() {
-    const allblog = await BlogService.index();
-    this.$store.dispatch("getAllBlog", allblog.data.data);
+    // Get all Blog
+    const allBlog = await BlogService.index();
+    this.$store.dispatch("getAllBlog", allBlog.data.data);
+    // Get blogsTrend and dispatch to store
+    const blogsTrend = allBlog;
+    this.$store.dispatch("getBlogsTrend", blogsTrend.data.data);
+
+    // Get all category
+     CategoryService.index().then(res => {
+      this.$store.dispatch("index", res.data.data);
+    });
     this.componentLoaded = true;
   }
 };
