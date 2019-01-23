@@ -9,6 +9,7 @@
 const Favorite = require('../models/favorites.model');
 const Question = require('../models/question.model')
 const Anwser = require('../models/anwser.model')
+const Blog = require('../models/blog.model')
 const User = require('../models/user.model')
 const JsonResponse = require('../helpers/json-response')
 
