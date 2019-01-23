@@ -31,25 +31,25 @@ module.exports = {
    */
   createBlog: async (req, res, next) => {
     try {
-      const data_blog = req.body
-      if (!data_blog) {
-        return res.json(JsonResponse("", 403, "Title blog is require", false))
+      const newBlog = req.body
+      if (!newBlog) {
+        return res.status(403).json(JsonResponse("", 403, "Title blog is require", true))
       }
 
       const findBlog = await Blog.find({
-        title: data_blog.title
+        title: newBlog.title
       })
 
       if (Object.keys(findBlog).length > 0) {
-        return res.json(JsonResponse("", 403, "Title blog is exist", false))
+        return res.status(403).json(JsonResponse("", 403, "Title blog is exist", true))
       }
 
-      const blog = await new Blog(data_blog)
+      const blog = await new Blog(newBlog)
       blog.save((errors, data) => {
         if (errors) {
-          return res.json(JsonResponse("", 404, errors, false));
+          return res.status(404).json(JsonResponse("", 404, errors, true));
         }
-        return res.json(JsonResponse(data, 200, "create blog successful", false))
+        return res.status(200).json(JsonResponse(data, 200, "create blog successful", false))
       })
     } catch (error) {
       console.log(error)
@@ -65,9 +65,9 @@ module.exports = {
     try {
       return await Blog.find({}, (errors, data) => {
         if (errors) {
-          return res.json(JsonResponse("", 404, errors, false));
+          return res.status(404).json(JsonResponse("", 404, errors, true));
         }
-        return res.json(JsonResponse(data, 200, "", false));
+        return res.status(200).json(JsonResponse(data, 200, "", false));
       })
     } catch (error) {
       console.log(error)
@@ -83,7 +83,10 @@ module.exports = {
     try {
       const {blogId} = req.params;
       const blog = await Blog.findById(blogId);
-      return res.json(JsonResponse(blog, 200, "", false))
+      if(!blog){
+        return res.status(403).json(JsonResponse("", 403, "Blog is not exist! :)", true));
+      } 
+      return res.status(200).json(JsonResponse(blog, 200, "", false))
     } catch (error) {
       console.log(error)
     }
@@ -102,12 +105,12 @@ module.exports = {
       const blog = await Blog.findById(blogId)
       //check privilege edit
       if(!blog){
-        return res.json(JsonResponse("", 403, "Blog is not exist! :)", true));
+        return res.status(403).json(JsonResponse("", 403, "Blog is not exist! :)", true));
       }  else if(!blog._author.equals(userId)) {
-        return res.json(JsonResponse("", 500, "you don't privilege edit! :)", true));
+        return res.status(500).json(JsonResponse("", 500, "you don't privilege edit! :)", true));
       } else {
         const blogUpdate= await Blog.findByIdAndUpdate(blogId, newBlog)
-        return res.json(JsonResponse(blogUpdate, 200, "update blog success", false))
+        return res.status(200).json(JsonResponse(blogUpdate, 200, "update blog success", false))
       }
     } catch (error) {
       console.log(error)
@@ -125,15 +128,15 @@ module.exports = {
       const blog = await Blog.findById(blogId)
       //check privilege edit
       if(!blog){
-        return res.json(JsonResponse("", 403, "Blog is not exist! :)", true));
+        return res.status(403).json(JsonResponse("", 403, "Blog is not exist! :)", true));
       }  else if(!blog._author.equals(userId)) {
-        return res.json(JsonResponse("", 500, "you don't privilege delete! :)", true));
+        return res.status(500).json(JsonResponse("", 500, "you don't privilege delete! :)", true));
       } else {
         return await Blog.findByIdAndRemove(blogId, (errors, data) => {
           if (errors) {
-            res.json(JsonResponse("", 404, errors, false))
+            res.status(404).json(JsonResponse("", 404, errors, true))
           }
-          return res.send(JsonResponse("", 200, `Delete blog success`, false))
+          return res.status(200).send(JsonResponse("", 200, `Delete blog success`, false))
         })
       }
      
@@ -171,7 +174,7 @@ module.exports = {
       //save user, category
       await user.save();
       await category.save()
-      return res.json(JsonResponse(newBlog, 200, "create blog by user success ", false))
+      return res.status(200).json(JsonResponse(newBlog, 200, "create blog by user success ", false))
     } catch (error) {
       console.log(error)
     }
@@ -186,7 +189,7 @@ module.exports = {
     try {
       const {userId} = req.params;
       const user = await User.findById(userId).populate("_blogs")
-      return res.json(JsonResponse(user._blogs, 200, "get blog by user success ", false))
+      return res.status(200).json(JsonResponse(user._blogs, 200, "get blog by user success ", false))
     } catch (error) {
       console.log(error)
     }
@@ -203,7 +206,10 @@ module.exports = {
     try {
       const {categoryId} = req.params;
       const category = await Category.findById(categoryId)
-      return res.json(JsonResponse(category._blogs, 200, "get category by user success ", false))
+      if(!category){
+        return res.status(403).json(JsonResponse("", 403, "category is not exist! :)", true));
+      } 
+      return res.status(200).json(JsonResponse(category._blogs, 200, "get category by user success ", false))
     } catch (error) {
       console.log(error)
     }
@@ -220,7 +226,10 @@ module.exports = {
     try {
       const {blogId} = req.params;
       const blog = await Blog.findById(blogId)
-      return res.json(JsonResponse(blog._comments, 200, "get comments by user success ", false))
+      if(!blog){
+        return res.status(403).json(JsonResponse("", 403, "blog is not exist! :)", true));
+      } 
+      return res.status(200).json(JsonResponse(blog._comments, 200, "get comments by user success ", false))
     } catch (error) {
       console.log(error);
     }
