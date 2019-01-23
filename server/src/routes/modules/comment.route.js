@@ -15,6 +15,8 @@ router.route('/')
 
 router.route('/commentId=:commentId')
   .get(comment.getOneCommentById)
+
+router.route('/userId=:userId/commentId=:commentId')
   .delete(comment.deleteCommentById)
   .patch(comment.updateComment);
 
