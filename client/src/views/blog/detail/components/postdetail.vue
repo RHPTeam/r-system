@@ -128,7 +128,6 @@
 </template>
 
 <script>
-
 import IconBase from "@/components/icons/IconBase";
 import IconHeart from "@/components/icons/IconHeart";
 import IconBookmarkBlog from "@/components/icons/IconBookmarkBlog";
@@ -153,7 +152,7 @@ export default {
     IconBookmarkBlog,
     IconAnswer,
     IconFacebook
-  },
+  }
 };
 </script>
 

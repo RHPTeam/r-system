@@ -1,7 +1,7 @@
 <template>
   <div class="content--head ct m_0">
     <div class="d_flex align_items_center justify_content_center justify_content_md_start">
-      <app-breadcrumb/>
+      <app-breadcrumb :breadcrumb="breadcrumb"/>
     </div>
     <app-tabs />
   </div>
@@ -10,6 +10,11 @@
 import AppTabs from "./tabs";
 import AppBreadcrumb from "@/components/breadcrumb/breadcrumb";
 export default {
+  data() {
+    return {
+      breadcrumb: "Users"
+    };
+  },
   components: {
     AppTabs,
     AppBreadcrumb
