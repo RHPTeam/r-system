@@ -116,7 +116,7 @@ export default {
       if (typeof this.blogs == "undefined") return;
       if (this.blogs.length == 0) return;
       // Get 4 last item in arr
-      const getFourLast = this.blogs.splice(1, 4)
+      const getFourLast = this.blogs.splice(1, 4);
       return getFourLast;
     }
   },

@@ -148,28 +148,25 @@ export default {
         this.theme = "dark";
       }
       this.$store.dispatch("changeTheme", this.valueTheme);
-    },
+    }
   },
   async mounted() {
     // Get all Blog
     const allBlog = await BlogService.index();
-    let dataAllBlog = allBlog.data.data
+    let dataAllBlog = allBlog.data.data;
     // Sort in order from new to old
-    dataAllBlog = dataAllBlog.reverse()
+    dataAllBlog = dataAllBlog.reverse();
     this.$store.dispatch("getAllBlog", dataAllBlog);
     if (typeof dataAllBlog == "undefined") return;
     if (dataAllBlog.length == 0) return;
-
 
     // Get 5 blog lastest for BlogsTrend
     const blogsTrend = dataAllBlog.slice(0, 5);
     this.$store.dispatch("getBlogsTrend", blogsTrend);
 
-
     // Get 5 blog lastest for BlogsLastest
     const blogsLastest = dataAllBlog.slice(0, 5);
     this.$store.dispatch("getBlogsLastest", blogsLastest);
-
 
     // Get all category
     CategoryService.index().then(res => {

@@ -23,7 +23,7 @@ export default {
   computed: {
     blogs() {
       const listBlogs = this.$store.getters.blogsByUser;
-      return listBlogs
+      return listBlogs;
     }
   },
   async mounted() {
