@@ -11,6 +11,7 @@ const BlogSchema = new Schema({
     status: String,
     image: String,
     slug: String,
+    views: Number,
     _author: {
         type: Schema.Types.ObjectId,
         ref: 'User'
