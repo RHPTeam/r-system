@@ -43,21 +43,21 @@ module.exports = {
     const newPost = req.value.body;
     delete newPost._owner;
 
-    // save tag
-    const tag = new Tag(tags);
-    await tag.save();
+    // save to tag
+    const tag = new Tag(tags)
+    console.log(tag);
 
-    // save to post
-    const post = new Post(newPost);
-    post._owner = who;
-    await post.save();
-
-    // save post in user
-    who._postsList.push(post);
-    await who.save();
-
-    // return json res
-    res.json(JsonResponse("", 200, "Thêm dữ liệu thành công! <3", false))
+    // // save to post
+    // const post = new Post(newPost);
+    // post._owner = who;
+    // await post.save();
+    //
+    // // save post in user
+    // who._postsList.push(post);
+    // await who.save();
+    //
+    // // return json res
+    // res.json(JsonResponse("", 200, "Thêm dữ liệu thành công! <3", false))
   },
 
   /**

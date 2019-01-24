@@ -1,7 +1,7 @@
 <template>
   <div class="item r">
     <div class="item--right c">
-      <h3 class="job--name">{{ job.nameCompany }} - {{ job.office }}</h3>
+      <h3 class="job--name">{{ job.position }} - {{ job.nameCompany }}</h3>
       <div class="job--salary">
         <h4>{{ job.salary }} VNĐ</h4>
       </div>
@@ -70,7 +70,7 @@ export default {
   methods: {
     // Xóa phần tử
     async remove(index) {
-      await JobService.delete(this.job._id);
+      await JobService.delete(this.job._id, this.$route.params.userId);
       this.$store.dispatch("delete", index);
     },
     //chỉnh sửa phần tử

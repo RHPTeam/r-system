@@ -1,19 +1,15 @@
 const state = {
   jobAll: [],
-  jobs: [],
-  job: {},
-  formChange: {
-    title: "",
-    button: ""
-  }
+  jobByUser: [],
+  job: {}
 };
 
 const getters = {
   jobAll: state => {
     return state.jobAll;
   },
-  jobs: state => {
-    return state.jobs;
+  jobByUser: state => {
+    return state.jobByUser;
   },
   job: state => {
     return state.job;
@@ -27,14 +23,14 @@ const mutations = {
   getAllJob: (state, payload) => {
     state.jobAll = payload;
   },
-  index: (state, payload) => {
-    state.jobs = payload;
+  getJobUser: (state, payload) => {
+    state.jobByUser = payload;
   },
   push: (state, payload) => {
     state.jobs.push(payload);
   },
   pop: (state, payload) => {
-    state.jobs.splice(payload, 1);
+    state.jobByUser.splice(payload, 1);
   },
   show: (state, payload) => {
     state.job = payload;
@@ -54,8 +50,8 @@ const actions = {
   getAllJob: async ({ commit }, payload) => {
     await commit("getAllJob", payload);
   },
-  index: async ({ commit }, payload) => {
-    await commit("index", payload);
+  getJobUser: async ({ commit }, payload) => {
+    await commit("getJobUser", payload);
   },
   create: async ({ commit }, payload) => {
     await commit("push", payload);

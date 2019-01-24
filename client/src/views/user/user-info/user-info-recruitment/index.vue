@@ -24,12 +24,12 @@ export default {
   },
   computed: {
     jobs() {
-      return this.$store.getters.jobs;
+      return this.$store.getters.jobByUser;
     }
   },
   async mounted() {
-    const res = await JobService.index();
-    this.$store.dispatch("index", res.data.data);
+    const res = await JobService.getJobsByUser(this.$route.params.userId);
+    this.$store.dispatch("getJobUser", res.data.data);
   }
 };
 </script>
