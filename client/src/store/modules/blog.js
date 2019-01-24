@@ -41,7 +41,7 @@ const mutations = {
   getBlogsLastest: (state, payload) => {
     state.blogsLastest = payload;
   },
-  create: (state, payload) => {
+  createBlog: (state, payload) => {
     state.blogsByUser.unshift(payload);
   },
   updateBlog: (state, payload) => {
@@ -78,8 +78,8 @@ const actions = {
   getBlogsLastest: async ({ commit }, payload) => {
     await commit("getBlogsLastest", payload);
   },
-  create: async ({ commit }, payload) => {
-    await commit("create", payload);
+  createBlog: async ({ commit }, payload) => {
+    await commit("createBlog", payload);
   },
   updateBlog: async ({ commit }, payload) => {
     await commit("updateBlog", payload);

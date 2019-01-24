@@ -1,39 +1,46 @@
 <template>
   <div class="item r flex_column">
-    <div class="item--left ">
-      <router-link tag="a" class="blog--name" :to="{ name: 'post', params: { blogId: blog._id }}">{{blog.title}}</router-link>
-      <div class="item--time">
-        <i>
-          <icon-base icon-name="clock-history" viewBox="0 0 500 500">
+    <div v-if="!blog"></div>
+    <div v-else class="item--wrap">
+      <div class="item--left">
+        <router-link
+          tag="a"
+          class="blog--name"
+          :to="{ name: 'post', params: { blogId: blog._id }}"
+        >{{blog.title}}</router-link>
+        <div class="item--time">
+          <icon-base icon-name="clock-history" viewBox="0 0 500 500" class="mr_1">
             <icon-clock-history/>
           </icon-base>
-        </i>
-        18 giờ trước
-      </div>
-
-    </div>
-    <div class="item--right ">
-      <div class="d_flex align_items_center">
-        <div class="blog--tabs  ">
-          <span class="tab--name ">javascript</span>
-          <span class="tab--name "> vuejs </span>
+          <app-time :time="blog.createAt"/>
         </div>
-        <div class="item--action">
-          <router-link class="button action--view" tag="button" :to="{ name: 'post', params: { blogId: blog._id }}">
-            <icon-base icon-name="eye" viewBox="0 0 480 520">
-              <icon-eye/>
-            </icon-base>
-          </router-link>
-          <button class="button action--edit" @click="editBlog(blog._id)">
-            <icon-base icon-name="pen" viewBox="0 0 9.374 9.328">
-              <icon-pen/>
-            </icon-base>
-          </button>
-          <button class="button action--delete" @click="deleteBlog(index)">
-            <icon-base icon-name="pen" viewBox="0 0 486.4 486.4">
-              <icon-delete/>
-            </icon-base>
-          </button>
+      </div>
+      <div class="item--right">
+        <div class="d_flex align_items_center">
+          <div class="blog--tabs">
+            <span class="tab--name">{{blog._category.name}}</span>
+          </div>
+          <div class="item--action">
+            <router-link
+              class="button action--view"
+              tag="button"
+              :to="{ name: 'post', params: { blogId: blog._id }}"
+            >
+              <icon-base icon-name="eye" viewBox="0 0 480 520">
+                <icon-eye/>
+              </icon-base>
+            </router-link>
+            <button class="button action--edit" @click="editBlog(blog._id)">
+              <icon-base icon-name="pen" viewBox="0 0 9.374 9.328">
+                <icon-pen/>
+              </icon-base>
+            </button>
+            <button class="button action--delete" @click="deleteBlog(index)">
+              <icon-base icon-name="pen" viewBox="0 0 486.4 486.4">
+                <icon-delete/>
+              </icon-base>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -48,7 +55,7 @@ import IconClockHistory from "@/components/icons/IconClockHistory";
 import IconEye from "@/components/icons/IconEye";
 import IconPen from "@/components/icons/IconPen";
 import IconDelete from "@/components/icons/IconDelete";
-
+import AppTime from "@/components/shared/timeAgo";
 export default {
   props: ["blog", "index"],
   components: {
@@ -56,13 +63,21 @@ export default {
     IconClockHistory,
     IconEye,
     IconPen,
-    IconDelete
+    IconDelete,
+    AppTime
   },
-
+  // computed: {
+  //   timeCreated() {
+  //     let create = new Date(this.blog.createAt).getDate()
+  //     console.log(create)
+  //     return create
+  //   }
+  // },
   methods: {
     deleteBlog(index) {
       // Xoa phan tu tren server
-      BlogService.delete(this.blog._id);
+      const userId = this.$route.params.userId;
+      BlogService.delete(this.blog._id, userId);
 
       // Xoa phan tu trong store
       this.$store.dispatch("deleteBlog", index);
@@ -74,7 +89,7 @@ export default {
         button: "Cập nhật"
       };
       this.$store.dispatch("formChange", formChange);
-      this.$store.dispatch("showBlog", res.data.data);
+      this.$store.dispatch("showBlog", res.data.data[0]);
     }
   }
 };

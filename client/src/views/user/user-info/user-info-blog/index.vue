@@ -5,7 +5,7 @@
         <div class="c_12 c_sm_12 c_md_6 c_xl_6 pl_md_2 pr_md_2">
           <app-blog-list/>
         </div>
-        <div class="c_12 c_sm_12 c_md_6 c_xl_6 pl_md_2 pr_md_2">
+        <div class="c_12 c_sm_12 c_md_6 c_xl_6 pl_md_2 pr_md_2 mt_3 mt_md_0">
           <app-blog-form/>
         </div>
       </div>
