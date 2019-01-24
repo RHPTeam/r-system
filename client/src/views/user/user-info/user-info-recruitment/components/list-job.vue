@@ -3,21 +3,17 @@
     <div class="title--job r">
       <h2>Danh sách công việc</h2>
     </div>
-    <div v-for="(job, index) in jobs" :key="index">
-      <app-job :job="job" :index="index"/>
-    </div>
-    <app-paginate/>
+      <span v-if="jobs.length == 0">Bạn chưa có tin tuyển dụng nào!</span>
+      <app-job v-else v-for="(job, index) in jobs" :key="index" :job="job" :index="index"/>
   </div>
 </template>
 
 <script>
 import AppJob from "./item-job";
-import AppPaginate from "./paginate";
 
 export default {
   components: {
-    AppJob,
-    AppPaginate
+    AppJob
   },
   props: ["jobs"]
 };
