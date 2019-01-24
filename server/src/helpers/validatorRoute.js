@@ -45,21 +45,22 @@ module.exports = {
       param: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required()
     }),
     jobSchema: Joi.object().keys({
-      position: Joi.string().min(5).max(50).required(),
-      nameCompany: Joi.string().min(5).max(100).required(),
-      locationCompany: Joi.string().min(10).required(),
-      salary: Joi.string().required(),
+      position: Joi.string().min(5).max(50).required().label("Vị trí công việc độ dài từ 5 đến 50 kí tự!"),
+      nameCompany: Joi.string().min(5).max(100).required().label("Tên công ty độ dài từ 5 đến 100 kí tự!"),
+      locationCompany: Joi.string().min(10).required().label("Địa chỉ công ty độ dài tối thiểu từ 10 kí tự"),
+      salary: Joi.string().required().label("Lương không được để trống!"),
       type: Joi.string().required(),
       level: Joi.string().required(),
       role: Joi.string().required(),
-      office: Joi.string().min(10).required(),
+      office: Joi.string().min(10).required().label("Loại công ty độ dài tối thiểu từ 10 kí tự!"),
       sizeCompany: Joi.string().required(),
       typeCompany: Joi.string().required(),
-      technologies: Joi.string().required(),
-      content: Joi.string().min(100).required(),
-      _createPerson: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required(),
-      infoCompany: Joi.string().min(100).required(),
-      website: Joi.string().min(10).required()
+      technologies: Joi.string().required().label("Công nghệ yêu cầu không được để trống!"),
+      content: Joi.string().min(100).required().label("Nội dung không được để trống!"),
+      _createPerson: Joi.any().required(),
+      infoCompany: Joi.string().min(100).required().label("Thông tin công ty độ dài từ 10 kí tự!"),
+      cultureCompany: Joi.string().min(100).required().label("Văn hóa công ty độ dài tối thiểu từ 100 kí tự!"),
+      website: Joi.string().min(10).required().label("Website độ dài tối thiểu từ 10 kí tự!")
     }),
     postSchema: Joi.object().keys({
       parent: Joi.string().required(),
@@ -94,4 +95,4 @@ module.exports = {
       name: Joi.string().required().label("Tên danh mục bài viết không được bỏ trống!")
     })
   }
-}
+};
