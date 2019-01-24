@@ -6,12 +6,7 @@
     <form class="create--blog--form" @submit.prevent="formChange.title == '' ? createBlog() : updateBlog()">
       <div class="form_group">
         <label>Tên bài viết</label>
-        <input
-          type="text"
-          class="form_control"
-          v-model="blog.title"
-          placeholder=" Tiêu đề bài viết"
-        >
+        <input type="text" class="form_control" v-model="blog.title" placeholder=" Tiêu đề bài viết">
       </div>
       <div class="form_group">
         <label>Slug bài viết</label>
@@ -28,12 +23,7 @@
         <select class="form_control" v-model="blog._category">
           <option v-if="!blog._category" :selected="!blog._category" :value="blog._category">Chọn thể loại bài viết
           </option>
-          <option
-            v-for="category in categories"
-            :key="category._id"
-            :value="category._id"
-            :selected="category._id == blog._category ? 'selected' : ''"
-          >{{category.name}}
+          <option v-for="category in categories" :key="category._id" :value="category._id" :selected="category._id == blog._category ? 'selected' : ''">{{category.name}}
           </option>
         </select>
         <small
@@ -63,13 +53,11 @@
         <label>Ảnh bài viết</label>
         <input type="text" class="form_control" placeholder="http://" v-model="blog.image">
       </div>
-      <button class="btn btn_primary btn--create" type="submit"
-              v-text="formChange.button == '' ? 'Thêm bài viết': formChange.button"></button>
+      <button class="btn btn_primary btn--create" type="submit" v-text="formChange.button == '' ? 'Thêm bài viết': formChange.button"></button>
       <button class="btn btn_primary btn--create" type="button" @click="resetForm">Hủy</button>
     </form>
   </div>
 </template>
-
 <script>
 import BlogService from "@/services//modules/blog.service";
 import CategoryService from "@/services//modules/category.service";
@@ -148,8 +136,9 @@ export default {
     });
   }
 };
-</script>
 
+</script>
 <style scoped lang="scss">
 @import "form";
+
 </style>

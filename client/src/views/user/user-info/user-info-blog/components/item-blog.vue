@@ -10,7 +10,6 @@
         </i>
         18 giờ trước
       </div>
-
     </div>
     <div class="item--right ">
       <div class="d_flex align_items_center">
@@ -21,17 +20,17 @@
         <div class="item--action">
           <router-link class="button action--view" tag="button" :to="{ name: 'post', params: { blogId: blog._id }}">
             <icon-base icon-name="eye" viewBox="0 0 480 520">
-              <icon-eye/>
+              <icon-eye />
             </icon-base>
           </router-link>
           <button class="button action--edit" @click="editBlog(blog._id)">
             <icon-base icon-name="pen" viewBox="0 0 9.374 9.328">
-              <icon-pen/>
+              <icon-pen />
             </icon-base>
           </button>
           <button class="button action--delete" @click="deleteBlog(index)">
             <icon-base icon-name="pen" viewBox="0 0 486.4 486.4">
-              <icon-delete/>
+              <icon-delete />
             </icon-base>
           </button>
         </div>
@@ -39,7 +38,6 @@
     </div>
   </div>
 </template>
-
 <script>
 import BlogService from "@/services//modules/blog.service";
 
@@ -78,8 +76,8 @@ export default {
     }
   }
 };
-</script>
 
+</script>
 <style scoped lang="scss">
 @import "list-blog.scss";
 
@@ -90,4 +88,5 @@ export default {
     }
   }
 }
+
 </style>

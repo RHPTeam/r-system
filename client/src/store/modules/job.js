@@ -1,7 +1,11 @@
 const state = {
   jobAll: [],
   jobByUser: [],
-  job: {}
+  job: {},
+  formChange: {
+    title: "",
+    button: ""
+  }
 };
 
 const getters = {

@@ -171,7 +171,6 @@ export default {
       search: "",
       partners: [],
       statusPartner: false,
-      componentStatus: false
     };
   },
   computed: {
@@ -185,7 +184,6 @@ export default {
     },
     //Lấy ra thông tin phần tử in ra các giá trị bên form
     job() {
-      if (!this.componentStatus) return;
       return this.$store.getters.job[0];
     },
     //Thông tin phần tử từ form thay đổi
@@ -219,7 +217,7 @@ export default {
       await JobService.create(job).then(
         res => (this.message = res.data.message)
       );
-      this.$store.dispatch("create", job).then(this.resetForm);
+      this.$store.dispatch("create", job);
     },
     // Hàm tạo lợi ích khi nhập vào ô input
     addBenefit() {
@@ -247,10 +245,10 @@ export default {
       this.partners.pop(partner);
     },
     //Reset infomation in form now
-    resetForm() {
-      this.$store.dispatch("clearData");
-      this.$store.dispatch("clearForm");
-    },
+    // resetForm() {
+    //   this.$store.dispatch("clearData");
+    //   this.$store.dispatch("clearForm");
+    // },
     //Hàm update khi chỉnh sửa công việc
     updateJob() {
       alert("Nothing change");

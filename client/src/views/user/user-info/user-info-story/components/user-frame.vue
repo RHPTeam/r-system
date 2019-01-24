@@ -51,7 +51,7 @@ export default {
       color: #0077dd;
       font-size: 14px;
     }
-    &.user--add-choose{
+    &.user--add-choose {
       cursor: pointer;
       span {
         color: #0077dd;
