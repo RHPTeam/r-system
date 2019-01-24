@@ -2,11 +2,11 @@
   <div class="pl_md_2 pr_md_2 mb_3">
     <div class="user--info card text_center">
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, autem.</p>
-      <p>
-        <a href="#">Thêm thông tin không bố kick giờ</a>
+      <p class="user--add-choose">
+        <span  @click="showForm = !showForm">Thêm thông tin không bố kick giờ</span>
       </p>
     </div>
-    <div class="user--add-info">
+    <div class="user--add-info" :class="{show: showForm}">
       <div class="card">
         <div class="card_body">
           <form>
@@ -30,7 +30,7 @@
             </div>
             <div class="r form_group">
               <div class="c_12 c_sm_12 c_md_6 c_lg_6 text_center">
-                <button type="button" class="btn_primary btn--user">Add <3</button>
+                <button type="button" class="btn_primary btn--user">Add</button>
               </div>
               <div class="c_12 c_sm_12 c_md_6 c_lg_6 text_center">
                 <button type="button" class="btn_danger btn--user">Cancel</button>
@@ -42,6 +42,15 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      showForm: false
+    };
+  }
+};
+</script>
 <style lang="scss" scoped>
 .user--info {
   padding: 1em 0 0 0;
@@ -51,9 +60,17 @@
       color: #0077dd;
       font-size: 14px;
     }
+    &.user--add-choose{
+      cursor: pointer;
+      span {
+        color: #0077dd;
+        font-size: 14px;
+      }
+    }
   }
 }
 .user--add-info {
+  display: none;
   .card_body {
     background: #f4f8fb;
   }
@@ -91,6 +108,9 @@
       /*}*/
       /*}*/
     }
+  }
+  &.show {
+    display: block;
   }
 }
 </style>

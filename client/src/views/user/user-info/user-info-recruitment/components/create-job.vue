@@ -171,9 +171,11 @@ export default {
       search: "",
       partners: [],
       statusPartner: false,
+      componentStatus: false
     };
   },
   computed: {
+    //Lọc thành viên
     filteredList() {
       return this.users.filter(user => {
         return user.nameDisplay
@@ -181,14 +183,18 @@ export default {
           .includes(this.search.toLowerCase());
       });
     },
-    job(){
-      return this.$store.getters.job[0]
+    //Lấy ra thông tin phần tử in ra các giá trị bên form
+    job() {
+      if (!this.componentStatus) return;
+      return this.$store.getters.job[0];
     },
+    //Thông tin phần tử từ form thay đổi
     formChange() {
       return this.$store.getters.formChange;
     }
   },
   methods: {
+    //Hàm tạo mới công việc
     async submit() {
       // Init new job
       const job = {
@@ -213,30 +219,41 @@ export default {
       await JobService.create(job).then(
         res => (this.message = res.data.message)
       );
-      this.$store.dispatch("create", job);
+      this.$store.dispatch("create", job).then(this.resetForm);
     },
+    // Hàm tạo lợi ích khi nhập vào ô input
     addBenefit() {
       this.benefits.push(this.benefit);
       this.benefit = "";
     },
+    //Xóa lợi ích khi click đúp vào phần tử
     deleteBenefit(index) {
       this.benefits.splice(index, 1);
     },
+    //Lấy ra thông tin các thành viên được làm việc chung
     async showPartner() {
       await UserService.index().then(res => {
         this.users = res.data.data;
       });
       this.statusShowPartner = !this.statusShowPartner;
     },
+    //Thêm thành viên làm việc chung vào trong lựa chọn
     addUserToPartner(user) {
       this.partners.push(user);
       this.statusPartner = true;
     },
+    //Xóa thành viên được lưa chọn trong list
     removeUserFromPartner(partner) {
       this.partners.pop(partner);
     },
-    updateJob(){
-      alert('Nothing change')
+    //Reset infomation in form now
+    resetForm() {
+      this.$store.dispatch("clearData");
+      this.$store.dispatch("clearForm");
+    },
+    //Hàm update khi chỉnh sửa công việc
+    updateJob() {
+      alert("Nothing change");
     }
   }
 };

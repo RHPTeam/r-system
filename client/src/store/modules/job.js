@@ -41,6 +41,12 @@ const mutations = {
   },
   formChange: (state, payload) => {
     state.formChange = payload;
+  },
+  clearData: state => {
+    state.job = {};
+  },
+  clearForm: (state, payload) => {
+    state.formChange = payload;
   }
 };
 
@@ -62,6 +68,16 @@ const actions = {
   },
   formChange: async ({ commit }, payload) => {
     await commit("formChange", payload);
+  },
+  clearData: async ({ commit }) => {
+    await commit("clearData");
+  },
+  clearForm: async ({ commit }) => {
+    const formChange = {
+      title: "",
+      button: ""
+    };
+    await commit("clearForm", formChange);
   }
 };
 export default {

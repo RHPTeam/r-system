@@ -19,7 +19,7 @@ export default {
     return Api().get(`jobs?_id=${jobId}`);
   },
   update(job) {
-    return Api().patch(`jobs/${job._id}`,job);
+    return Api().patch(`jobs/${job._id}`, job);
   },
   delete(jobId) {
     return Api().delete(`jobs/${jobId}`);

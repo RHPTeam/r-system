@@ -68,10 +68,12 @@ export default {
     IconDelete
   },
   methods: {
+    // Xóa phần tử
     async remove(index) {
       await JobService.delete(this.job._id);
       this.$store.dispatch("delete", index);
     },
+    //chỉnh sửa phần tử
     async editJob(jobId) {
       const res = await JobService.show(jobId);
       const formChange = {
@@ -82,6 +84,7 @@ export default {
       this.$store.dispatch("show", res.data.data);
     }
   },
+  //truyền dữ liệu vào các component con
   props: ["job", "index"]
 };
 </script>

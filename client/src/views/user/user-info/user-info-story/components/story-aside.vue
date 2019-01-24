@@ -36,9 +36,11 @@
         color: #fff;
         text-decoration: none;
       }
-      &:hover,&:active,&:focus {
+      &:hover,
+      &:active,
+      &:focus {
         background: #0077dd;
-        a{
+        a {
           color: #fff;
         }
       }
