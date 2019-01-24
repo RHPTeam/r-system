@@ -5,8 +5,9 @@ const CategorySchema = new Schema({
     name: String,
     _blogs: [{
         type: Schema.Types.ObjectId,
-        ref: 'Category'
+        ref: 'Blog'
     }],
 })
 
-module.exports = mongoose.model('Category', CategorySchema)
+const Category = mongoose.model('Category', CategorySchema);
+module.exports = Category;

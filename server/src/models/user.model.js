@@ -1,4 +1,3 @@
-
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt');
 
@@ -39,6 +38,12 @@ const UserSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Post'
   }],
+  _tags: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Tag'
+    }
+  ],
   _notifications: [{
     type: Schema.Types.ObjectId,
     ref: 'Notification'
@@ -63,7 +68,6 @@ const UserSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Rank'
   },
-  //define to write favorite api (don't edit!)
   _favorite: [{
     type: Schema.Types.ObjectId,
     ref: 'Favorite'

@@ -58,8 +58,6 @@
   </div>
 </template>
 
-
-
 <script>
 import IconBase from "../icons/IconBase";
 import IconEditInfo from "../icons/IconEditInfo";
@@ -88,120 +86,12 @@ export default {
   },
   async mounted() {
     await UserService.show(this.idRoute).then(res => {
-      this.$store.dispatch("show", res.data.data);
+      this.$store.dispatch("showUser", res.data.data);
     });
   }
 };
 </script>
 
 <style scoped lang="scss">
-.wallpaper {
-  height: 250px;
-  background-image: url(https://images.template.net/wp-content/uploads/2014/11/Natural-Facebook-Cover-Photo.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  .wallpaper--avatar {
-    width: 168px;
-    height: 168px;
-    box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.16);
-    border: 5px solid #fff;
-    border-radius: 50%;
-    overflow: hidden;
-    margin-right: 7px;
-    &:before {
-      content: "";
-      display: block;
-      padding-top: 100%;
-    }
-    img {
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      width: 100%;
-      height: auto;
-    }
-  }
-  .wallpaper--info {
-    padding: 0 20px;
-    width: 100%;
-  }
-  .user--info {
-    font-size: 20px;
-    font-weight: 600;
-    letter-spacing: 0.3px;
-    color: #ffffff;
-    .user--info-name {
-      font-size: 24px;
-      line-height: 1.21;
-    }
-  }
-}
-.navbar {
-  background-color: #ffffff;
-  padding-left: 175px;
-  border-bottom: 1px solid #e4e4e4;
-  .navbar--list {
-    list-style-type: none;
-    margin-bottom: 0;
-    .navbar--list-item {
-      font-size: 14px;
-      font-weight: 600;
-      letter-spacing: 0.2px;
-      color: #0077dd;
-      padding: 10px 12.5px;
-      text-decoration: none;
-      border-left: 1px solid #e4e4e4;
-      transition: all 0.5s ease;
-      &:last-child {
-        border-right: 1px solid #e4e4e4;
-      }
-      &:hover {
-        color: #7460ee;
-      }
-    }
-    svg {
-      color: #7460ee;
-    }
-  }
-}
-
-// Small devices (landscape phones, 576px and up)
-@media (max-width: 576px) {
-  .wallpaper {
-    .wallpaper--avatar {
-      width: 150px;
-      height: 150px;
-    }
-    .user--info {
-      width: 100%;
-    }
-  }
-}
-
-// Medium devices (tablets, 768px and up)
-@media (max-width: 768px) {
-}
-
-@media (min-width: 768px) {
-}
-// Large devices (desktops, 992px and up)
-@media (max-width: 992px) {
-  .navbar {
-    padding: 0 20px !important;
-    border-top: 1px solid #e4e4e4;
-    .navbar--list {
-      height: 42px;
-      .navbar--list-item {
-        border-left: 0;
-        &:last-child {
-          border-right: 0;
-        }
-      }
-    }
-  }
-}
-
-// Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {
-}
+@import "user-head";
 </style>

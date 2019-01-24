@@ -259,8 +259,4 @@ module.exports = {
       return res.status(403).json(JsonResponse("", 403, "Câu trả lời không tồn tại trong mục yêu thích!", true))
     },
 
-
-
-  
-
 }

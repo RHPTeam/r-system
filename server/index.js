@@ -29,6 +29,7 @@ mongoose.connect(
     useNewUrlParser: true,
   }
 );
+mongoose.set('useFindAndModify', false);
 
 // log requests to the console
 app.use(logger('dev'));

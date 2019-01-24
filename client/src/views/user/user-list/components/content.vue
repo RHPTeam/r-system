@@ -1,13 +1,12 @@
 <template>
-    <div class="content--grid">
-        <!-- router-view -->
-        <div class="content--user ct_f">
-            <item-content/>
-        </div>
+  <div class="content--grid">
+    <div class="content--user ct_f">
+      <item-content/>
     </div>
+  </div>
 </template>
 <script>
-import ItemContent from "./itemcontent";
+import ItemContent from "./item";
 
 export default {
   components: {

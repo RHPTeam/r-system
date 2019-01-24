@@ -6,17 +6,12 @@ const BlogSchema = new Schema({
     desc: String,
     body: String,
     clap: Number,
-    createAt: {
-        type: Date,
-        default: Date.now()
-    },
-    editAt:  {
-        type: Date,
-        default: Date.now()
-    },
+    createAt: Date,
+    editAt: Date,
     status: String,
     image: String,
     slug: String,
+    views: Number,
     _author: {
         type: Schema.Types.ObjectId,
         ref: 'User'

@@ -12,6 +12,9 @@ export default {
   index() {
     return Api().get("jobs");
   },
+  getJobsByUser(userId) {
+    return Api().get(`jobs?_createPerson=${userId}`);
+  },
   create(job) {
     return Api().post("jobs", job);
   },
@@ -21,7 +24,7 @@ export default {
   // update(user) {
   //   return Api().patch(`users/${user._id}`, user);
   // },
-  delete(jobId) {
-    return Api().delete(`jobs/${jobId}`);
+  delete(jobId, userId) {
+    return Api().delete(`jobs/${jobId}?_userId=${userId}`);
   }
 };
