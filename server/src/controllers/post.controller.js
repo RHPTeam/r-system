@@ -131,7 +131,6 @@ module.exports = {
         console.log(firstPostId)
         // let postFinnish = await Post.findByIdAndUpdate(firstPostId, { $set: crawlRequestSecondPost });
 
-
         let postFinnish = await Post.findByIdAndUpdate(firstPostId,
           { "$push": { "_tags": tagCurrent } },
           { "new": true, "upsert": true },
@@ -140,10 +139,6 @@ module.exports = {
             console.log("Du lieu sau khi update: \n" + data);
           }
         );
-
-
-
-
 
         console.log("3 - else");
         // update _tags to user
