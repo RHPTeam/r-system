@@ -1,7 +1,7 @@
 /** When your routing table is too long, you can split it into small modules**/
 const adminRouter = {
   path: "/admin",
-  component: () => import("@/views/admin/dashboard/index"),
+  component: () => import("@/views/admin/index"),
   children: [
     {
       path: "",
@@ -26,7 +26,7 @@ const adminRouter = {
         {
           path: "",
           name: "admin_categorys",
-          component: () => import("@/views/admin/categorys/example")
+          component: () => import("@/views/admin/categorys/content")
         }
       ]
     },
