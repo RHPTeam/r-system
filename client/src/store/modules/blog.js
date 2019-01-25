@@ -1,5 +1,7 @@
 const state = {
   blogs: [],
+  blogsTrend: [],
+  blogsLastest: [],
   blog: {},
   blogsByUser: [],
   formChange: {
@@ -11,6 +13,12 @@ const state = {
 const getters = {
   blogs: state => {
     return state.blogs;
+  },
+  blogsTrend: state => {
+    return state.blogsTrend;
+  },
+  blogsLastest: state => {
+    return state.blogsLastest;
   },
   blog: state => {
     return state.blog;
@@ -27,8 +35,14 @@ const mutations = {
   getAllBlog: (state, payload) => {
     state.blogs = payload;
   },
-  create: (state, payload) => {
-    state.blogsByUser.push(payload);
+  getBlogsTrend: (state, payload) => {
+    state.blogsTrend = payload;
+  },
+  getBlogsLastest: (state, payload) => {
+    state.blogsLastest = payload;
+  },
+  createBlog: (state, payload) => {
+    state.blogsByUser.unshift(payload);
   },
   updateBlog: (state, payload) => {
     state.blog = payload;
@@ -37,7 +51,8 @@ const mutations = {
     state.blog = payload;
   },
   showByUser: (state, payload) => {
-    state.blogsByUser = payload;
+    const data = payload.reverse();
+    state.blogsByUser = data;
   },
   deleteBlog: (state, payload) => {
     state.blogsByUser.splice(payload, 1);
@@ -57,8 +72,14 @@ const actions = {
   getAllBlog: async ({ commit }, payload) => {
     await commit("getAllBlog", payload);
   },
-  create: async ({ commit }, payload) => {
-    await commit("create", payload);
+  getBlogsTrend: async ({ commit }, payload) => {
+    await commit("getBlogsTrend", payload);
+  },
+  getBlogsLastest: async ({ commit }, payload) => {
+    await commit("getBlogsLastest", payload);
+  },
+  createBlog: async ({ commit }, payload) => {
+    await commit("createBlog", payload);
   },
   updateBlog: async ({ commit }, payload) => {
     await commit("updateBlog", payload);

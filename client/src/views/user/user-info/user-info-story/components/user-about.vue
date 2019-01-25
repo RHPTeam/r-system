@@ -51,14 +51,20 @@ export default {
   }
 };
 </script>
+
 <style lang="scss" scoped>
 .user--info {
   padding: 1em 0 0 0;
   p {
     font-size: 16px;
-    a {
+    span {
       color: #0077dd;
       font-size: 14px;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      &:hover {
+        border-bottom: 1px solid #07d;
+      }
     }
     &.user--add-choose {
       cursor: pointer;
