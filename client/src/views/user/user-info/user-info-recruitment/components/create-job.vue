@@ -171,6 +171,22 @@ export default {
       search: "",
       partners: [],
       statusPartner: false,
+      newJob: {
+        position: "",
+        nameCompany: "",
+        locationCompany: "",
+        salary: "",
+        type: "",
+        level: "",
+        role: "",
+        office: "",
+        sizeCompany: "",
+        typeCompany: "",
+        technologies: "",
+        content: "",
+        infoCompany: "",
+        website: ""
+      }
     };
   },
   computed: {
