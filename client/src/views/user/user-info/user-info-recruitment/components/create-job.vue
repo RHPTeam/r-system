@@ -215,7 +215,7 @@ export default {
       // validate (Should be: Create a new methods to validate pratices
       // send to api
       await JobService.create(job).then(
-        res => (this.message = res.data.message)
+        res => {this.message = res.data.message}
       );
       this.$store.dispatch("create", job);
     },

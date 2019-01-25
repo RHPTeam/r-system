@@ -81,7 +81,7 @@ export default {
         button: "Cập nhật"
       };
       this.$store.dispatch("formChange", formChange);
-      this.$store.dispatch("show", res.data.data);
+      this.$store.dispatch("show", res.data.data[0]);
     }
   },
   //truyền dữ liệu vào các component con
