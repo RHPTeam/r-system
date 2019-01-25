@@ -32,6 +32,29 @@ module.exports = {
       select: "nameDisplay"
     })
   },
+  /**
+   * @Name: Create Post (Create Tag)
+   * @param req
+   * @param res
+   * @param next
+   */
+  createTest: async (req, res) => {
+    console.log("Start:")
+    // Get Data
+    const postBody = req.body;
+    console.log("================")
+    console.log("1")
+    console.log("================")
+    const post = new Post(postBody)
+    console.log(post)
+    // Create a new object tag
+    console.log("================")
+    console.log("2")
+    console.log("================")
+    for (const tag of req.body._tags) {
+      console.log(tag)
+    }
+  },
 
   /**
    * @Name: Create Post by User

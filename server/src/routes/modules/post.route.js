@@ -15,7 +15,7 @@ const {
 
 router.route('/')
   .get(post.index)
-  .post(validateBody(schemas.postSchema), post.create);
+  .post(validateBody(schemas.postSchema), post.createTest);
 
 router.route('/:postId')
   .patch([validateParam(schemas.idSchema, "postId")], post.update)

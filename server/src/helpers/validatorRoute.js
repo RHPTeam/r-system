@@ -4,7 +4,7 @@ const JsonResponse = require('./json-response')
 module.exports = {
   validateParam: (schema, name) => {
     return (req, res, next) => {
-      const result = Joi.validate({param: req['params'][name]}, schema)
+      const result = Joi.validate({ param: req['params'][name] }, schema)
       if (result.error) {
         return res.status(400).json(result.error)
       } else {
@@ -23,7 +23,7 @@ module.exports = {
     return (req, res, next) => {
       const result = Joi.validate(req.body, schema)
       if (result.error) {
-        return res.status(405).json(JsonResponse("", 405, result.error, true))
+        return res.status(405).json(JsonResponse('', 405, result.error, true))
       } else {
         if (!req.value) {
           req.value = {}
@@ -62,24 +62,28 @@ module.exports = {
       website: Joi.string().min(10).required()
     }),
     postSchema: Joi.object().keys({
-      parent: Joi.string().required(),
-      score: Joi.number().required(),
-      views: Joi.number().required(),
-      body: Joi.string().required(),
-      _owner: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required(),
-      lastEditDate: Joi.date().required(),
-      lastActivityDate: Joi.date().required(),
-      title: Joi.string().required(),
-      _tags: Joi.array().required(),
-      answerCount: Joi.number().required(),
-      commentCount: Joi.number().required(),
-      FavoriteCount: Joi.number().required(),
-      closedDate: Joi.date().required()
+      _id: Joi.string(),
+      title: Joi.string().required().label('Tiêu đề không được bỏ trống!'),
+      body: Joi.string().required().label('Nội dung không được bỏ trống!'),
+      parent: Joi.string().regex(/^[0-9a-fA-F]{24}$/),
+      score: Joi.number().default(0),
+      views: Joi.number().default(0),
+      answerCount: Joi.number().default(0),
+      commentCount: Joi.number().default(0),
+      FavoriteCount: Joi.number().default(0),
+      createAt: Joi.date().default(Date.now(), 'Time of Creation'),
+      closedDate: Joi.date(),
+      lastEditDate: Joi.date(),
+      lastActivityDate: Joi.date(),
+      _owner: Joi.any().required(),
+      _tags: Joi.any().required(),
+      __v: Joi.any()
     }),
     blogSchema: Joi.object().keys({
-      title: Joi.string().min(10).max(75).required().label("Tiêu đề không được bỏ trống và nằm trong khoảng 10 - 75 ký tự!"),
-      desc: Joi.string().min(100).required().label("Mô tả bài viết không được để trống và lớn hơn 100 ký tự!"),
-      body: Joi.string().required().label("Nội dung không được bỏ trống!"),
+      _id: Joi.string(),
+      title: Joi.string().min(10).max(75).required().label('Tiêu đề không được bỏ trống và nằm trong khoảng 10 - 75 ký tự!'),
+      desc: Joi.string().min(100).required().label('Mô tả bài viết không được để trống và lớn hơn 100 ký tự!'),
+      body: Joi.string().required().label('Nội dung không được bỏ trống!'),
       clap: Joi.number().default(0),
       createAt: Joi.date().default(Date.now, 'Time of Creation'),
       editAt: Joi.date().default(Date.now, 'Time of Edition'),
@@ -87,11 +91,13 @@ module.exports = {
       image: Joi.string().required(),
       slug: Joi.string().required(),
       views: Joi.number().default(0),
-      _author: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required(),
-      _category: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required()
+      _comments: Joi.any(),
+      _author: Joi.any().required(),
+      _category: Joi.any().required(),
+      __v: Joi.any()
     }),
     categorySchema: Joi.object().keys({
-      name: Joi.string().required().label("Tên danh mục bài viết không được bỏ trống!")
+      name: Joi.string().required().label('Tên danh mục bài viết không được bỏ trống!')
     })
   }
 }
