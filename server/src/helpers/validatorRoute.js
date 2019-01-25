@@ -78,6 +78,7 @@ module.exports = {
       closedDate: Joi.date().required()
     }),
     blogSchema: Joi.object().keys({
+      _id: Joi.string(),
       title: Joi.string().min(10).max(75).required().label("Tiêu đề không được bỏ trống và nằm trong khoảng 10 - 75 ký tự!"),
       desc: Joi.string().min(100).required().label("Mô tả bài viết không được để trống và lớn hơn 100 ký tự!"),
       body: Joi.string().required().label("Nội dung không được bỏ trống!"),
@@ -88,8 +89,10 @@ module.exports = {
       image: Joi.string().required(),
       slug: Joi.string().required(),
       views: Joi.number().default(0),
-      _author: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required(),
-      _category: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required()
+      _comments: Joi.any(),
+      _author: Joi.any().required(),
+      _category: Joi.any().required(),
+      __v: Joi.any()
     }),
     categorySchema: Joi.object().keys({
       name: Joi.string().required().label("Tên danh mục bài viết không được bỏ trống!")

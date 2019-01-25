@@ -95,7 +95,7 @@ export default {
   async mounted() {
     const blogId = this.$route.params.blogId;
     const res = await BlogService.show(blogId);
-    this.$store.dispatch("show", res.data.data);
+    this.$store.dispatch("showBlog", res.data.data);
   }
 };
 </script>
