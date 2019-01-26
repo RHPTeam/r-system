@@ -1,4 +1,3 @@
-
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt');
 
@@ -24,6 +23,10 @@ const UserSchema = new Schema({
     type: String,
     content: String
   },
+  created: {
+    type: Date,
+    content: Date
+  },
   story: {
     info: String,
     skill: String,
@@ -35,10 +38,16 @@ const UserSchema = new Schema({
       startEnd: Date
     }]
   },
-  _postsList: [{
+  _postList: [{
     type: Schema.Types.ObjectId,
     ref: 'Post'
   }],
+  _tags: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Tag'
+    }
+  ],
   _notifications: [{
     type: Schema.Types.ObjectId,
     ref: 'Notification'

@@ -18,6 +18,8 @@
             letter-spacing: 0.2px;
             color: #a8a8a8;
             transition: all 0.4s ease;
+            text-transform: capitalize;
+            cursor: pointer;
             &.active,
             &:hover {
                 color: #776ab0;

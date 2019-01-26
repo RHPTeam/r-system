@@ -11,6 +11,7 @@ const BlogSchema = new Schema({
     status: String,
     image: String,
     slug: String,
+    views: Number,
     _author: {
         type: Schema.Types.ObjectId,
         ref: 'User'
@@ -25,5 +26,5 @@ const BlogSchema = new Schema({
     }]
 })
 
-const Blog = mongoose.model('Blog', BlogSchema)
-module.exports = Blog
+const Blog = mongoose.model('Blog', BlogSchema);
+module.exports = Blog;

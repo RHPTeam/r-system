@@ -1,16 +1,16 @@
 <template>
   <div :data-theme="currentTheme" class="blog--content">
-    <app-header/>
+    <app-header :menu='homeMenu'/>
     <div class="ct pl_4 pr_4 pr_sm_0 pl_sm_0">
       <div class="r">
         <div class="c_12">
-          <app-trend :blogs='allBlog'/>
+          <app-trend :blogs='blogsTrend'/>
         </div>
         <div class="c_12">
           <hr/>
         </div>
         <div class="c_12 c_sm_12 c_md_12 c_lg_8 c_xl_8 pl_lg_3 pr_lg_3">
-          <app-lastest/>
+          <app-lastest :menu='lastestMenu' :blogs='blogsLastest'/>
           <div class="c_12 p_0 d_block d_lg_none">
             <hr/>
           </div>
@@ -52,6 +52,7 @@
 
 <script>
 import BlogService from "@/services/modules/blog.service";
+import CategoryService from "@/services//modules/category.service";
 
 import IconBase from "@/components/icons/IconBase";
 import IconFontSize from "@/components/icons/IconFontSize";
@@ -93,9 +94,49 @@ export default {
     currentTheme() {
       return this.$store.getters.themeName;
     },
-    allBlog() {
+    blogsTrend() {
       if (!this.componentLoaded) return;
-      return this.$store.getters.blogs;
+      return this.$store.getters.blogsTrend;
+    },
+    blogsLastest() {
+      if (!this.componentLoaded) return;
+      return this.$store.getters.blogsLastest;
+    },
+    categories() {
+      return this.$store.getters.categories;
+    },
+    categories2() {
+      return this.$store.getters.categories;
+    },
+    homeMenu() {
+      if (this.categories.length == 0) return;
+      // Sort categories by number of blogs in category
+      const descendingCategories = this.categories.sort(
+        (a, b) => b._blogs.length - a._blogs.length
+      );
+      // Get all name categories
+      const nameCategory = [];
+      for (let i = 0; i < descendingCategories.length; i++) {
+        nameCategory.push(descendingCategories[i].name);
+      }
+      // Get 10 item categories for Home Menu
+      const homeMenu = nameCategory.slice(0, 10);
+      return homeMenu;
+    },
+    lastestMenu() {
+      if (this.categories2.length == 0) return;
+      // Sort categories by number of blogs in category
+      const descendingCategories = this.categories2.sort(
+        (a, b) => b._blogs.length - a._blogs.length
+      );
+      // Get all name categories
+      const nameCategory = [];
+      for (let i = 0; i < descendingCategories.length; i++) {
+        nameCategory.push(descendingCategories[i].name);
+      }
+      // Get 5 item categories for Lastest Menu
+      const lastestMenu = nameCategory.slice(0, 5);
+      return lastestMenu;
     }
   },
   methods: {
@@ -110,8 +151,27 @@ export default {
     }
   },
   async mounted() {
-    const allblog = await BlogService.index();
-    this.$store.dispatch("getAllBlog", allblog.data.data);
+    // Get all Blog
+    const allBlog = await BlogService.index();
+    let dataAllBlog = allBlog.data.data;
+    // Sort in order from new to old
+    dataAllBlog = dataAllBlog.reverse();
+    this.$store.dispatch("getAllBlog", dataAllBlog);
+    if (typeof dataAllBlog == "undefined") return;
+    if (dataAllBlog.length == 0) return;
+
+    // Get 5 blog lastest for BlogsTrend
+    const blogsTrend = dataAllBlog.slice(0, 5);
+    this.$store.dispatch("getBlogsTrend", blogsTrend);
+
+    // Get 5 blog lastest for BlogsLastest
+    const blogsLastest = dataAllBlog.slice(0, 5);
+    this.$store.dispatch("getBlogsLastest", blogsLastest);
+
+    // Get all category
+    CategoryService.index().then(res => {
+      this.$store.dispatch("index", res.data.data);
+    });
     this.componentLoaded = true;
   }
 };

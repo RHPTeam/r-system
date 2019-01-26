@@ -2,11 +2,11 @@
   <div class="pl_md_2 pr_md_2 mb_3">
     <div class="user--info card text_center">
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, autem.</p>
-      <p>
-        <a href="#">Thêm thông tin không bố kick giờ</a>
+      <p class="user--add-choose">
+        <span  @click="showForm = !showForm">Thêm thông tin không bố kick giờ</span>
       </p>
     </div>
-    <div class="user--add-info">
+    <div class="user--add-info" :class="{show: showForm}">
       <div class="card">
         <div class="card_body">
           <form>
@@ -42,18 +42,41 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      showForm: false
+    };
+  }
+};
+</script>
+
 <style lang="scss" scoped>
 .user--info {
   padding: 1em 0 0 0;
   p {
     font-size: 16px;
-    a {
+    span {
       color: #0077dd;
       font-size: 14px;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      &:hover {
+        border-bottom: 1px solid #07d;
+      }
+    }
+    &.user--add-choose {
+      cursor: pointer;
+      span {
+        color: #0077dd;
+        font-size: 14px;
+      }
     }
   }
 }
 .user--add-info {
+  display: none;
   .card_body {
     background: #f4f8fb;
   }
@@ -82,15 +105,12 @@
       .btn--user {
         padding: 8px 15px;
         border-radius: 8px;
-        /*background: #776ab0;*/
         width: 60%;
       }
-      /*textarea, input, button {*/
-      /*&:hover,&:focus,&:active {*/
-      /*outline: 0;*/
-      /*}*/
-      /*}*/
     }
+  }
+  &.show {
+    display: block;
   }
 }
 </style>
