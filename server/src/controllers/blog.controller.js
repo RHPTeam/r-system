@@ -25,6 +25,9 @@ module.exports = {
     const data = await Blog.find(req.query).populate({
       path: "_author",
       select: "nameDisplay title createdAt image"
+    }).populate({
+      path: "_category",
+      select: "name"
     });
     if (isObjectEmpty(data)) return res.status(403).json(JsonResponse("", 403, "Query lấy dữ liệu thất bại!", true));
     res.status(200).json(JsonResponse(data, 200, "Lấy dữ liệu thành công!", false));
@@ -61,12 +64,12 @@ module.exports = {
    * @param res
    */
   update: async (req, res) => {
-    const { blogId } = req.value.params;
+    const {blogId} = req.value.params;
     if (!req.query._userId) return res.status(405).json(JsonResponse("", 405, "Vui lòng xác thực quyền người dùng tạo bài viết! :)", true));
     const blog = await Blog.findById(blogId);
     if (!blog) return res.status(403).json(JsonResponse("", 403, "Bài viết này không tồn tại! :)", true));
     if (req.query._userId != blog._author._id) return res.status(403).json(JsonResponse("", 403, "Bạn không phải người tạo bài viết! :)", true));
-    const data = await Blog.findByIdAndUpdate(blogId, { $set: req.value.body }, { new: true });
+    const data = await Blog.findByIdAndUpdate(blogId, {$set: req.value.body}, {new: true});
     res.status(200).json(JsonResponse(data, 200, "Cập nhật bài viết thành công!", false))
   },
 
@@ -78,7 +81,7 @@ module.exports = {
    * @param res
    */
   delete: async (req, res) => {
-    const { blogId } = req.value.params;
+    const {blogId} = req.value.params;
     if (!req.query._userId) return res.status(405).json(JsonResponse("", 405, "Vui lòng xác thực quyền người dùng tạo bài viết! :)", true));
     const author = await User.findById(req.query._userId);
     if (!author) res.status(403).json(JsonResponse("", 403, "Tác giả bài viết này không tồn tại! :)", true));

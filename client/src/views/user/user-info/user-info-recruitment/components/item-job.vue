@@ -35,7 +35,7 @@
             <icon-eye/>
           </icon-base>
         </router-link>
-        <button class="button action--edit" @click.prevent="editJob">
+        <button class="button action--edit" @click.prevent="editJob(job._id)">
           <icon-base icon-name="pen" viewBox="0 0 9.374 9.328">
             <icon-pen/>
           </icon-base>
@@ -68,12 +68,23 @@ export default {
     IconDelete
   },
   methods: {
+    // Xóa phần tử
     async remove(index) {
       await JobService.delete(this.job._id, this.$route.params.userId);
       this.$store.dispatch("delete", index);
     },
-    editJob() {}
+    //chỉnh sửa phần tử
+    async editJob(jobId) {
+      const res = await JobService.show(jobId);
+      const formChange = {
+        title: "Chỉnh sửa công việc",
+        button: "Cập nhật"
+      };
+      this.$store.dispatch("formChange", formChange);
+      this.$store.dispatch("show", res.data.data[0]);
+    }
   },
+  //truyền dữ liệu vào các component con
   props: ["job", "index"]
 };
 </script>

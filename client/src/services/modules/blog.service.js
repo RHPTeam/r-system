@@ -2,13 +2,12 @@ import Api from "@/services/Api";
 
 /**
  *  Index: (Get All)
- *  Create: (Create ...)
  *  Update: (Update ...)
  *  Delete: (Delete ...)
  *  Show: (Get ... By BlogId)
  *
- *  GetByUser: (Get ... By User)
  *  CreateByUser: (Create ... By User)
+ *  GetByUser: (Get ... By User)
  *
  *  GetByCategory: (Get ... By Category)
  *
@@ -19,25 +18,22 @@ export default {
   index() {
     return Api().get("blogs");
   },
-  create(blog) {
-    return Api().post("blogs", blog);
-  },
   show(blogId) {
-    return Api().get(`blogs/blogId=${blogId}`);
+    return Api().get(`blogs?_id=${blogId}`);
   },
-  update(blog) {
-    return Api().patch(`blogs/blogId=${blog._id}`, blog);
+  update(blog, userId) {
+    return Api().patch(`blogs/${blog._id}?_userId=${userId}`, blog);
   },
-  delete(blogId) {
-    return Api().delete(`blogs/blogId=${blogId}`);
+  delete(blogId, userId) {
+    return Api().delete(`blogs/${blogId}?_userId=${userId}`);
+  },
+  create(blog) {
+    return Api().post(`blogs`, blog);
   },
   getByUser(userId) {
-    return Api().get(`blogs/userId=${userId}`);
+    return Api().get(`blogs?_author=${userId}`);
   },
-  createByUser(userId, categoryId, blog) {
-    return Api().post(`blogs/userId=${userId}&categoryId=${categoryId}`, blog);
+  getByCategory(categoryId) {
+    return Api().get(`blogs?_category=${categoryId}`);
   }
-  // getByCategory(categoryId) {
-  //   return Api().get(`blogs/category/${categoryId}`);
-  // }
 };

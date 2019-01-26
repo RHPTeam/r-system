@@ -2,15 +2,15 @@
   <div class="pl_md_2 pr_md_2 mb_3">
     <div class="user--info card text_center">
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, autem.</p>
-      <p><a href="#">Thêm thông tin không bố kick giờ</a></p>
+      <p class="user--add-choose"><span @click="showContent = !showContent">Thêm thông tin không bố kick giờ</span></p>
     </div>
-    <div class="user--add-frame">
+    <div class="user--add-frame" :class="{show: showContent}">
       <div class="card">
         <div class="card_body">
           <form>
             <div class="form_group">
               <label>Personal statement</label>
-              <textarea name="" id="" class="form_control">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</textarea>
+              <textarea name="" class="form_control">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</textarea>
               <div class="user--check mt_3">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, possimus!
               </div>
@@ -33,6 +33,15 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      showContent: false
+    };
+  }
+};
+</script>
 <style lang="scss" scoped>
 .user--info {
   padding: 1em 0 0 0;
@@ -42,9 +51,17 @@
       color: #0077dd;
       font-size: 14px;
     }
+    &.user--add-choose {
+      cursor: pointer;
+      span {
+        color: #0077dd;
+        font-size: 14px;
+      }
+    }
   }
 }
 .user--add-frame {
+  display: none;
   .card_body {
     background: #f4f8fb;
   }
@@ -77,6 +94,9 @@
         width: 60%;
       }
     }
+  }
+  &.show {
+    display: block;
   }
 }
 </style>
