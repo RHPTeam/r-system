@@ -7,9 +7,9 @@
  */
 const Comment = require('../models/comment.model')
 const User = require('../models/user.model')
-const Question = require('../models/question.model')
 const Blog = require('../models/blog.model')
 const Anwser = require('../models/anwser.model')
+const {isObjectEmpty} = require('../helpers/function_rhp')
 const JsonResponse = require('../helpers/json-response')
 
 module.exports = {
@@ -18,166 +18,113 @@ module.exports = {
     * Get all Comments
     * @param req
     * @param res
+    * Note: If u want get one Comment, u can use query for: localhost/example.com/api/comments?_id=1
     */
-  getAllComments: async (req, res) => {
-      return await Comment.find({}, (errors, data) => {
-        if (errors) {
-          return res.status(404).json(JsonResponse("", 404, errors, true));
-        }
-      res.status(200).json(JsonResponse(data, 200, "", false));
-      })
+  index: async (req, res) => {
+    const data = await Comment.find(req.query).populate({
+      path: "_user",
+      select: "nameDisplay title createdAt image"
+    }).populate({
+      path: "_blog",
+      select: "title"
+    }).populate({
+      path: "_anwser",
+      select: "content"
+    });
+    if (isObjectEmpty(data)) return res.status(403).json(JsonResponse("", 403, "Query lấy dữ liệu thất bại!", true));
+    res.status(200).json(JsonResponse(data, 200, "Lấy dữ liệu thành công!", false));
   },
 
   /**
-  * get one comments by id
-  * @param req
-  * @param res
-  */
-  getOneCommentById: async (req, res) => {
-      const { commentId } = req.params;
-      const comment = await Comment.findById(commentId);
-      if(!comment) return res.status(403).json(JsonResponse("", 403, "Bình luận này không tồn tại! :)", true));
-      return res.status(200).json(JsonResponse(comment, 200, "", false))
-  },
-
-  /**
-   * update blog by id
-   * @param req
-   * @param res
-   */
-  updateComment: async (req, res) => {
-      const { commentId } = req.params;
-      const {userId} = req.params;
-      const newComment = req.body;
-      const findComment = await Comment.findById(commentId)
-      if (!findComment) {
-        return res.status(403).json(JsonResponse("", 403, "Bình luận này không tồn tại! -_- ", true))
-      } else if(!findComment._user.equals(userId)){
-        return res.status(500).json(JsonResponse("", 500, "Bạn không có quyền sửa bình luận! -_- ", true))
-      }
-      return await Comment.findByIdAndUpdate(commentId, newComment, (errors, data) => {
-        if (errors) {
-          return res.status(404).json(JsonResponse("", 404, errors, true))
-        }
-      res.status(200).json(JsonResponse(newComment, 200, "Cập nhật bình luận thành công! <3", false))
-      })
-  },
-
-  /**
-   * delete Comment by id
-   * @param req
-   * @param res
-   */
-  deleteCommentById: async (req, res) => {
-      const { commentId } = req.params;
-      const {userId} = req.params;
-      const findComment = await Comment.findById(commentId)
-      if (!findComment) {
-        return res.status(403).json(JsonResponse("", 403, "Bình luận này không tồn tại! -_- ", true))
-      } else if(!findComment._user.equals(userId)){
-        return res.status(500).json(JsonResponse("", 500, "Bạn không có quyền xóa bình luận! -_- ", true))
-      }
-      return await Comment.findByIdAndRemove(commentId, (errors, data) => {
-        if (errors) {
-          return res.status(404).json(JsonResponse("", 404, errors, true))
-        }
-      res.status(200).send(JsonResponse("", 200, `Xóa bình luận thành công!`, false))
-      })
-  },
-
-  /**
-   * create comment by user in blog
+   * create comment in blog, anwser
    * @param req
    * @param res
    * 
    */
-  createCommentByUserInBlog: async (req, res) => {
-      const { userId } = req.params;
-      const { blogId } = req.params;
-      // Create new comment with author = userId
-      req.body["_user"] = userId;
-      req.body["_blog"] = blogId;
-      const newComment = new Comment(req.body);
-      // get user, get blog
-      const user = await User.findById(userId)
-      const blog = await Blog.findById(blogId)
-      if(!blog) return res.status(403).json(JsonResponse("", 403, "Bài viết này không tồn tại! :)", true));
-      // assign Comment to user,assign Comment to blog
-      newComment.user = user;
-      newComment.blog = blog
-      //save blog
-      await newComment.save();
-      //add comment to user, blog
-      user._comments.push(newComment);
-      blog._comments.push(newComment);
-      //save user, blog
-      await user.save();
-      await blog.save()
-      res.status(200).json(JsonResponse(newComment, 200, "Tạo bình luận trong bài viết thành công! <3", false))
+   create: async (req, res) => {
+     console.log(req.value.body._user);
+     const user = await User.findById(req.value.body._user);
+     if (!user) return res.status(403).json(JsonResponse("", 403, "Người dùng tạo bình luận không tồn tại!", true));
+     if(req.value.body._blog){
+        const blog = await Blog.findById(req.value.body._blog);
+        if (!blog) return res.status(403).json(JsonResponse("", 403, "Bài viết không tồn tại!", true));
+        delete req.value.body._user;
+        const comment = new Comment(req.value.body);
+        comment._user = user;
+        const data = await comment.save();
+        user._comments.push(comment);
+        await user.save();
+        blog._comments.push(comment);
+        blog.save();
+        res.status(200).json(JsonResponse(data, 200, "Tạo bình luận trong bài viết thành công!", false))
+     } else if (req.value.body._question){
+       const anwser = await Anwser.findById(req.value.body._anwser);
+       if (!question) return res.status(403).json(JsonResponse("", 403, "Câu trả lời không tồn tại!", true));
+        delete req.value.body._user;
+        const comment = new Comment(req.value.body);
+        comment._user = user;
+        const data = await comment.save();
+        user._comments.push(comment);
+        await user.save();
+        anwser._comments.push(comment);
+        anwser.save();
+        res.status(200).json(JsonResponse(data, 200, "Tạo bình luận trong câu trả lời thành công!", false))
+     } else {
+      res.status(500).json(JsonResponse("", 500, "Dm lỗi gì rồi nez ^^", false))
+     }
+   },
+
+   /**
+   * update comment by id
+   * Note: If u want update, u have to have _userId query: localhost/example.com/api/comments/1?_userId=1
+   * @param req
+   * @param res
+   */
+  update: async (req, res) => {
+    const {commentId} = req.value.params;
+    if(!req.query._userId) return res.status(405).json(JsonResponse("", 405, "Vui lòng xác thực quyền người dùng tạo bình luận! :)", true));
+    const comment = await Comment.findById(commentId);
+    if(!comment) return res.status(403).json(JsonResponse("", 403, "Bình luận này không tồn tại! :)", true));
+    if (req.query._userId != comment._user._id) return res.status(403).json(JsonResponse("", 403, "Bạn không phải người tạo bình luận! :)", true));
+    const data = await Comment.findByIdAndUpdate(commentId, {$set: req.value.body}, {new: true});
+    res.status(200).json(JsonResponse(data, 200, "Cập nhật bình luận thành công!", false))
   },
 
   /**
-   * create comment by user in question
+   * 
+   * delete comment in blog, anwser by id
    * @param req
    * @param res
-   * 
+   * Note: If u want delete, u have to have _userId query: localhost/example.com/api/comments/1?_userId=1
    */
-  createCommentByUserInQuestion: async (req, res) => {
-  
-      const { userId } = req.params;
-      const { questionId } = req.params;
-      // Create new comment with author = userId
-      req.body["_user"] = userId;
-      req.body["_question"] = questionId;
-      const newComment = new Comment(req.body);
-      // get user, get question
-      const user = await User.findById(userId)
-      const question = await Question.findById(questionId)
-      if(!question) return res.status(403).json(JsonResponse("", 403, "Câu hỏi này không tồn tại! :)", true));
-      // assign Comment to user,assign Comment to question
-      newComment.user = user;
-      newComment.question = question
-      //save question
-      await newComment.save();
-      //add comment to user, question
-      user._comments.push(newComment);
-      question._comments.push(newComment);
-      //save user, question
+  delete: async (req, res) => {
+    const {commentId} = req.value.params;
+    if(!req.query._userId) return res.status(405).json(JsonResponse("", 405, "Vui lòng xác thực quyền người dùng tạo bình luận! :)", true));
+    const user = await User.findById(req.query._userId);
+    if (!user) res.status(403).json(JsonResponse("", 403, "Người tạo bình luận này không tồn tại! :)", true));
+    const comment = await Comment.findById(commentId);
+    if(!comment) return res.status(403).json(JsonResponse("", 403, "Bình luận này không tồn tại! :)", true));
+    if (req.query._userId != comment._user._id) return res.status(403).json(JsonResponse("", 403, "Bạn không phải người tạo bình luận! :)", true));
+    if(comment._blog){
+      const blog = await Blog.findById(comment._blog)
+      await comment.remove();
+      user._comments.pull(comment);
       await user.save();
-      await question.save()
-      res.status(200).json(JsonResponse(newComment, 200, "Tạo bình luận trong câu hỏi thành công! <3", false))
-  },
-
-  /**
-   * create comment by user in awnser
-   * @param req
-   * @param res
-   * 
-   */
-  createCommentByUserInAnwser: async (req, res) => {
-      const { userId } = req.params;
-      const { anwserId } = req.params;
-      // Create new comment with author = userId
-      req.body["_user"] = userId;
-      req.body["_anwser"] = anwserId;
-      const newComment = new Comment(req.body);
-      // get user, get answer
-      const user = await User.findById(userId)
-      const anwser = await Anwser.findById(anwserId)
-      if(!anwser) return res.status(403).json(JsonResponse("", 403, "Câu trả lời này không tồn tại! :)", true));
-      // assign Comment to user,assign Comment to anser
-      newComment.user = user;
-      newComment.anwser = anwser
-      //save question
-      await newComment.save();
-      //add comment to user, anwser
-      user._comments.push(newComment);
-      anwser._comments.push(newComment);
-      //save user, blog
+      blog._comments.pull(comment);
+      await blog.save();
+      res.status(200).json(JsonResponse('', 200, 'Xóa bình luận trong bài viết thành công! T_T', false))
+    } else if(comment._anwser){
+      const anwser = await Anwser.findById(comment._anwser)
+      await comment.remove();
+      user._comments.pull(comment);
       await user.save();
-      await anwser.save()
-      return res.status(200).json(JsonResponse(newComment, 200, "Tạo bình luận trong câu trả lời thành công! <3", false))
-  },
+      anwser._comments.pull(comment);
+      await anwser.save();
+      res.status(200).json(JsonResponse('', 200, 'Xóa bình luận trong câu trả lời thành công! T_T', false))
+    }else {
+      res.status(500).json(JsonResponse("", 500, "Dm lỗi gì rồi nez ^^", false))
+     }
+  }
 
 }
 
