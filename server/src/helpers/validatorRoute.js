@@ -107,6 +107,9 @@ module.exports = {
       commentSchema:
         Joi.object().keys({
           content:Joi.string().required().label("Nội dung bình luận không được bỏ trống!"),
+          like: Joi.number().default(0),
+          createAt: Joi.date().default(Date.now, 'Time of Creation'),
+          editAt: Joi.date().default(Date.now, 'Time of Edition'),
           _user: Joi.any().required(),
           _blog:  Joi.any(),
           _question:  Joi.any(),
