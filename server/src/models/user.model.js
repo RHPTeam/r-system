@@ -34,7 +34,7 @@ const UserSchema = new Schema({
       startEnd: Date
     }]
   },
-  _postsList: [{
+  _postList: [{
     type: Schema.Types.ObjectId,
     ref: 'Post'
   }],
