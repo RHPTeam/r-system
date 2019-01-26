@@ -8,6 +8,7 @@ import tagRouter from "./modules/tag";
 import blogRouter from "./modules/blog";
 import questionRouter from "./modules/question";
 import jobRouter from "./modules/job";
+import messageRouter from "./modules/message";
 
 Vue.use(Router);
 
@@ -103,6 +104,7 @@ export default new Router({
     tagRouter,
     blogRouter,
     questionRouter,
-    jobRouter
+    jobRouter,
+    messageRouter
   ]
 });

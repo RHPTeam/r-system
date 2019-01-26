@@ -1,14 +1,14 @@
 <template>
-  <div class="main--wrapper">
+  <div>
     <app-top-nav/>
-    <app-left-nav/>
-    <div class="page--wrapper">
-      <div class="page--content d_flex">
-        <div class="main">
-          <router-view/>
-        </div>
-      </div>
-    </div>
+    <v-layout row>
+      <v-flex sm3 order-xs1>
+        <app-left-nav/>
+      </v-flex>
+      <v-flex sm9 order-xs1 class="chat-container">
+        <router-view/>
+      </v-flex>
+    </v-layout>
   </div>
 </template>
 
