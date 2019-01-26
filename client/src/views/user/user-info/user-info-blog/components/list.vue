@@ -4,12 +4,11 @@
       <h2>Danh sách bài viết</h2>
     </div>
     <div v-for="(blog,index) in blogs" :key="index">
-      <app-blog :blog="blog" :index="index"/>
+      <app-blog :blog="blog" :index="index" />
     </div>
-    <app-paginate/>
+    <app-paginate />
   </div>
 </template>
-
 <script>
 import BlogService from "@/services//modules/blog.service";
 
@@ -34,7 +33,6 @@ export default {
   }
 };
 </script>
-
 <style scoped lang="scss">
 @import "list-blog.scss";
 </style>

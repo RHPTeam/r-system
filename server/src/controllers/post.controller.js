@@ -83,7 +83,6 @@ module.exports = {
    * @param res
    * @param next
    */
-
   delete: async (req, res) => {
     const {postId} = req.value.params;
     if (!req.query._userId) return res.status(405).json(JsonResponse("", 405, "Vui lòng xác thực quyền người dùng tạo bài viết! :)", true));

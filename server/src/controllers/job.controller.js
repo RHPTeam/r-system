@@ -35,7 +35,6 @@ module.exports = {
    * @Queries: userid (user Id)
    * Note: A User just can create 3 job new. If user want create more, need permission higher :))
    */
-
   create: async (req, res) => {
     const who = await User.findById(req.value.body._createPerson);
     if (who._jobs.length > 3) return res.status(405).json(JsonResponse('', 405, 'Bạn đã đạt mốc giới hạn số lượng tạo công việc là 3! <3', true));
@@ -86,5 +85,5 @@ module.exports = {
     await who.save();
     res.status(200).json(JsonResponse('', 200, 'Xóa công việc thành công! T_T', false))
   }
-};
+}
 

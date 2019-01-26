@@ -3,8 +3,7 @@
     <div class="title--blog r">
       <h2 v-text="formChange.title == '' ? 'Tạo bài viết': formChange.title"></h2>
     </div>
-    <div v-if="!blog"></div>
-    <app-alert v-else :message="validateForm.title" :type="validateForm.type"/>
+    <app-alert :message="message" :type="type"/>
     <div v-if="!blog"></div>
     <form
       v-else
@@ -102,40 +101,32 @@ export default {
       return this.$store.getters.formChange;
     },
     validateForm() {
-      console.log(this.blog)
-      if (!this.blog) return;
       if (
-        this.blog.title == ""
-      )
-        return {
-          title:
-            "Tiêu đề không được bỏ trống và nằm trong khoảng 10 - 75 ký tự!",
-          type: "alert_danger"
-        };
-      if (this.blog.desc == "")
-        return {
-          title: "Mô tả bài viết không được để trống và lớn hơn 100 ký tự!",
-          type: "alert_danger"
-        };
-      if (this.blog._category == "")
-        return {
-          title: "Bạn vui lòng lựa chọn thể loại bài viết!",
-          type: "alert_danger"
-        };
-      if (this.blog.body == "")
-        return {
-          title: "Nội dung không được bỏ trống!",
-          type: "alert_danger"
-        };
-      if (this.blog.image == "")
-        return {
-          title: "Ảnh bài viết không được bỏ trống!",
-          type: "alert_danger"
-        };
-      return {
-        title: "",
-        type: ""
-      };
+        this.blog.title == "" ||
+        this.blog.title.length < 10 ||
+        this.blog.title.length > 75
+      ) {
+        this.type = "alert_danger";
+        return (this.message =
+          "Tiêu đề không được bỏ trống và nằm trong khoảng 10 - 75 ký tự!");
+      }
+      if (this.blog.desc == "" || this.blog.desc.length < 100) {
+        this.type = "alert_danger";
+        return (this.message =
+          "Mô tả bài viết không được để trống và lớn hơn 100 ký tự!");
+      }
+      if (this.blog._category == "") {
+        this.type = "alert_danger";
+        return (this.message = "Bạn vui lòng lựa chọn thể loại bài viết!");
+      }
+      if (this.blog.body == "") {
+        this.type = "alert_danger";
+        return (this.message = "Nội dung không được bỏ trống!");
+      }
+      if (this.blog.image == "") {
+        this.type = "alert_danger";
+        return (this.message = "Ảnh bài viết không được bỏ trống!");
+      }
     }
   },
   methods: {
@@ -155,8 +146,8 @@ export default {
       // send to api
       await BlogService.create(blog).then(res => {
         this.$store.dispatch("createBlog", res.data.data);
-        this.validateForm.title = res.data.message;
-        this.validateForm.type = "alert_success";
+        this.type = "alert_success";
+        this.message = res.data.message;
         setTimeout(() => {
           this.message = "";
         }, 3000);
@@ -185,7 +176,6 @@ export default {
       slug = slug.replace(/\s*$/g, "");
       // Change whitespace to "-"
       slug = slug.replace(/\s+/g, "-");
-
       return slug;
     },
     async updateBlog() {

@@ -2,11 +2,11 @@
   <div class="pl_md_2 pr_md_2 mb_3">
     <div class="user--info card text_center">
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, autem.</p>
-      <p>
-        <span @click="showContent = !showContent">Thêm thông tin không bố kick giờ</span>
+      <p class="user--add-choose">
+        <span  @click="showForm = !showForm">Thêm thông tin không bố kick giờ</span>
       </p>
     </div>
-    <div class="user--add-info" :class="{show: showContent}">
+    <div class="user--add-info" :class="{show: showForm}">
       <div class="card">
         <div class="card_body">
           <form>
@@ -46,7 +46,7 @@
 export default {
   data() {
     return {
-      showContent: false
+      showForm: false
     };
   }
 };
@@ -64,6 +64,13 @@ export default {
       transition: all 0.4s ease;
       &:hover {
         border-bottom: 1px solid #07d;
+      }
+    }
+    &.user--add-choose {
+      cursor: pointer;
+      span {
+        color: #0077dd;
+        font-size: 14px;
       }
     }
   }
@@ -98,14 +105,8 @@ export default {
       .btn--user {
         padding: 8px 15px;
         border-radius: 8px;
-        /*background: #776ab0;*/
         width: 60%;
       }
-      /*textarea, input, button {*/
-      /*&:hover,&:focus,&:active {*/
-      /*outline: 0;*/
-      /*}*/
-      /*}*/
     }
   }
   &.show {
