@@ -20,7 +20,7 @@ const getters = {
   },
   formChangeJob: state => {
     return state.formChangeJob;
-  },
+  }
 };
 
 const mutations = {
@@ -42,8 +42,8 @@ const mutations = {
   formChangeJob: (state, payload) => {
     state.formChangeJob = payload;
   },
-  updateJob: (state,payload) => {
-    state.job =payload;
+  updateJob: (state, payload) => {
+    state.job = payload;
   },
   clearData: state => {
     state.job = {};
@@ -72,8 +72,8 @@ const actions = {
   formChangeJob: async ({ commit }, payload) => {
     await commit("formChangeJob", payload);
   },
-  updateJob: async ({commit}, payload) => {
-    await  commit("updateJob", payload);
+  updateJob: async ({ commit }, payload) => {
+    await commit("updateJob", payload);
   },
   clearData: async ({ commit }) => {
     await commit("clearData");

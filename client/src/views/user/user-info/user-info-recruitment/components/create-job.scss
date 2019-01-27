@@ -104,9 +104,33 @@
 }
 .result--user {
   ul {
-    list-style: none;
-    li.selected {
-      background: red;
+    list-style: decimal;
+    li {
+      padding: 3px 0;
+      margin-bottom: 2px;
+      &.selected {
+        background: #005cbf;
+        color: #fff;
+      }
+      &:hover, &:active, &:focus {
+        background: #ff6700;
+      }
+    }
+  }
+}
+.result--job {
+  ul {
+    list-style: decimal;
+    li {
+      padding: 3px 0;
+      margin-bottom: 2px;
+      border-bottom: 1px solid #776ab0;
+      &.selected {
+        background: #005cbf;
+      }
+      &:hover,&:active,&:focus {
+        background: #776ab0;
+      }
     }
   }
 }

@@ -8,7 +8,19 @@
     <form class="create--job--form" v-else @submit.prevent="formChange.title == '' ? submit() : updateJob()">
       <div class="form_group">
         <label>Vị trí tuyển dụng</label>
-        <input type="text" class="form_control" placeholder=" eg: Thiết kế viên" v-model="job.position">
+        <input type="text"
+               class="form_control"
+               placeholder=" eg: Thiết kế viên"
+               v-model="job.position"
+               @click.prevent="showJobLaster"
+        />
+      </div>
+      <div class="result--job" v-if="statusShowJob">
+        <ul>
+          <li :class="{selected:statusJob}" v-for="(list,index) in filteredJob" :key="index">
+            {{list.position}}
+          </li>
+        </ul>
       </div>
       <div class="form_row">
         <div class="form_group c_lg_6 c_md_12">
@@ -173,7 +185,10 @@ export default {
       search: "",
       partners: [],
       statusPartner: false,
-      type: ""
+      type: "",
+      statusShowJob: false,
+      statusJob: false,
+      listJob: []
     };
   },
   components: {
@@ -184,6 +199,13 @@ export default {
     filteredList() {
       return this.users.filter(user => {
         return user.nameDisplay
+          .toLowerCase()
+          .includes(this.search.toLowerCase());
+      });
+    },
+    filteredJob() {
+      return this.listJob.filter(jobByUsers => {
+        return jobByUsers.position
           .toLowerCase()
           .includes(this.search.toLowerCase());
       });
@@ -357,11 +379,19 @@ export default {
       this.resetForm();
     },
     // Lấy thông tin nghề nghiệp đã được tạo trước đó và trả về kết quả, nếu ko có sẽ hiển thị thông báo chưa bao giờ tạo.
-    async showJobLaster() {
-      await JobService.showByUser("index").then(res => {
-        this.job = res.data.data;
-      });
+    showJobLaster() {
+      // await JobService.getJobsByUser().then(res => {
+      //   this.listJob = res.data.data;
+      //   console.log(res.data.data);
+      // });
+      this.listJob = this.$store.getters.jobByUser;
+      this.statusShowJob = !this.statusShowJob;
     }
+    //Thêm job vào trong lựa chọn
+    // addJobToListJob(jobByUser) {
+    //   this.listJob.push(jobByUser);
+    //   this.statusJob = true;
+    // },
   }
 };
 </script>

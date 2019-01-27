@@ -42,58 +42,58 @@
 </template>
 
 <script>
-  import IconBase from "@/components/icons/IconBase";
-  import IconClockHistory from "@/components/icons/IconClockHistory";
-  import IconEye from "@/components/icons/IconEye";
-  import IconPen from "@/components/icons/IconPen";
-  import IconDelete from "@/components/icons/IconDelete";
+import IconBase from "@/components/icons/IconBase";
+import IconClockHistory from "@/components/icons/IconClockHistory";
+import IconEye from "@/components/icons/IconEye";
+import IconPen from "@/components/icons/IconPen";
+import IconDelete from "@/components/icons/IconDelete";
 
-  import JobService from "@/services/modules/job.service";
+import JobService from "@/services/modules/job.service";
 
-  export default {
-    components: {
-      IconBase,
-      IconClockHistory,
-      IconEye,
-      IconPen,
-      IconDelete
+export default {
+  components: {
+    IconBase,
+    IconClockHistory,
+    IconEye,
+    IconPen,
+    IconDelete
+  },
+  computed: {
+    tech() {
+      const techList = this.job.technologies.split(",");
+      return techList;
+    }
+  },
+  methods: {
+    // Xóa phần tử
+    async remove(index) {
+      await JobService.delete(this.job._id, this.$route.params.userId);
+      this.$store.dispatch("delete", index);
     },
-    computed: {
-      tech() {
-        const  techList = this.job.technologies.split(',')
-        return techList
-      }
-    },
-    methods: {
-      // Xóa phần tử
-      async remove(index) {
-        await JobService.delete(this.job._id, this.$route.params.userId);
-        this.$store.dispatch("delete", index);
-      },
-      //chỉnh sửa phần tử
-      async editJob(jobId) {
-        const res = await JobService.show(jobId);
-        const formChange = {
-          title: "Chỉnh sửa công việc",
-          button: "Cập nhật"
-        };
-        this.$store.dispatch("formChange", formChange);
-        this.$store.dispatch("show", res.data.data[0]);
-      }
-    },
-    //truyền dữ liệu vào các component con
-    props: ["job", "index"]
-  };
+    //chỉnh sửa phần tử
+    async editJob(jobId) {
+      const res = await JobService.show(jobId);
+      const formChange = {
+        title: "Chỉnh sửa công việc",
+        button: "Cập nhật"
+      };
+      this.$store.dispatch("formChange", formChange);
+      this.$store.dispatch("show", res.data.data[0]);
+    }
+  },
+  //truyền dữ liệu vào các component con
+  props: ["job", "index"]
+};
 </script>
 
 <style scoped lang="scss">
-  @import "list-job.scss";
+@import "list-job.scss";
 
-  @media (max-width: 450px) {
-    .item--action {
-      button {
-        margin-bottom: 10px;
-      }
+@media (max-width: 450px) {
+  .item--action {
+    button {
+      margin-bottom: 10px;
     }
   }
+}
 </style>
