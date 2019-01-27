@@ -4,7 +4,8 @@
       <h2 v-text="formChange.title == '' ? 'Tạo Công Việc': formChange.title"></h2>
     </div>
     <div class="alert alert_success" v-if="message != ''">{{ message }}</div>
-    <form class="create--job--form" @submit.prevent="formChange.title == '' ? submit() : updateJob()">
+    <div v-if="!job"></div>
+    <form v-else class="create--job--form" @submit.prevent="formChange.title == '' ? submit() : updateJob()">
       <div class="form_group">
         <label>Vị trí tuyển dụng</label>
         <input type="text" class="form_control" placeholder=" eg: Thiết kế viên" v-model="job.position">
