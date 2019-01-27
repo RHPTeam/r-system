@@ -54,7 +54,7 @@ module.exports = {
     who._jobs.push(job)
     await who.save()
 
-    res.status(200).json(JsonResponse('', 200, 'Công việc tạo thành công! ^_^', false))
+    res.status(200).json(JsonResponse(job, 200, 'Công việc tạo thành công! ^_^', false))
   },
 
   /**

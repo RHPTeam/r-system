@@ -32,9 +32,7 @@ export default {
     });
   }
 };
-
 </script>
 <style scoped lang="scss">
 @import "list-blog.scss";
-
 </style>

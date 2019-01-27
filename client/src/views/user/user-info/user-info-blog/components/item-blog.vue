@@ -48,58 +48,58 @@
 </template>
 
 <script>
-  import BlogService from "@/services//modules/blog.service";
-  import IconBase from "@/components/icons/IconBase";
-  import IconClockHistory from "@/components/icons/IconClockHistory";
-  import IconEye from "@/components/icons/IconEye";
-  import IconPen from "@/components/icons/IconPen";
-  import IconDelete from "@/components/icons/IconDelete";
-  import AppTime from "@/components/shared/timeAgo";
-  export default {
-    props: ["blog", "index"],
-    components: {
-      IconBase,
-      IconClockHistory,
-      IconEye,
-      IconPen,
-      IconDelete,
-      AppTime
+import BlogService from "@/services//modules/blog.service";
+import IconBase from "@/components/icons/IconBase";
+import IconClockHistory from "@/components/icons/IconClockHistory";
+import IconEye from "@/components/icons/IconEye";
+import IconPen from "@/components/icons/IconPen";
+import IconDelete from "@/components/icons/IconDelete";
+import AppTime from "@/components/shared/timeAgo";
+export default {
+  props: ["blog", "index"],
+  components: {
+    IconBase,
+    IconClockHistory,
+    IconEye,
+    IconPen,
+    IconDelete,
+    AppTime
+  },
+  // computed: {
+  //   timeCreated() {
+  //     let create = new Date(this.blog.createAt).getDate()
+  //     console.log(create)
+  //     return create
+  //   }
+  // },
+  methods: {
+    deleteBlog(index) {
+      // Xoa phan tu tren server
+      const userId = this.$route.params.userId;
+      BlogService.delete(this.blog._id, userId);
+      // Xoa phan tu trong store
+      this.$store.dispatch("deleteBlog", index);
     },
-    // computed: {
-    //   timeCreated() {
-    //     let create = new Date(this.blog.createAt).getDate()
-    //     console.log(create)
-    //     return create
-    //   }
-    // },
-    methods: {
-      deleteBlog(index) {
-        // Xoa phan tu tren server
-        const userId = this.$route.params.userId;
-        BlogService.delete(this.blog._id, userId);
-        // Xoa phan tu trong store
-        this.$store.dispatch("deleteBlog", index);
-      },
-      async editBlog(blogId) {
-        const res = await BlogService.show(blogId);
-        const formChange = {
-          title: "Chỉnh sửa bài viết",
-          button: "Cập nhật"
-        };
-        this.$store.dispatch("formChange", formChange);
-        this.$store.dispatch("showBlog", res.data.data[0]);
-      }
+    async editBlog(blogId) {
+      const res = await BlogService.show(blogId);
+      const formChange = {
+        title: "Chỉnh sửa bài viết",
+        button: "Cập nhật"
+      };
+      this.$store.dispatch("formChange", formChange);
+      this.$store.dispatch("showBlog", res.data.data[0]);
     }
-  };
+  }
+};
 </script>
 
 <style scoped lang="scss">
-  @import "list-blog.scss";
-  @media (max-width: 450px) {
-    .item--action {
-      button {
-        margin-bottom: 10px;
-      }
+@import "list-blog.scss";
+@media (max-width: 450px) {
+  .item--action {
+    button {
+      margin-bottom: 10px;
     }
   }
+}
 </style>
