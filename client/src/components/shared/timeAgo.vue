@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  props: ["time", "auto", 'convert'],
+  props: ["time", "auto", "convert"],
   data() {
     return {
       month: [
@@ -28,90 +28,83 @@ export default {
     //   this.
     // },
     startUpdate() {
-      if(this.auto) {
-        const autoUpdate = this.auto === true ? 60 : this.autoUpdate
+      if (this.auto) {
+        const autoUpdate = this.auto === true ? 60 : this.autoUpdate;
         this.updater = setInterval(() => {
-          this.convert()
+          this.convert();
         }, autoUpdate);
       }
     },
     stopUpdate() {
-      if(this.auto) {
-        clearInterval(this.updater)
-        this.updater = null
+      if (this.auto) {
+        clearInterval(this.updater);
+        this.updater = null;
       }
     },
     getFormattedDate(date, isFormat = false, isHideYear = false) {
-      const day = date.getDate()
-      const month = this.month[date.getMonth()]
-      const year = date.getFullYear()
-      const hours = date.getHours()
-      let minutes = date.getMinutes()
+      const day = date.getDate();
+      const month = this.month[date.getMonth()];
+      const year = date.getFullYear();
+      const hours = date.getHours();
+      let minutes = date.getMinutes();
 
-      if(minutes < 10) {
-        minutes = `0${minutes}`
+      if (minutes < 10) {
+        minutes = `0${minutes}`;
       }
-      if(isFormat) {
-        return `${isFormat} lúc ${hours}:${minutes}`
+      if (isFormat) {
+        return `${isFormat} lúc ${hours}:${minutes}`;
       }
-      if(isHideYear) {
-        return `${day} - ${month} lúc ${hours}:${minutes}`
+      if (isHideYear) {
+        return `${day} - ${month} lúc ${hours}:${minutes}`;
       }
-      return `${day} - ${month} - ${year} lúc ${hours}:${minutes}`
+      return `${day} - ${month} - ${year} lúc ${hours}:${minutes}`;
     }
   },
   computed: {},
   watch: {
     auto(newValue) {
-      this.stopUpdate()
-      if(newValue) {
-        this.startUpdate()
+      this.stopUpdate();
+      if (newValue) {
+        this.startUpdate();
       }
     }
   },
   filters: {
     timeAgo(dateParam) {
-      if(!dateParam) {
-        console.log("Ngày này không tồn tại! Eng: This date not exist!")
-        return null
+      if (!dateParam) {
+        console.log("Ngày này không tồn tại! Eng: This date not exist!");
+        return null;
       }
-      const date = typeof dateParam === 'object' ? dateParam : new Date(dateParam)
-      const milisecondDate = 24*60*60*1000
-      const today = new Date()
-      const yesterday = new Date(today - milisecondDate)
-      const seconds = Math.round((today - date)/1000)
-      const minutes = Math.round(seconds/60)
-      const hours = Math.round(minutes/60)
-      const isToday = today.toDateString() === date.toDateString()
-      const isYesterday = yesterday.toDateString() === date.toDateString()
-      const isThisYear = today.getFullYear() === date.getFullYear()
+      const date =
+        typeof dateParam === "object" ? dateParam : new Date(dateParam);
+      const milisecondDate = 24 * 60 * 60 * 1000;
+      const today = new Date();
+      const yesterday = new Date(today - milisecondDate);
+      const seconds = Math.round((today - date) / 1000);
+      const minutes = Math.round(seconds / 60);
+      const hours = Math.round(minutes / 60);
+      const isToday = today.toDateString() === date.toDateString();
+      const isYesterday = yesterday.toDateString() === date.toDateString();
+      const isThisYear = today.getFullYear() === date.getFullYear();
 
-
-      if(seconds < 5) {
-        return 'vừa xong'
+      if (seconds < 5) {
+        return "vừa xong";
+      } else if (seconds < 60) {
+        return `${seconds} giây trước`;
+      } else if (seconds < 90) {
+        return "khoảng 1 phút trước";
+      } else if (minutes < 60) {
+        return `${minutes} phút trước`;
+      } else if (hours < 24) {
+        return `${hours} giờ trước`;
+      } else if (isToday) {
+        return this.getFormattedDate(date, "Hôm nay");
+      } else if (isYesterday) {
+        return this.getFormattedDate(date, "Hôm qua");
+      } else if (isThisYear) {
+        return this.getFormattedDate(date, false, true);
       }
-      else if(seconds < 60) {
-        return `${seconds} giây trước`
-      }
-      else if(seconds < 90) {
-        return 'khoảng 1 phút trước'
-      }
-      else if(minutes < 60) {
-        return `${minutes} phút trước`
-      }
-      else if(hours < 24) {
-        return `${hours} giờ trước`
-      }
-      else if(isToday) {
-        return this.getFormattedDate(date, 'Hôm nay')
-      }
-      else if(isYesterday) {
-        return this.getFormattedDate(date, 'Hôm qua')
-      }
-      else if(isThisYear) {
-        return this.getFormattedDate(date, false, true)
-      }
-      return this.getFormattedDate(date)
+      return this.getFormattedDate(date);
     }
   }
 };

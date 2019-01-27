@@ -1,6 +1,6 @@
 <template>
-  <div class="ads">
-      <span>Advertisement </span>
+  <div class="ads position_relative">
+      <img class="position_absolute" src="https://hd1.hotdeal.vn//hinhanh/HCM/39977_0_body_08.jpg" alt="">
   </div>
 </template>
 
@@ -10,20 +10,16 @@ export default {};
 
 <style scoped lang="scss">
 .ads {
-  width: 100%;
-  position: relative;
-  span {
-    position: absolute;
-    font-size: 30px;
-    font-weight: bold;
-    line-height: 1.17;
-    letter-spacing: 0.3px;
-    color: #a8a8a8;
-
-    text-align: center;
+  overflow: hidden;
     width: 100%;
+  img {
     top: 50%;
-    transform: translateY(-50%);
+    max-width: none;
+    width: 100%;
+    height: auto;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
   }
   &:before {
     display: block;

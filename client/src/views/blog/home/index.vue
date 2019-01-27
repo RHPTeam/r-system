@@ -1,6 +1,6 @@
 <template>
   <div :data-theme="currentTheme" class="blog--content">
-    <app-header :menu='homeMenu'/>
+    <app-header :categories='listCategory'/>
     <div class="ct pl_4 pr_4 pr_sm_0 pl_sm_0">
       <div class="r">
         <div class="c_12">
@@ -10,24 +10,24 @@
           <hr/>
         </div>
         <div class="c_12 c_sm_12 c_md_12 c_lg_8 c_xl_8 pl_lg_3 pr_lg_3">
-          <app-lastest :menu='lastestMenu' :blogs='blogsLastest'/>
+          <app-lastest :categories='listCategory' :blogs='blogsLastest'/>
           <div class="c_12 p_0 d_block d_lg_none">
             <hr/>
           </div>
         </div>
         <div class="c_12 c_sm_12 c_md_12 c_lg_4 c_xl_4 pl_lg_3 pr_lg_3">
-          <app-popular/>
+          <app-popular :blogs='blogsPopular'/>
           <app-ads class="d_none d_lg_block"/>
         </div>
         <div class="c_12">
           <hr/>
         </div>
         <div class="c_12 c_sm_12 c_md_12 c_lg_8 c_xl_8">
-          <app-feature/>
+          <app-feature :categories='listCategory' :blogs='blogsFeature'/>
         </div>
       </div>
     </div>
-    <app-footer/>
+    <app-footer :categories='listCategory'/>
     <div class="blog--change position_fixed text_center">
       <div class="change--theme" @click="changeTheme">
         <div v-if="isThemeLight" class="theme--dark">
@@ -102,13 +102,18 @@ export default {
       if (!this.componentLoaded) return;
       return this.$store.getters.blogsLastest;
     },
+    blogsPopular() {
+      if (!this.componentLoaded) return;
+      return this.$store.getters.blogsPopular;
+    },
+    blogsFeature() {
+      if (!this.componentLoaded) return;
+      return this.$store.getters.blogsFeature;
+    },
     categories() {
       return this.$store.getters.categories;
     },
-    categories2() {
-      return this.$store.getters.categories;
-    },
-    homeMenu() {
+    listCategory() {
       if (this.categories.length == 0) return;
       // Sort categories by number of blogs in category
       const descendingCategories = this.categories.sort(
@@ -119,24 +124,7 @@ export default {
       for (let i = 0; i < descendingCategories.length; i++) {
         nameCategory.push(descendingCategories[i].name);
       }
-      // Get 10 item categories for Home Menu
-      const homeMenu = nameCategory.slice(0, 10);
-      return homeMenu;
-    },
-    lastestMenu() {
-      if (this.categories2.length == 0) return;
-      // Sort categories by number of blogs in category
-      const descendingCategories = this.categories2.sort(
-        (a, b) => b._blogs.length - a._blogs.length
-      );
-      // Get all name categories
-      const nameCategory = [];
-      for (let i = 0; i < descendingCategories.length; i++) {
-        nameCategory.push(descendingCategories[i].name);
-      }
-      // Get 5 item categories for Lastest Menu
-      const lastestMenu = nameCategory.slice(0, 5);
-      return lastestMenu;
+      return nameCategory
     }
   },
   methods: {
@@ -154,19 +142,34 @@ export default {
     // Get all Blog
     const allBlog = await BlogService.index();
     let dataAllBlog = allBlog.data.data;
-    // Sort in order from new to old
-    dataAllBlog = dataAllBlog.reverse();
-    this.$store.dispatch("getAllBlog", dataAllBlog);
     if (typeof dataAllBlog == "undefined") return;
     if (dataAllBlog.length == 0) return;
 
-    // Get 5 blog lastest for BlogsTrend
-    const blogsTrend = dataAllBlog.slice(0, 5);
+    // Sort allBlog in order from new to old
+    const sortNewBlog = dataAllBlog.reverse();
+    this.$store.dispatch("getAllBlog", sortNewBlog);
+
+    // Sort all Blog in oder number of clap,view,comment
+    const sortReactBlog = dataAllBlog.sort((a,b) =>
+      (b._comments.length + b.clap + b.views) - (a._comments.length + a.clap + a.views)
+    )
+
+    // Get 5 blogs lastest for BlogsTrend
+    const blogsTrend = sortNewBlog.slice(0, 5);
     this.$store.dispatch("getBlogsTrend", blogsTrend);
 
-    // Get 5 blog lastest for BlogsLastest
-    const blogsLastest = dataAllBlog.slice(0, 5);
+    // Get 5 blogs lastest for BlogsLastest
+    const blogsLastest = sortNewBlog.slice(0, 5);
     this.$store.dispatch("getBlogsLastest", blogsLastest);
+
+    // Get 5 blogs follow number of reaction for popular
+    const blogsPopular = sortReactBlog.slice(0,5);
+    this.$store.dispatch("getBlogsPopular", blogsPopular);
+
+    // Get 5 blogs follow number of reaction for feature
+    const blogsFeature = sortReactBlog.slice(0,5);
+    this.$store.dispatch("getBlogsFeature", blogsFeature);
+
 
     // Get all category
     CategoryService.index().then(res => {

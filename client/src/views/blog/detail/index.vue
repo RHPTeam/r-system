@@ -1,6 +1,6 @@
 <template>
   <div class="post--wrapper blog--content" :data-theme="currentTheme">
-    <app-header/>
+    <app-header :categories='listCategory'/>
     <div class="pl_4 pr_4">
       <app-post-detail :blog = 'detailBlog'/>
     </div>
@@ -16,7 +16,7 @@
         </div>
       </div>
     </div>
-    <app-footer/>
+    <app-footer :categories='listCategory'/>
     <div class="blog--change position_fixed text_center">
       <div class="change--theme" @click="changeTheme">
         <div v-if="isThemeLight" class="theme--dark">
@@ -41,6 +41,7 @@
 
 <script>
 import BlogService from "@/services/modules/blog.service";
+import CategoryService from "@/services//modules/category.service";
 import IconBase from "@/components/icons/IconBase";
 import IconFontSize from "@/components/icons/IconFontSize";
 import IconMoon from "@/components/icons/IconMoon";
@@ -79,6 +80,22 @@ export default {
     },
     detailBlog() {
       return this.$store.getters.blog;
+    },
+    categories() {
+      return this.$store.getters.categories;
+    },
+    listCategory() {
+      if (this.categories.length == 0) return;
+      // Sort categories by number of blogs in category
+      const descendingCategories = this.categories.sort(
+        (a, b) => b._blogs.length - a._blogs.length
+      );
+      // Get all name categories
+      const nameCategory = [];
+      for (let i = 0; i < descendingCategories.length; i++) {
+        nameCategory.push(descendingCategories[i].name);
+      }
+      return nameCategory
     }
   },
   methods: {
@@ -95,7 +112,13 @@ export default {
   async mounted() {
     const blogId = this.$route.params.blogId;
     const res = await BlogService.show(blogId);
-    this.$store.dispatch("showBlog", res.data.data);
+    this.$store.dispatch("showBlog", res.data.data[0]);
+
+     // Get all category
+    CategoryService.index().then(res => {
+      this.$store.dispatch("index", res.data.data);
+    });
+    this.componentLoaded = true;
   }
 };
 </script>

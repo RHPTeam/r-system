@@ -17,19 +17,8 @@
           <div class="footer--title mb_3">CATEGORY</div>
           <div class="ct_f p_0">
             <div class="r">
-              <div class="c_6 c_sm_6 c_md_6 pl_md_3 pr_md_3">
-                <div class="footer--text mb_1">Javascript</div>
-                <div class="footer--text mb_1">Javascript</div>
-                <div class="footer--text mb_1">Javascript</div>
-                <div class="footer--text mb_1">Javascript</div>
-                <div class="footer--text mb_1">Javascript</div>
-              </div>
-              <div class="c_6 c_sm_6 c_md_6 pl_md_3 pr_md_3">
-                <div class="footer--text mb_1">Javascript</div>
-                <div class="footer--text mb_1">Javascript</div>
-                <div class="footer--text mb_1">Javascript</div>
-                <div class="footer--text mb_1">Javascript</div>
-                <div class="footer--text mb_1">Javascript</div>
+              <div class="c_6 c_sm_6 c_md_6 pl_md_3 pr_md_3" v-for="category in categoryList" :key='category'>
+                <div class="footer--text mb_1 text_uppercase">{{category}}</div>
               </div>
             </div>
           </div>
@@ -53,12 +42,20 @@ import IconBase from "@/components/icons/IconBase";
 import IconShortLogo from "@/components/icons/IconShortLogo";
 
 export default {
+  props: ["categories"],
   data() {
     return {};
   },
   computed: {
     currentTheme() {
       return this.$store.getters.themeName;
+    },
+    categoryList() {
+      if (typeof this.categories == "undefined") return;
+      if (this.categories.length == 0) return;
+      // Get 10 item categories for footer
+      const categoryList = this.categories.slice(0, 10);
+      return categoryList;
     }
   },
   components: {

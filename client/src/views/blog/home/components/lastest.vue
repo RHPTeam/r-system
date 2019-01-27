@@ -39,7 +39,7 @@
                     >{{blog.desc}}</p>
                     <div class="item--bottom d_flex justify_content_between align_items_center">
                       <div class="item--info d_inline mb_0">
-                        <span class="item--info-time mr_4 position_relative">Jan 14</span>
+                        <span class="item--info-time mr_4 position_relative">{{blog.createAt}}</span>
                         <span class="item--info-like mr_4 position_relative">
                           <icon-base
                             class="pr_1 pt_1"
@@ -47,7 +47,7 @@
                             viewBox="0 0 378.94 378.94"
                           >
                             <icon-heart/>
-                          </icon-base>26
+                          </icon-base>{{blog.clap}}
                         </span>
 
                         <span class="item--info-author position_relative">by
@@ -99,7 +99,7 @@
                     >{{blog.desc}}</p>
                     <div class="item--bottom d_flex justify_content_between align_items_center">
                       <div class="item--info d_inline mb_0">
-                        <span class="item--info-time mr_4 position_relative">Jan 14</span>
+                        <span class="item--info-time mr_4 position_relative">{{blog.createAt}}</span>
                         <span class="item--info-like mr_4 position_relative">
                           <icon-base
                             class="pr_1 pt_1"
@@ -107,7 +107,7 @@
                             viewBox="0 0 378.94 378.94"
                           >
                             <icon-heart/>
-                          </icon-base>26
+                          </icon-base>{{blog.clap}}
                         </span>
 
                         <span class="item--info-author position_relative">by
@@ -143,7 +143,7 @@ import IconBase from "@/components/icons/IconBase";
 import IconHeart from "@/components/icons/IconHeart";
 import IconBookmarkBlog from "@/components/icons/IconBookmarkBlog";
 export default {
-  props: ["menu", "blogs"],
+  props: ["categories", "blogs"],
   data() {
     return {
       isBookmark: false,
@@ -153,6 +153,13 @@ export default {
   computed: {
     currentTheme() {
       return this.$store.getters.themeName;
+    },
+    menu() {
+      if (typeof this.categories == "undefined") return;
+      if (this.categories.length == 0) return;
+      // Get 5 item categories for Lastest Menu
+      const menu = this.categories.slice(0, 5);
+      return menu;
     },
     verBlogs() {
       if (typeof this.blogs == "undefined") return;

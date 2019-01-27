@@ -20,8 +20,8 @@
           </icon-base>
         </span>
         <ul class="comment--dropdown position_absolute p_2 m_0" :class="{ show: showdropdown }">
-          <li class="p_1">Xóa Bài Viết</li>
-          <li class="p_1">Xóa Bài Viết</li>
+          <li class="p_1">Báo cáo</li>
+          <li class="p_1">Xóa bình luận</li>
         </ul>
       </div>
     </div>
