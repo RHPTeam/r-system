@@ -11,9 +11,9 @@ const FavoriteSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Anwser'
     }],
-    _tag: [{
+    _blog: [{
         type: Schema.Types.ObjectId,
-        ref: 'Tag'
+        ref: 'Blog'
     }],
     _user: {
         type: Schema.Types.ObjectId,

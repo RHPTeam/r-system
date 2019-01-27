@@ -22,14 +22,17 @@ router.route('/favoriteId=:favoriteId')
 router.route('/userId=:userId')
   .post(favorites.createFavoriteByUser);
 
-router.route('/favoriteId=:favoriteId/tagId=:tagId')
-  .post(favorites.addTagToFavorite)
+router.route('/favoriteId=:favoriteId/blogId=:blogId')
+  .post(favorites.addBlogToFavorite)
+  .delete(favorites.deleteBlogFromFavorite)
 
 router.route('/favoriteId=:favoriteId/questionId=:questionId')
   .post(favorites.addQuestionToFavorite)
+  .delete(favorites.deleteQuestionFromFavorite)
 
 
 router.route('/favoriteId=:favoriteId/anwserId=:anwserId')
   .post(favorites.addAnwserToFavorite)
+  .delete(favorites.deleteAnwserFromFavorite)
   
 module.exports = router;

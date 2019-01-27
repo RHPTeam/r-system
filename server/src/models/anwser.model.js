@@ -5,7 +5,10 @@ const AnwserSchema = new Schema({
     content: String,
     createdDate: Date,
     editDate: Date,
-    parrent: Number,
+    _comments: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Comment'
+    }],
     _user: {
         type: Schema.Types.ObjectId,
         ref: 'User'

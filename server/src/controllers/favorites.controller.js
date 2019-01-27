@@ -9,22 +9,10 @@
 const Favorite = require('../models/favorites.model');
 const Question = require('../models/question.model')
 const Anwser = require('../models/anwser.model')
-const Tag = require('../models/tag.model')
+const Blog = require('../models/blog.model')
 const User = require('../models/user.model')
 const JsonResponse = require('../helpers/json-response')
 
-const findTag = async data => {
-  try {
-    return await Favorite.find()._tag
-      .or([{
-        _id: data._id
-      }
-      ])
-      .exec();
-  } catch (error) {
-
-  }
-}
 
 
 module.exports = {
@@ -35,16 +23,12 @@ module.exports = {
      * @param res
      */
   getAllFavorities: async (req, res) => {
-    try {
       return await Favorite.find({}, (errors, data) => {
         if (errors) {
-          return res.json(JsonResponse("", 404, errors, false));
+          return res.status(404).json(JsonResponse("", 404, errors, true));
         }
-        return res.json(JsonResponse(data, 200, "", false));
+      res.status(200).json(JsonResponse(data, 200, "Lấy dữ liệu thành công!", false));
       })
-    } catch (error) {
-      console.log(error)
-    }
   },
 
 
@@ -54,13 +38,10 @@ module.exports = {
   * @param res
   */
   getOneFavoriteById: async (req, res) => {
-    try {
       const { favoriteId } = req.params;
       const favorite = await Favorite.findById(favoriteId);
-      return res.json(JsonResponse(favorite, 200, "", false))
-    } catch (error) {
-      console.log(error)
-    }
+      if (!favorite) return res.status(403).json(JsonResponse("", 403, "Mục yêu thích này không tồn tại! :)", true));
+      res.status(200).json(JsonResponse(favorite, 200, "Lấy mục yêu thích thành công!", false))
   },
 
   /**
@@ -69,17 +50,13 @@ module.exports = {
    * @param res
    */
   deleteFavoriteById: async (req, res) => {
-    try {
       const { favoriteId } = req.params;
       return await Favorite.findByIdAndRemove(favoriteId, (errors, data) => {
         if (errors) {
-          res.json(JsonResponse("", 404, errors, false))
+          return res.status(404).json(JsonResponse("", 404, errors, true))
         }
-        return res.send(JsonResponse("", 200, `Delete favorite success`, false))
+      res.status(200).send(JsonResponse("", 200, `Xóa mục yêu thích thành công`, false))
       })
-    } catch (error) {
-      console.log(error);
-    }
   },
 
 
@@ -92,11 +69,11 @@ module.exports = {
    * @param next
    */
   createFavoriteByUser: async (req, res, next) => {
-    try {
       const { userId } = req.params
       //get user
       const user = await User.findById(userId)
       const checkArr = user._favorite;
+      console.log(user._favorite)
       if (checkArr.length === 0) {
         //Create new favorite with userid
         req.body["_user"] = userId;
@@ -109,45 +86,65 @@ module.exports = {
         user._favorite.push(newFavorite)
         //save user
         await user.save();
-        return res.json(JsonResponse(user, 200, "success", false));
+        res.status(200).json(JsonResponse(user, 200, "Bạn đã tạo mục yêu thích thành công! <3", false));
       } else {
-        return res.json(JsonResponse('', 500, "you ready created folder favorite of yourself", false))
+        return res.status(500).json(JsonResponse('', 500, "Bạn đã tạo mục yêu thích!", true))
       }
-    } catch (error) {
-      console.log(error)
-    }
   },
 
   /**
-   * add tag to favorite
+   * add blog to favorite
    * @param req
    * @param res
    */
-  addTagToFavorite: async (req, res) => {
-    try {
-      //
+  addBlogToFavorite: async (req, res) => {
       const { favoriteId } = req.params
-      const { tagId } = req.params
+      const { blogId } = req.params
       //get favorite
       const favorite = await Favorite.findById(favoriteId)
-      //check tag added
-      const check = favorite._tag
+      if (!favorite) return res.status(403).json(JsonResponse("", 403, "Mục yêu thích này không tồn tại! :)", true));
+      const blog = await Blog.findById(blogId)
+      if (!blog) return res.status(403).json(JsonResponse("", 403, "Bài viết này không tồn tại! :)", true));
+      //check blog added
+      const check = favorite._blog
       const isInArray = check.some(function (arr) {
-        return arr.equals(tagId);
+        return arr.equals(blogId);
       });
-
       if (!isInArray) {
-        //add tag to favorite
-        favorite._tag.push(tagId)
+        //add blog to favorite
+        favorite._blog.push(blogId)
         //save favorite
         await favorite.save()
-        return res.json(JsonResponse(favorite, 200, "success", false));
+        res.status(200).json(JsonResponse(favorite, 200, "Thêm bài viết vào mục yêu thích thành công", false));
       }
-      return res.json(JsonResponse("", 404, "Tag is exist", false))
-
-    } catch (error) {
-      console.log(error);
+      return res.status(500).json(JsonResponse("", 500, "Bài viết đã tồn tại trong mục yêu thích!", true))
+  },
+  /**
+   * delete blog from favorite
+   * @param req
+   * @param res
+   */
+  deleteBlogFromFavorite: async (req, res) => {
+    const { favoriteId } = req.params
+    const { blogId } = req.params
+    //get favorite
+    const favorite = await Favorite.findById(favoriteId)
+    if (!favorite) return res.status(403).json(JsonResponse("", 403, "Mục yêu thích này không tồn tại! :)", true));
+    const blog = await Blog.findById(blogId)
+    if (!blog) return res.status(403).json(JsonResponse("", 403, "Bài viết này không tồn tại! :)", true));
+    //check blog added
+    const check = favorite._blog
+    const isInArray = check.some(function (arr) {
+      return arr.equals(blogId);
+    });
+    if (isInArray) {
+      //remove blog to favorite
+      favorite._blog.pull(blogId)
+      //save favorite
+      await favorite.save()
+      res.status(200).json(JsonResponse(favorite, 200, "Xóa bài viết từ mục yêu thích thành công", false));
     }
+    return res.status(403).json(JsonResponse("", 403, "Bài viết không tồn tại trong mục yêu thích!", true))
   },
 
   /**
@@ -156,64 +153,110 @@ module.exports = {
    * @param res
    */
   addQuestionToFavorite: async (req, res) => {
-    try {
-      //
-      const { favoriteId } = req.params
-      const { questionId } = req.params
-      //get favorite
-      const favorite = await Favorite.findById(favoriteId)
-      //check tag added
-      const check = favorite._question
-      const isInArray = check.some(function (arr) {
-        return arr.equals(questionId);
-      });
-
-      if (!isInArray) {
-        //add tag to favorite
-        favorite._question.push(questionId)
-        //save favorite
-        await favorite.save()
-        return res.json(JsonResponse(favorite, 200, "success", false));
-      }
-      return res.json(JsonResponse("", 404, "Question is exist", false))
-
-    } catch (error) {
-      console.log(error);
+    const { favoriteId } = req.params
+    const { questionId } = req.params
+    //get favorite
+    const favorite = await Favorite.findById(favoriteId)
+    if (!favorite) return res.status(403).json(JsonResponse("", 403, "Mục yêu thích này không tồn tại! :)", true));
+    const question = await Question.findById(questionId)
+    if (!question) return res.status(403).json(JsonResponse("", 403, "Câu hỏi này không tồn tại! :)", true));
+    //check question added
+    const check = favorite._question
+    const isInArray = check.some(function (arr) {
+      return arr.equals(questionId);
+    });
+    if (!isInArray) {
+      //add questionId to favorite
+      favorite._question.push(questionId)
+      //save favorite
+      await favorite.save()
+      res.status(200).json(JsonResponse(favorite, 200, "Thêm câu hỏi vào mục yêu thích thành công", false));
     }
+    return res.status(500).json(JsonResponse("", 500, "Câu hỏi đã tồn tại trong mục yêu thích!", true))
   },
 
   /**
-   * add answer to favorite
+   * delete question from favorite
    * @param req
    * @param res
    */
-  addAnwserToFavorite: async (req, res) => {
-    try {
-      //
+  deleteQuestionFromFavorite: async (req, res) => {
+    const { favoriteId } = req.params
+    const { questionId } = req.params
+    //get favorite
+    const favorite = await Favorite.findById(favoriteId)
+    if (!favorite) return res.status(403).json(JsonResponse("", 403, "Mục yêu thích này không tồn tại! :)", true));
+    const question = await Question.findById(questionId)
+    if (!question) return res.status(403).json(JsonResponse("", 403, "Câu hỏi này không tồn tại! :)", true));
+    //check question added
+    const check = favorite._question
+    const isInArray = check.some(function (arr) {
+      return arr.equals(questionId);
+    });
+    if (isInArray) {
+      //remove questionId to favorite
+      favorite._question.pull(questionId)
+      //save favorite
+      await favorite.save()
+      res.status(200).json(JsonResponse(favorite, 200, "Xóa câu hỏi từ mục yêu thích thành công", false));
+    }
+    return res.status(403).json(JsonResponse("", 403, "Câu hỏi không tồn tại trong mục yêu thích!", true))
+  },
+
+    /**
+     * add anwser to favorite
+     * @param req
+     * @param res
+     */
+    addAnwserToFavorite: async (req, res) => {
       const { favoriteId } = req.params
       const { anwserId } = req.params
       //get favorite
       const favorite = await Favorite.findById(favoriteId)
-      //check tag added
+      if (!favorite) return res.status(403).json(JsonResponse("", 403, "Mục yêu thích này không tồn tại! :)", true));
+      const anwser= await Anwser.findById(anwserId)
+      if (!anwser) return res.status(403).json(JsonResponse("", 403, "Câu trả lời này không tồn tại! :)", true));
+      //check anwser added
       const check = favorite._anwser
       const isInArray = check.some(function (arr) {
         return arr.equals(anwserId);
       });
-
       if (!isInArray) {
-        //add tag to favorite
+        //add anwserId to favorite
         favorite._anwser.push(anwserId)
         //save favorite
         await favorite.save()
-        return res.json(JsonResponse(favorite, 200, "success", false));
+        res.status(200).json(JsonResponse(favorite, 200, "Thêm câu trả lời vào mục yêu thích thành công", false));
       }
-      return res.json(JsonResponse("", 404, "Answer is exist", false))
+      return res.status(500).json(JsonResponse("", 500, "Câu trả lời đã tồn tại trong mục yêu thích!", true))
+    },
 
-    } catch (error) {
-      console.log(error);
-    }
-  },
-
-
+    /**
+     * delete anwser from favorite
+     * @param req
+     * @param res
+     */
+    deleteAnwserFromFavorite: async (req, res) => {
+      const { favoriteId } = req.params
+      const { anwserId } = req.params
+      //get favorite
+      const favorite = await Favorite.findById(favoriteId)
+      if (!favorite) return res.status(403).json(JsonResponse("", 403, "Mục yêu thích này không tồn tại! :)", true));
+      const anwser= await Anwser.findById(anwserId)
+      if (!anwser) return res.status(403).json(JsonResponse("", 403, "Câu trả lời này không tồn tại! :)", true));
+      //check anwser added
+      const check = favorite._anwser
+      const isInArray = check.some(function (arr) {
+        return arr.equals(anwserId);
+      });
+      if (isInArray) {
+        //remove anwserId to favorite
+        favorite._anwser.pull(anwserId)
+        //save favorite
+        await favorite.save()
+        res.status(200).json(JsonResponse(favorite, 200, "Xóa câu trả lời từ mục yêu thích thành công", false));
+      }
+      return res.status(403).json(JsonResponse("", 403, "Câu trả lời không tồn tại trong mục yêu thích!", true))
+    },
 
 }

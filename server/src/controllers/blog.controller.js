@@ -41,6 +41,7 @@ module.exports = {
    * @param next
    */
   create: async (req, res) => {
+    console.log(req.value.body._author)
     const author = await User.findById(req.value.body._author);
     if (!author) return res.status(403).json(JsonResponse("", 403, "Người dùng tạo bài viết không tồn tại!", true));
     const category = await Category.findById(req.value.body._category);
