@@ -36,17 +36,20 @@
             v-if="!blog._category"
             :selected="!blog._category"
             :value="blog._category"
-          >Chọn thể loại bài viết</option>
+          >Chọn thể loại bài viết
+          </option>
           <option
             v-for="category in categories"
             :key="category._id"
             :value="category._id"
             :selected="category._id == blog._category ? 'selected' : ''"
-          >{{category.name}}</option>
+          >{{category.name}}
+          </option>
         </select>
         <small
           class="form_text text_muted"
-        >Nếu bài viết của bạn quá nhiều lần chọn sai thể loại bài viết, bạn sẽ bị mất quyền viết bài.</small>
+        >Nếu bài viết của bạn quá nhiều lần chọn sai thể loại bài viết, bạn sẽ bị mất quyền viết bài.
+        </small>
       </div>
       <div class="form_group form_textarea">
         <label>Nội dung bài viết</label>
@@ -80,13 +83,6 @@ export default {
       statusSelect: "1",
       message: "",
       type: ""
-      // blog: {
-      //   title: "",
-      //   desc: "",
-      //   body: "",
-      //   image: "",
-      //   _category: ""
-      // }
     };
   },
   computed: {
@@ -151,7 +147,6 @@ export default {
       await BlogService.create(blog).then(res => {
         this.$store.dispatch("createBlog", res.data.data);
         this.type = "alert_success";
-
         this.message = res.data.message;
         setTimeout(() => {
           this.message = "";
@@ -181,7 +176,6 @@ export default {
       slug = slug.replace(/\s*$/g, "");
       // Change whitespace to "-"
       slug = slug.replace(/\s+/g, "-");
-
       return slug;
     },
     async updateBlog() {

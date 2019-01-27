@@ -1,10 +1,11 @@
 <template>
   <div class="create---job ct">
     <div class="title--job r">
-      <h2>Tạo công việc</h2>
+      <h2 v-text="formChange.title == '' ? 'Tạo Công Việc': formChange.title"></h2>
     </div>
     <div class="alert alert_success" v-if="message != ''">{{ message }}</div>
-    <form class="create--job--form" @submit.prevent="submit">
+    <div v-if="!job"></div>
+    <form v-else class="create--job--form" @submit.prevent="formChange.title == '' ? submit() : updateJob()">
       <div class="form_group">
         <label>Vị trí tuyển dụng</label>
         <input type="text" class="form_control" placeholder=" eg: Thiết kế viên" v-model="job.position">
@@ -97,16 +98,15 @@
         <div class="form_group c_lg_6 c_md_12">
           <label>Lợi ích được hưởng</label>
           <div class="btn_group c_md_12">
-
-            <input type="text" class="form_control" placeholder="nhập lợi ích">
-            <button class="btn btn--add">Thêm</button>
+            <input type="text" class="form_control" placeholder="nhập lợi ích" v-model="benefit">
+            <button class="btn btn--add" @click.prevent="addBenefit">Thêm</button>
           </div>
+          <span>double click để xóa lợi ích</span>
         </div>
         <div class="form_group c_lg_6 c_md_12">
           <label>Danh sách lợi ích</label>
           <div class="list--benefit">
-            <p class="benefit">> Được hỗ trợ lương tháng 13</p>
-            <p class="benefit">> Được hỗ trợ máy tính cá nhân</p>
+            <p class="benefit" v-for="(benefit,index) in benefits" :key="index" @dblclick.prevent="deleteBenefit(index)"> 🤣 {{benefit}}</p>
           </div>
         </div>
         <div class="form_group c_md_12">
@@ -116,25 +116,34 @@
         <div class="form_group c_lg_6 c_md_12">
           <label>Làm việc cùng ai?</label>
           <div class="btn_group c_md_12">
-
-            <input type="text" class="form_control" placeholder="nhập lợi ích">
+            <input type="text" class="form_control" placeholder="nhập lợi ích" @click.prevent="showPartner" v-model="search">
             <button class="btn btn--add">Thêm</button>
           </div>
         </div>
         <div class="form_group c_lg_6 c_md_12">
           <label>Danh sách người làm việc cùng</label>
           <div class="list--partner">
-            <img class="partner" src="https://i.pinimg.com/originals/58/92/e7/5892e7f3cc64c8a912e2494a3ff77e08.jpg"/>
-            <img class="partner" src="https://i.pinimg.com/originals/58/92/e7/5892e7f3cc64c8a912e2494a3ff77e08.jpg"/>
-            <img class="partner" src="https://i.pinimg.com/originals/58/92/e7/5892e7f3cc64c8a912e2494a3ff77e08.jpg"/>
+            <div v-for="partner in partners" :key="partner" @dblclick.prevent="removeUserFromPartner(partner)">{{partner.nameDisplay}}</div>
           </div>
         </div>
+      </div>
+      <div class="result--user" v-if="statusShowPartner">
+        <ul>
+          <li :class="{selected:statusPartner}" v-for="(user,index) in filteredList" :key="index" @click="addUserToPartner(user,index)">
+            {{user.nameDisplay}}
+          </li>
+        </ul>
       </div>
       <div class="form_group ">
         <label>Link website công ty</label>
         <input type="text" class="form_control" placeholder="https://wwww.example.com" v-model="job.website">
       </div>
-      <button class="btn btn_primary btn--create" type="submit">Thêm tin tuyển dụng</button>
+      <button
+        class="btn btn_primary btn--create"
+        type="submit"
+        v-text="formChange.button == '' ? 'Thêm công việc': formChange.button"
+      >Thêm tin tuyển dụng</button>
+      <button class="btn btn_primary btn--create" type="button">Hủy</button>
     </form>
   </div>
 </template>
@@ -143,6 +152,7 @@
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 import JobService from "@/services/modules/job.service";
+import UserService from "@/services/modules/user.service";
 
 export default {
   data() {
@@ -152,25 +162,35 @@ export default {
       editorData: "",
       startSalary: "",
       endSalary: "",
-      job: {
-        position: "",
-        nameCompany: "",
-        locationCompany: "",
-        salary: "",
-        type: "",
-        level: "",
-        role: "",
-        office: "",
-        sizeCompany: "",
-        typeCompany: "",
-        technologies: "",
-        content: "",
-        infoCompany: "",
-        website: ""
-      }
+      benefits: [],
+      benefit: "",
+      statusShowPartner: false,
+      users: [],
+      search: "",
+      partners: [],
+      statusPartner: false
     };
   },
+  computed: {
+    //Lọc thành viên
+    filteredList() {
+      return this.users.filter(user => {
+        return user.nameDisplay
+          .toLowerCase()
+          .includes(this.search.toLowerCase());
+      });
+    },
+    //Lấy ra thông tin phần tử in ra các giá trị bên form
+    job() {
+      return this.$store.getters.job[0];
+    },
+    //Thông tin phần tử từ form thay đổi
+    formChange() {
+      return this.$store.getters.formChange;
+    }
+  },
   methods: {
+    //Hàm tạo mới công việc
     async submit() {
       // Init new job
       const job = {
@@ -192,10 +212,44 @@ export default {
       };
       // validate (Should be: Create a new methods to validate pratices
       // send to api
-      await JobService.create(job).then(
-        res => (this.message = res.data.message)
-      );
+      await JobService.create(job).then(res => {
+        this.message = res.data.message;
+      });
       this.$store.dispatch("create", job);
+    },
+    // Hàm tạo lợi ích khi nhập vào ô input
+    addBenefit() {
+      this.benefits.push(this.benefit);
+      this.benefit = "";
+    },
+    //Xóa lợi ích khi click đúp vào phần tử
+    deleteBenefit(index) {
+      this.benefits.splice(index, 1);
+    },
+    //Lấy ra thông tin các thành viên được làm việc chung
+    async showPartner() {
+      await UserService.index().then(res => {
+        this.users = res.data.data;
+      });
+      this.statusShowPartner = !this.statusShowPartner;
+    },
+    //Thêm thành viên làm việc chung vào trong lựa chọn
+    addUserToPartner(user) {
+      this.partners.push(user);
+      this.statusPartner = true;
+    },
+    //Xóa thành viên được lưa chọn trong list
+    removeUserFromPartner(partner) {
+      this.partners.pop(partner);
+    },
+    //Reset infomation in form now
+    // resetForm() {
+    //   this.$store.dispatch("clearData");
+    //   this.$store.dispatch("clearForm");
+    // },
+    //Hàm update khi chỉnh sửa công việc
+    updateJob() {
+      alert("Nothing change");
     }
   }
 };

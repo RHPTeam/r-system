@@ -49,7 +49,6 @@
 
 <script>
 import BlogService from "@/services//modules/blog.service";
-
 import IconBase from "@/components/icons/IconBase";
 import IconClockHistory from "@/components/icons/IconClockHistory";
 import IconEye from "@/components/icons/IconEye";
@@ -66,19 +65,11 @@ export default {
     IconDelete,
     AppTime
   },
-  // computed: {
-  //   timeCreated() {
-  //     let create = new Date(this.blog.createAt).getDate()
-  //     console.log(create)
-  //     return create
-  //   }
-  // },
   methods: {
     deleteBlog(index) {
       // Xoa phan tu tren server
       const userId = this.$route.params.userId;
       BlogService.delete(this.blog._id, userId);
-
       // Xoa phan tu trong store
       this.$store.dispatch("deleteBlog", index);
     },
@@ -97,7 +88,6 @@ export default {
 
 <style scoped lang="scss">
 @import "list-blog.scss";
-
 @media (max-width: 450px) {
   .item--action {
     button {

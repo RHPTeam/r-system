@@ -1,5 +1,5 @@
 <template>
-  <span>{{time | timeAgo}}</span>
+  <span>{{times}}</span>
 </template>
 
 <script>
@@ -24,23 +24,6 @@ export default {
     };
   },
   methods: {
-    // convert(date) {
-    //   this.
-    // },
-    startUpdate() {
-      if (this.auto) {
-        const autoUpdate = this.auto === true ? 60 : this.autoUpdate;
-        this.updater = setInterval(() => {
-          this.convert();
-        }, autoUpdate);
-      }
-    },
-    stopUpdate() {
-      if (this.auto) {
-        clearInterval(this.updater);
-        this.updater = null;
-      }
-    },
     getFormattedDate(date, isFormat = false, isHideYear = false) {
       const day = date.getDate();
       const month = this.month[date.getMonth()];
@@ -55,35 +38,26 @@ export default {
         return `${isFormat} lúc ${hours}:${minutes}`;
       }
       if (isHideYear) {
-        return `${day} - ${month} lúc ${hours}:${minutes}`;
+        return `${day} ${month} lúc ${hours}:${minutes}`;
       }
       return `${day} - ${month} - ${year} lúc ${hours}:${minutes}`;
     }
   },
-  computed: {},
-  watch: {
-    auto(newValue) {
-      this.stopUpdate();
-      if (newValue) {
-        this.startUpdate();
-      }
-    }
-  },
-  filters: {
-    timeAgo(dateParam) {
+  computed: {
+    times () {
+      const dateParam = this.time;
       if (!dateParam) {
         console.log("Ngày này không tồn tại! Eng: This date not exist!");
         return null;
       }
       const date =
         typeof dateParam === "object" ? dateParam : new Date(dateParam);
-      const milisecondDate = 24 * 60 * 60 * 1000;
+      const milisecondDate = 86400000;
       const today = new Date();
       const yesterday = new Date(today - milisecondDate);
       const seconds = Math.round((today - date) / 1000);
       const minutes = Math.round(seconds / 60);
       const hours = Math.round(minutes / 60);
-      const isToday = today.toDateString() === date.toDateString();
       const isYesterday = yesterday.toDateString() === date.toDateString();
       const isThisYear = today.getFullYear() === date.getFullYear();
 
@@ -97,8 +71,6 @@ export default {
         return `${minutes} phút trước`;
       } else if (hours < 24) {
         return `${hours} giờ trước`;
-      } else if (isToday) {
-        return this.getFormattedDate(date, "Hôm nay");
       } else if (isYesterday) {
         return this.getFormattedDate(date, "Hôm qua");
       } else if (isThisYear) {
@@ -106,6 +78,8 @@ export default {
       }
       return this.getFormattedDate(date);
     }
+  },
+  watch: {
   }
 };
 </script>

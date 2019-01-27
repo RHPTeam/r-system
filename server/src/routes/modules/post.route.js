@@ -18,7 +18,11 @@ router.route('/')
   .post(validateBody(schemas.postSchema), post.create);
 
 router.route('/:postId')
-  .patch([validateParam(schemas.idSchema, "postId")], post.update)
+  .post([validateBody(schemas.postSchema), validateParam(schemas.idSchema, "postId")], post.createAnswer)
+  .patch([validateParam(schemas.idSchema, "postId"), validateBody(schemas.postSchema)], post.update)
   .delete(validateParam(schemas.idSchema, "postId"), post.delete);
+
+router.route('/:postId/vote')
+  .post(validateParam(schemas.idSchema, "postId"), post.vote);
 
 module.exports = router;

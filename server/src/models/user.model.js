@@ -23,6 +23,10 @@ const UserSchema = new Schema({
     type: String,
     content: String
   },
+  created: {
+    type: Date,
+    content: Date
+  },
   story: {
     info: String,
     skill: String,
@@ -34,7 +38,15 @@ const UserSchema = new Schema({
       startEnd: Date
     }]
   },
-  _postsList: [{
+  voteUp: {
+    type: Boolean,
+    default: false
+  },
+  voteDown: {
+    type: Boolean,
+    default: false
+  },
+  _postList: [{
     type: Schema.Types.ObjectId,
     ref: 'Post'
   }],
