@@ -34,6 +34,14 @@ const UserSchema = new Schema({
       startEnd: Date
     }]
   },
+  voteUp: {
+    type: Boolean,
+    default: false
+  },
+  voteDown: {
+    type: Boolean,
+    default: false
+  },
   _postList: [{
     type: Schema.Types.ObjectId,
     ref: 'Post'

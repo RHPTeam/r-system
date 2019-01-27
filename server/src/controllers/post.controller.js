@@ -8,6 +8,7 @@
 const Post = require('../models/post.model');
 const User = require('../models/user.model');
 const Tag = require('../models/tag.model');
+const score = require('../configs/reputationScore');
 const { isObjectEmpty } = require('../helpers/function_rhp');
 const JsonResponse = require('../helpers/json-response');
 
@@ -101,5 +102,61 @@ module.exports = {
     }
     await post.remove();
     res.json(JsonResponse("", 200, "Xóa dữ liệu thành công! T_T", false));
+  },
+
+  /**
+   * @Name: Create Answer by User
+   * @param req
+   * @param res
+   * @param next
+   */
+  createAnswer: async (req, res) => {
+    const {postId} = req.value.params;
+    const question = await Post.findById(postId);
+    if (!question) return res.status(403).json(JsonResponse("", 403, "Câu hỏi không tồn tại! :))", true));
+    const owner = await User.findById(req.value.body._owner);
+    if (!owner) return res.status(403).json(JsonResponse("", 403, "Người dùng tạo bài viết không tồn tại!", true));
+    delete req.value.body._owner;
+    const postObjAnswer = await new Post(req.value.body);
+    postObjAnswer.parent = postId;
+    postObjAnswer._owner = owner;
+    const data = await postObjAnswer.save();
+    res.status(200).json(JsonResponse(data, 200, "Tạo câu trả lời thành công! ^_^", false));
+  },
+
+  /**
+   * @Name: Score For Questions
+   * @param req
+   * @param res
+   * @param next
+   */
+  vote: async (req, res) => {
+    const voteTypeId = req.query._voteTypeId;
+    const who = await User.findById(req.query._userId);
+    const {postId} = req.value.params;
+    if (!req.query._voteTypeId) return res.status(405).json(JsonResponse("", "Query vote thất bại! T_T", true));
+    const post = await Post.findById(postId);
+    switch (voteTypeId) {
+      case "1": {
+        if (who.voteUp) return;
+        console.log("Increase!");
+        post.score += score.score.increasement.voteQuestion;
+        const data = await post.save();
+        who.voteUp = true;
+        who.voteDown = false;
+        res.status(200).json(JsonResponse(data, 200, "Đánh giá cao cho câu hỏi thành công!", false));
+        break;
+      }
+      case "2": {
+        if (who.voteDown) return;
+        console.log("Decrease!");
+        post.score -= score.score.decreasement.voteQuestion;
+        const data = await post.save();
+        who.voteUp = false;
+        who.voteDown = true;
+        res.status(200).json(JsonResponse(data, 200, "Đánh giá thấp cho câu hỏi thành công!", false));
+        break;
+      }
+    }
   }
 };
