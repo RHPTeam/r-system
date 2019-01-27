@@ -1,10 +1,10 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 const PostSchema = new Schema({
   title: String,
   body: String,
-  parent: String ,
+  parent: String,
   score: Number,
   views: Number,
   answerCount: Number,
@@ -24,5 +24,5 @@ const PostSchema = new Schema({
   },
 });
 
-const Post = mongoose.model('Post', PostSchema)
+const Post = mongoose.model('Post', PostSchema);
 module.exports = Post;
