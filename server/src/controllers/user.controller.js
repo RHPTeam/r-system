@@ -59,7 +59,7 @@ module.exports = {
       if (findUser.length > 0) {
         return res.json(JsonResponse("", 404, "Email or nameDisplay is exist", false))
       }
-
+      list_user.created = new Date();
       const user = await new User(list_user);
       user.save(err => {
         if (err) {

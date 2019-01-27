@@ -1,6 +1,6 @@
 /**
  * create route trash  for project
- * author: 
+ * author: quangnc
  * date up: 
  * date to: 
  * team: BE-RHP
@@ -11,6 +11,12 @@ const trash = require('../../controllers/trash.controller');
 
 /* GET trash listing. */
 router.route('/')
-  .get(trash.index);
+  .get(trash.index)
+  .post(trash.create);
+
+router.route('/:trashId')
+  .patch(trash.update)
+  .delete( trash.delete);
+
 
 module.exports = router;

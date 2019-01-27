@@ -23,6 +23,10 @@ const UserSchema = new Schema({
     type: String,
     content: String
   },
+  created: {
+    type: Date,
+    content: Date
+  },
   story: {
     info: String,
     skill: String,
