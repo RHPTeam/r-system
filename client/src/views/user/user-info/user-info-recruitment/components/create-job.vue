@@ -3,12 +3,24 @@
     <div class="title--job r">
       <h2 v-text="formChange.title == '' ? 'Tạo Công Việc': formChange.title"></h2>
     </div>
-    <div class="alert alert_success" v-if="message != ''">{{ message }}</div>
+    <app-alert :message="message" :type="type"/>
     <div v-if="!job"></div>
-    <form v-else class="create--job--form" @submit.prevent="formChange.title == '' ? submit() : updateJob()">
+    <form class="create--job--form" v-else @submit.prevent="formChange.title == '' ? submit() : updateJob()">
       <div class="form_group">
         <label>Vị trí tuyển dụng</label>
-        <input type="text" class="form_control" placeholder=" eg: Thiết kế viên" v-model="job.position">
+        <input type="text"
+               class="form_control"
+               placeholder=" eg: Thiết kế viên"
+               v-model="job.position"
+               @click.prevent="showJobLaster"
+        />
+      </div>
+      <div class="result--job" v-if="statusShowJob">
+        <ul>
+          <li :class="{selected:statusJob}" v-for="(list,index) in filteredJob" :key="index">
+            {{list.position}}
+          </li>
+        </ul>
       </div>
       <div class="form_row">
         <div class="form_group c_lg_6 c_md_12">
@@ -143,13 +155,14 @@
         type="submit"
         v-text="formChange.button == '' ? 'Thêm công việc': formChange.button"
       >Thêm tin tuyển dụng</button>
-      <button class="btn btn_primary btn--create" type="button">Hủy</button>
+      <button class="btn btn_primary btn--create" type="button" @click="resetForm">Hủy</button>
     </form>
   </div>
 </template>
 
 <script>
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import AppAlert from "@/components/shared/alert";
 
 import JobService from "@/services/modules/job.service";
 import UserService from "@/services/modules/user.service";
@@ -168,8 +181,15 @@ export default {
       users: [],
       search: "",
       partners: [],
-      statusPartner: false
+      statusPartner: false,
+      type: "",
+      statusShowJob: false,
+      statusJob: false,
+      listJob: []
     };
+  },
+  components: {
+    AppAlert
   },
   computed: {
     //Lọc thành viên
@@ -180,19 +200,103 @@ export default {
           .includes(this.search.toLowerCase());
       });
     },
-    //Lấy ra thông tin phần tử in ra các giá trị bên form
-    job() {
-      return this.$store.getters.job[0];
+    filteredJob() {
+      return this.listJob.filter(jobByUsers => {
+        return jobByUsers.position
+          .toLowerCase()
+          .includes(this.search.toLowerCase());
+      });
     },
-    //Thông tin phần tử từ form thay đổi
+    job() {
+      return this.$store.getters.job;
+    },
     formChange() {
       return this.$store.getters.formChange;
+    },
+    validateForm() {
+      if (
+        this.job.position == "" ||
+        this.job.position.length < 5 ||
+        this.job.position.length > 50
+      ) {
+        this.type = "alert_danger";
+        return (this.message =
+          "Vị trí công việc không được bỏ trống và nằm trong khoảng 5 - 50 ký tự!");
+      }
+      if (
+        this.job.nameCompany == "" ||
+        this.job.nameCompany.length < 5 ||
+        this.job.nameCompany.length > 100
+      ) {
+        this.type = "alert_danger";
+        return (this.message =
+          "Tên công ty không được bỏ trống và nằm trong khoảng 5 - 100 ký tự!");
+      }
+      if (
+        this.job.locationCompany == "" ||
+        this.job.locationCompany.length < 10
+      ) {
+        this.type = "alert_danger";
+        return (this.message =
+          "Địa chỉ công ty không được bỏ trống và ít nhất 10 ký tự!");
+      }
+      if (this.job.content == "" || this.job.content.length < 100) {
+        this.type = "alert_danger";
+        return (this.message =
+          "Mô tả công việc không được bỏ trống và ít nhất 100 ký tự!");
+      }
+      if (this.job.infoCompany == "" || this.job.infoCompany.length < 100) {
+        this.type = "alert_danger";
+        return (this.message =
+          "Thông tin về công ty không được bỏ trống và ít nhất 100 ký tự!");
+      }
+      if (this.job.website == "" || this.job.website.length < 10) {
+        this.type = "alert_danger";
+        return (this.message =
+          "Website công ty không được bỏ trống và ít nhất 10 ký tự!");
+      }
+      if (this.job.office == "" || this.job.office.length < 10) {
+        this.type = "alert_danger";
+        return (this.message =
+          "Trường này không được bỏ trống và ít nhất 10 ký tự!");
+      }
+      if (this.job.salary == "") {
+        this.type = "alert_danger";
+        return (this.message = "Nội dung không được bỏ trống!");
+      }
+      if (this.job.level == "") {
+        this.type = "alert_danger";
+        return (this.message = "Vui lòng chọn cấp độ của bạn");
+      }
+      if (this.job.role == "") {
+        this.type = "alert_danger";
+        return (this.message = "Bạn vui lòng lựa chọn công việc");
+      }
+      if (this.job.type == "") {
+        this.type = "alert_danger";
+        return (this.message = "Nội dung không được bỏ trống!");
+      }
+      if (this.job.sizeCompany == "") {
+        this.type = "alert_danger";
+        return (this.message = "Nội dung không được bỏ trống!");
+      }
+      if (this.job.typeCompany == "") {
+        this.type = "alert_danger";
+        return (this.message = "Nội dung không được bỏ trống!");
+      }
+      if (this.job.technologies == "") {
+        this.type = "alert_danger";
+        return (this.message = "Nội dung không được bỏ trống!");
+      }
+      if (this.job._createPerson == "") {
+        this.type = "alert_danger";
+        return (this.message = "Nội dung không được bỏ trống!");
+      }
     }
   },
   methods: {
-    //Hàm tạo mới công việc
     async submit() {
-      // Init new job
+      this.validateForm;
       const job = {
         position: this.job.position,
         nameCompany: this.job.nameCompany,
@@ -210,46 +314,58 @@ export default {
         website: this.job.website,
         _createPerson: this.$route.params.userId
       };
-      // validate (Should be: Create a new methods to validate pratices
-      // send to api
       await JobService.create(job).then(res => {
+        this.type = "alert_success";
         this.message = res.data.message;
+        this.$store.dispatch("createJob", res.data.data);
+        setTimeout(() => {
+          this.message = "";
+        }, 3000);
       });
-      this.$store.dispatch("create", job);
+
+      this.resetForm();
     },
-    // Hàm tạo lợi ích khi nhập vào ô input
     addBenefit() {
       this.benefits.push(this.benefit);
       this.benefit = "";
     },
-    //Xóa lợi ích khi click đúp vào phần tử
     deleteBenefit(index) {
       this.benefits.splice(index, 1);
     },
-    //Lấy ra thông tin các thành viên được làm việc chung
     async showPartner() {
       await UserService.index().then(res => {
         this.users = res.data.data;
       });
       this.statusShowPartner = !this.statusShowPartner;
     },
-    //Thêm thành viên làm việc chung vào trong lựa chọn
     addUserToPartner(user) {
       this.partners.push(user);
       this.statusPartner = true;
     },
-    //Xóa thành viên được lưa chọn trong list
     removeUserFromPartner(partner) {
       this.partners.pop(partner);
     },
-    //Reset infomation in form now
-    // resetForm() {
-    //   this.$store.dispatch("clearData");
-    //   this.$store.dispatch("clearForm");
-    // },
-    //Hàm update khi chỉnh sửa công việc
-    updateJob() {
-      alert("Nothing change");
+    resetForm() {
+      this.$store.dispatch("clearData");
+      this.$store.dispatch("clearForm");
+    },
+    async updateJob() {
+      const userId = this.$route.params.userId;
+      const dataUpdate = await JobService.update(this.job, userId);
+      this.type = "alert_success";
+      this.message = dataUpdate.data.message;
+      setTimeout(() => {
+        this.message = "";
+      }, 3000);
+      this.$store.dispatch("updateJob", this.job);
+      await JobService.getJobsByUser(this.$route.params.userId).then(res => {
+        this.$store.dispatch("getJobUser", res.data.data);
+      });
+      this.resetForm();
+    },
+    showJobLaster() {
+      this.listJob = this.$store.getters.jobByUser;
+      this.statusShowJob = !this.statusShowJob;
     }
   }
 };

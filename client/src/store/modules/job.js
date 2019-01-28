@@ -2,7 +2,7 @@ const state = {
   jobAll: [],
   jobByUser: [],
   job: {},
-  formChange: {
+  formChangeJob: {
     title: "",
     button: ""
   }
@@ -18,8 +18,8 @@ const getters = {
   job: state => {
     return state.job;
   },
-  formChange: state => {
-    return state.formChange;
+  formChangeJob: state => {
+    return state.formChangeJob;
   }
 };
 
@@ -31,7 +31,7 @@ const mutations = {
     state.jobByUser = payload;
   },
   push: (state, payload) => {
-    state.jobs.push(payload);
+    state.jobByUser.push(payload);
   },
   pop: (state, payload) => {
     state.jobByUser.splice(payload, 1);
@@ -39,14 +39,17 @@ const mutations = {
   show: (state, payload) => {
     state.job = payload;
   },
-  formChange: (state, payload) => {
-    state.formChange = payload;
+  formChangeJob: (state, payload) => {
+    state.formChangeJob = payload;
+  },
+  updateJob: (state, payload) => {
+    state.job = payload;
   },
   clearData: state => {
     state.job = {};
   },
   clearForm: (state, payload) => {
-    state.formChange = payload;
+    state.formChangeJob = payload;
   }
 };
 
@@ -57,7 +60,7 @@ const actions = {
   getJobUser: async ({ commit }, payload) => {
     await commit("getJobUser", payload);
   },
-  create: async ({ commit }, payload) => {
+  createJob: async ({ commit }, payload) => {
     await commit("push", payload);
   },
   delete: async ({ commit }, payload) => {
@@ -66,18 +69,21 @@ const actions = {
   show: async ({ commit }, payload) => {
     await commit("show", payload);
   },
-  formChange: async ({ commit }, payload) => {
-    await commit("formChange", payload);
+  formChangeJob: async ({ commit }, payload) => {
+    await commit("formChangeJob", payload);
+  },
+  updateJob: async ({ commit }, payload) => {
+    await commit("updateJob", payload);
   },
   clearData: async ({ commit }) => {
     await commit("clearData");
   },
   clearForm: async ({ commit }) => {
-    const formChange = {
+    const formChangeJob = {
       title: "",
       button: ""
     };
-    await commit("clearForm", formChange);
+    await commit("clearForm", formChangeJob);
   }
 };
 export default {

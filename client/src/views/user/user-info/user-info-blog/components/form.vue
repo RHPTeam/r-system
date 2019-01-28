@@ -74,7 +74,6 @@ import BlogService from "@/services//modules/blog.service";
 import CategoryService from "@/services/modules/category.service";
 import AppAlert from "@/components/shared/alert";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-
 export default {
   data() {
     return {

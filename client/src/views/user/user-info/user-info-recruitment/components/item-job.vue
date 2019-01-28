@@ -6,17 +6,8 @@
         <h4>{{ job.salary }} VNĐ</h4>
       </div>
       <div class="job--tabs r">
-            <span class="tab--name c">
-              javascript
-          </span>
-        <span class="tab--name c">
-            vuejs
-        </span>
-        <span class="tab--name c">
-            html5
-        </span>
-        <span class="tab--name c">
-            html5
+        <span v-for="item in tech" :key="item" class="tab--name c">
+              {{item}}
         </span>
       </div>
     </div>
@@ -66,6 +57,12 @@ export default {
     IconEye,
     IconPen,
     IconDelete
+  },
+  computed: {
+    tech() {
+      const techList = this.job.technologies.split(",");
+      return techList;
+    }
   },
   methods: {
     // Xóa phần tử

@@ -47,21 +47,23 @@ module.exports = {
       }),
       jobSchema:
         Joi.object().keys({
-          position: Joi.string().min(5).max(50).required(),
-          nameCompany: Joi.string().min(5).max(100).required(),
-          locationCompany: Joi.string().min(10).required(),
+          _id: Joi.string(),
+          position: Joi.string().min(5).max(50).required().label("Tiêu đề không được bỏ trống và nằm trong khoảng 5 - 50 ký tự!"),
+          nameCompany: Joi.string().min(5).max(100).required().label("Tên công ty không được bỏ trống và nằm trong khoảng 5 - 100 ký tự!"),
+          locationCompany: Joi.string().min(10).required().label("Địa chỉ không được bỏ trống và ít nhất 10 ký tự!"),
+          content: Joi.string().min(100).required().label("Mô tả không được bỏ trống và ít nhất 100 ký tự!"),
+          infoCompany: Joi.string().min(100).required().label("Thông tin Công ty không được bỏ trống và ít nhất 100 ký tự!"),
+          website: Joi.string().min(10).required().label("Địa chỉ website không được bỏ trống và ít nhất 10 ký tự!"),
+          office: Joi.string().min(10).required().label("Trường này không được bỏ trống và ít nhất 10 ký tự!"),
           salary: Joi.string().required(),
           type: Joi.string().required(),
           level: Joi.string().required(),
           role: Joi.string().required(),
-          office: Joi.string().min(10).required(),
           sizeCompany: Joi.string().required(),
           typeCompany: Joi.string().required(),
           technologies: Joi.string().required(),
-          content: Joi.string().min(100).required(),
-          _createPerson: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required(),
-          infoCompany: Joi.string().min(100).required(),
-          website: Joi.string().min(10).required()
+          _createPerson: Joi.any(),
+          __v: Joi.any()
         }),
       postSchema:
         Joi.object().keys({
@@ -106,16 +108,15 @@ module.exports = {
         }),
       commentSchema:
         Joi.object().keys({
-          content:Joi.string().required().label("Nội dung bình luận không được bỏ trống!"),
+          content: Joi.string().required().label("Nội dung bình luận không được bỏ trống!"),
           like: Joi.number().default(0),
           createAt: Joi.date().default(Date.now, 'Time of Creation'),
           editAt: Joi.date().default(Date.now, 'Time of Edition'),
           _user: Joi.any().required(),
-          _blog:  Joi.any(),
-          _question:  Joi.any(),
+          _blog: Joi.any(),
+          _question: Joi.any(),
           _anwser: Joi.any(),
           __v: Joi.any()
-        }).or('_blog','_question','_anwser')
+        }).or('_blog', '_question', '_anwser')
     }
-}
-;
+};
