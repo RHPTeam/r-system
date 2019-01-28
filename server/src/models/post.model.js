@@ -14,6 +14,10 @@ const PostSchema = new Schema({
   createAt: Date,
   lastEditDate: Date,
   lastActivityDate: Date,
+  _votes: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Vote'
+  }],
   _tags: [{
     type: Schema.Types.ObjectId,
     ref: 'Tag'

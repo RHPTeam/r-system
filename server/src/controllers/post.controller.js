@@ -122,41 +122,5 @@ module.exports = {
     postObjAnswer._owner = owner;
     const data = await postObjAnswer.save();
     res.status(200).json(JsonResponse(data, 200, "Tạo câu trả lời thành công! ^_^", false));
-  },
-
-  /**
-   * @Name: Score For Questions
-   * @param req
-   * @param res
-   * @param next
-   */
-  vote: async (req, res) => {
-    const voteTypeId = req.query._voteTypeId;
-    const who = await User.findById(req.query._userId);
-    const {postId} = req.value.params;
-    if (!req.query._voteTypeId) return res.status(405).json(JsonResponse("", "Query vote thất bại! T_T", true));
-    const post = await Post.findById(postId);
-    switch (voteTypeId) {
-      case "1": {
-        if (who.voteUp) return;
-        console.log("Increase!");
-        post.score += score.score.increasement.voteQuestion;
-        const data = await post.save();
-        who.voteUp = true;
-        who.voteDown = false;
-        res.status(200).json(JsonResponse(data, 200, "Đánh giá cao cho câu hỏi thành công!", false));
-        break;
-      }
-      case "2": {
-        if (who.voteDown) return;
-        console.log("Decrease!");
-        post.score -= score.score.decreasement.voteQuestion;
-        const data = await post.save();
-        who.voteUp = false;
-        who.voteDown = true;
-        res.status(200).json(JsonResponse(data, 200, "Đánh giá thấp cho câu hỏi thành công!", false));
-        break;
-      }
-    }
   }
 };

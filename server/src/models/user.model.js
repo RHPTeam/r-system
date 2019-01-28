@@ -95,6 +95,10 @@ const UserSchema = new Schema({
   _jobs: [{
     type: Schema.Types.ObjectId,
     ref: 'Job'
+  }],
+  _vote: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Vote'
   }]
 });
 
