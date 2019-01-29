@@ -44,7 +44,7 @@
                 </div>
               </div>
               <div class="author--start">
-                <span class="author--start-time mr_4 position_relative">{{blog.createAt}}</span>
+                <span class="author--start-time mr_4 position_relative"><app-time :time="blog.createAt"/></span>
                 <span class="author--start-icon mr_4 position_relative">
                   <icon-base class="pr_1 pt_1" icon-name="heart" viewBox="0 0 378.94 378.94">
                     <icon-heart/>
@@ -133,6 +133,7 @@ import IconHeart from "@/components/icons/IconHeart";
 import IconBookmarkBlog from "@/components/icons/IconBookmarkBlog";
 import IconAnswer from "@/components/icons/IconAnswer";
 import IconFacebook from "@/components/icons/IconFacebook";
+import AppTime from "@/components/shared/timeAgo";
 export default {
   props: ["blog"],
   data() {
@@ -151,7 +152,8 @@ export default {
     IconHeart,
     IconBookmarkBlog,
     IconAnswer,
-    IconFacebook
+    IconFacebook,
+    AppTime
   }
 };
 </script>

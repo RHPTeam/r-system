@@ -44,7 +44,7 @@ export default {
     }
   },
   computed: {
-    times () {
+    times() {
       const dateParam = this.time;
       if (!dateParam) {
         console.log("Ngày này không tồn tại! Eng: This date not exist!");
@@ -79,8 +79,7 @@ export default {
       return this.getFormattedDate(date);
     }
   },
-  watch: {
-  }
+  watch: {}
 };
 </script>
 

@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import CategoryService from "@/services//modules/category.service";
+import CategoryService from "@/services/modules/category.service";
 import IconBase from "@/components/icons/IconBase";
 import IconFontSize from "@/components/icons/IconFontSize";
 import IconMoon from "@/components/icons/IconMoon";
@@ -56,7 +56,8 @@ export default {
   data() {
     return {
       isThemeLight: true,
-      theme: "light"
+      theme: "light",
+      componentLoaded: false
     };
   },
   components: {
@@ -94,7 +95,7 @@ export default {
       for (let i = 0; i < descendingCategories.length; i++) {
         nameCategory.push(descendingCategories[i].name);
       }
-      return nameCategory
+      return nameCategory;
     }
   },
   methods: {
@@ -107,6 +108,13 @@ export default {
       }
       this.$store.dispatch("changeTheme", this.valueTheme);
     }
+  },
+  async mounted() {
+    // Get all category
+    CategoryService.index().then(res => {
+      this.$store.dispatch("index", res.data.data);
+    });
+    this.componentLoaded = true;
   }
 };
 </script>

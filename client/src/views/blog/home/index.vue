@@ -52,7 +52,7 @@
 
 <script>
 import BlogService from "@/services/modules/blog.service";
-import CategoryService from "@/services//modules/category.service";
+import CategoryService from "@/services/modules/category.service";
 
 import IconBase from "@/components/icons/IconBase";
 import IconFontSize from "@/components/icons/IconFontSize";
@@ -124,7 +124,7 @@ export default {
       for (let i = 0; i < descendingCategories.length; i++) {
         nameCategory.push(descendingCategories[i].name);
       }
-      return nameCategory
+      return nameCategory;
     }
   },
   methods: {
@@ -150,9 +150,13 @@ export default {
     this.$store.dispatch("getAllBlog", sortNewBlog);
 
     // Sort all Blog in oder number of clap,view,comment
-    const sortReactBlog = dataAllBlog.sort((a,b) =>
-      (b._comments.length + b.clap + b.views) - (a._comments.length + a.clap + a.views)
-    )
+    const sortReactBlog = dataAllBlog.sort(
+      (a, b) =>
+        b._comments.length +
+        b.clap +
+        b.views -
+        (a._comments.length + a.clap + a.views)
+    );
 
     // Get 5 blogs lastest for BlogsTrend
     const blogsTrend = sortNewBlog.slice(0, 5);
@@ -163,13 +167,12 @@ export default {
     this.$store.dispatch("getBlogsLastest", blogsLastest);
 
     // Get 5 blogs follow number of reaction for popular
-    const blogsPopular = sortReactBlog.slice(0,5);
+    const blogsPopular = sortReactBlog.slice(0, 5);
     this.$store.dispatch("getBlogsPopular", blogsPopular);
 
     // Get 5 blogs follow number of reaction for feature
-    const blogsFeature = sortReactBlog.slice(0,5);
+    const blogsFeature = sortReactBlog.slice(0, 5);
     this.$store.dispatch("getBlogsFeature", blogsFeature);
-
 
     // Get all category
     CategoryService.index().then(res => {

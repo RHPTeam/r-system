@@ -11,7 +11,7 @@ export default {};
 <style scoped lang="scss">
 .ads {
   overflow: hidden;
-    width: 100%;
+  width: 100%;
   img {
     top: 50%;
     max-width: none;
@@ -29,4 +29,3 @@ export default {};
   }
 }
 </style>
-

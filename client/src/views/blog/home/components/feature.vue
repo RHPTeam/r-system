@@ -38,7 +38,7 @@
                     >{{blog.desc}}</p>
                     <div class="item--bottom d_flex justify_content_between align_items_center">
                       <div class="item--info d_inline mb_0">
-                        <span class="item--info-time mr_4 position_relative">{{blog.createAt}}</span>
+                        <span class="item--info-time mr_4 position_relative"><app-time :time="blog.createAt"/></span>
                         <span class="item--info-like mr_4 position_relative">
                           <icon-base
                             class="pr_1 pt_1"
@@ -96,7 +96,7 @@
                     >{{blog.desc}}</p>
                     <div class="item--bottom d_flex justify_content_between align_items_center">
                       <div class="item--info d_inline mb_0">
-                        <span class="item--info-time mr_4 position_relative">{{blog.createAt}}</span>
+                        <span class="item--info-time mr_4 position_relative"><app-time :time="blog.createAt"/></span>
                         <span class="item--info-like mr_4 position_relative">
                           <icon-base
                             class="pr_1 pt_1"
@@ -139,6 +139,7 @@
 import IconBase from "@/components/icons/IconBase";
 import IconHeart from "@/components/icons/IconHeart";
 import IconBookmarkBlog from "@/components/icons/IconBookmarkBlog";
+import AppTime from "@/components/shared/timeAgo";
 export default {
   props: ["categories", "blogs"],
   data() {
@@ -175,7 +176,8 @@ export default {
   components: {
     IconBase,
     IconHeart,
-    IconBookmarkBlog
+    IconBookmarkBlog,
+    AppTime
   }
 };
 </script>

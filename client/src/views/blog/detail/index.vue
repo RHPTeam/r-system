@@ -10,8 +10,7 @@
           <div class="c_12 c_sm_12 o_sm_0 c_lg_10 o_lg_1 c_xl_8 o_xl_2">
             <app-post-other class=" pb_4 mb_5"/>
             <app-add-comment/>
-            <app-comment/>
-            <app-comment/>
+            <app-list-comment/>
           </div>
         </div>
       </div>
@@ -49,7 +48,7 @@ import IconSun from "@/components/icons/IconSun";
 import AppHeader from "@/components/blog/header";
 import AppFooter from "@/components/blog/footer";
 import AppPostDetail from "@/views/blog/detail/components/postdetail";
-import AppComment from "@/views/blog/detail/components/comment";
+import AppListComment from "@/views/blog/detail/components/listcomment";
 import AppAddComment from "@/views/blog/detail/components/addcomment";
 import AppPostOther from "@/views/blog/detail/components/postother";
 export default {
@@ -67,7 +66,7 @@ export default {
     AppHeader,
     AppFooter,
     AppPostDetail,
-    AppComment,
+    AppListComment,
     AppAddComment,
     AppPostOther
   },
@@ -95,7 +94,7 @@ export default {
       for (let i = 0; i < descendingCategories.length; i++) {
         nameCategory.push(descendingCategories[i].name);
       }
-      return nameCategory
+      return nameCategory;
     }
   },
   methods: {
@@ -114,7 +113,7 @@ export default {
     const res = await BlogService.show(blogId);
     this.$store.dispatch("showBlog", res.data.data[0]);
 
-     // Get all category
+    // Get all category
     CategoryService.index().then(res => {
       this.$store.dispatch("index", res.data.data);
     });
