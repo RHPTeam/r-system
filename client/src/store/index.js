@@ -6,6 +6,7 @@ import user from "./modules/user";
 import blog from "./modules/blog";
 import job from "./modules/job";
 import category from "./modules/category";
+import post from "./modules/post";
 
 Vue.use(Vuex);
 
@@ -44,6 +45,7 @@ export default new Vuex.Store({
     user,
     blog,
     job,
-    category
+    category,
+    post
   }
 });

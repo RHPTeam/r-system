@@ -4,7 +4,6 @@
     <form action="">
       <textarea name="" id=""></textarea>
       <!-- notification hidden, show after click textarea -->
-      <noti-question/>
       <!-- Trạng thái thông báo -->
       <div class="question--status text_right">
         <a href="#" class="t_name">live Preview</a>

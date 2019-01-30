@@ -19,7 +19,7 @@ const questionRouter = {
       component: () => import("@/views/question/question-create/index")
     },
     {
-      path: ":id",
+      path: ":questionId",
       name: "question-details",
       component: () => import("@/views/question/question-details/index")
     }
