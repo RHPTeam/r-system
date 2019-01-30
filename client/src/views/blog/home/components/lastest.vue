@@ -4,12 +4,12 @@
       <div class="component--header-title mr_5">LATEST BLOGS</div>
       <ul class="blog--filter d_flex align_items_center justify_content_start mb_0 pl_0 pb_1">
         <li class="blog--fliter-item active mr_2 position_relative">Tất cả</li>
-        <li v-if="!menu"></li>
+        <li v-if="!listCategory"></li>
         <li v-else
           class="blog--fliter-item mr_2 ml_3 position_relative"
-          v-for="item in menu"
-          :key="item"
-        >{{item}}</li>
+          v-for="category in listCategory"
+          :key="category._id"
+        >{{category.name}}</li>
       </ul>
     </div>
     <div class="ct_f p_0">
@@ -155,12 +155,12 @@ export default {
     currentTheme() {
       return this.$store.getters.themeName;
     },
-    menu() {
+    listCategory() {
       if (typeof this.categories == "undefined") return;
       if (this.categories.length == 0) return;
       // Get 5 item categories for Lastest Menu
-      const menu = this.categories.slice(0, 5);
-      return menu;
+      const listCategory = this.categories.slice(0, 5);
+      return listCategory;
     },
     verBlogs() {
       if (typeof this.blogs == "undefined") return;

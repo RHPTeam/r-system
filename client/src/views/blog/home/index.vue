@@ -113,18 +113,18 @@ export default {
     categories() {
       return this.$store.getters.categories;
     },
-    listCategory() {
+   listCategory() {
       if (this.categories.length == 0) return;
       // Sort categories by number of blogs in category
       const descendingCategories = this.categories.sort(
         (a, b) => b._blogs.length - a._blogs.length
       );
       // Get all name categories
-      const nameCategory = [];
+      const category = [];
       for (let i = 0; i < descendingCategories.length; i++) {
-        nameCategory.push(descendingCategories[i].name);
+        category.push(descendingCategories[i]);
       }
-      return nameCategory;
+      return category;
     }
   },
   methods: {
@@ -152,9 +152,9 @@ export default {
     // Sort all Blog in oder number of clap,view,comment
     const sortReactBlog = dataAllBlog.sort(
       (a, b) =>
-        b._comments.length +
+        (b._comments.length +
         b.clap +
-        b.views -
+        b.views) -
         (a._comments.length + a.clap + a.views)
     );
 
