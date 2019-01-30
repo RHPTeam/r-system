@@ -1,53 +1,33 @@
 <template>
   <div class="position_relative job--items p_5">
-    <div class="job--title mt_2">
-      <h4>Development Engineer (Server-side) - Working in Japan</h4>
-      <span class="position_absolute">18 gio truoc</span>
-    </div>
-    <div class="job--of-company mt_1"><span>Microsoft - Silicon Valley</span></div>
-    <div class="job--offer mt_1"><span>500$ - 1000$</span></div>
-    <div class="job--tags mt_4">
-      <a href="#">Javascript</a>
-      <a href="#">Vuejs</a>
+    <div v-if="!job"></div>
+    <div class="item" v-else>
+      <div class="job--title mt_2">
+        <router-link tag="h4" :to="{ name: 'job-details', params: { jobId: job._id } }">{{ job.position }} - {{ job.office }}</router-link>
+        <span class="position_absolute">18 gio truoc</span>
+      </div>
+      <div class="job--of-company mt_1"><span>{{ job.nameCompany }} - {{ job.locationCompany }}</span></div>
+      <div class="job--offer mt_1"><span>{{ job.salary }} VNĐ</span></div>
+      <div v-if="!tags"></div>
+      <div v-else class="job--tags mt_4">
+        <router-link tag="a" v-for="tag in tags" :key="tag" to="/jobs">{{ tag }}</router-link>
+      </div>
     </div>
   </div>
 </template>
+<script>
+export default {
+  props: ["job"],
+  computed: {
+    tags() {
+      if (!this.job) return;
+      if (!this.job.technologies) return;
+      const arr = this.job.technologies.split(",");
+      return arr;
+    }
+  }
+};
+</script>
 <style lang="scss" scoped>
-.job--items {
-  border-bottom: 1px solid #e4e4e4;
-  .job--title {
-    h4 {
-      line-height: 1.31;
-      color: #0077dd;
-    }
-    span {
-      top: 3.8rem;
-      right: 1rem;
-      z-index: +2;
-    }
-  }
-  .job--of-company {
-    line-height: 1.36;
-    letter-spacing: -0.2px;
-    color: #000000;
-  }
-  .job--offer {
-    font-weight: 300;
-    font-style: italic;
-    font-stretch: normal;
-    line-height: 1.4;
-    letter-spacing: -0.2px;
-    color: #ff7011;
-  }
-  .job--tags {
-    a {
-      padding: 8px 15px;
-      border: 1px solid #e4e4e4;
-      border-radius: 28px;
-      color: #a8a8a8;
-      margin-right: 10px;
-      text-decoration: none;
-    }
-  }
-}
+@import "items";
 </style>

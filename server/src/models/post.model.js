@@ -1,51 +1,32 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 const PostSchema = new Schema({
-  parent: String,
-  score: {
-    type: Number,
-    default: 0
-  },
-  views: {
-    type: Number,
-    default: 0
-  },
-  body: String,
-  _owner: {
-    type: Schema.Types.ObjectId,
-    ref: 'User'
-  },
-  lastEditDate: {
-    type: Date,
-    default: Date.now()
-  },
-  lastActivityDate: {
-    type: Date,
-    default: Date.now()
-  },
   title: String,
+  body: String,
+  parent: String,
+  score: Number,
+  views: Number,
+  answerCount: Number,
+  commentCount: Number,
+  FavoriteCount: Number,
+  closedDate: Date,
+  createAt: Date,
+  lastEditDate: Date,
+  lastActivityDate: Date,
+  _votes: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Vote'
+  }],
   _tags: [{
     type: Schema.Types.ObjectId,
     ref: 'Tag'
   }],
-  answerCount: {
-    type: Number,
-    default: 0
+  _owner: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
   },
-  commentCount: {
-    type: Number,
-    default: 0
-  },
-  FavoriteCount: {
-    type: Number,
-    default: 0
-  },
-  closedDate: {
-    type: Date,
-    default: Date.now()
-  }
-})
+});
 
-const Post = mongoose.model('Post', PostSchema)
-module.exports = Post
+const Post = mongoose.model('Post', PostSchema);
+module.exports = Post;

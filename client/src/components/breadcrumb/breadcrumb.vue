@@ -1,12 +1,14 @@
 <template>
   <div class="title--head position_relative">
     top
-    <span class="title--head-top position_absolute">Questions</span>
+    <span class="title--head-top position_absolute">{{ breadcrumb }}</span>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  props: ["breadcrumb"]
+};
 </script>
 
 <style lang="scss" scoped>

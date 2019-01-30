@@ -8,25 +8,23 @@
 const Job = require('../models/job.model');
 const User = require('../models/user.model');
 const JsonResponse = require('../helpers/json-response');
+const { isObjectEmpty } = require('../helpers/function_rhp')
 
 module.exports = {
+
   /**
    * Name: Get All Job
    * @param req
    * @param res
    * @param next
    */
-  index: async (req, res, next) => {
-    const query = req.query;
-    await Job.find(query, (err, data) => {
-      if (err) {
-        return res.json(JsonResponse("", 404, err, true))
-      }
-      return res.json(JsonResponse(data, 200, "Lấy dữ liệu công việc thành công!", false))
-    }).populate({
-      path: "_createPerson",
-      select: "nameDisplay avatar"
-    })
+  index: async (req, res) => {
+    const data = await Job.find(req.query).populate({
+      path: '_createPerson',
+      select: 'nameDisplay avatar'
+    });
+    if (isObjectEmpty(data)) return res.status(403).json(JsonResponse("", 403, "Query lấy dữ liệu thất bại!", true));
+    res.status(200).json(JsonResponse(data, 200, 'Lấy dữ liệu công việc thành công!', false));
   },
 
   /**
@@ -35,21 +33,18 @@ module.exports = {
    * @param res
    * @param next
    * @Queries: userid (user Id)
+   * Note: A User just can create 3 job new. If user want create more, need permission higher :))
    */
-
-  create: async (req, res, next) => {
+  create: async (req, res) => {
     const who = await User.findById(req.value.body._createPerson);
-    const newJob = req.value.body;
-    delete newJob._createPerson;
-
-    const job = new Job(newJob);
+    if (who._jobs.length > 3) return res.status(405).json(JsonResponse('', 405, 'Bạn đã đạt mốc giới hạn số lượng tạo công việc là 3! <3', true));
+    delete req.value.body._createPerson;
+    const job = new Job(req.value.body);
     job._createPerson = who;
     await job.save();
-
     who._jobs.push(job);
     await who.save();
-
-    res.json(JsonResponse("", 200, "Công việc tạo thành công! ^_^", false));
+    res.status(200).json(JsonResponse('', 200, 'Công việc tạo thành công! ^_^', false));
   },
 
   /**
@@ -60,13 +55,14 @@ module.exports = {
    * @Queries: userid (user Id)
    */
 
-  update: async (req, res, next) => {
-    const { jobId } = req.value.params;
-    const newJob = req.value.body;
-
-    const data = await Job.findByIdAndUpdate(jobId, newJob);
-
-    res.json(JsonResponse(data, 200, "Cập nhật thông tin công việc thành công! :D", false));
+  update: async (req, res) => {
+    const {jobId} = req.value.params;
+    if (!req.query._userId) return res.status(403).json(JsonResponse('', 403, 'Vui lòng xác thực quyền người tạo công việc!', true));
+    const job = await Job.findById(jobId);
+    if (!job) return res.status(403).json(JsonResponse('', 403, 'Công việc này không tồn tại! :)', true));
+    if (req.query._userId != job._createPerson._id) return res.status(403).json(JsonResponse('', 403, 'Bạn không phải người tạo câu hỏi này!', true));
+    const data = await Job.findByIdAndUpdate(jobId, {$set: req.value.body}, {new: true})
+    res.status(200).json(JsonResponse(data, 200, 'Cập nhật thông tin công việc thành công! :D', false))
   },
 
   /**
@@ -77,19 +73,17 @@ module.exports = {
    * @Queries: userid (user Id)
    */
 
-  delete: async (req, res, next) => {
-    const { jobId } = req.value.params;
-
+  delete: async (req, res) => {
+    const {jobId} = req.value.params;
+    const who = await User.findById(req.query._userId);
+    if (!req.query._userId) return res.status(403).json(JsonResponse('', 403, 'Vui lòng xác thực quyền người tạo công việc!', true))
     const job = await Job.findById(jobId);
-    if (!job) return res.json(JsonResponse("", 403, "Công việc này không tồn tại! :)", true));
-
-    const who = await User.findById(job._createPerson)
-
+    if (!job) return res.status(403).json(JsonResponse('', 403, 'Công việc này không tồn tại! :)', true));
+    if (req.query._userId != job._createPerson._id) return res.status(403).json(JsonResponse('', 403, 'Bạn không phải người tạo câu hỏi này!', true));
     await job.remove();
     who._jobs.pull(job);
     await who.save();
-
-    res.json(JsonResponse("", 200, "Xóa công việc thành công! T_T", false));
+    res.status(200).json(JsonResponse('', 200, 'Xóa công việc thành công! T_T', false))
   }
-};
+}
 

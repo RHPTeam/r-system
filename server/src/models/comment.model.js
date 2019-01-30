@@ -3,6 +3,9 @@ const Schema = mongoose.Schema
 
 const CommentSchema = new Schema({
     content: String,
+    like: Number,
+    createAt: Date,
+    editAt: Date,
     _blog: {
         type: Schema.Types.ObjectId,
         ref: 'Blog'

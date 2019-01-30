@@ -4,14 +4,13 @@
       <h2>Danh sách bài viết</h2>
     </div>
     <div v-for="(blog,index) in blogs" :key="index">
-      <app-blog :blog="blog" :index="index"/>
+      <app-blog :blog="blog" :index="index" />
     </div>
-    <app-paginate/>
+    <app-paginate />
   </div>
 </template>
-
 <script>
-import BlogService from "@/services//modules/blog.service";
+import BlogService from "@/services/modules/blog.service";
 
 import AppBlog from "./item-blog";
 import AppPaginate from "./paginate";
@@ -22,7 +21,8 @@ export default {
   },
   computed: {
     blogs() {
-      return this.$store.getters.blogsByUser;
+      const listBlogs = this.$store.getters.blogsByUser;
+      return listBlogs;
     }
   },
   async mounted() {
@@ -33,7 +33,6 @@ export default {
   }
 };
 </script>
-
 <style scoped lang="scss">
 @import "list-blog.scss";
 </style>

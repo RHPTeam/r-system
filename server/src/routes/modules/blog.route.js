@@ -1,38 +1,25 @@
-
 /**
  * create route blog  for project
  * author: hocpv
+ * Update Person: Tran Toan
  * date up: 16/1/2019
  * date to: 16/1/2019
  * team: BE-RHP
  */
 const router = require('express-promise-router')();
-
 const blog = require('../../controllers/blog.controller');
+const {
+  validateParam,
+  validateBody,
+  schemas
+} = require("../../helpers/validatorRoute");
 
-/* GET blog listing. */
 router.route('/')
-    .get(blog.getAllBlogs)
-    .post(blog.createBlog); //create by hand of admin
+  .get(blog.index)
+  .post(validateBody(schemas.blogSchema), blog.create);
 
-/* GET blog by id listing. */
-router.route('/blogId=:blogId')
-    .get(blog.getOneBlog)
-    .patch(blog.updateBlog)
-    .delete(blog.deleteBlog);
-
-/*GET blog by user */
-router.route('/userId=:userId')
-    .get(blog.getBlogByUser)
-router.route('/userId=:userId&categoryId=:categoryId')
-    .post(blog.createBlogByUser);
-
-/*GET blog by category */
-router.route('/category/id=:categoryId')
-    .get(blog.getBlogByCategoryId);
-
-/*GET blog by comment */
-router.route('/:blogId/comment')
-    .get(blog.getCommentInBlog)
+router.route('/:blogId')
+  .patch([validateBody(schemas.blogSchema), validateParam(schemas.idSchema, "blogId")], blog.update)
+  .delete(validateParam(schemas.idSchema, "blogId"), blog.delete);
 
 module.exports = router;

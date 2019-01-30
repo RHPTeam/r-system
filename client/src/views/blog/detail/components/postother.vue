@@ -1,169 +1,90 @@
 <template>
-  <div class="postother ct p_0">
+  <div class="post--other detail-component ct p_0" :data-color="currentTheme">
+    <div class="post--other-title mb_3">Các bài viết khác</div>
     <div class="r">
-      <div class="c_md_4">
-        <div class="item">
-          <div class="item--title h3">A Recap of Frontend Development in 2018</div>
-          <div class="author d_flex justify_content_start align_items_center">
-            <div class="author--avatar position_relative">
-              <img class="position_absolute" src="http://www.igeacps.it/app/uploads/2018/05/profile_uni_user.png">
-            </div>
-            <div class="author--info">
-              <span class="author--info-name">Lukas Gisder-Dubé</span>
-            </div>
+      <div v-for="blog in blogsOther" :key="blog._id" class="c_12 c_sm_12 c_md_4 c_lg_4 pl_3 pr_3 mb_4 mb_md_0">
+        <div class="other--item position_relative">
+          <div class="item--img position_relative">
+            <img
+              class="position_absolute"
+              src="http://ttol.vietnamnetjsc.vn//2017/05/25/15/05/hoa-sen-dep-moc-mac-thanh-cao-hiem-co-loai-hoa-nao-sanh-bang_8.jpg"
+            >
           </div>
-          <div class="item--reactive d_flex justify_content_end align_items_center">
-            <div class="item--reactive-clap d_flex align_items_center">
-              <span>10</span>
-              <icon-base icon-name="clap" width="36" height="36" viewBox="0 0 25 25">
-                <icon-clap/>
-              </icon-base>
-            </div>
-            <div class="item--reactive-comment d_flex align_items_center pl_3">
-              <span>8</span>
-              <icon-base icon-name="comment" width="35" height="35" viewBox="0 0 560 560">
-                <icon-comment/>
-              </icon-base>
+          <div class="item--info position_absolute">
+            <div class="item--info--tile mb_1">{{blog.title}}</div>
+            <div class="item--info-bottom d_inline">
+              <span class="item--info-time mr_4 position_relative"><app-time :time="blog.createAt"/></span>
+              <span class="item--info-like mr_4 position_relative"><icon-base class="pr_1 pt_1" icon-name="heart" viewBox="0 0 378.94 378.94"><icon-heart /></icon-base>{{blog.clap}}</span>
+              <span class="item--info-author position_relative">by <span class="item--info-name">{{blog._author.nameDisplay}}</span></span>
             </div>
           </div>
         </div>
       </div>
-      <div class="c_md_4">
-        <div class="item">
-          <div class="item--title h3">A Recap of Frontend Development in 2018</div>
-          <div class="author d_flex justify_content_start align_items_center">
-            <div class="author--avatar position_relative">
-              <img class="position_absolute" src="http://www.igeacps.it/app/uploads/2018/05/profile_uni_user.png">
-            </div>
-            <div class="author--info">
-              <span class="author--info-name">Lukas Gisder-Dubé</span>
-            </div>
-          </div>
-          <div class="item--reactive d_flex justify_content_end align_items_center">
-            <div class="item--reactive-clap d_flex align_items_center">
-              <span>10</span>
-              <icon-base icon-name="clap" width="36" height="36" viewBox="0 0 25 25">
-                <icon-clap/>
-              </icon-base>
-            </div>
-            <div class="item--reactive-comment d_flex align_items_center pl_3">
-              <span>8</span>
-              <icon-base icon-name="comment" width="35" height="35" viewBox="0 0 560 560">
-                <icon-comment/>
-              </icon-base>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="c_md_4">
-        <div class="item">
-          <div class="item--title h3">A Recap of Frontend Development in 2018</div>
-          <div class="author d_flex justify_content_start align_items_center">
-            <div class="author--avatar position_relative">
-              <img class="position_absolute" src="http://www.igeacps.it/app/uploads/2018/05/profile_uni_user.png">
-            </div>
-            <div class="author--info">
-              <span class="author--info-name">Lukas Gisder-Dubé</span>
-            </div>
-          </div>
-          <div class="item--reactive d_flex justify_content_end align_items_center">
-            <div class="item--reactive-clap d_flex align_items_center">
-              <span>10</span>
-              <icon-base icon-name="clap" width="36" height="36" viewBox="0 0 25 25">
-                <icon-clap/>
-              </icon-base>
-            </div>
-            <div class="item--reactive-comment d_flex align_items_center pl_3">
-              <span>8</span>
-              <icon-base icon-name="comment" width="35" height="35" viewBox="0 0 560 560">
-                <icon-comment/>
-              </icon-base>
-            </div>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
-
 </template>
 
 <script>
-import IconBase from "@/components/icons/IconBase";
-import IconClap from "@/components/icons/IconClap.vue";
-import IconComment from "@/components/icons/IconComment.vue";
+import BlogService from "@/services/modules/blog.service";
 
+import IconBase from "@/components/icons/IconBase";
+import IconHeart from "@/components/icons/IconHeart";
+import AppTime from "@/components/shared/timeAgo";
 export default {
   components: {
     IconBase,
-    IconClap,
-    IconComment
+    IconHeart,
+    AppTime
+  },
+  computed: {
+    currentTheme() {
+      return this.$store.getters.themeName;
+    },
+    blogsByUser() {
+      const blogsByUser = this.$store.getters.blogsByUser;
+      return blogsByUser;
+    },
+    blogsOther() {
+      const blogsOther = this.$store.getters.blogsOther;
+      return blogsOther;
+    },
+
+  },
+  async mounted() {
+    // Get all Blog by User
+    const userId = "5c44b2ab3ffcb12f18c33394";
+    BlogService.getByUser(userId).then(res => {
+      const blogsByUser = res.data.data;
+      this.$store.dispatch("showByUser", blogsByUser);
+    });
+
+    // Get all Blog
+    const allBlog = await BlogService.index();
+    let dataAllBlog = allBlog.data.data;
+    if (typeof dataAllBlog == "undefined") return;
+    if (dataAllBlog.length == 0) return;
+
+    // Sort allBlog in order from new to old
+    const sortNewBlog = dataAllBlog.reverse();
+    this.$store.dispatch("getAllBlog", sortNewBlog);
+
+    // Create array for other blogs
+    const currentBlogId = this.$route.params.blogId
+
+    var filterBlogsUser = this.blogsByUser.filter(function(item){
+     return item._id != currentBlogId
+    });
+    var filterAllBlogs = sortNewBlog.filter(function(item){
+     return item._author._id != userId
+    });
+    const allOtherBlogs = filterBlogsUser.concat(filterAllBlogs);
+    // Get 3 object for other blogs
+    const otherBlogs = allOtherBlogs.slice(0,3)
+    this.$store.dispatch("getBlogsOther", otherBlogs);
   }
 };
 </script>
 
 <style scoped lang="scss">
-.postother {
-  margin-top: 12px;
-
-  .r {
-    padding: 0 10px;
-
-    .c_md_4 {
-      padding-left: 5px;
-      padding-right: 5px;
-    }
-  }
-}
-
-.item {
-  background-color: #ffffff;
-  padding: 18px 32px;
-
-  .item--title {
-    color: #707070;
-  }
-
-  .item--reactive {
-    color: #707070;
-
-    span {
-      font-size: 20px;
-      padding-top: 5px;
-      margin-right: 5px;
-    }
-  }
-}
-
-.author {
-  margin-top: 20px;
-  margin-bottom: 50px;
-
-  .author--avatar {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin-right: 30px;
-
-    &:before {
-      content: "";
-      display: block;
-      padding-top: 100%;
-    }
-
-    img {
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      width: 100%;
-      height: auto;
-    }
-  }
-
-  .author--info {
-    font-size: 20px;
-    color: #707070;
-  }
-}
+@import "./detail";
 </style>

@@ -25,6 +25,7 @@ const ranks = require('./modules/rank.route')
 const tags = require('./modules/tag.route')
 const trashs = require('./modules/trash.route')
 const users = require('./modules/user.route')
+const votes = require('./modules/vote.route')
 
 const router = express.Router();
 
@@ -46,5 +47,6 @@ router.use('/ranks', ranks)
 router.use('/tags', tags)
 router.use('/trashs', trashs)
 router.use('/users', users)
+router.use('/votes', votes)
 
 module.exports = router;

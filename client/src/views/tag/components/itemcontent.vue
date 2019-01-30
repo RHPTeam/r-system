@@ -36,7 +36,7 @@ export default {
       margin-bottom: 20px;
 
       .tag--name {
-        padding: 8px 10px;
+        padding: 8px 5px;
         color: black;
         border-radius: 2px;
         background-color: #dddfe2;

@@ -6,12 +6,15 @@ import user from "./modules/user";
 import anwser from "./modules/answer";
 import blog from "./modules/blog";
 import job from "./modules/job";
+import category from "./modules/category";
+import post from "./modules/post";
+import comment from "./modules/comment";
 
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  strict: true,
+  // strict: true,
   state: {
     statusMenu: false,
     themeName: "light"
@@ -45,6 +48,9 @@ export default new Vuex.Store({
     user,
     anwser,
     blog,
-    job
+    job,
+    category,
+    post,
+    comment
   }
 });

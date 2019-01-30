@@ -36,25 +36,21 @@ export default {
     return {
       items: [
         {
-          name: "Thích nhất",
+          name: "Intersting",
           url: "intersting"
         },
         {
-          name: "Mới nhất",
+          name: "Feature",
           url: "feature",
           qty: 212
         },
         {
-          name: "Hot nhất",
-          url: "hot"
+          name: "Hot",
+          url: "Week"
         },
         {
-          name:"Tuần",
-          url: "week"
-        },
-        {
-          name: "Tháng",
-          url: "month"
+          name: "Month",
+          url: "questioners"
         }
       ]
     };

@@ -3,17 +3,8 @@
         <!-- router-view -->
         <div class="content--question ct_f">
           <div class="">
-            <div class="c_12">
-              <item/>
-            </div>
-            <div class="c_12">
-              <item/>
-            </div>
-            <div class="c_12">
-              <item/>
-            </div>
-            <div class="c_12">
-              <item/>
+            <div class="c_12" v-for="(post, index) in posts" :key="index">
+              <item :post="post" />
             </div>
           </div>
         </div>
@@ -24,7 +15,8 @@ import Item from "./cp-content/item";
 export default {
   components: {
     Item
-  }
+  },
+  props: ["posts"]
 };
 </script>
 <style lang="scss" scoped>

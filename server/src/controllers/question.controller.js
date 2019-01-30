@@ -30,7 +30,7 @@ module.exports = {
    * @param next
    */
   createQuestion: async (req, res, next) => {
-    try {
+      try {
       const data = req.body;
       const question = await new Question({
         name: data.name,

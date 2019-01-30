@@ -15,6 +15,14 @@ const JobSchema = new Schema({
     technologies: String,
     content: String,
     infoCompany: String,
+    benefits: [{
+        name: String
+    }],
+    cultureCompany: String,
+    partners: [{
+       type:Schema.Types.ObjectId,
+       ref: 'User'
+    }],
     _createPerson: {
         type: Schema.Types.ObjectId,
         ref: 'User'

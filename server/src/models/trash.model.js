@@ -3,10 +3,10 @@ const Schema = mongoose.Schema
 
 const TrashSchema = new Schema({
     type: String,
-    // _posts: [{
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'Blog'
-    // }],
+    _blogs: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Blog'
+    }],
     _library: [{
         type: Schema.Types.ObjectId,
         ref: 'Library'

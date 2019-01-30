@@ -3,7 +3,7 @@
         <nav aria-label="Page navigation example">
             <ul class="pagination justify_content_center justify_content_md_end">
                 <li class="page_item disabled">
-                    <a class="page_link" href="#" tabindex="-1">Trước</a>
+                    <a class="page_link" href="#" tabindex="-1">Previous</a>
                 </li>
                 <li class="page_item"><a class="page_link" href="#">1</a></li>
                 <li class="page_item"><a class="page_link" href="#">2</a></li>
@@ -15,7 +15,7 @@
                 <li class="page_item"><a class="page_link" href="#">3</a></li>
                 <li class="page_item"><a class="page_link" href="#">4</a></li>
                 <li class="page_item">
-                    <a class="page_link" href="#">Sau</a>
+                    <a class="page_link" href="#">Next</a>
                 </li>
             </ul>
         </nav>
