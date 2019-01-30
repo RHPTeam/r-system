@@ -1,6 +1,6 @@
 <template>
   <div :data-theme="currentTheme" class="blog--content">
-    <app-header/>
+    <app-header :categories='listCategory'/>
     <div class="category pt_4 pb_4">
       <div class="ct pl_4 pr_4 pr_sm_0 pl_sm_0">
         <div class="r">
@@ -27,7 +27,7 @@
       </div>
     </div>
 
-    <app-footer/>
+    <app-footer :categories='listCategory'/>
     <div class="blog--change position_fixed text_center">
       <div class="change--theme" @click="changeTheme">
         <div v-if="isThemeLight" class="theme--dark"><icon-base icon-name="moon" width="30" height="30" viewBox="0 0 24.678 25.761"><icon-moon /></icon-base></div>
@@ -39,6 +39,7 @@
 </template>
 
 <script>
+import CategoryService from "@/services/modules/category.service";
 import IconBase from "@/components/icons/IconBase";
 import IconFontSize from "@/components/icons/IconFontSize";
 import IconMoon from "@/components/icons/IconMoon";
@@ -55,7 +56,8 @@ export default {
   data() {
     return {
       isThemeLight: true,
-      theme: "light"
+      theme: "light",
+      componentLoaded: false
     };
   },
   components: {
@@ -78,6 +80,22 @@ export default {
     },
     currentTheme() {
       return this.$store.getters.themeName;
+    },
+    categories() {
+      return this.$store.getters.categories;
+    },
+    listCategory() {
+      if (this.categories.length == 0) return;
+      // Sort categories by number of blogs in category
+      const descendingCategories = this.categories.sort(
+        (a, b) => b._blogs.length - a._blogs.length
+      );
+      // Get all name categories
+      const nameCategory = [];
+      for (let i = 0; i < descendingCategories.length; i++) {
+        nameCategory.push(descendingCategories[i].name);
+      }
+      return nameCategory;
     }
   },
   methods: {
@@ -90,6 +108,13 @@ export default {
       }
       this.$store.dispatch("changeTheme", this.valueTheme);
     }
+  },
+  async mounted() {
+    // Get all category
+    CategoryService.index().then(res => {
+      this.$store.dispatch("index", res.data.data);
+    });
+    this.componentLoaded = true;
   }
 };
 </script>
