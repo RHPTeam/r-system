@@ -12,7 +12,6 @@ const user = require('../../controllers/user.controller');
 
 /* GET users listing. */
 router.route('/')
-  .post(user.createUser) //done
   .get(user.getAllUsers); // done
 
 router.route('/:userId')

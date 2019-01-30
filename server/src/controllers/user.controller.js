@@ -10,7 +10,9 @@ const passport = require('passport')
 const omit = require('lodash/omit')
 const split = require('lodash/split')
 const forEach = require('lodash/forEach')
+const jwt = require('jsonwebtoken');
 
+const config = require('../configs/config');
 //const joi = require('joi');
 const User = require('../models/user.model')
 const Notification = require('../models/notification.model')
@@ -72,8 +74,17 @@ module.exports = {
           return res.json(JsonResponse('', 404, 'Email or nameDisplay is exist.', false))
         }
 
-        res.cookie('userId', data._id, option);
-        return res.json(JsonResponse('', 200, 'created user successfully!', false))
+        res.cookie('userId', user._id, option);
+        const payload = {
+          sub: user._id
+        };
+  
+        // create a token string
+        const token = jwt.sign(payload, config.JWT_SECRET, {expiresIn: "1h"});
+        return res.json(JsonResponse({
+          token,
+          data: user
+        }, 200, 'created user successfully!', false))
       })
     } catch (error) {
       next(error)
