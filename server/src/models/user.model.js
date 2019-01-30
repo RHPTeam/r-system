@@ -95,11 +95,11 @@ const UserSchema = new Schema({
 });
 
 // compare code password
-UserSchema.methods.comparePassword = function comparePassword(password, callback) {
-  bcrypt.compare(password, this.password, callback);
-};
+UserSchema.methods.comparePassword =  function comparePassword(password, callback) {
+    bcrypt.compare(password, this.password, callback);
+  },
 //
-// // bcrypt code password
+// bcrypt code password
 UserSchema.pre('save', function (next) {
   const user = this;
 
@@ -123,6 +123,9 @@ UserSchema.pre('save', function (next) {
 });
 
 UserSchema.methods = {
+  comparePassword: function (password, callback) {
+    bcrypt.compare(password, this.password, callback);
+  },
   // check notification
   notification: function (id) {
     if (this._notifications.indexOf(id) === -1) {

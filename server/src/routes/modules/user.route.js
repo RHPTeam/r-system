@@ -6,10 +6,9 @@
  * team: BE-RHP
  */
 const router = require('express-promise-router')();
-
 const user = require('../../controllers/user.controller');
 
-const reputation = require('../../controllers/reputation.controller')
+// const reputation = require('../../controllers/reputation.controller')
 
 /* GET users listing. */
 router.route('/')
@@ -38,7 +37,6 @@ router.route('/:userId/populate')
 
 router.param('userId', user.getByIdUser);
 router.get('/:userId/is-login', user.isLogin)
-router.post('/login-local', user.loginUser);
 
 
 module.exports = router;

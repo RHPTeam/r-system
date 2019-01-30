@@ -1,6 +1,7 @@
 const express = require('express');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const passport = require('passport');
@@ -33,6 +34,8 @@ mongoose.set('useFindAndModify', false);
 
 // log requests to the console
 app.use(logger('dev'));
+
+app.use(cookieParser(config.JWT_SECRET));
 
 // Enable CORS
 app.use(cors());
