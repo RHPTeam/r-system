@@ -51,18 +51,16 @@
   </div>
 </template>
 <script>
-  export default {
-    data () {
-      return {
-
-      }
-    },
-    methods: {
-      next () {
-        this.$router.push({ name: 'question-create' });
-      }
+export default {
+  data() {
+    return {};
+  },
+  methods: {
+    next() {
+      this.$router.push({ name: "question-create" });
     }
   }
+};
 </script>
 <style scoped>
 @import "content.scss";

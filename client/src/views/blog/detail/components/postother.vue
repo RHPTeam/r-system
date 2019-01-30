@@ -47,8 +47,7 @@ export default {
     blogsOther() {
       const blogsOther = this.$store.getters.blogsOther;
       return blogsOther;
-    },
-
+    }
   },
   async mounted() {
     // Get all Blog by User
@@ -69,17 +68,17 @@ export default {
     this.$store.dispatch("getAllBlog", sortNewBlog);
 
     // Create array for other blogs
-    const currentBlogId = this.$route.params.blogId
+    const currentBlogId = this.$route.params.blogId;
 
-    var filterBlogsUser = this.blogsByUser.filter(function(item){
-     return item._id != currentBlogId
+    var filterBlogsUser = this.blogsByUser.filter(function(item) {
+      return item._id != currentBlogId;
     });
-    var filterAllBlogs = sortNewBlog.filter(function(item){
-     return item._author._id != userId
+    var filterAllBlogs = sortNewBlog.filter(function(item) {
+      return item._author._id != userId;
     });
     const allOtherBlogs = filterBlogsUser.concat(filterAllBlogs);
     // Get 3 object for other blogs
-    const otherBlogs = allOtherBlogs.slice(0,3)
+    const otherBlogs = allOtherBlogs.slice(0, 3);
     this.$store.dispatch("getBlogsOther", otherBlogs);
   }
 };

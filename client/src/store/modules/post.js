@@ -16,7 +16,7 @@ const mutations = {
 
 const actions = {
   getAllPosts: ({ commit }, payload) => {
-    commit("getAllPosts", payload)
+    commit("getAllPosts", payload);
   }
 };
 export default {

@@ -11,7 +11,7 @@ import Api from "@/services/Api";
 export default {
   index() {
     return Api().get("posts");
-  },
+  }
   // getJobsByUser(userId) {
   //   return Api().get(`jobs?_createPerson=${userId}`);
   // },
