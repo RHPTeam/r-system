@@ -69,7 +69,7 @@ import IconLogo from "@/components/icons/IconLogo";
 import IconSearchSolid from "@/components/icons/IconSearchSolid";
 import IconAlarm from "@/components/icons/IconAlarm";
 export default {
-  props: ["menu"],
+  props: ["categories"],
   data() {
     return {
       statusDropdown: false
@@ -78,6 +78,13 @@ export default {
   computed: {
     currentTheme() {
       return this.$store.getters.themeName;
+    },
+    menu() {
+      if (typeof this.categories == "undefined") return;
+      if (this.categories.length == 0) return;
+      // Get 10 item categories for Home Menu
+      const menu = this.categories.slice(0, 10);
+      return menu;
     }
   },
   components: {

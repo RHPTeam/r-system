@@ -7,6 +7,7 @@ import blog from "./modules/blog";
 import job from "./modules/job";
 import category from "./modules/category";
 import post from "./modules/post";
+import comment from "./modules/comment";
 
 Vue.use(Vuex);
 
@@ -46,6 +47,7 @@ export default new Vuex.Store({
     blog,
     job,
     category,
-    post
+    post,
+    comment
   }
 });

@@ -13,7 +13,7 @@
             viewBox="0 0 378.94 378.94"
           >
             <icon-heart/>
-          </icon-base>26
+          </icon-base>{{blog.clap}}
         </span>
         <span class="detail--icon mt_2 mb_2">
           <icon-base width="30" height="34" icon-name="bookmark-blog" viewBox="0 0 431.972 431.972">
@@ -44,11 +44,11 @@
                 </div>
               </div>
               <div class="author--start">
-                <span class="author--start-time mr_4 position_relative">Jan 14</span>
+                <span class="author--start-time mr_4 position_relative"><app-time :time="blog.createAt"/></span>
                 <span class="author--start-icon mr_4 position_relative">
                   <icon-base class="pr_1 pt_1" icon-name="heart" viewBox="0 0 378.94 378.94">
                     <icon-heart/>
-                  </icon-base>26
+                  </icon-base>{{blog.clap}}
                 </span>
               </div>
             </div>
@@ -70,7 +70,7 @@
                 viewBox="0 0 378.94 378.94"
               >
                 <icon-heart/>
-              </icon-base>26
+              </icon-base>{{blog.clap}}
             </span>
             <div class="d_flex justify_content_end align_items_center">
               <span class="detail--react-comment d_flex align_items_center">
@@ -82,7 +82,7 @@
                   viewBox="0 0 18.657 11.994"
                 >
                   <icon-answer/>
-                </icon-base>22
+                </icon-base>{{blog._comments.length}}
               </span>
               <span class="ml_3 detail--react-facebook">
                 <icon-base width="30" height="30" icon-name="facebook" viewBox="0 0 512 512">
@@ -133,6 +133,7 @@ import IconHeart from "@/components/icons/IconHeart";
 import IconBookmarkBlog from "@/components/icons/IconBookmarkBlog";
 import IconAnswer from "@/components/icons/IconAnswer";
 import IconFacebook from "@/components/icons/IconFacebook";
+import AppTime from "@/components/shared/timeAgo";
 export default {
   props: ["blog"],
   data() {
@@ -151,7 +152,8 @@ export default {
     IconHeart,
     IconBookmarkBlog,
     IconAnswer,
-    IconFacebook
+    IconFacebook,
+    AppTime
   }
 };
 </script>

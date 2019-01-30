@@ -1,6 +1,6 @@
 const state = {
   categories: [],
-  Category: {} // khong bao gio gia tri la string
+  category: {}
 };
 
 const getters = {

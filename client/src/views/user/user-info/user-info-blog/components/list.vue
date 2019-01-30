@@ -10,7 +10,7 @@
   </div>
 </template>
 <script>
-import BlogService from "@/services//modules/blog.service";
+import BlogService from "@/services/modules/blog.service";
 
 import AppBlog from "./item-blog";
 import AppPaginate from "./paginate";
