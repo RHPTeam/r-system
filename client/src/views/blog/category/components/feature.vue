@@ -2,7 +2,8 @@
   <div class="blog--category feature" :data-theme="currentTheme">
     <div class="blog--category-title pt_3 pb_3">FEATURED</div>
     <!-- Vertical item -->
-    <div class="item--category item--vertical mb_4">
+    <div v-if="!blog"></div>
+    <div v-else class="item--category item--vertical mb_4">
       <div class="ct_f p_0">
         <div class="r">
           <div class="c_md_12">
@@ -15,20 +16,26 @@
           </div>
           <div class="c_md_12">
             <div class="card card_body p_0 mt_n1 mt_sm_0 mt_md_3">
-              <h5 class="card_title mb_3 mt_2 mt_sm_0">There’s Nothing New at CES 2019</h5>
-              <p
-                class="card_text mb_2"
-              >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
+              <router-link
+                tag="h5"
+                :to="{name: 'post', params: {blogId: blog._id}}"
+                class="card_title mb_3 mt_2 mt_sm_0"
+              >{{blog.title}}</router-link>
+              <p class="card_text mb_2">{{blog.desc}}</p>
               <div class="item--bottom d_flex justify_content_between align_items_center">
                 <div class="item--info d_inline mb_0">
-                  <span class="item--info-time mr_4 position_relative">Jan 14</span>
+                  <span class="item--info-time mr_4 position_relative">
+                    <app-time :time="blog.createAt"/>
+                  </span>
                   <span class="item--info-like mr_4 position_relative">
                     <icon-base class="pr_1 pt_1" icon-name="heart" viewBox="0 0 378.94 378.94">
                       <icon-heart/>
-                    </icon-base>26
+                    </icon-base>
+                    {{blog.clap}}
                   </span>
-                  <span class="item--info-author position_relative">by
-                    <span class="item--info-name">dangyen103</span>
+                  <span class="item--info-author position_relative">
+                    by
+                    <span class="item--info-name">{{blog._author.nameDisplay}}</span>
                   </span>
                 </div>
                 <div class="item--icon text_right">
@@ -56,7 +63,9 @@
 import IconBase from "@/components/icons/IconBase";
 import IconHeart from "@/components/icons/IconHeart";
 import IconBookmarkBlog from "@/components/icons/IconBookmarkBlog";
+import AppTime from "@/components/shared/timeAgo";
 export default {
+  props: ["blog"],
   data() {
     return {
       isBookmark: false,
@@ -71,7 +80,8 @@ export default {
   components: {
     IconBase,
     IconHeart,
-    IconBookmarkBlog
+    IconBookmarkBlog,
+    AppTime
   }
 };
 </script>

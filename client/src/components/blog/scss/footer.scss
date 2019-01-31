@@ -12,6 +12,13 @@
     .footer--text {
         font-weight: 400;
         line-height: 1.27;
+        &.footer--link {
+            cursor: pointer;
+            transition: all 0.4s ease;
+            &:hover {
+                color: #776ab0;
+            }
+        }
     }
     .footer--btn {
         .btn {

@@ -6,9 +6,9 @@
         <li class="blog--fliter-item active mr_2 position_relative">Tất cả</li>
         <li
           class="blog--fliter-item mr_2 ml_3 position_relative"
-          v-for="item in menu"
-          :key="item"
-        >{{item}}</li>
+          v-for="category in listCategory"
+          :key="category._id"
+        >{{category.name}}</li>
       </ul>
     </div>
     <div class="ct_f p_0">
@@ -108,7 +108,7 @@
                         </span>
 
                         <span class="item--info-author position_relative">by
-                          <span class="item--info-name">dangyen103</span>
+                          <span class="item--info-name">{{blog._author.nameDisplay}}</span>
                         </span>
                       </div>
                       <div class="item--icon text_right">
@@ -152,12 +152,12 @@ export default {
     currentTheme() {
       return this.$store.getters.themeName;
     },
-    menu() {
+    listCategory() {
       if (typeof this.categories == "undefined") return;
       if (this.categories.length == 0) return;
       // Get 5 item categories for Lastest Menu
-      const menu = this.categories.slice(0, 5);
-      return menu;
+      const listCategory = this.categories.slice(0, 5);
+      return listCategory;
     },
     verBlogs() {
       if (typeof this.blogs == "undefined") return;
