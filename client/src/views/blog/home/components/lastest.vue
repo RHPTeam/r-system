@@ -6,8 +6,8 @@
         <li :class="selectedCategory==''?'blog--fliter-item mr_2 ml_3 active position_relative':'blog--fliter-item mr_2 ml_3 position_relative'"
           @click="category=''">Tất cả</li>
         <li v-if="!menu"></li>
-        <li v-else :class="item===selectedCategory?'blog--fliter-item mr_2 ml_3 active position_relative':'blog--fliter-item mr_2 ml_3 position_relative'"
-          v-for="item in menu" @click="category=item" :key="item">{{item}}</li>
+        <li v-else :class="item.name===selectedCategory?'blog--fliter-item mr_2 ml_3 active position_relative':'blog--fliter-item mr_2 ml_3 position_relative'"
+          v-for="item in menu" @click="category=item.name" :key="item">{{item.name}}</li>
       </ul>
     </div>
     <div class="ct_f p_0">
