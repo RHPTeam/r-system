@@ -84,6 +84,11 @@ export default new Router({
       ]
     },
     {
+      path: "/test",
+      name: "test",
+      component: () => import("@/views/test")
+    },
+    {
       path: "/404",
       name: "notfound",
       component: () => import("@/views/404/index")
