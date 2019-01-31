@@ -6,7 +6,7 @@
  */
 
 const express = require('express');
-
+const auth = require('../middleware/auth-check');
 //require all route
 const anwsers = require('./modules/anwser.route')
 const blogs = require('./modules/blog.route')
@@ -26,6 +26,8 @@ const tags = require('./modules/tag.route')
 const trashs = require('./modules/trash.route')
 const users = require('./modules/user.route')
 const votes = require('./modules/vote.route')
+const login = require('./modules/login.route')
+const register = require('./modules/register.route')
 
 const router = express.Router();
 
@@ -40,13 +42,14 @@ router.use('/library', library)
 router.use('/notifications', notifications)
 router.use('/permissions', permissions)
 router.use('/posts', posts)
-
+router.use('/register', register)
+router.use('/login', login)
 router.use('/products', products)
 router.use('/questions', questions)
 router.use('/ranks', ranks)
 router.use('/tags', tags)
 router.use('/trashs', trashs)
-router.use('/users', users)
+router.use('/users', auth, users)
 router.use('/votes', votes)
 
 module.exports = router;

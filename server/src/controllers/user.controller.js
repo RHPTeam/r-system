@@ -10,7 +10,9 @@ const passport = require('passport')
 const omit = require('lodash/omit')
 const split = require('lodash/split')
 const forEach = require('lodash/forEach')
+const jwt = require('jsonwebtoken');
 
+const config = require('../configs/config');
 //const joi = require('joi');
 const User = require('../models/user.model')
 const Notification = require('../models/notification.model')
@@ -32,6 +34,13 @@ const includes = {
   favorities: 'favorities'
 }
 
+// set one cookie
+const option = {
+  maxAge: 1000 * 60 * 15, // would expire after 15 minutes
+  httpOnly: true, // The cookie only accessible by the web server
+  signed: true // Indicates if the cookie should be signed
+}
+
 module.exports = {
   /**
    * Create one user (Register)
@@ -49,8 +58,8 @@ module.exports = {
       //check email or nameDisplay exist
       const findUser = await User.find()
         .or([{
-          email: list_user.email
-        },
+            email: list_user.email
+          },
           {
             nameDisplay: list_user.nameDisplay
           }
@@ -64,7 +73,18 @@ module.exports = {
         if (err) {
           return res.json(JsonResponse('', 404, 'Email or nameDisplay is exist.', false))
         }
-        return res.json(JsonResponse('', 200, 'created user successfully!', false))
+
+        res.cookie('userId', user._id, option);
+        const payload = {
+          sub: user._id
+        };
+  
+        // create a token string
+        const token = jwt.sign(payload, config.JWT_SECRET, {expiresIn: "1h"});
+        return res.json(JsonResponse({
+          token,
+          data: user
+        }, 200, 'created user successfully!', false))
       })
     } catch (error) {
       next(error)
@@ -132,8 +152,8 @@ module.exports = {
 
       const findUser = await User.find()
         .or([{
-          email: body.email
-        },
+            email: body.email
+          },
           {
             nameDisplay: body.nameDisplay
           }
@@ -181,8 +201,8 @@ module.exports = {
   getByIdUser: async (req, res, next, id) => {
     try {
       const user = await User.findById({
-        _id: id
-      })
+          _id: id
+        })
         .select('_id userid name nameDisplay email avatar title about _permissions')
         .populate(`_${req.query._includes}`)
         .exec()
@@ -207,6 +227,8 @@ module.exports = {
       if (err) {
         return res.json(JsonResponse('', 403, err, false))
       }
+
+      res.cookie('userId', data._id, option);
       return res.json(JsonResponse({
         token,
         data
@@ -229,6 +251,7 @@ module.exports = {
    * @param res
    */
   logoutUser: (req, res) => {
+    res.clearCookie('userId');
     res.logout()
     res.end()
   },

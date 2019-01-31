@@ -28,14 +28,12 @@ module.exports = passport => {
       // find a user by email address
       return User.findOne({ email: userData.email }, (err, user) => {
         if (err) { return done(err); }
-    
         if (!user) {
           const error = new Error('Incorrect email or password');
           error.name = 'IncorrectCredentialsError';
     
           return done(error);
         }
-    
         // check if a hashed user's password is equal to a value saved in the database
         return user.comparePassword(userData.password, (passwordErr, isMatch) => {
           if (err) { return done(err); }
@@ -54,6 +52,7 @@ module.exports = passport => {
           // create a token string
           const token = jwt.sign(payload, config.JWT_SECRET, {expiresIn: "1h"});
           const data = {
+            _id: user._id,
             email: user.email,
             nameDisplay: user.nameDisplay,
             name: user.name,
