@@ -113,7 +113,7 @@ export default {
     categories() {
       return this.$store.getters.categories;
     },
-   listCategory() {
+    listCategory() {
       if (this.categories.length == 0) return;
       // Sort categories by number of blogs in category
       const descendingCategories = this.categories.sort(
@@ -152,9 +152,9 @@ export default {
     // Sort all Blog in oder number of clap,view,comment
     const sortReactBlog = dataAllBlog.sort(
       (a, b) =>
-        (b._comments.length +
+        b._comments.length +
         b.clap +
-        b.views) -
+        b.views -
         (a._comments.length + a.clap + a.views)
     );
 

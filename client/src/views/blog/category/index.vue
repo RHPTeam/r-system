@@ -170,9 +170,7 @@ export default {
       if (!this.blogsByCategory) return;
       if (this.blogsByCategory.length == 0) return;
       // Sort all Blog by Category in oder number clap
-      const all = this.blogsByCategory.sort(
-        (a, b) => b.clap  - a.clap
-      );
+      const all = this.blogsByCategory.sort((a, b) => b.clap - a.clap);
       return all;
     }
   },

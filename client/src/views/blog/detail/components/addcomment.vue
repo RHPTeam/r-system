@@ -1,17 +1,11 @@
 <template>
   <div class="add--comment mb_4">
     <div class="add--comment-title mb_3">Phản hồi</div>
-    <app-alert :message="message" :type="type"/>
+    <app-alert :message="message" :type="type" />
     <form @submit.prevent="addComment()">
-      <div
-        class="add--input bg--item d_flex justify_content_start align_item_start p_3"
-        :data-bg="currentTheme"
-      >
+      <div class="add--input bg--item d_flex justify_content_start align_item_start p_3" :data-bg="currentTheme">
         <div class="avatar--user position_relative mr_3">
-          <img
-            class="position_absolute"
-            src="http://www.igeacps.it/app/uploads/2018/05/profile_uni_user.png"
-          >
+          <img class="position_absolute" src="http://www.igeacps.it/app/uploads/2018/05/profile_uni_user.png">
         </div>
         <input type="text" v-model="comment.content" placeholder="Nhập nội dung bình luận...">
       </div>
@@ -61,6 +55,7 @@ export default {
         this.$store.dispatch("createCommentBlog", res.data.data);
       });
       this.resetForm();
+      this.type = "";
     },
     resetForm() {
       this.comment.content = "";

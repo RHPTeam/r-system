@@ -55,40 +55,42 @@
 </template>
 
 <script>
-  import PostService from '@/services/modules/post.service';
-  import AppAlert from '@/components/shared/alert';
+import PostService from "@/services/modules/post.service";
+import AppAlert from "@/components/shared/alert";
 export default {
-  data () {
+  data() {
     return {
-      message: '',
-      type: ''
-    }
+      message: "",
+      type: ""
+    };
   },
   components: {
     AppAlert
   },
   methods: {
-    async createPost () {
-      const strReplace = this.post._tags.replace(/ /g,'');
+    async createPost() {
+      const strReplace = this.post._tags.replace(/ /g, "");
       const arrTagForm = strReplace.split(",");
-      const arrTagObject = arrTagForm.map(function (str) { return { name: str } });
+      const arrTagObject = arrTagForm.map(function(str) {
+        return { name: str };
+      });
       const postObj = {
         title: this.post.title,
         body: this.post.body,
         _tags: arrTagObject,
         _owner: "5c4ed30b23016bb2e49939c4"
-      }
+      };
       const resData = await PostService.create(postObj);
       this.message = resData.data.message;
       this.type = "alert_success";
     }
   },
   computed: {
-    post () {
+    post() {
       return this.$store.getters.post;
     }
   },
-  async mounted () {
+  async mounted() {
     // await PostService
   }
 };

@@ -109,8 +109,7 @@ export default {
     IconLogo,
     IconSearchSolid,
     IconAlarm
-  },
-
+  }
 };
 </script>
 

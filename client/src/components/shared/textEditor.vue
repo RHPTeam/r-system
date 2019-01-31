@@ -23,31 +23,31 @@ export default {
       default: 200
     }
   },
-  data () {
+  data() {
     return {
       statusFocused: false
-    }
+    };
   },
   methods: {
-    execCmd (command) {
+    execCmd(command) {
       let content = document.getElementsByClassName("editor--content");
       for (let i = 0; i < content.length; i++) {
-        this.execCommandOnElement(content[i], command)
+        this.execCommandOnElement(content[i], command);
       }
     },
-    focused () {
+    focused() {
       this.statusFocused = true;
     },
-    unfocused () {
+    unfocused() {
       this.statusFocused = false;
     },
-    execCommandOnElement (el, commandName, value) {
+    execCommandOnElement(el, commandName, value) {
       if (typeof value == "undefined") {
         value = null;
       }
       if (typeof window.getSelection != "undefined") {
         let self = window.getSelection();
-        let userSelection = '';
+        let userSelection = "";
         let savedRanges = [];
         for (let i = 0, len = self.rangeCount; i < len; ++i) {
           savedRanges[i] = self.getRangeAt(i).cloneRange();
@@ -57,7 +57,7 @@ export default {
         console.log("self: " + self);
         let range = document.createRange();
         console.log("range start: " + range);
-        el.addEventListener("mouseup", function () {
+        el.addEventListener("mouseup", function() {
           userSelection = window.getSelection().toString();
         });
         console.log(el);
@@ -69,7 +69,7 @@ export default {
         document.designMode = "Off";
         self = window.getSelection();
         self.removeAllRanges();
-        for (let i =  0, len = savedRanges.length; i < len; ++i) {
+        for (let i = 0, len = savedRanges.length; i < len; ++i) {
           self.addRange(savedRanges[i]);
         }
       } else if (typeof document.body.createTextRange != "undefined") {
@@ -80,27 +80,29 @@ export default {
     }
   },
   directives: {
-    'click-outside': {
-      bind (el, binding, vNode) {
-        if (typeof binding.value !== 'function') {
+    "click-outside": {
+      bind(el, binding, vNode) {
+        if (typeof binding.value !== "function") {
           const compName = vNode.context.name;
-          let warn = `[Vue-click-outside:] provided expresion '${binding.expression}' is not a function but has to be`;
+          let warn = `[Vue-click-outside:] provided expresion '${
+            binding.expression
+          }' is not a function but has to be`;
           if (compName) {
             warn += `Found in component '${compName}'`;
           }
           console.log(warn);
         }
         const bubble = binding.modifiers.bubble;
-        const handler = (e) => {
+        const handler = e => {
           if (bubble || (!el.contains(e.target) && el !== e.target)) {
-            binding.value(e)
+            binding.value(e);
           }
         };
         el.__vueClickOutside__ = handler;
-        document.addEventListener('click', handler);
+        document.addEventListener("click", handler);
       },
-      unbind (el, binding) {
-        document.removeEventListener('click', el.__vueClickOutside__);
+      unbind(el, binding) {
+        document.removeEventListener("click", el.__vueClickOutside__);
         el.__vueClickOutside__ = null;
       }
     }
@@ -127,16 +129,16 @@ export default {
     &:not(.editor--focused) {
       border-color: #c4c4c4;
     }
-    [contenteditable=true]:empty:not(:focus):before {
-      content:attr(data-text)
+    [contenteditable="true"]:empty:not(:focus):before {
+      content: attr(data-text);
     }
     &.editor--focused {
       border-color: #776ab0;
-      box-shadow: 2px 2px 3px rgba(0, 0, 0, .1) inset;
+      box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1) inset;
     }
     p {
       margin: 2.5rem 0;
-      letter-spacing: -.003rem;
+      letter-spacing: -0.003rem;
     }
   }
 }

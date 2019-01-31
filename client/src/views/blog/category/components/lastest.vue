@@ -62,7 +62,7 @@ import IconHeart from "@/components/icons/IconHeart";
 import IconBookmarkBlog from "@/components/icons/IconBookmarkBlog";
 import AppTime from "@/components/shared/timeAgo";
 export default {
-  props: ['blogs'],
+  props: ["blogs"],
   data() {
     return {
       isBookmark: false,

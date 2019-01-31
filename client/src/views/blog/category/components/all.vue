@@ -65,8 +65,7 @@ import AppTime from "@/components/shared/timeAgo";
 export default {
   props: {
     blogs: {
-      type: Array,
-      // required: true
+      type: Array
     }
   },
   data() {

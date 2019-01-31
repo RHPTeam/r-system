@@ -17,7 +17,7 @@ export default {
   // },
   create(post) {
     return Api().post("posts", post);
-  },
+  }
   // show(jobId) {
   //   return Api().get(`jobs?_id=${jobId}`);
   // },

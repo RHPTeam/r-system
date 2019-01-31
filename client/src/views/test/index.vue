@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import AppEditor from "@/components/shared/textEditor"
+import AppEditor from "@/components/shared/textEditor";
 export default {
   components: {
     AppEditor
