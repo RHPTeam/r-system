@@ -7,7 +7,7 @@
           @click="category=''">Tất cả</li>
         <li v-if="!menu"></li>
         <li v-else :class="item.name===selectedCategory?'blog--fliter-item mr_2 ml_3 active position_relative':'blog--fliter-item mr_2 ml_3 position_relative'"
-          v-for="item in menu" @click="category=item.name" :key="item">{{item.name}}</li>
+          v-for="item in menu" @click="category=item.name" :key="item._id">{{item.name}}</li>
       </ul>
     </div>
     <div class="ct_f p_0">
@@ -24,7 +24,7 @@
                 </div>
                 <div class="c_md_12">
                   <div class="card card_body p_0 mt_n1 mt_sm_0 mt_md_3">
-                    <router-link tag="h5" :to="{name: 'post', params: {blogId: blog._id}}" class="card_title mb_2 mt_2 mt_sm_0">{{blog.title}}</router-link>
+                    <router-link tag="h5" :to="{name: 'post', params: {year:new Date(blog.createAt).getUTCFullYear(),month:new Date(blog.createAt).getMonth()+1,day:new Date(blog.createAt).getUTCDate(),slug:blog.slug}}" class="card_title mb_2 mt_2 mt_sm_0">{{blog.title}}</router-link>
                     <p class="card_text mb_2">{{blog.desc}}</p>
                     <div class="item--bottom d_flex justify_content_between align_items_center">
                       <div class="item--info d_inline mb_0">
@@ -68,7 +68,7 @@
                 </div>
                 <div class="c_md_8 pl_md_3 pr_md_3">
                   <div class="card card_body p_0 mt_n1 mt_sm_0">
-                    <router-link tag="h5" :to="{name: 'post', params: {blogId: blog._id}}" class="card_title mb_2 mt_2 mt_md_0">{{blog.title}}</router-link>
+                    <router-link tag="h5" :to="{name: 'post', params: {year:new Date(blog.createAt).getUTCFullYear(),month:new Date(blog.createAt).getMonth()+1,day:new Date(blog.createAt).getUTCDate(),slug:blog.slug}}" class="card_title mb_2 mt_2 mt_md_0">{{blog.title}}</router-link>
                     <p class="card_text mb_2">{{blog.desc}}</p>
                     <div class="item--bottom d_flex justify_content_between align_items_center">
                       <div class="item--info d_inline mb_0">

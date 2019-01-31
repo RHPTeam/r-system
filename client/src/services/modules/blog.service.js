@@ -35,5 +35,8 @@ export default {
   },
   getByCategory(categoryId) {
     return Api().get(`blogs?_category=${categoryId}`);
+  },
+  getBlogBySlug(slug){
+    return Api().get(`blogs?slug=${slug}`);
   }
 };

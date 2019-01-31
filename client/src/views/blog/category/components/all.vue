@@ -18,7 +18,7 @@
             <div class="card card_body p_0 mt_n1 mt_sm_0">
               <router-link
                 tag="h5"
-                :to="{name: 'post', params: {blogId: blog._id}}"
+                :to="{name: 'post', params: {year:new Date(blog.createAt).getUTCFullYear(),month:new Date(blog.createAt).getMonth()+1,day:new Date(blog.createAt).getUTCDate(),slug:blog.slug}}"
                 class="card_title mb_2 mt_2 mt_md_0"
               >{{blog.title}}</router-link>
               <p

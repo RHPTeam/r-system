@@ -109,8 +109,10 @@ export default {
     }
   },
   async mounted() {
-    const blogId = this.$route.params.blogId;
-    const res = await BlogService.show(blogId);
+
+    const blogSlug = this.$route.params.slug;
+
+    const res = await BlogService.getBlogBySlug(blogSlug);
     this.$store.dispatch("showBlog", res.data.data[0]);
 
     // Get all category

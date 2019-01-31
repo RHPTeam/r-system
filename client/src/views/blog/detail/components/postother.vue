@@ -11,7 +11,7 @@
             >
           </div>
           <div class="item--info position_absolute">
-            <div class="item--info--tile mb_1">{{blog.title}}</div>
+            <router-link tag='div'  :to="{name: 'post', params: {year:new Date(blog.createAt).getUTCFullYear(),month:new Date(blog.createAt).getMonth()+1,day:new Date(blog.createAt).getUTCDate(),slug:blog.slug}}" class="item--info--tile mb_1">{{blog.title}}</router-link>
             <div class="item--info-bottom d_inline">
               <span class="item--info-time mr_4 position_relative"><app-time :time="blog.createAt"/></span>
               <span class="item--info-like mr_4 position_relative"><icon-base class="pr_1 pt_1" icon-name="heart" viewBox="0 0 378.94 378.94"><icon-heart /></icon-base>{{blog.clap}}</span>

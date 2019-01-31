@@ -16,7 +16,7 @@
                 <div class="c_md_12">
                   <div class="card card_body p_0 mt_n1 mt_sm_0 mt_md_3">
                     <div v-if="!lastBlog"></div>
-                    <router-link v-else tag="h5" :to="{name: 'post', params: {blogId: lastBlog._id}}"
+                    <router-link v-else tag="h5" :to="{name: 'post', params: {year:new Date(lastBlog.createAt).getUTCFullYear(),month:new Date(lastBlog.createAt).getMonth()+1,day:new Date(lastBlog.createAt).getUTCDate(),slug:lastBlog.slug}}"
                                  class="card_title mb_2 mt_2 mt_sm_0">
                       {{lastBlog.title}}
                     </router-link>
@@ -58,7 +58,7 @@
                 <div class="c_md_8 pl_md_3 pr_md_3">
                   <div class="card card_body p_0 mt_n1 mt_sm_0">
                     <div v-if="!blog"></div>
-                    <router-link v-else tag="h5" :to="{name: 'post', params: {blogId: blog._id}}"
+                    <router-link v-else tag="h5" :to="{name: 'post', params: {year:new Date(blog.createAt).getUTCFullYear(),month:new Date(blog.createAt).getMonth()+1,day:new Date(blog.createAt).getUTCDate(),slug:blog.slug}}"
                                  class="card_title mb_2 mt_2 mt_md_0">
                       {{blog.title}}
                     </router-link>
