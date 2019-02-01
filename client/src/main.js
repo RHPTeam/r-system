@@ -6,10 +6,11 @@ import store from "./store";
 import VueApexCharts from "vue-apexcharts";
 import CKEditor from "@ckeditor/ckeditor5-vue";
 import Axios from 'axios';
+import CookieFunction from '@/utils/cookie';
 
 Vue.config.productionTip = false;
 Vue.prototype.$http = Axios;
-const token = 1;
+const token = CookieFunction.getCookie("sid");
 if (token) {
   Vue.prototype.$http.defaults.headers.common['Authorization'] = token;
 }
@@ -22,7 +23,7 @@ Vue.use(CKEditor);
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiredAuth)) {
-    if (store.getters.isLoggedIn) {
+    if (store.getters.isLoggedIn || CookieFunction.getCookie("sid")) {
       next();
       return;
     }

@@ -21,6 +21,6 @@ export default {
     return "";
   },
   removeCookie(cname) {
-    document.cookie = cname + "=";
+    document.cookie = cname + "=; path=/;";
   }
 }

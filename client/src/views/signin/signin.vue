@@ -6,6 +6,8 @@
 					<span class="login--form-title">
 						Login to continue
 					</span>
+          <app-alert :type="this.$store.getters.authStatus == 'loading' || this.$store.getters.authStatus == 'error' ? 'alert_danger' : 'alert_success'"
+                     :message="this.$store.getters.authStatus == 'loading' || this.$store.getters.authStatus == 'error' ? 'Tài khoản hoặc mật khẩu không chính xác!' : this.$store.getters.authStatus == '' ? '': 'Đăng nhập thành công! Đang chuyển hướng...'"/>
           <div class="wrap--input validate--input">
             <input class="form_control" type="text" name="email" placeholder="Email or Username" v-model="email">
           </div>
@@ -53,21 +55,28 @@
 </template>
 
 <script>
+  import AppAlert from '@/components/shared/alert';
+
   export default {
     data() {
       return {
         email: "",
         password: "",
-        base: process.env.BASE_URL
+        base: process.env.BASE_URL,
+        type: '',
+        message: ''
       };
     },
     methods: {
-      submit() {
+      async submit() {
         const email = this.email;
         const password = this.password;
-        this.$store.dispatch('signIn', {email, password});
+        await this.$store.dispatch('signIn', {email, password});
         this.$router.push('/');
       }
+    },
+    components: {
+      AppAlert
     }
   };
 </script>

@@ -3,7 +3,10 @@
     <div class="title--blog r">
       <h2>Danh sách bài viết</h2>
     </div>
-    <div v-for="(blog,index) in blogs" :key="index">
+    <div class="m_3 text_center" v-if="!blogs">
+      <span>Bạn chưa có bài viết nào!</span>
+    </div>
+    <div v-for="(blog,index) in blogs" :key="index" v-else>
       <app-blog :blog="blog" :index="index" />
     </div>
     <app-paginate />
@@ -21,15 +24,11 @@ export default {
   },
   computed: {
     blogs() {
-      const listBlogs = this.$store.getters.blogsByUser;
-      return listBlogs;
+      return this.$store.getters.listBlogByUser;
     }
   },
-  async mounted() {
-    const userId = this.$route.params.userId;
-    BlogService.getByUser(userId).then(res => {
-      this.$store.dispatch("showByUser", res.data.data);
-    });
+  async created() {
+    this.$store.dispatch('getListBlogByUser');
   }
 };
 </script>

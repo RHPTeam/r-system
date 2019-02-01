@@ -16,10 +16,10 @@ export default {
     return Api().post("users", user);
   },
   show(userId) {
-    return Api().get(`users/${userId}`);
+    return Api().get(`users?_id=${userId}`);
   },
-  update(user) {
-    return Api().patch(`users/${user._id}`, user);
+  update(user, userId) {
+    return Api().patch(`users/${user._id}?_userId=${userId}`, user);
   },
   delete(userId) {
     return Api().delete(`users/${userId}`);

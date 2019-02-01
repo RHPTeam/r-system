@@ -10,7 +10,6 @@ const config = require('../configs/config');
 
 module.exports = (req, res, next) => {
   if (!req.headers.authorization) return res.status(404).json(JsonResponse('', 404, 'Not Found Your Cookie!', false));
-  if (!req.signedCookies.userId) return res.status(403).json(JsonResponse('', 403, 'Your Cookie Is Error!', false));
   // get the last part from a authorization header string like "bearer token-value"
   const token = req.headers.authorization;
   // decode the token using a secret key-phrase

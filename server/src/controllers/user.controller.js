@@ -55,16 +55,20 @@ module.exports = {
   signUp: async (req, res) => {
     const {userid, email} = req.value.body;
     const validationResult = await validateUser.createUser(req.body);
-    if (!validationResult.success) return res.status(403).json(JsonResponse('', 403, validationResult.errors, false));
-    const foundUserEmail = await User.findOne({ email });
-    if (foundUserEmail) return res.status(404).json(JsonResponse('', 404, 'Tài khoản email đã tồn tại!', false));
-    const foundUserUsername = await User.findOne({ userid });
-    if (foundUserUsername) return res.status(404).json(JsonResponse('', 404, 'Tài khoản đã tồn tại!', false));
+    if (!validationResult.success) return res.status(403).json(JsonResponse('', 403, validationResult.errors, true));
+    const foundUserEmail = await User.findOne({email});
+    if (foundUserEmail) return res.status(404).json(JsonResponse('', 404, 'Tài khoản email đã tồn tại!', true));
+    const foundUserUsername = await User.findOne({userid});
+    if (foundUserUsername) return res.status(404).json(JsonResponse('', 404, 'Tài khoản đã tồn tại!', true));
     const newUser = await new User(req.value.body);
     await newUser.save();
     const sessionToken = await signToken(newUser);
     res.cookie('sid', sessionToken, option);
-    res.status(200).json(JsonResponse({_id: newUser._id, email: newUser.email, token: sessionToken}, 200, "Đăng ký thành công!", false));
+    res.status(200).json(JsonResponse({
+      _id: newUser._id,
+      email: newUser.email,
+      token: sessionToken
+    }, 200, "Đăng ký thành công!", false));
   },
 
   /**
@@ -74,90 +78,41 @@ module.exports = {
    */
   signIn: async (req, res) => {
     // Generate the token
+    const foundUser = await User.findById(req.user._id).select('-password');
     const sessionToken = await signToken(req.user);
     res.cookie('sid', sessionToken);
-    res.status(200).json(JsonResponse({ token: sessionToken }, 200, "Đăng nhập thành công!", false));
+    res.status(200).json(JsonResponse({token: sessionToken, user: foundUser}, 200, "Đăng nhập thành công!", false));
   },
 
   /**
-   * Get all user
+   * Get User (Query can get one data)
    * @param req
    * @param res
-   * @param next
    */
-  getAllUsers: async (req, res, next) => {
-    try {
-      const {
-        query,
-      } = req
-      const include = []
-      forEach(split(query._includes, ','), i => {
-        if (includes[i]) {
-          include.push(includes[i])
-        }
-      })
-
-      return await User.find(omit(query, ['_includes']))
-        .select('_id userid name nameDisplay email avatar title about ')
-        .populate(include)
-        .exec((errors, data) => {
-          if (errors) {
-            return res.json(JsonResponse('', 401, errors, false))
-          }
-          return res.json(JsonResponse(data, 200, '', false))
-        })
-    } catch (error) {
-      next(error)
-    }
+  index: async (req, res) => {
+    const {query} = req;
+    const include = [];
+    forEach(split(query._includes, ','), i => {
+      if (includes[i]) include.push(includes[i])
+    });
+    const dataFound = await User.find(omit(query, ['_includes'])).select('-password').populate(include);
+    if (!dataFound) return res.status(403).json(JsonResponse('', 403, 'Không có dữ liệu được tìm thấy!'));
+    res.status(200).json(JsonResponse(dataFound, 200, 'Lấy dữ liệu thành công!', false));
   },
 
   /**
-   * get one user
+   * Update User (Note: Have to cookie['Authorization']
    * @param req
    * @param res
-   * @param next
    */
-  getOneUser: async (req, res, next) => {
-    try {
-      return res.json(JsonResponse(req.user, 200, '', false))
-    } catch (error) {
-      next(error)
-    }
-  },
-
-  /**
-   * update user by id
-   * @param req
-   * @param res
-   * @param next
-   */
-  updateUser: async (req, res, next) => {
-    try {
-      const {
-        user,
-        body
-      } = req
-
-      const findUser = await User.find()
-        .or([{
-          email: body.email
-        },
-          {
-            nameDisplay: body.nameDisplay
-          }
-        ])
-      if (findUser.length > 1) {
-        return res.json(JsonResponse('', 404, 'Email or nameDisplay is exist', false))
-      }
-      return await user.updateOne(body, (errors, data) => {
-        if (errors) {
-          return res.json(JsonResponse('', 404, errors, false))
-        }
-        res.json(JsonResponse('', 200, `update user success`, false))
-      })
-    } catch (error) {
-      next(error)
-    }
+  update: async (req, res) => {
+    const {body, params, query} = req;
+    if (!query._userId) return res.status(405).json(JsonResponse("", 405, "Vui lòng xác thực quyền người dùng! :)", true));
+    const foundUser = await User.findById(params.userId);
+    if (!foundUser) return res.status(403).json(JsonResponse('', 403, 'Tài khoản này không tồn tại!', true));
+    if (query._userId != foundUser._id) return res.status(403).json(JsonResponse("", 403, "Vui lòng xác thực danh tính! :)", true));
+    const dataUserUpdated = await User.findByIdAndUpdate(params.userId, {$set: body}, {new:true}).select('-password');
+    res.status(201).json(JsonResponse(dataUserUpdated, 201, "Cập nhật dữ liệu thành công!", false));
   },
 
   /**

@@ -15,24 +15,60 @@ const UserSchema = new Schema({
   title: String,
   about: String,
   social: {
-    website: String,
-    stack: String,
-    github: String
+    website: {
+      type: String,
+      default: '',
+    },
+    twitter: {
+      type: String,
+      default: '',
+    },
+    github: {
+      type: String,
+      default: '',
+    }
   },
   career: {
-    type: String,
-    content: String
+    type: {
+      type: String,
+      default: '',
+    },
+    content: {
+      type: String,
+      default: '',
+    }
   },
   createdAt: Date,
   story: {
-    info: String,
-    skill: String,
+    info: {
+      type: String,
+      default: '',
+    },
+    skill: {
+      type: String,
+      default: '',
+    },
     exp: [{
-      title: String,
-      content: String,
-      currentWork: Number,
-      startAt: Date,
-      startEnd: Date
+      title: {
+        type: String,
+        default: '',
+      },
+      content: {
+        type: String,
+        default: '',
+      },
+      currentWork: {
+        type: Number,
+        default: 0,
+      },
+      startAt: {
+        type: Date,
+        default: '',
+      },
+      startEnd: {
+        type: Date,
+        default: '',
+      }
     }]
   },
   _postList: [{
@@ -89,7 +125,7 @@ const UserSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Vote'
   }]
-});
+}, {minimize: false});
 
 
 UserSchema.pre('save', async function (next) {
