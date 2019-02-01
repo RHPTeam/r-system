@@ -9,6 +9,7 @@ import job from "./modules/job";
 import category from "./modules/category";
 import post from "./modules/post";
 import comment from "./modules/comment";
+import auth from "./modules/auth"
 
 Vue.use(Vuex);
 
@@ -43,6 +44,7 @@ export default new Vuex.Store({
     }
   },
   modules: {
+    auth,
     currentTab,
     user,
     anwser,

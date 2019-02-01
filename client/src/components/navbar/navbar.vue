@@ -53,7 +53,7 @@
             />
           </li>
         </ul>
-        <ul class="nav float_right">
+        <ul class="nav float_right align_items_center">
           <li class="nav--item">
             <a class="nav--link link--effect">
               <icon-base icon-name="help" viewBox="0 0 60 60"
@@ -70,7 +70,10 @@
               <span class="nav--link-text">Tour</span>
             </a>
           </li>
-          <li class="nav--item">
+          <li class="nav--item" v-if="!this.$store.getters.isLoggedIn">
+            <router-link tag="button" to="/signin" class="btn btn_success">Đăng nhập</router-link>
+          </li>
+          <li v-else class="nav--item">
             <a
               class="nav--link link--effect"
               @click.prevent="statusDropdown = !statusDropdown;"
@@ -100,16 +103,16 @@
                     <p class="mb_0">trantoan.fox.97@gmail.com</p>
                   </div>
                 </div>
-                <router-link class="dropdown--item" :to="{ name: 'users' }">
+                <router-link class="dropdown--item" to="/">
                   Tài khoản
                 </router-link>
-                <router-link class="dropdown--item" :to="{ name: 'users' }">
+                <router-link class="dropdown--item" to="/">
                   Thiết lập
                 </router-link>
                 <div class="dropdown--divider"></div>
-                <router-link class="dropdown--item" :to="{ name: 'users' }">
+                <span class="dropdown--item" @click.prevent="logOut">
                   Đăng xuất
-                </router-link>
+                </span>
               </div>
             </transition>
           </li>
@@ -133,21 +136,25 @@ export default {
       statusBar: true
     };
   },
+  computed: {},
+  methods: {
+    showMenu () {
+      return this.$store.dispatch(
+        "changeStatusMenu",
+        !this.$store.state.statusMenu
+      );
+    },
+    async logOut () {
+      await this.$store.dispatch('logOut');
+      this.$router.push('/signin');
+    }
+  },
   components: {
     IconMore,
     IconBase,
     IconMenu,
     IconHelp,
     IconMonitor
-  },
-  computed: {},
-  methods: {
-    showMenu() {
-      return this.$store.dispatch(
-        "changeStatusMenu",
-        !this.$store.state.statusMenu
-      );
-    }
   }
 };
 </script>

@@ -17,11 +17,9 @@ const api = require('./src/routes/index');
 const app = express();
 
 // Passport Config
-require('./src/services/passport-local')(passport);
-
-// Passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
+const passportCof = require('./src/services/passport-local');
 
 //connect db cloud.mongodb.com
 mongoose.connect(
@@ -34,7 +32,6 @@ mongoose.set('useFindAndModify', false);
 
 // log requests to the console
 app.use(logger('dev'));
-
 app.use(cookieParser(config.JWT_SECRET));
 
 // Enable CORS

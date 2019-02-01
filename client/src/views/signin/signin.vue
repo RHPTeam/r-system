@@ -7,14 +7,14 @@
 						Login to continue
 					</span>
           <div class="wrap--input validate--input">
-            <input class="form_control" type="text" name="email" placeholder="Email or Username">
+            <input class="form_control" type="text" name="email" placeholder="Email or Username" v-model="email">
           </div>
           <div class="wrap--input validate--input">
-            <input class="form_control" type="password" name="pass" placeholder="Password">
+            <input class="form_control" type="password" name="pass" placeholder="Password" v-model="password">
           </div>
           <div class="other d_flex justify_content_between align_items_center">
             <div class="contact-form-checkbox">
-              <input class="input-checkbox" id="ckb1" type="checkbox" name="remember-me">
+              <input class="input-checkbox" id="ckb1" type="checkbox" name="remember-me" checked>
               <label class="label--checkbox" for="ckb1">
                 Remember me
               </label>
@@ -31,9 +31,9 @@
             </button>
           </div>
           <div class="signup text-center p-t-46 p-b-20">
-						<a href="/signup" class="txt2">
-							or sign up here
-						</a>
+            <a href="/signup" class="txt2">
+              or sign up here
+            </a>
           </div>
           <div class="login-form-social flex-c-m">
             <a href="#" class="login-form-social-item flex-c-m bg1 m-r-5">
@@ -53,20 +53,25 @@
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      base: process.env.BASE_URL
-    };
-  },
-  methods: {
-    submit() {
-      this.$router.push("/");
+  export default {
+    data() {
+      return {
+        email: "",
+        password: "",
+        base: process.env.BASE_URL
+      };
+    },
+    methods: {
+      submit() {
+        const email = this.email;
+        const password = this.password;
+        this.$store.dispatch('signIn', {email, password});
+        this.$router.push('/');
+      }
     }
-  }
-};
+  };
 </script>
 
 <style lang="scss" scoped>
-@import "signin";
+  @import "signin";
 </style>

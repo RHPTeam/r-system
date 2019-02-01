@@ -23,5 +23,11 @@ export default {
   },
   delete(userId) {
     return Api().delete(`users/${userId}`);
+  },
+  signUp(user) {
+    return Api().post("signup", user);
+  },
+  signIn(user) {
+    return Api().post("signin", user);
   }
 };
