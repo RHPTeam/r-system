@@ -29,7 +29,7 @@ module.exports = {
             path: "_category",
             select: "name"
         });
-        if (isObjectEmpty(data)) return res.status(403).json(JsonResponse("", 403, "Query lấy dữ liệu thất bại!", true));
+        if (isObjectEmpty(data)) return res.status(200).json(JsonResponse("", 200, "Không có vài viết!", true));
         res.status(200).json(JsonResponse(data, 200, "Lấy dữ liệu thành công!", false));
     },
 

@@ -40,6 +40,9 @@ const userRouter = {
         {
           path: "settings",
           component: () => import("@/views/user/user-info/user-info-setting"),
+          meta: {
+            requiredAuth: true
+          },
           children: [
             {
               path: "",

@@ -15,27 +15,60 @@ const UserSchema = new Schema({
   title: String,
   about: String,
   social: {
-    website: String,
-    stack: String,
-    github: String
+    website: {
+      type: String,
+      default: '',
+    },
+    twitter: {
+      type: String,
+      default: '',
+    },
+    github: {
+      type: String,
+      default: '',
+    }
   },
   career: {
-    type: String,
-    content: String
+    type: {
+      type: String,
+      default: '',
+    },
+    content: {
+      type: String,
+      default: '',
+    }
   },
-  created: {
-    type: Date,
-    content: Date
-  },
+  createdAt: Date,
   story: {
-    info: String,
-    skill: String,
+    info: {
+      type: String,
+      default: '',
+    },
+    skill: {
+      type: String,
+      default: '',
+    },
     exp: [{
-      title: String,
-      content: String,
-      currentWork: Number,
-      startAt: Date,
-      startEnd: Date
+      title: {
+        type: String,
+        default: '',
+      },
+      content: {
+        type: String,
+        default: '',
+      },
+      currentWork: {
+        type: Number,
+        default: 0,
+      },
+      startAt: {
+        type: Date,
+        default: '',
+      },
+      startEnd: {
+        type: Date,
+        default: '',
+      }
     }]
   },
   _postList: [{
@@ -92,76 +125,30 @@ const UserSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Vote'
   }]
-});
+}, {minimize: false});
 
-// compare code password
-UserSchema.methods.comparePassword =  function comparePassword(password, callback) {
-    bcrypt.compare(password, this.password, callback);
-  },
-//
-// bcrypt code password
-UserSchema.pre('save', function (next) {
-  const user = this;
 
-  if (!user.isModified('password')) {
-    return next();
+UserSchema.pre('save', async function (next) {
+  try {
+    // Generate a salt
+    const salt = await bcrypt.genSalt(10);
+    // hash password. Note: Using function normal not use arrow function (error: this.password)
+    const passwordHashed = await bcrypt.hash(this.password, salt);
+    this.password = passwordHashed;
+    next();
+  } catch (e) {
+    next(e);
   }
-
-  bcrypt.genSalt((saltError, salt) => {
-    if (saltError) {
-      return next(saltError);
-    }
-
-    bcrypt.hash(user.password, salt, (hashError, hash) => {
-      if (hashError) {
-        return next(hashError);
-      }
-      user.password = hash;
-      return next();
-    });
-  });
 });
 
-UserSchema.methods = {
-  comparePassword: function (password, callback) {
-    bcrypt.compare(password, this.password, callback);
-  },
-  // check notification
-  notification: function (id) {
-    if (this._notifications.indexOf(id) === -1) {
-      this._notifications.push(id);
-    }
+UserSchema.methods.isValidPassword = async function (newPassword) {
+  try {
+    // Return value boolean to compare password by package
+    return await bcrypt.compare(newPassword, this.password);
+  } catch (e) {
+    throw new Error(e);
+  }
+};
 
-    return this.save();
-  },
-  unNotification: function (id) {
-    this._notifications.remove(id);
-    return this.save();
-  },
-  isNotification: function (id) {
-    return this._notifications.some(notificationId => {
-      return notificationId.toString() === id.toString();
-    });
-  },
-
-  // check permission
-  permission: function (id) {
-    if (this._permissions.indexOf(id) === -1) {
-      this._permissions.push(id);
-    }
-
-    return this.save();
-  },
-  unPermission: function (id) {
-    this._permissions.remove(id);
-    return this.save();
-  },
-  isPermission: function (id) {
-    return this._permissions.some(permissionId => {
-      return permissionId.toString() === id.toString();
-    });
-  },
-}
-
-const User = mongoose.model('User', UserSchema)
-module.exports = User
+const User = mongoose.model('User', UserSchema);
+module.exports = User;
