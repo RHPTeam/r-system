@@ -117,6 +117,19 @@ module.exports = {
           _question: Joi.any(),
           _anwser: Joi.any(),
           __v: Joi.any()
-        }).or('_blog', '_question', '_anwser')
+        }).or('_blog', '_question', '_anwser'),
+      userSchema:
+        Joi.object().keys({
+          userid: Joi.string().min(6).required().label("Tài khoản phải ít nhất từ 6 kí tự!"),
+          nameDisplay: Joi.string().min(6).required().label("Tên hiển thị phải ít nhất 6 kí tự!"),
+          email: Joi.string().email().required().label("Email phải thuộc valid của email!"),
+          password: Joi.string().min(6).max(20).required().label("Mật khẩu phải ít nhất 6 ký tự và tối đa 20 ký tự!"),
+          createAt: Joi.date().default(Date.now(), 'Time of Creation')
+        }),
+      userSignInSchema:
+        Joi.object().keys({
+          email: Joi.string().email().required().label("Email phải thuộc valid của email!"),
+          password: Joi.string().min(6).max(20).required().label("Mật khẩu phải ít nhất 6 ký tự và tối đa 20 ký tự!")
+        })
     }
 };

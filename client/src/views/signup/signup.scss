@@ -52,6 +52,27 @@
 
   .wrap--input {
     margin-bottom: 10px;
+    input {
+      outline: 0
+    }
+    &.errors {
+      input, .error--text {
+        border: 1px solid red;
+        color: red;
+      }
+      .error--text {
+        border: 0;
+      }
+    }
+    &.passed {
+      input, .error--text {
+        border: 1px solid #6675df;
+        color: #6675df
+      }
+      .error--text {
+        border: 0;
+      }
+    }
   }
 
   .other {

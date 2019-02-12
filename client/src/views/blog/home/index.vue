@@ -120,11 +120,11 @@ export default {
         (a, b) => b._blogs.length - a._blogs.length
       );
       // Get all name categories
-      const nameCategory = [];
+      const category = [];
       for (let i = 0; i < descendingCategories.length; i++) {
-        nameCategory.push(descendingCategories[i].name);
+        category.push(descendingCategories[i]);
       }
-      return nameCategory;
+      return category;
     }
   },
   methods: {

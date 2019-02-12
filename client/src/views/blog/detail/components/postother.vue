@@ -70,10 +70,10 @@ export default {
     // Create array for other blogs
     const currentBlogId = this.$route.params.blogId;
 
-    var filterBlogsUser = this.blogsByUser.filter(function(item) {
+    const filterBlogsUser = this.blogsByUser.filter(function(item) {
       return item._id != currentBlogId;
     });
-    var filterAllBlogs = sortNewBlog.filter(function(item) {
+    const filterAllBlogs = sortNewBlog.filter(function(item) {
       return item._author._id != userId;
     });
     const allOtherBlogs = filterBlogsUser.concat(filterAllBlogs);

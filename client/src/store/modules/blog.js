@@ -1,3 +1,6 @@
+import BlogService from '@/services/modules/blog.service';
+import CookieFunction from '@/utils/cookie';
+
 const state = {
   blogs: [],
   blogsTrend: [],
@@ -7,13 +10,17 @@ const state = {
   blog: {},
   blogsByUser: [],
   blogsOther: [],
+  blogsByCategory: [],
   formChange: {
     title: "",
     button: ""
-  }
+  },
+  listBlogByUser: []
 };
 
 const getters = {
+  listBlogByUser: state => state.listBlogByUser,
+  // ----------------------------------
   blogs: state => {
     return state.blogs;
   },
@@ -34,6 +41,9 @@ const getters = {
   },
   blogsByUser: state => {
     return state.blogsByUser;
+  },
+  blogsByCategory: state => {
+    return state.blogsByCategory;
   },
   blogsOther: state => {
     return state.blogsOther;
@@ -72,6 +82,9 @@ const mutations = {
     const data = payload.reverse();
     state.blogsByUser = data;
   },
+  getBlogsByCategory: (state, payload) => {
+    state.blogsByCategory = payload;
+  },
   getBlogsOther: (state, payload) => {
     state.blogsOther = payload;
   },
@@ -86,10 +99,19 @@ const mutations = {
   },
   clearForm: (state, payload) => {
     state.formChange = payload;
+  },
+  get_list_blog_user: (state, payload) => {
+    state.listBlogByUser = payload;
   }
 };
 
 const actions = {
+  getListBlogByUser: async ({commit}) => {
+    const blogDataRes = await BlogService.getByUser(CookieFunction.getCookie("uid"));
+    commit("get_list_blog_user", blogDataRes.data.data);
+  },
+
+  //-------------------------------------------
   getAllBlog: async ({ commit }, payload) => {
     await commit("getAllBlog", payload);
   },
@@ -116,6 +138,9 @@ const actions = {
   },
   showByUser: async ({ commit }, payload) => {
     await commit("showByUser", payload);
+  },
+  getBlogsByCategory: async ({ commit }, payload) => {
+    await commit("getBlogsByCategory", payload);
   },
   getBlogsOther: async ({ commit }, payload) => {
     await commit("getBlogsOther", payload);

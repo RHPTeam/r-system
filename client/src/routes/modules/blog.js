@@ -15,8 +15,8 @@ const userRouter = {
       component: () => import("@/views/blog/detail")
     },
     {
-      path: "categories",
-      name: "category",
+      path: "categories/:categoryId",
+      name: "categories",
       component: () => import("@/views/blog/category")
     }
   ]
